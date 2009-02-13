@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* GeoNoterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* GeoNoterAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		28216C970DB411BC00E5133A /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* TripsViewController.m */; };
+		282CCBFE0DB6C98000C4EA27 /* TagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* TagsView.xib */; };
+		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		CD444CF60F1AFB0100A2934E /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CD444CF50F1AFB0100A2934E /* Tag.m */; };
+		CD7B921C0F4411C300A66996 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7B921B0F4411C300A66996 /* CoreLocation.framework */; };
+		CDC811D60F1C693500265C90 /* TagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC811D50F1C693500265C90 /* TagsViewController.m */; };
+		CDC811EC0F1C69F000265C90 /* TagsViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC811EB0F1C69F000265C90 /* TagsViewHome.m */; };
+		CDC811EE0F1C6A5D00265C90 /* TagsViewHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC811ED0F1C6A5D00265C90 /* TagsViewHome.xib */; };
+		CDC812390F1C736800265C90 /* GNPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC812380F1C736800265C90 /* GNPoint.m */; };
+		CDC812730F1C82E100265C90 /* PointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC812720F1C82E100265C90 /* PointsViewController.m */; };
+		CDC812770F1C831000265C90 /* PointsViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC812760F1C831000265C90 /* PointsViewHome.m */; };
+		CDC8129F0F1C84F900265C90 /* PointsViewHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC8129E0F1C84F900265C90 /* PointsViewHome.xib */; };
+		CDC812BC0F1C871E00265C90 /* AdHoc.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDC812BB0F1C871E00265C90 /* AdHoc.plist */; };
+		CDCCFD8B0F1F0D1600F0ED08 /* PointsDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCCFD8A0F1F0D1600F0ED08 /* PointsDetailView.xib */; };
+		CDCCFD900F1F0F5C00F0ED08 /* PointsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */; };
+		CDCCFDD70F1F206D00F0ED08 /* SampleMap.png in Resources */ = {isa = PBXBuildFile; fileRef = CDCCFDD60F1F206D00F0ED08 /* SampleMap.png */; };
+		CDCCFDE70F1F234B00F0ED08 /* MapViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCCFDE60F1F234B00F0ED08 /* MapViewCell.m */; };
+		CDD0F7970F1AA4CF00BBBBAA /* TripsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD0F7960F1AA4CF00BBBBAA /* TripsView.xib */; };
+		CDD0F7990F1AA4E000BBBBAA /* PointsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD0F7980F1AA4E000BBBBAA /* PointsView.xib */; };
+		CDD0F79B0F1AA4E800BBBBAA /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD0F79A0F1AA4E800BBBBAA /* SettingsView.xib */; };
+		CDD0F7F40F1AB86100BBBBAA /* TripsViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD0F7F30F1AB86100BBBBAA /* TripsViewHome.m */; };
+		CDD0F7FA0F1AB8E300BBBBAA /* TripsViewHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD0F7F90F1AB8E300BBBBAA /* TripsViewHome.xib */; };
+		CDD6DF130F1ABC9F003880D0 /* PersistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF120F1ABC9F003880D0 /* PersistStore.m */; };
+		CDD6DF1B0F1ABCB7003880D0 /* SQLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF170F1ABCB7003880D0 /* SQLDatabase.m */; };
+		CDD6DF1C0F1ABCB7003880D0 /* SQLRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF180F1ABCB7003880D0 /* SQLRow.m */; };
+		CDD6DF1D0F1ABCB7003880D0 /* SQLResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF1A0F1ABCB7003880D0 /* SQLResult.m */; };
+		CDD6DF210F1ABCFC003880D0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD6DF200F1ABCFC003880D0 /* libsqlite3.dylib */; };
+		CDD6DF630F1AC0D3003880D0 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF620F1AC0D3003880D0 /* Trip.m */; };
+		CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDEB574B0F4537C5009E9F8E /* Icon.png */; };
+		CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEB578F0F454A74009E9F8E /* NSDateJSON.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* GeoNoterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoNoterAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* GeoNoterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoNoterAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* GeoNoter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoNoter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28216C950DB411BC00E5133A /* TripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
+		28216C960DB411BC00E5133A /* TripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsViewController.m; sourceTree = "<group>"; };
+		282CCBFD0DB6C98000C4EA27 /* TagsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsView.xib; sourceTree = "<group>"; };
+		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AB4B0D9B1048005BE974 /* GeoNoter_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoNoter_Prefix.pch; sourceTree = "<group>"; };
+		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD444CF40F1AFB0100A2934E /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		CD444CF50F1AFB0100A2934E /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		CD7B921B0F4411C300A66996 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CDC811D40F1C693500265C90 /* TagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsViewController.h; sourceTree = "<group>"; };
+		CDC811D50F1C693500265C90 /* TagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsViewController.m; sourceTree = "<group>"; };
+		CDC811EA0F1C69F000265C90 /* TagsViewHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsViewHome.h; sourceTree = "<group>"; };
+		CDC811EB0F1C69F000265C90 /* TagsViewHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsViewHome.m; sourceTree = "<group>"; };
+		CDC811ED0F1C6A5D00265C90 /* TagsViewHome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsViewHome.xib; sourceTree = "<group>"; };
+		CDC812370F1C736800265C90 /* GNPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNPoint.h; sourceTree = "<group>"; };
+		CDC812380F1C736800265C90 /* GNPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNPoint.m; sourceTree = "<group>"; };
+		CDC812710F1C82E100265C90 /* PointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsViewController.h; sourceTree = "<group>"; };
+		CDC812720F1C82E100265C90 /* PointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsViewController.m; sourceTree = "<group>"; };
+		CDC812750F1C831000265C90 /* PointsViewHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsViewHome.h; sourceTree = "<group>"; };
+		CDC812760F1C831000265C90 /* PointsViewHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsViewHome.m; sourceTree = "<group>"; };
+		CDC8129E0F1C84F900265C90 /* PointsViewHome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsViewHome.xib; sourceTree = "<group>"; };
+		CDC812BB0F1C871E00265C90 /* AdHoc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AdHoc.plist; sourceTree = "<group>"; };
+		CDCCFD8A0F1F0D1600F0ED08 /* PointsDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsDetailView.xib; sourceTree = "<group>"; };
+		CDCCFD8E0F1F0F5C00F0ED08 /* PointsDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsDetail.h; sourceTree = "<group>"; };
+		CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsDetail.m; sourceTree = "<group>"; };
+		CDCCFDD60F1F206D00F0ED08 /* SampleMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SampleMap.png; sourceTree = "<group>"; };
+		CDCCFDE50F1F234B00F0ED08 /* MapViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewCell.h; sourceTree = "<group>"; };
+		CDCCFDE60F1F234B00F0ED08 /* MapViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewCell.m; sourceTree = "<group>"; };
+		CDD0F7960F1AA4CF00BBBBAA /* TripsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsView.xib; sourceTree = "<group>"; };
+		CDD0F7980F1AA4E000BBBBAA /* PointsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsView.xib; sourceTree = "<group>"; };
+		CDD0F79A0F1AA4E800BBBBAA /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		CDD0F7F20F1AB86100BBBBAA /* TripsViewHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewHome.h; sourceTree = "<group>"; };
+		CDD0F7F30F1AB86100BBBBAA /* TripsViewHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsViewHome.m; sourceTree = "<group>"; };
+		CDD0F7F90F1AB8E300BBBBAA /* TripsViewHome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsViewHome.xib; sourceTree = "<group>"; };
+		CDD6DF110F1ABC9F003880D0 /* PersistStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistStore.h; sourceTree = "<group>"; };
+		CDD6DF120F1ABC9F003880D0 /* PersistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistStore.m; sourceTree = "<group>"; };
+		CDD6DF160F1ABCB7003880D0 /* SQLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDatabase.h; sourceTree = "<group>"; };
+		CDD6DF170F1ABCB7003880D0 /* SQLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLDatabase.m; sourceTree = "<group>"; };
+		CDD6DF180F1ABCB7003880D0 /* SQLRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLRow.m; sourceTree = "<group>"; };
+		CDD6DF190F1ABCB7003880D0 /* SQLDatabasePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDatabasePrivate.h; sourceTree = "<group>"; };
+		CDD6DF1A0F1ABCB7003880D0 /* SQLResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLResult.m; sourceTree = "<group>"; };
+		CDD6DF200F1ABCFC003880D0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CDD6DF610F1AC0D3003880D0 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
+		CDD6DF620F1AC0D3003880D0 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
+		CDEB574B0F4537C5009E9F8E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		CDEB578F0F454A74009E9F8E /* NSDateJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate\bJSON.m"; sourceTree = "<group>"; };
+		CDEB57900F454A74009E9F8E /* NSDateJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateJSON.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
+				CDD6DF210F1ABCFC003880D0 /* libsqlite3.dylib in Frameworks */,
+				CD7B921C0F4411C300A66996 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CDEB578E0F454A68009E9F8E /* Categories */,
+				CDC811D10F1C691100265C90 /* Views */,
+				CDD6DF150F1ABCB7003880D0 /* SQLDatabase */,
+				CDD6DF0D0F1ABC93003880D0 /* Models */,
+				1D3623240D0F684500981E51 /* GeoNoterAppDelegate.h */,
+				1D3623250D0F684500981E51 /* GeoNoterAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* GeoNoter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* GeoNoter */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = GeoNoter;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AB4B0D9B1048005BE974 /* GeoNoter_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDEB574B0F4537C5009E9F8E /* Icon.png */,
+				CDC8129A0F1C84B600265C90 /* Points */,
+				CDC811BF0F1C68C400265C90 /* Tags */,
+				CDC811BE0F1C68B700265C90 /* Trips */,
+				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				CDD0F79A0F1AA4E800BBBBAA /* SettingsView.xib */,
+				CDC812BB0F1C871E00265C90 /* AdHoc.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDD6DF200F1ABCFC003880D0 /* libsqlite3.dylib */,
+				CD7B921B0F4411C300A66996 /* CoreLocation.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765070DF74369002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDC811BE0F1C68B700265C90 /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+				CDD0F7960F1AA4CF00BBBBAA /* TripsView.xib */,
+				CDD0F7F90F1AB8E300BBBBAA /* TripsViewHome.xib */,
+			);
+			name = Trips;
+			sourceTree = "<group>";
+		};
+		CDC811BF0F1C68C400265C90 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				282CCBFD0DB6C98000C4EA27 /* TagsView.xib */,
+				CDC811ED0F1C6A5D00265C90 /* TagsViewHome.xib */,
+			);
+			name = Tags;
+			sourceTree = "<group>";
+		};
+		CDC811D00F1C690500265C90 /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+				28216C950DB411BC00E5133A /* TripsViewController.h */,
+				28216C960DB411BC00E5133A /* TripsViewController.m */,
+				CDD0F7F20F1AB86100BBBBAA /* TripsViewHome.h */,
+				CDD0F7F30F1AB86100BBBBAA /* TripsViewHome.m */,
+			);
+			name = Trips;
+			sourceTree = "<group>";
+		};
+		CDC811D10F1C691100265C90 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CDC8126F0F1C82BA00265C90 /* Points */,
+				CDC811D20F1C692100265C90 /* Tags */,
+				CDC811D00F1C690500265C90 /* Trips */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CDC811D20F1C692100265C90 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				CDC811D40F1C693500265C90 /* TagsViewController.h */,
+				CDC811D50F1C693500265C90 /* TagsViewController.m */,
+				CDC811EA0F1C69F000265C90 /* TagsViewHome.h */,
+				CDC811EB0F1C69F000265C90 /* TagsViewHome.m */,
+			);
+			name = Tags;
+			sourceTree = "<group>";
+		};
+		CDC8126F0F1C82BA00265C90 /* Points */ = {
+			isa = PBXGroup;
+			children = (
+				CDC812710F1C82E100265C90 /* PointsViewController.h */,
+				CDC812720F1C82E100265C90 /* PointsViewController.m */,
+				CDC812750F1C831000265C90 /* PointsViewHome.h */,
+				CDC812760F1C831000265C90 /* PointsViewHome.m */,
+				CDCCFD8E0F1F0F5C00F0ED08 /* PointsDetail.h */,
+				CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */,
+				CDCCFDE50F1F234B00F0ED08 /* MapViewCell.h */,
+				CDCCFDE60F1F234B00F0ED08 /* MapViewCell.m */,
+			);
+			name = Points;
+			sourceTree = "<group>";
+		};
+		CDC8129A0F1C84B600265C90 /* Points */ = {
+			isa = PBXGroup;
+			children = (
+				CDCCFDD60F1F206D00F0ED08 /* SampleMap.png */,
+				CDD0F7980F1AA4E000BBBBAA /* PointsView.xib */,
+				CDC8129E0F1C84F900265C90 /* PointsViewHome.xib */,
+				CDCCFD8A0F1F0D1600F0ED08 /* PointsDetailView.xib */,
+			);
+			name = Points;
+			sourceTree = "<group>";
+		};
+		CDD6DF0D0F1ABC93003880D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CDD6DF110F1ABC9F003880D0 /* PersistStore.h */,
+				CDD6DF120F1ABC9F003880D0 /* PersistStore.m */,
+				CDD6DF610F1AC0D3003880D0 /* Trip.h */,
+				CDD6DF620F1AC0D3003880D0 /* Trip.m */,
+				CD444CF40F1AFB0100A2934E /* Tag.h */,
+				CD444CF50F1AFB0100A2934E /* Tag.m */,
+				CDC812370F1C736800265C90 /* GNPoint.h */,
+				CDC812380F1C736800265C90 /* GNPoint.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CDD6DF150F1ABCB7003880D0 /* SQLDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				CDD6DF160F1ABCB7003880D0 /* SQLDatabase.h */,
+				CDD6DF170F1ABCB7003880D0 /* SQLDatabase.m */,
+				CDD6DF180F1ABCB7003880D0 /* SQLRow.m */,
+				CDD6DF190F1ABCB7003880D0 /* SQLDatabasePrivate.h */,
+				CDD6DF1A0F1ABCB7003880D0 /* SQLResult.m */,
+			);
+			name = SQLDatabase;
+			sourceTree = "<group>";
+		};
+		CDEB578E0F454A68009E9F8E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CDEB578F0F454A74009E9F8E /* NSDateJSON.m */,
+				CDEB57900F454A74009E9F8E /* NSDateJSON.h */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* GeoNoter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "GeoNoter" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoNoter;
+			productName = GeoNoter;
+			productReference = 1D6058910D05DD3D006BFB54 /* GeoNoter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GeoNoter" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* GeoNoter */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* GeoNoter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
+				282CCBFE0DB6C98000C4EA27 /* TagsView.xib in Resources */,
+				CDD0F7970F1AA4CF00BBBBAA /* TripsView.xib in Resources */,
+				CDD0F7990F1AA4E000BBBBAA /* PointsView.xib in Resources */,
+				CDD0F79B0F1AA4E800BBBBAA /* SettingsView.xib in Resources */,
+				CDD0F7FA0F1AB8E300BBBBAA /* TripsViewHome.xib in Resources */,
+				CDC811EE0F1C6A5D00265C90 /* TagsViewHome.xib in Resources */,
+				CDC8129F0F1C84F900265C90 /* PointsViewHome.xib in Resources */,
+				CDC812BC0F1C871E00265C90 /* AdHoc.plist in Resources */,
+				CDCCFD8B0F1F0D1600F0ED08 /* PointsDetailView.xib in Resources */,
+				CDCCFDD70F1F206D00F0ED08 /* SampleMap.png in Resources */,
+				CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* GeoNoterAppDelegate.m in Sources */,
+				28216C970DB411BC00E5133A /* TripsViewController.m in Sources */,
+				CDD0F7F40F1AB86100BBBBAA /* TripsViewHome.m in Sources */,
+				CDD6DF130F1ABC9F003880D0 /* PersistStore.m in Sources */,
+				CDD6DF1B0F1ABCB7003880D0 /* SQLDatabase.m in Sources */,
+				CDD6DF1C0F1ABCB7003880D0 /* SQLRow.m in Sources */,
+				CDD6DF1D0F1ABCB7003880D0 /* SQLResult.m in Sources */,
+				CDD6DF630F1AC0D3003880D0 /* Trip.m in Sources */,
+				CD444CF60F1AFB0100A2934E /* Tag.m in Sources */,
+				CDC811D60F1C693500265C90 /* TagsViewController.m in Sources */,
+				CDC811EC0F1C69F000265C90 /* TagsViewHome.m in Sources */,
+				CDC812390F1C736800265C90 /* GNPoint.m in Sources */,
+				CDC812730F1C82E100265C90 /* PointsViewController.m in Sources */,
+				CDC812770F1C831000265C90 /* PointsViewHome.m in Sources */,
+				CDCCFD900F1F0F5C00F0ED08 /* PointsDetail.m in Sources */,
+				CDCCFDE70F1F234B00F0ED08 /* MapViewCell.m in Sources */,
+				CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = GeoNoter_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				OTHER_CFLAGS = "-DDEBUG";
+				PRODUCT_NAME = GeoNoter;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = GeoNoter_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = GeoNoter;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = AdHoc.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Patrick F Quinn-Graham";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6E794E56-5245-4679-9407-AF58C3D73F4D";
+				SDKROOT = iphoneos2.2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.2;
+			};
+			name = Release;
+		};
+		CDC812B90F1C86F800265C90 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.2;
+			};
+			name = "Ad Hoc";
+		};
+		CDC812BA0F1C86F800265C90 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = GeoNoter_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = GeoNoter;
+			};
+			name = "Ad Hoc";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "GeoNoter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				CDC812BA0F1C86F800265C90 /* Ad Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Ad Hoc";
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GeoNoter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				CDC812B90F1C86F800265C90 /* Ad Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Ad Hoc";
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

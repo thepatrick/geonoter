@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* GeoNoterAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 602}}";
+			sepNavSelRange = "{820, 0}";
+			sepNavVisRange = "{0, 898}";
+			sepNavWindowFrame = "{{386, 48}, {818, 730}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* GeoNoterAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1498}}";
+			sepNavSelRange = "{378, 0}";
+			sepNavVisRange = "{3, 1032}";
+			sepNavWindowFrame = "{{423, 48}, {818, 730}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* GeoNoter */ = {
+		activeExec = 0;
+		executables = (
+			CDD0F78A0F1AA3DD00BBBBAA /* GeoNoter */,
+		);
+	};
+	28216C950DB411BC00E5133A /* TripsViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 602}}";
+			sepNavSelRange = "{298, 0}";
+			sepNavVisRange = "{0, 361}";
+			sepNavWindowFrame = "{{431, 48}, {818, 730}}";
+		};
+	};
+	28216C960DB411BC00E5133A /* TripsViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 579}}";
+			sepNavSelRange = "{628, 0}";
+			sepNavVisRange = "{0, 658}";
+			sepNavWindowFrame = "{{416, 48}, {818, 730}}";
+		};
+	};
+	28A0AB4B0D9B1048005BE974 /* GeoNoter_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 507}}";
+			sepNavSelRange = "{186, 0}";
+			sepNavVisRange = "{0, 318}";
+			sepNavWindowFrame = "{{15, 115}, {938, 658}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CDD0F78A0F1AA3DD00BBBBAA /* GeoNoter */;
+		activeSDKPreference = iphoneos2.2;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* GeoNoter */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* GeoNoter */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = CDD0F7940F1AA3F400BBBBAA /* Code sense */;
+		executables = (
+			CDD0F78A0F1AA3DD00BBBBAA /* GeoNoter */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 256187439;
+			PBXWorkspaceStateSaveDate = 256187439;
+		};
+		perUserProjectItems = {
+			CDEB57FC0F4555FC009E9F8E /* PBXBookmark */ = CDEB57FC0F4555FC009E9F8E /* PBXBookmark */;
+			CDEB58340F455B08009E9F8E /* PBXTextBookmark */ = CDEB58340F455B08009E9F8E /* PBXTextBookmark */;
+			CDEB58480F455CFB009E9F8E /* PBXBookmark */ = CDEB58480F455CFB009E9F8E /* PBXBookmark */;
+			CDEB588D0F456046009E9F8E /* PBXBookmark */ = CDEB588D0F456046009E9F8E /* PBXBookmark */;
+			CDEB58D20F456487009E9F8E /* PBXTextBookmark */ = CDEB58D20F456487009E9F8E /* PBXTextBookmark */;
+			CDEB58D30F456487009E9F8E /* PBXTextBookmark */ = CDEB58D30F456487009E9F8E /* PBXTextBookmark */;
+			CDEB58D40F456487009E9F8E /* PBXTextBookmark */ = CDEB58D40F456487009E9F8E /* PBXTextBookmark */;
+			CDEB58D50F456487009E9F8E /* PBXTextBookmark */ = CDEB58D50F456487009E9F8E /* PBXTextBookmark */;
+		};
+		sourceControlManager = CDD0F7930F1AA3F400BBBBAA /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D1107310486CEB800E47090 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{84, 64}, {819, 646}}";
+		};
+	};
+	CD444CF40F1AFB0100A2934E /* Tag.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {897, 574}}";
+			sepNavSelRange = "{576, 66}";
+			sepNavVisRange = "{3, 645}";
+			sepNavWindowFrame = "{{25, 75}, {956, 703}}";
+		};
+	};
+	CD444CF50F1AFB0100A2934E /* Tag.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {960, 1624}}";
+			sepNavSelRange = "{2030, 94}";
+			sepNavVisRange = "{809, 961}";
+			sepNavWindowFrame = "{{15, 50}, {719, 723}}";
+		};
+	};
+	CDC811D40F1C693500265C90 /* TagsViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {668, 478}}";
+			sepNavSelRange = "{266, 0}";
+			sepNavVisRange = "{0, 358}";
+			sepNavWindowFrame = "{{-21, 148}, {727, 629}}";
+		};
+	};
+	CDC811D50F1C693500265C90 /* TagsViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {668, 504}}";
+			sepNavSelRange = "{282, 228}";
+			sepNavVisRange = "{0, 655}";
+			sepNavWindowFrame = "{{-33, 145}, {727, 629}}";
+		};
+	};
+	CDC811EA0F1C69F000265C90 /* TagsViewHome.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {668, 478}}";
+			sepNavSelRange = "{540, 19}";
+			sepNavVisRange = "{0, 566}";
+			sepNavWindowFrame = "{{24, 93}, {727, 629}}";
+		};
+	};
+	CDC811EB0F1C69F000265C90 /* TagsViewHome.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {668, 1022}}";
+			sepNavSelRange = "{998, 567}";
+			sepNavVisRange = "{757, 814}";
+			sepNavWindowFrame = "{{0, 149}, {727, 629}}";
+		};
+	};
+	CDC812370F1C736800265C90 /* GNPoint.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {668, 812}}";
+			sepNavSelRange = "{1079, 0}";
+			sepNavVisRange = "{369, 717}";
+			sepNavWindowFrame = "{{26, 149}, {727, 629}}";
+		};
+	};
+	CDC812380F1C736800265C90 /* GNPoint.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {972, 2464}}";
+			sepNavSelRange = "{3148, 15}";
+			sepNavVisRange = "{2760, 596}";
+			sepNavWindowFrame = "{{547, 92}, {727, 629}}";
+		};
+	};
+	CDC812710F1C82E100265C90 /* PointsViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {662, 507}}";
+			sepNavSelRange = "{215, 0}";
+			sepNavVisRange = "{0, 368}";
+			sepNavWindowFrame = "{{469, 140}, {721, 635}}";
+		};
+	};
+	CDC812720F1C82E100265C90 /* PointsViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {662, 518}}";
+			sepNavSelRange = "{663, 5}";
+			sepNavVisRange = "{30, 638}";
+			sepNavWindowFrame = "{{588, 83}, {721, 635}}";
+		};
+	};
+	CDC812750F1C831000265C90 /* PointsViewHome.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {662, 484}}";
+			sepNavSelRange = "{576, 0}";
+			sepNavVisRange = "{0, 615}";
+			sepNavWindowFrame = "{{376, 143}, {721, 635}}";
+		};
+	};
+	CDC812760F1C831000265C90 /* PointsViewHome.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {662, 1442}}";
+			sepNavSelRange = "{2433, 0}";
+			sepNavVisRange = "{1366, 1169}";
+			sepNavWindowFrame = "{{88, 143}, {721, 635}}";
+		};
+	};
+	CDC812BB0F1C871E00265C90 /* AdHoc.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{107, 54}, {721, 635}}";
+		};
+	};
+	CDCCFD8E0F1F0F5C00F0ED08 /* PointsDetail.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {899, 574}}";
+			sepNavSelRange = "{353, 0}";
+			sepNavVisRange = "{3, 572}";
+			sepNavWindowFrame = "{{-21, 211}, {958, 495}}";
+		};
+	};
+	CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {984, 3570}}";
+			sepNavSelRange = "{4376, 0}";
+			sepNavVisRange = "{4178, 821}";
+			sepNavWindowFrame = "{{55, 104}, {992, 674}}";
+		};
+	};
+	CDCCFDE50F1F234B00F0ED08 /* MapViewCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {662, 484}}";
+			sepNavSelRange = "{231, 9}";
+			sepNavVisRange = "{0, 403}";
+			sepNavWindowFrame = "{{395, 83}, {721, 635}}";
+		};
+	};
+	CDCCFDE60F1F234B00F0ED08 /* MapViewCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {662, 798}}";
+			sepNavSelRange = "{556, 29}";
+			sepNavVisRange = "{421, 727}";
+			sepNavWindowFrame = "{{30, 105}, {721, 635}}";
+		};
+	};
+	CDD0F78A0F1AA3DD00BBBBAA /* GeoNoter */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = GeoNoter;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	CDD0F7930F1AA3F400BBBBAA /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	CDD0F7940F1AA3F400BBBBAA /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CDD0F7F20F1AB86100BBBBAA /* TripsViewHome.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 579}}";
+			sepNavSelRange = "{351, 0}";
+			sepNavVisRange = "{0, 575}";
+			sepNavWindowFrame = "{{15, 48}, {818, 730}}";
+		};
+	};
+	CDD0F7F30F1AB86100BBBBAA /* TripsViewHome.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1232}}";
+			sepNavSelRange = "{1521, 0}";
+			sepNavVisRange = "{1079, 1049}";
+			sepNavWindowFrame = "{{499, 50}, {818, 728}}";
+		};
+	};
+	CDD6DF110F1ABC9F003880D0 /* PersistStore.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1050}}";
+			sepNavSelRange = "{469, 0}";
+			sepNavVisRange = "{176, 923}";
+			sepNavWindowFrame = "{{499, 50}, {818, 728}}";
+		};
+	};
+	CDD6DF120F1ABC9F003880D0 /* PersistStore.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 6552}}";
+			sepNavSelRange = "{8708, 0}";
+			sepNavVisRange = "{2296, 1940}";
+			sepNavWindowFrame = "{{13, 66}, {572, 712}}";
+		};
+	};
+	CDD6DF160F1ABCB7003880D0 /* SQLDatabase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {760, 1008}}";
+			sepNavSelRange = "{1480, 0}";
+			sepNavVisRange = "{729, 757}";
+			sepNavWindowFrame = "{{506, 114}, {819, 646}}";
+		};
+	};
+	CDD6DF180F1ABCB7003880D0 /* SQLRow.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {846, 2170}}";
+			sepNavSelRange = "{2430, 0}";
+			sepNavVisRange = "{1861, 983}";
+			sepNavWindowFrame = "{{15, 127}, {819, 646}}";
+		};
+	};
+	CDD6DF610F1AC0D3003880D0 /* Trip.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 630}}";
+			sepNavSelRange = "{237, 1}";
+			sepNavVisRange = "{3, 757}";
+			sepNavWindowFrame = "{{6, 49}, {818, 728}}";
+		};
+	};
+	CDD6DF620F1AC0D3003880D0 /* Trip.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1188, 1776}}";
+			sepNavSelRange = "{1545, 74}";
+			sepNavVisRange = "{1275, 276}";
+			sepNavWindowFrame = "{{22, 50}, {1049, 728}}";
+		};
+	};
+	CDEB578F0F454A74009E9F8E /* NSDateJSON.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1188, 1316}}";
+			sepNavSelRange = "{2183, 0}";
+			sepNavVisRange = "{528, 198}";
+			sepNavWindowFrame = "{{551, 74}, {819, 646}}";
+		};
+	};
+	CDEB57900F454A74009E9F8E /* NSDateJSON.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1188, 238}}";
+			sepNavSelRange = "{153, 0}";
+			sepNavVisRange = "{37, 232}";
+			sepNavWindowFrame = "{{494, 62}, {819, 646}}";
+		};
+	};
+	CDEB57FC0F4555FC009E9F8E /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDC812380F1C736800265C90 /* GNPoint.m */;
+	};
+	CDEB58340F455B08009E9F8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */;
+		name = "PointsDetail.m: 186";
+		rLen = 0;
+		rLoc = 5126;
+		rType = 0;
+		vrLen = 804;
+		vrLoc = 4451;
+	};
+	CDEB58480F455CFB009E9F8E /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDCCFD8E0F1F0F5C00F0ED08 /* PointsDetail.h */;
+	};
+	CDEB588D0F456046009E9F8E /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDC812760F1C831000265C90 /* PointsViewHome.m */;
+	};
+	CDEB58D20F456487009E9F8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */;
+		name = "PointsDetail.m: 164";
+		rLen = 0;
+		rLoc = 4376;
+		rType = 0;
+		vrLen = 821;
+		vrLoc = 4178;
+	};
+	CDEB58D30F456487009E9F8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDC812760F1C831000265C90 /* PointsViewHome.m */;
+		name = "PointsViewHome.m: 95";
+		rLen = 0;
+		rLoc = 2433;
+		rType = 0;
+		vrLen = 1169;
+		vrLoc = 1366;
+	};
+	CDEB58D40F456487009E9F8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDCCFD8E0F1F0F5C00F0ED08 /* PointsDetail.h */;
+		name = "PointsDetail.h: 15";
+		rLen = 0;
+		rLoc = 353;
+		rType = 0;
+		vrLen = 572;
+		vrLoc = 3;
+	};
+	CDEB58D50F456487009E9F8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDC812380F1C736800265C90 /* GNPoint.m */;
+		name = "GNPoint.m: 164";
+		rLen = 15;
+		rLoc = 3148;
+		rType = 0;
+		vrLen = 596;
+		vrLoc = 2760;
+	};
+}
