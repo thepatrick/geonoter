@@ -25,5 +25,6 @@
 
 -(void)reloadData;
 -(IBAction)addPoint:(id)sender;
+-(void)showLoading;
 
 @end

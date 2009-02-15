@@ -301,7 +301,6 @@
 	[db performQueryWithFormat:@"DELETE FROM trip WHERE id = %d", tripId];
 }
 
-
 -(void)removeTagFromCache:(NSInteger)tagId
 {
 	[centralTagStore removeObjectForKey:[NSString stringWithFormat:@"%d", tagId]];
@@ -411,7 +410,9 @@
 -(void)deletePointFromStore:(NSInteger)pointId
 {
 	[self removePointFromCache:pointId];
+	[dbLock lock];
 	[db performQueryWithFormat:@"DELETE FROM point WHERE id = %d", pointId];
+	[dbLock unlock];
 }
 
 
@@ -457,6 +458,21 @@
 	return thePoint;
 }
 
+-(void)removeTagFromPoint:(NSInteger)pointId
+{
+	[dbLock lock];
+	[db performQueryWithFormat:@"DELETE FROM point_tag WHERE point_id = %d", pointId];
+	[dbLock unlock];
+}
+
+-(void)addTag:(NSInteger)tagId toPoint:(NSInteger)pointId 
+{
+	NSString *sql = [NSString stringWithFormat:@"INSERT INTO point_tag (tag_id, point_id) VALUES (%d, %d)",
+					 tagId, pointId];
+	[dbLock lock];
+	[db performQuery:sql];
+	[dbLock unlock];
+}
 
 
 @end

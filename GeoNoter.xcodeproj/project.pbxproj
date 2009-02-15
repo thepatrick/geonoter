@@ -42,6 +42,11 @@
 		CDD6DF630F1AC0D3003880D0 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF620F1AC0D3003880D0 /* Trip.m */; };
 		CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDEB574B0F4537C5009E9F8E /* Icon.png */; };
 		CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEB578F0F454A74009E9F8E /* NSDateJSON.m */; };
+		CDF7D0B10F479C2700F59C34 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0AC0F479C2700F59C34 /* NSObject+SBJSON.m */; };
+		CDF7D0B20F479C2700F59C34 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0AE0F479C2700F59C34 /* NSString+SBJSON.m */; };
+		CDF7D0B30F479C2700F59C34 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0B00F479C2700F59C34 /* SBJSON.m */; };
+		CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */; };
+		CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D1000F47A63500F59C34 /* PointsAddTags.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +104,16 @@
 		CDEB574B0F4537C5009E9F8E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		CDEB578F0F454A74009E9F8E /* NSDateJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate\bJSON.m"; sourceTree = "<group>"; };
 		CDEB57900F454A74009E9F8E /* NSDateJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateJSON.h; sourceTree = "<group>"; };
+		CDF7D0AA0F479C2700F59C34 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		CDF7D0AB0F479C2700F59C34 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		CDF7D0AC0F479C2700F59C34 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		CDF7D0AD0F479C2700F59C34 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		CDF7D0AE0F479C2700F59C34 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		CDF7D0AF0F479C2700F59C34 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		CDF7D0B00F479C2700F59C34 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsAddTags.xib; sourceTree = "<group>"; };
+		CDF7D0FF0F47A63500F59C34 /* PointsAddTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsAddTags.h; sourceTree = "<group>"; };
+		CDF7D1000F47A63500F59C34 /* PointsAddTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsAddTags.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +135,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CDF7D0A90F479C2700F59C34 /* JSON */,
 				CDEB578E0F454A68009E9F8E /* Categories */,
 				CDC811D10F1C691100265C90 /* Views */,
 				CDD6DF150F1ABCB7003880D0 /* SQLDatabase */,
@@ -247,6 +263,8 @@
 				CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */,
 				CDCCFDE50F1F234B00F0ED08 /* MapViewCell.h */,
 				CDCCFDE60F1F234B00F0ED08 /* MapViewCell.m */,
+				CDF7D0FF0F47A63500F59C34 /* PointsAddTags.h */,
+				CDF7D1000F47A63500F59C34 /* PointsAddTags.m */,
 			);
 			name = Points;
 			sourceTree = "<group>";
@@ -258,6 +276,7 @@
 				CDD0F7980F1AA4E000BBBBAA /* PointsView.xib */,
 				CDC8129E0F1C84F900265C90 /* PointsViewHome.xib */,
 				CDCCFD8A0F1F0D1600F0ED08 /* PointsDetailView.xib */,
+				CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */,
 			);
 			name = Points;
 			sourceTree = "<group>";
@@ -296,6 +315,20 @@
 				CDEB57900F454A74009E9F8E /* NSDateJSON.h */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		CDF7D0A90F479C2700F59C34 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				CDF7D0AA0F479C2700F59C34 /* JSON.h */,
+				CDF7D0AB0F479C2700F59C34 /* NSObject+SBJSON.h */,
+				CDF7D0AC0F479C2700F59C34 /* NSObject+SBJSON.m */,
+				CDF7D0AD0F479C2700F59C34 /* NSString+SBJSON.h */,
+				CDF7D0AE0F479C2700F59C34 /* NSString+SBJSON.m */,
+				CDF7D0AF0F479C2700F59C34 /* SBJSON.h */,
+				CDF7D0B00F479C2700F59C34 /* SBJSON.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +385,7 @@
 				CDCCFD8B0F1F0D1600F0ED08 /* PointsDetailView.xib in Resources */,
 				CDCCFDD70F1F206D00F0ED08 /* SampleMap.png in Resources */,
 				CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */,
+				CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +414,10 @@
 				CDCCFD900F1F0F5C00F0ED08 /* PointsDetail.m in Sources */,
 				CDCCFDE70F1F234B00F0ED08 /* MapViewCell.m in Sources */,
 				CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */,
+				CDF7D0B10F479C2700F59C34 /* NSObject+SBJSON.m in Sources */,
+				CDF7D0B20F479C2700F59C34 /* NSString+SBJSON.m in Sources */,
+				CDF7D0B30F479C2700F59C34 /* SBJSON.m in Sources */,
+				CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

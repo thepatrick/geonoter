@@ -17,7 +17,9 @@
 	self.homeView = [[TripsViewHome alloc] initWithNibName:@"TripsViewHome" bundle:nil];
 	NSLog(@"homeView arrr: %@", self.homeView);
 	[self pushViewController:homeView animated:NO];
+	self.navigationBar.tintColor = [UIColor colorWithRed:(39.0/255) green:(28.0/255) blue:(35.0/255) alpha:0];
     [super viewDidLoad];
+
 }
 
 - (void)didReceiveMemoryWarning {

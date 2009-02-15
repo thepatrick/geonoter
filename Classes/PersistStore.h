@@ -67,5 +67,7 @@
 -(NSMutableArray*)getPointsWithConditions:(NSString*)conditions andSort:(NSString*)sort;
 -(NSMutableArray*)getAllPoints;
 -(GNPoint*)getPoint:(NSInteger)pointId;
+-(void)removeTagFromPoint:(NSInteger)pointId;
+-(void)addTag:(NSInteger)tagId toPoint:(NSInteger)pointId;
 
 @end

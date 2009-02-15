@@ -35,6 +35,9 @@
 
 +pointsDetailWithPoint:(GNPoint*)newPoint andStore:(PersistStore*)newStore;
 
+-(void)reloadData;
 -(IBAction)actionButtonAction:(id)sender;
+-(void)actionSheetDeleteMe;
+-(void)actionSheetAddTags;
 
 @end

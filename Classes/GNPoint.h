@@ -53,5 +53,6 @@
 -(void)save;
 
 -(NSArray*)tags;
+-(void)setTags:(NSArray*)newTags;
 
 @end

@@ -18,6 +18,7 @@
 	self.homeView = [[TagsViewHome alloc] initWithNibName:@"TagsViewHome" bundle:nil];
 	NSLog(@"homeView arrr: %@", self.homeView);
 	[self pushViewController:homeView animated:NO];
+	self.navigationBar.tintColor = [UIColor colorWithRed:(29.0/255) green:(39.0/255) blue:(17.0/255) alpha:0];
     [super viewDidLoad];
 }
 

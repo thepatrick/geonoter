@@ -68,7 +68,7 @@
         locationManager = [[CLLocationManager alloc] init];
 	
     locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 	
     // Set a movement threshold for new events
     locationManager.distanceFilter = 1;
@@ -87,12 +87,11 @@
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 5.0)
     {
-		//        [manager stopUpdatingLocation];
 		
 		latitude = newLocation.coordinate.latitude;
 		longitude = newLocation.coordinate.longitude;
 				
-        printf("latitude %+.6f, longitude %+.6f\n", latitude, longitude);
+        DLog(@"latitude %+.6f, longitude %+.6f\n", latitude, longitude);
 		
     }
 }

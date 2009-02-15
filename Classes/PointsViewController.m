@@ -18,6 +18,7 @@
 	self.homeView = [[PointsViewHome alloc] initWithNibName:@"PointsViewHome" bundle:nil];
 	NSLog(@"homeView arrr: %@", self.homeView);
 	[self pushViewController:homeView animated:NO];
+	self.navigationBar.tintColor = [UIColor colorWithRed:(18.0/255) green:(32.0/255) blue:(39.0/255) alpha:0];
     [super viewDidLoad];
 }
 

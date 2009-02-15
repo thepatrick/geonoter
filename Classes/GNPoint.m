@@ -9,7 +9,7 @@
 #import "SQLDatabase.h"
 #import "PersistStore.h"
 #import "GNPoint.h"
-
+#import "Tag.h"
 
 @implementation GNPoint
 
@@ -164,6 +164,14 @@
 -(NSArray*)tags {
 	NSString *cond = [NSString stringWithFormat:@"id IN (select tag_id FROM point_tag WHERE point_id = %@)", self.dbId];
 	return [store getTagsWithConditions:cond andSort:@"name ASC"];
+}
+
+
+-(void)setTags:(NSArray*)newTags {
+	[store removeTagFromPoint:[self.dbId integerValue]];
+	for(Tag *t in newTags) {
+		[store addTag:[t.dbId integerValue] toPoint:[self.dbId integerValue]];
+	}
 }
 
 @end

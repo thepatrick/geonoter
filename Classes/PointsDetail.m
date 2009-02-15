@@ -11,6 +11,8 @@
 #import "GNPoint.h"
 #import "Tag.h"
 #import "PointsDetail.h"
+#import "GeoNoterAppDelegate.h"
+#import "PointsAddTags.h"
 
 #define PointsDetailSectionMap 0
 #define PointsDetailSectionDetails 1
@@ -63,6 +65,10 @@
 	[sectionNames release];
 	[pointActions release];
     [super dealloc];
+}
+
+-(void)reloadData {
+	[detailTable reloadData];
 }
 
 -(UITableViewCell*)tableView:(UITableView*)tv cellForMapRow:(NSInteger)row {
@@ -119,7 +125,6 @@
 	NSArray *tags = [point tags];
 	Tag *tag = [[tags objectAtIndex:row] hydrate];
 	cell.text = tag.name;
-	//cell.text = point.name;
 	
 	return cell;
 	
@@ -232,16 +237,29 @@
 - (IBAction)actionButtonAction:(id)sender {
 	
 	pointActions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" 
-								 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Add Tag", @"Record Sound", @"Take Photo", @"Add Existing Photo", nil];
+								 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Record Sound", @"Take Photo", @"Add Existing Photo", nil];
 	
-	[pointActions showInView:self.view];
+	[pointActions showInView:self.navigationController.tabBarController.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(actionSheet = pointActions) {
 		NSLog(@"Clicked button %d", buttonIndex);
+		switch(buttonIndex) {
+				
+			case 0: // 0 = delete
+				[self actionSheetDeleteMe];
+				break;
+				
+			case 1: // 1 = add tag
+				[self actionSheetAddTags];
+				break;
+				
+			default:
+				break;
+				
+		}
 		
-		// 0 = delete
 		// 1 = add tag
 		// 2 = add sound
 		// 3 = take photo
@@ -249,6 +267,17 @@
 		// else... cancel
 		
 	}
+}
+
+-(void)actionSheetDeleteMe {
+	[store deletePointFromStore:[point.dbId integerValue]];
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)actionSheetAddTags {
+	PointsAddTags *pat = [PointsAddTags pointsAddTagsWithPoint:point andStore:store];
+	pat.delegate = self;
+	[self presentModalViewController:pat animated:YES];
 }
 
 @end
