@@ -17,6 +17,7 @@
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		CD444CF60F1AFB0100A2934E /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CD444CF50F1AFB0100A2934E /* Tag.m */; };
 		CD7B921C0F4411C300A66996 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7B921B0F4411C300A66996 /* CoreLocation.framework */; };
+		CDC1AE330F78B8E7009332F0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC1AE320F78B8E7009332F0 /* MapKit.framework */; };
 		CDC811D60F1C693500265C90 /* TagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC811D50F1C693500265C90 /* TagsViewController.m */; };
 		CDC811EC0F1C69F000265C90 /* TagsViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC811EB0F1C69F000265C90 /* TagsViewHome.m */; };
 		CDC811EE0F1C6A5D00265C90 /* TagsViewHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC811ED0F1C6A5D00265C90 /* TagsViewHome.xib */; };
@@ -69,6 +70,7 @@
 		CD444CF40F1AFB0100A2934E /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		CD444CF50F1AFB0100A2934E /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		CD7B921B0F4411C300A66996 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CDC1AE320F78B8E7009332F0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/PrivateFrameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CDC811D40F1C693500265C90 /* TagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsViewController.h; sourceTree = "<group>"; };
 		CDC811D50F1C693500265C90 /* TagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsViewController.m; sourceTree = "<group>"; };
 		CDC811EA0F1C69F000265C90 /* TagsViewHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsViewHome.h; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				CDD6DF210F1ABCFC003880D0 /* libsqlite3.dylib in Frameworks */,
 				CD7B921C0F4411C300A66996 /* CoreLocation.framework in Frameworks */,
+				CDC1AE330F78B8E7009332F0 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +173,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				CDC1AE320F78B8E7009332F0 /* MapKit.framework */,
 			);
 			name = GeoNoter;
 			sourceTree = "<group>";
@@ -453,6 +457,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -468,6 +476,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GeoNoter_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
@@ -522,6 +534,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GeoNoter_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;

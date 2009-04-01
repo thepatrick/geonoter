@@ -76,6 +76,8 @@
 	if(!movieCell) {
 		movieCell = [[[MapViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"map"] autorelease];
 	}
+	movieCell.longitude = point.longitude;
+	movieCell.latitude = point.latitude;
 	return movieCell;
 }
 
@@ -166,7 +168,7 @@
 {
 	switch (section) {
 		case PointsDetailSectionMap: 
-			return 0;
+			return 1;
 			
 		case PointsDetailSectionDetails: // details
 			return 4;

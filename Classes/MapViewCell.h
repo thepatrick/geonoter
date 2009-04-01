@@ -7,18 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 
-@interface MapViewCell : UITableViewCell {
+@interface MapViewCell : UITableViewCell<MKMapViewDelegate, MKAnnotation> {
 	
-	UIWebView *mapView;
+	MKMapView *mapView;
 	
 	CGFloat longitude;
 	CGFloat latitude; 
+	
+	CLLocationCoordinate2D coordinate;
 	
 }
 
 @property (nonatomic, assign) CGFloat longitude; 
 @property (nonatomic, assign) CGFloat latitude; 
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 @end
