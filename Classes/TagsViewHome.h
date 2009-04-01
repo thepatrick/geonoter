@@ -9,19 +9,23 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TagsViewHome : UIViewController<UITableViewDelegate, UITableViewDataSource> {
+@interface TagsViewHome : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
 
 	IBOutlet UITableView *tagsTable;
-	IBOutlet UIBarButtonItem *addTag;
+	IBOutlet UIBarButtonItem *cancelAddTag;
+	IBOutlet UITextField *addTag;
 	
 	NSArray *tags;
 	
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tagsTable;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *addTag;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *cancelAddTag;
+@property (nonatomic, retain) IBOutlet UITextField *addTag;
 @property (nonatomic, retain) NSArray *tags;
 
 -(void)reloadData;
+
+-(IBAction)cancelAddTagNow:(id)sender;
 
 @end

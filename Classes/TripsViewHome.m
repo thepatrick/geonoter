@@ -84,4 +84,5 @@
 {
 	return [self.trips count];
 }
+
 @end

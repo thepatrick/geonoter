@@ -13,6 +13,7 @@
 @class Trip;
 @class Tag;
 @class GNPoint;
+@class GNAttachment;
 
 @interface PersistStore : NSObject {
 
@@ -21,6 +22,7 @@
 	NSMutableDictionary *centralTripStore;
 	NSMutableDictionary *centralTagStore;
 	NSMutableDictionary *centralPointStore;
+	NSMutableDictionary *centralAttachmentStore;
 	
 	NSMutableArray *_inPlayMovieFetch;
 
@@ -70,4 +72,12 @@
 -(void)removeTagFromPoint:(NSInteger)pointId;
 -(void)addTag:(NSInteger)tagId toPoint:(NSInteger)pointId;
 
+#pragma mark -
+#pragma mark Attachments
+-(BOOL)insertOrUpdateAttachment:(GNAttachment*)attachment;
+-(void)deleteAttachmentFromStore:(NSInteger)attachmentId;
+-(void)removeAttachmentFromCache:(NSInteger)attachmentId;
+-(NSMutableArray*)getAttachmentsWithConditions:(NSString*)conditions andSort:(NSString*)sort;
+-(NSMutableArray*)getAllAttachments;
+-(GNAttachment*)getAttachment:(NSInteger)attachmentId;
 @end

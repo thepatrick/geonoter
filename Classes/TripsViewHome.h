@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TripsViewHome : UIViewController<UITableViewDelegate, UITableViewDataSource> {
+@interface TripsViewHome : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
 	
 	IBOutlet UITableView *tripsTable;
 	IBOutlet UIBarButtonItem *addTrip;

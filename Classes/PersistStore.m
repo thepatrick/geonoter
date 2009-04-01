@@ -12,6 +12,7 @@
 #import "Trip.h"
 #import "Tag.h"
 #import "GNPoint.h"
+#import "GNAttachment.h"
 #import "NSDateJSON.h"
 
 @implementation PersistStore
@@ -33,6 +34,7 @@
 		centralTripStore = [[NSMutableDictionary dictionaryWithCapacity:500] retain];
 		centralTagStore = [[NSMutableDictionary dictionaryWithCapacity:500] retain];
 		centralPointStore = [[NSMutableDictionary dictionaryWithCapacity:500] retain];
+		centralAttachmentStore = [[NSMutableDictionary dictionaryWithCapacity:500] retain];
 		dbLock = [[NSLock alloc] init];
 	}	
 	return self;
@@ -45,6 +47,7 @@
 	[centralTripStore release];
 	[centralTagStore release];
 	[centralPointStore release];
+	[centralAttachmentStore release];
 	[dbLock release];
     [super dealloc];
 }
@@ -57,7 +60,7 @@
 	dbIsOpen = YES;
 
 	if(newFile) {
-		NSLog(@"First run, create basic file format");
+		DLog(@"First run, create basic file format");
 		[db performQuery:@"CREATE TABLE sync_status_and_version (last_sync datetime, version integer)"];
 		[db performQuery:@"INSERT INTO sync_status_and_version VALUES (NULL, 0)"];
 	}
@@ -70,7 +73,7 @@
 	
 	int theVersion = [version integerValue];
 	
-	NSLog(@"Database: Version: '%d'", theVersion);
+	DLog(@"Database: Version: '%d'", theVersion);
 	
 	[self migrateFrom:theVersion];
 	
@@ -87,23 +90,23 @@
 -(void)migrateFrom:(NSInteger)version
 {
 	if(version < 1) {
-		NSLog(@"Database migrating to v1...");
+		DLog(@"Database migrating to v1...");
 		
 		[db performQuery:@"CREATE TABLE trip (id INTEGER PRIMARY KEY, name TEXT, start DATETIME, end DATETIME)"];
 		
 		[db performQuery:@"UPDATE sync_status_and_version SET version = 1"];
-		NSLog(@"Database migrated to v1.");
+		DLog(@"Database migrated to v1.");
 	}
 	if(version < 2) {
-		NSLog(@"Database migrating to v2...");
+		DLog(@"Database migrating to v2...");
 		
 		[db performQuery:@"INSERT INTO trip (name, start, end) VALUES ('Test Trip', '2008-01-01', '2008-12-31')"];
 		
 		[db performQuery:@"UPDATE sync_status_and_version SET version = 2"];
-		NSLog(@"Database migrated to v2.");
+		DLog(@"Database migrated to v2.");
 	}
 	if(version < 3) {
-		NSLog(@"Database migrating to v3...");
+		DLog(@"Database migrating to v3...");
 
 		[db performQuery:@"CREATE TABLE tag (id INTEGER PRIMARY KEY, name TEXT)"];
 		[db performQuery:@"CREATE TABLE trip_tag (trip_id INTEGER, tag_id INTEGER)"];
@@ -111,26 +114,35 @@
 		[db performQuery:@"CREATE TABLE point_tag (point_id INTEGER, tag_id INTEGER)"];
 		
 		[db performQuery:@"UPDATE sync_status_and_version SET version = 3"];
-		NSLog(@"Database migrated to v3.");
+		DLog(@"Database migrated to v3.");
 	}
 	if(version < 4) {
-		NSLog(@"Database migrating to v4...");
+		DLog(@"Database migrating to v4...");
 		
 		[db performQuery:@"INSERT INTO tag (name) VALUES ('Test Tag')"];
 		[db performQuery:@"INSERT INTO tag (name) VALUES ('Personal')"];
-		
+
 		[db performQuery:@"UPDATE sync_status_and_version SET version = 4"];
-		NSLog(@"Database migrated to v4.");
+		DLog(@"Database migrated to v4.");
 	}
 	if(version < 5) {
-		NSLog(@"Database migrating to v5...");
-		
+		DLog(@"Database migrating to v5...");
+
 		[db performQuery:@"INSERT INTO point (trip_id, friendly_name, name, memo, recorded_at, latitude, longitude) VALUES (1, 'Vancouver BC, Canada', 'Home', 'No memo', '2009-01-12 21:18:00', 49.283588, -123.126373)"];
 		[db performQuery:@"INSERT INTO point_tag (point_id, tag_id) VALUES (1, 1)"];
 		[db performQuery:@"INSERT INTO point_tag (point_id, tag_id) VALUES (1, 2)"];
 		
 		[db performQuery:@"UPDATE sync_status_and_version SET version = 5"];
-		NSLog(@"Database migrated to v5.");
+		DLog(@"Database migrated to v5.");
+	}
+	
+	if(version < 6) {
+		DLog(@"Database migrating to v6...");
+		
+		[db performQuery:@"CREATE TABLE attachment (id INTEGER PRIMARY KEY, point_id INTEGER, friendly_name TEXT, kind TEXT, memo TEXT, file_name TEXT, recorded_at DATETIME)"];
+		
+		[db performQuery:@"UPDATE sync_status_and_version SET version = 6"];
+		DLog(@"Database migrated to v5.");
 	}
 }
 -(void)tellCacheToSave
@@ -138,6 +150,7 @@
 	[[centralTripStore allValues] makeObjectsPerformSelector:@selector(save)];
 	[[centralTagStore allValues] makeObjectsPerformSelector:@selector(save)];
 	[[centralPointStore allValues] makeObjectsPerformSelector:@selector(save)];
+	[[centralAttachmentStore allValues] makeObjectsPerformSelector:@selector(save)];
 	
 }
 
@@ -146,6 +159,8 @@
 	[[centralTripStore allValues] makeObjectsPerformSelector:@selector(dehydrate)];
 	[[centralTagStore allValues] makeObjectsPerformSelector:@selector(dehydrate)];
 	[[centralPointStore allValues] makeObjectsPerformSelector:@selector(dehydrate)];
+	[[centralAttachmentStore allValues] makeObjectsPerformSelector:@selector(dehydrate)];
+
 }
 
 #pragma mark -
@@ -253,8 +268,8 @@
 
 -(NSInteger)insertTag:(Tag*)tag
 {	
-	NSString *sql = [NSString stringWithFormat:@"INSERT INTO tag (id, name)",
-					 @"NULL",
+	DLog(@"insert tag!");
+	NSString *sql = [NSString stringWithFormat:@"INSERT INTO tag (name) VALUES ('%@')",
 					 [SQLDatabase prepareStringForQuery:tag.name]];
 	
 	[dbLock lock];
@@ -281,6 +296,7 @@
 -(BOOL)insertOrUpdateTag:(Tag*)tag
 {
 	BOOL shouldInsert = (tag.dbId == nil);
+	DLog(@"insertOrUpdateTag:%@", shouldInsert ? @"YES": @"NO");
 	
 	if(shouldInsert) {
 		[self insertTag:tag];
@@ -472,6 +488,118 @@
 	[dbLock lock];
 	[db performQuery:sql];
 	[dbLock unlock];
+}
+
+
+#pragma mark -
+#pragma mark Attachments
+-(NSInteger)insertAttachment:(GNAttachment*)attachment
+{	
+	NSString *sql = [NSString stringWithFormat:@"INSERT INTO attachment (point_id, friendly_name, kind, memo, recorded_at, file_name) VALUES (%d, '%@', '%@', '%@', '%@', %@)",
+					 attachment.pointId,
+					 [SQLDatabase prepareStringForQuery:attachment.friendlyName],
+					 [SQLDatabase prepareStringForQuery:attachment.kind],
+					 [SQLDatabase prepareStringForQuery:attachment.memo],
+					 [attachment.recordedAt sqlDateString],
+					 [SQLDatabase prepareStringForQuery:attachment.fileName]];
+	
+	[dbLock lock];
+	[db performQuery:sql];	
+	[dbLock unlock];
+	
+	[dbLock lock];
+	SQLResult *res = [db performQueryWithFormat:@"SELECT max(id) FROM attachment"];
+	if(!res) {
+		[db performQuery:@"ROLLBACK"];
+	}
+	SQLRow *row = [res rowAtIndex:0];
+	if(!row) {
+		[db performQuery:@"ROLLBACK"];
+	}
+	
+	NSInteger newAttachmentID = [row integerForColumnAtIndex:0];
+	attachment.dbId = [NSNumber numberWithInteger:newAttachmentID];
+	[dbLock unlock];
+	
+	return newAttachmentID;
+}
+
+-(BOOL)insertOrUpdateAttachment:(GNAttachment*)attachment
+{
+	DLog(@"Inserting/Updating Attachment! %@", attachment);
+	BOOL shouldInsert = (attachment.dbId == nil);
+	
+	if(shouldInsert) {
+		[self insertAttachment:attachment];
+	} else { // shouldInsert == NO.
+		
+		
+		NSString *sql = [NSString stringWithFormat:@"UPDATE attachment set point_id = %d, friendly_name = '%@', kind = '%@', memo = '%@', recorded_at = '%@', file_name = '%@' where id = %d",
+						 attachment.pointId,
+						 [SQLDatabase prepareStringForQuery:attachment.friendlyName],
+						 [SQLDatabase prepareStringForQuery:attachment.kind],
+						 [SQLDatabase prepareStringForQuery:attachment.memo],
+						 [attachment.recordedAt sqlDateString],
+						 [SQLDatabase prepareStringForQuery:attachment.fileName],
+						 attachment.dbId];
+		
+		DLog(@"Execute query: %@", sql);
+		
+		[dbLock lock];
+		[db performQuery:sql];	
+		[dbLock unlock];
+	}
+	return shouldInsert;
+}
+
+-(void)deleteAttachmentFromStore:(NSInteger)attachmentId
+{
+	[self removeAttachmentFromCache:attachmentId];
+	[dbLock lock];
+	[db performQueryWithFormat:@"DELETE FROM attachment WHERE id = %d", attachmentId];
+	[dbLock unlock];
+}
+
+-(void)removeAttachmentFromCache:(NSInteger)attachmentId
+{
+	[centralAttachmentStore removeObjectForKey:[NSString stringWithFormat:@"%d", attachmentId]];
+}
+
+-(NSMutableArray*)getAttachmentsWithConditions:(NSString*)conditions andSort:(NSString*)sort
+{
+	[dbLock lock];
+	NSMutableArray *array = [NSMutableArray array];
+	SQLResult *res = [db performQueryWithFormat:@"SELECT id FROM attachment %@ ORDER BY %@", 
+					  (conditions != nil ? [@"WHERE " stringByAppendingString:conditions] : @""),
+					  (sort != nil ? sort : @"friendly_name ASC")];
+	
+	
+	SQLRow *row;
+	for(row in [res rowEnumerator]) {
+		GNAttachment *point = [self getAttachment:[row integerForColumn:@"id"]];
+		[array addObject:point];
+	}
+	[dbLock unlock];
+	
+	return array;
+}
+
+
+
+-(NSMutableArray*)getAllAttachments
+{
+	return [self getAttachmentsWithConditions:nil andSort:nil];
+}
+
+-(GNAttachment*)getAttachment:(NSInteger)attachmentId
+{
+	GNAttachment *theAttachment = [centralAttachmentStore objectForKey:[NSString stringWithFormat:@"%d", attachmentId]];
+	if(theAttachment == nil) {
+		NSString *theKey = [NSString stringWithFormat:@"%d", attachmentId];
+		theAttachment = [GNAttachment attachmentWithPrimaryKey:attachmentId andStore:self];
+		[centralAttachmentStore setObject:theAttachment forKey:theKey];
+	}
+	return theAttachment;
 }
 
 

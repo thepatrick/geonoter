@@ -100,7 +100,7 @@
 }
 -(void)saveForNew
 {
-	
+	NSLog(@"saveForNew!");
 	[store insertOrUpdateTag:self];
 	dirty = NO;
 }

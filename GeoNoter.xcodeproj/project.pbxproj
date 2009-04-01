@@ -40,6 +40,8 @@
 		CDD6DF1D0F1ABCB7003880D0 /* SQLResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF1A0F1ABCB7003880D0 /* SQLResult.m */; };
 		CDD6DF210F1ABCFC003880D0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD6DF200F1ABCFC003880D0 /* libsqlite3.dylib */; };
 		CDD6DF630F1AC0D3003880D0 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DF620F1AC0D3003880D0 /* Trip.m */; };
+		CDDA00030F49285700534DFD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CDDA00020F49285700534DFD /* Default.png */; };
+		CDDA007C0F49358200534DFD /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDA007B0F49358200534DFD /* Settings.m */; };
 		CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDEB574B0F4537C5009E9F8E /* Icon.png */; };
 		CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEB578F0F454A74009E9F8E /* NSDateJSON.m */; };
 		CDF7D0B10F479C2700F59C34 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0AC0F479C2700F59C34 /* NSObject+SBJSON.m */; };
@@ -47,6 +49,7 @@
 		CDF7D0B30F479C2700F59C34 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0B00F479C2700F59C34 /* SBJSON.m */; };
 		CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */; };
 		CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D1000F47A63500F59C34 /* PointsAddTags.m */; };
+		CDFF7D310F4D203C005479D6 /* GNAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFF7D300F4D203C005479D6 /* GNAttachment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +104,9 @@
 		CDD6DF200F1ABCFC003880D0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CDD6DF610F1AC0D3003880D0 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
 		CDD6DF620F1AC0D3003880D0 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
+		CDDA00020F49285700534DFD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CDDA007A0F49358200534DFD /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		CDDA007B0F49358200534DFD /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		CDEB574B0F4537C5009E9F8E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		CDEB578F0F454A74009E9F8E /* NSDateJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate\bJSON.m"; sourceTree = "<group>"; };
 		CDEB57900F454A74009E9F8E /* NSDateJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateJSON.h; sourceTree = "<group>"; };
@@ -114,6 +120,8 @@
 		CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsAddTags.xib; sourceTree = "<group>"; };
 		CDF7D0FF0F47A63500F59C34 /* PointsAddTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsAddTags.h; sourceTree = "<group>"; };
 		CDF7D1000F47A63500F59C34 /* PointsAddTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsAddTags.m; sourceTree = "<group>"; };
+		CDFF7D2F0F4D203C005479D6 /* GNAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAttachment.h; sourceTree = "<group>"; };
+		CDFF7D300F4D203C005479D6 /* GNAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAttachment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,13 +186,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CDEB574B0F4537C5009E9F8E /* Icon.png */,
+				CDDA00080F4929C200534DFD /* Images */,
 				CDC8129A0F1C84B600265C90 /* Points */,
 				CDC811BF0F1C68C400265C90 /* Tags */,
 				CDC811BE0F1C68B700265C90 /* Trips */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* Info.plist */,
 				CDD0F79A0F1AA4E800BBBBAA /* SettingsView.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
 				CDC812BB0F1C871E00265C90 /* AdHoc.plist */,
 			);
 			name = Resources;
@@ -237,6 +245,8 @@
 				CDC8126F0F1C82BA00265C90 /* Points */,
 				CDC811D20F1C692100265C90 /* Tags */,
 				CDC811D00F1C690500265C90 /* Trips */,
+				CDDA007A0F49358200534DFD /* Settings.h */,
+				CDDA007B0F49358200534DFD /* Settings.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -272,7 +282,6 @@
 		CDC8129A0F1C84B600265C90 /* Points */ = {
 			isa = PBXGroup;
 			children = (
-				CDCCFDD60F1F206D00F0ED08 /* SampleMap.png */,
 				CDD0F7980F1AA4E000BBBBAA /* PointsView.xib */,
 				CDC8129E0F1C84F900265C90 /* PointsViewHome.xib */,
 				CDCCFD8A0F1F0D1600F0ED08 /* PointsDetailView.xib */,
@@ -292,6 +301,8 @@
 				CD444CF50F1AFB0100A2934E /* Tag.m */,
 				CDC812370F1C736800265C90 /* GNPoint.h */,
 				CDC812380F1C736800265C90 /* GNPoint.m */,
+				CDFF7D2F0F4D203C005479D6 /* GNAttachment.h */,
+				CDFF7D300F4D203C005479D6 /* GNAttachment.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -306,6 +317,16 @@
 				CDD6DF1A0F1ABCB7003880D0 /* SQLResult.m */,
 			);
 			name = SQLDatabase;
+			sourceTree = "<group>";
+		};
+		CDDA00080F4929C200534DFD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CDCCFDD60F1F206D00F0ED08 /* SampleMap.png */,
+				CDDA00020F49285700534DFD /* Default.png */,
+				CDEB574B0F4537C5009E9F8E /* Icon.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		CDEB578E0F454A68009E9F8E /* Categories */ = {
@@ -386,6 +407,7 @@
 				CDCCFDD70F1F206D00F0ED08 /* SampleMap.png in Resources */,
 				CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */,
 				CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */,
+				CDDA00030F49285700534DFD /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +440,8 @@
 				CDF7D0B20F479C2700F59C34 /* NSString+SBJSON.m in Sources */,
 				CDF7D0B30F479C2700F59C34 /* SBJSON.m in Sources */,
 				CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */,
+				CDDA007C0F49358200534DFD /* Settings.m in Sources */,
+				CDFF7D310F4D203C005479D6 /* GNAttachment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

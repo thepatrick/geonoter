@@ -17,11 +17,11 @@
 
 @synthesize tagsTable;
 @synthesize tags;
+@synthesize cancelAddTag;
 @synthesize addTag;
 
 - (void)viewDidLoad {
 	self.title = @"Tags";
-	self.navigationItem.rightBarButtonItem = addTag;
     [super viewDidLoad];
 }
 
@@ -67,6 +67,35 @@
 -(NSInteger)tableView:(UITableView*)tv numberOfRowsInSection:(NSInteger)section
 {
 	return [self.tags count];
+}
+
+
+#pragma mark -
+#pragma mark Add Text Field Delegates
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+	self.navigationItem.rightBarButtonItem = cancelAddTag;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	Tag *t = [Tag tag];
+	t.name = textField.text;
+	textField.text = @"";
+
+	self.navigationItem.rightBarButtonItem = nil;
+	
+	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
+	[del.store insertOrUpdateTag:t];
+	
+	[self reloadData];
+	[textField resignFirstResponder];
+	return YES;
+}
+
+-(IBAction)cancelAddTagNow:(id)sender {
+	self.navigationItem.rightBarButtonItem = nil;
+	addTag.text = @"";
+	[addTag resignFirstResponder];
 }
 
 @end
