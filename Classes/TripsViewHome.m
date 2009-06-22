@@ -74,7 +74,7 @@
 	}
 	
 	Trip *trip = [[self.trips objectAtIndex:indexPath.row] hydrate];
-	cell.text = trip.name;
+	cell.textLabel.text = trip.name;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		
 	return cell;

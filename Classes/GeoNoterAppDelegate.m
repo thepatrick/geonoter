@@ -59,6 +59,23 @@
 	return [documentsDirectory stringByAppendingPathComponent:path];
 }
 
+-(NSString*)attachmentsDirectory {
+
+	NSString *dir = [self getDocumentPath:@"Attachments"];
+	
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+
+	BOOL isDirectory;
+	if(![fileManager fileExistsAtPath:dir isDirectory:&isDirectory]) {
+		BOOL success = [fileManager createDirectoryAtPath:dir attributes:nil];
+        if (!success) {
+            NSAssert(0, @"Failed to create Attachments directory.");
+        }
+	}
+	
+	return dir;
+}
+
 
 - (void)startUpdates
 {
@@ -68,7 +85,7 @@
         locationManager = [[CLLocationManager alloc] init];
 	
     locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest  ;
 	
     // Set a movement threshold for new events
     locationManager.distanceFilter = 1;

@@ -174,4 +174,11 @@
 	}
 }
 
+
+-(NSArray*)attachments {
+	NSString *cond = [NSString stringWithFormat:@"point_id = %d", [self.dbId integerValue]];
+	return [store getAttachmentsWithConditions:cond andSort:@"recorded_at ASC"];
+}
+
+
 @end

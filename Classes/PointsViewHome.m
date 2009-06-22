@@ -62,7 +62,7 @@
 	}
 	
 	GNPoint *point = [[self.points objectAtIndex:indexPath.row] hydrate];
-	cell.text = point.name;
+	cell.textLabel.text = point.name;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	return cell;
@@ -94,7 +94,8 @@
 	point.recordedAt = [NSDate date];
 
 	[self showLoading];
-	[self performSelectorInBackground:@selector(populateNewPoint:) withObject:point];
+	[self populateNewPointV2:point];
+	//[self performSelectorInBackground:@selector(populateNewPoint:) withObject:point];
 }
 
 -(void)showLoading {
@@ -119,6 +120,76 @@
 	
 }
 
+-(void)populateNewPointV2:(GNPoint*)point {
+	CLLocationCoordinate2D coords;
+	coords.latitude = point.latitude;
+	coords.longitude = point.longitude;
+	
+	MKReverseGeocoder *geo = [[MKReverseGeocoder alloc] initWithCoordinate:coords];
+	geo.delegate = self;
+	pointAwaitingGeocoding = point;
+	[pointAwaitingGeocoding retain];
+	[geo start];
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
+	NSLog(@"Failed to reverse geocode ... error %@", error);
+	pointAwaitingGeocoding.friendlyName = @"Geocoder Unavailable";
+	[self newPointComplete:pointAwaitingGeocoding]; 
+	[pointAwaitingGeocoding release];
+	pointAwaitingGeocoding = nil;
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+	NSLog(@"Did find placemark! %@", placemark);
+	
+	
+	NSString *base = placemark.country;
+	NSString *simpleName = placemark.country;
+	
+	
+	if(placemark.administrativeArea && ![placemark.administrativeArea isEqualToString:@""]) {
+		base = [placemark.administrativeArea stringByAppendingFormat:@", %@", base];
+		simpleName = placemark.administrativeArea;
+	}
+	
+	if(placemark.locality && ![placemark.locality isEqualToString:@""]) {
+		base = [placemark.locality stringByAppendingFormat:@", %@", base];
+		simpleName = placemark.locality;
+	}
+	
+	if(placemark.subLocality && ![placemark.subLocality isEqualToString:@""]) {
+		base = [placemark.subLocality stringByAppendingFormat:@", %@", base];
+		simpleName = placemark.subLocality;
+	}
+	
+	
+	if(placemark.thoroughfare && ![placemark.thoroughfare isEqualToString:@""]) {
+		base = [placemark.thoroughfare stringByAppendingFormat:@", %@", base];
+		if(!placemark.subLocality || [placemark.subLocality isEqualToString:@""]) {
+			simpleName = placemark.thoroughfare;
+		}
+	}
+	
+	
+	if(placemark.subThoroughfare && ![placemark.subThoroughfare isEqualToString:@""]) {
+		base = [placemark.subThoroughfare stringByAppendingFormat:@" %@", base];
+		if(!placemark.subLocality || [placemark.subLocality isEqualToString:@""]) {
+			simpleName = [placemark.subThoroughfare stringByAppendingFormat:@" %@", placemark.thoroughfare];
+		}
+	}
+	
+	pointAwaitingGeocoding.name = simpleName;
+	pointAwaitingGeocoding.friendlyName = base;
+
+	[self newPointComplete:pointAwaitingGeocoding];
+	[pointAwaitingGeocoding release];
+	pointAwaitingGeocoding = nil;
+}
+
+// This version uses the geonames.org webservice. It's not as accurate as the MKReverseGeocoder 
+// version (or at least Google provides more information down to street level in Canada).
+// Keeping for noew for historical purposes.
 -(void)populateNewPoint:(GNPoint*)point {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
@@ -174,8 +245,7 @@
 }
 
 -(void)newPointComplete:(GNPoint*)point {
-	point.memo = @"No memo";
-	
+	point.memo = @"No memo";	
 	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
 	[del.store insertOrUpdatePoint:point];
 	[self reloadData];	

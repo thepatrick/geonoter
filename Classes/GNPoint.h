@@ -55,4 +55,6 @@
 -(NSArray*)tags;
 -(void)setTags:(NSArray*)newTags;
 
+-(NSArray*)attachments;
+
 @end

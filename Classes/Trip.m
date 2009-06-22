@@ -9,6 +9,7 @@
 #import "SQLDatabase.h"
 #import "PersistStore.h"
 #import "Trip.h"
+#import "NSDateJson.h"
 
 
 @implementation Trip
@@ -69,8 +70,8 @@
 	SQLRow *row = [res rowAtIndex:0];
 	
 	name = [[row stringForColumn:@"name"] retain];
-	start = [[NSDate dateWithString:[row stringForColumn:@"start"]] retain];
-	end = [[NSDate dateWithString:[row stringForColumn:@"end"]] retain];
+	start = [[NSDate dateWithSQLString:[row stringForColumn:@"start"]] retain];
+	end = [[NSDate dateWithSQLString:[row stringForColumn:@"end"]] retain];
 	
 	hydrated = YES;
 	return self;

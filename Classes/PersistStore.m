@@ -495,7 +495,7 @@
 #pragma mark Attachments
 -(NSInteger)insertAttachment:(GNAttachment*)attachment
 {	
-	NSString *sql = [NSString stringWithFormat:@"INSERT INTO attachment (point_id, friendly_name, kind, memo, recorded_at, file_name) VALUES (%d, '%@', '%@', '%@', '%@', %@)",
+	NSString *sql = [NSString stringWithFormat:@"INSERT INTO attachment (point_id, friendly_name, kind, memo, recorded_at, file_name) VALUES (%d, '%@', '%@', '%@', '%@', '%@')",
 					 attachment.pointId,
 					 [SQLDatabase prepareStringForQuery:attachment.friendlyName],
 					 [SQLDatabase prepareStringForQuery:attachment.kind],

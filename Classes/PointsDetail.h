@@ -12,7 +12,7 @@
 @class GNPoint;
 
 
-@interface PointsDetail : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate> {
+@interface PointsDetail : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 
 	IBOutlet UITableView *detailTable;
 	IBOutlet UITextField *locationName;
@@ -24,6 +24,9 @@
 	NSArray *sectionNames;
 	
 	UIActionSheet *pointActions;
+	
+	NSArray *tagCache;
+	NSArray *attachmentCache;
 	
 }
 
@@ -39,5 +42,9 @@
 -(IBAction)actionButtonAction:(id)sender;
 -(void)actionSheetDeleteMe;
 -(void)actionSheetAddTags;
+-(void)actionSheetTakePhoto;
+-(void)actionSheetPickPhoto;
+
+-(void)displayAttachment:(NSInteger)index;
 
 @end

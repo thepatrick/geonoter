@@ -27,7 +27,6 @@
 }
 
 - (void)layoutSubviews {
-	NSLog(@"-layoutSubviews!");
 	[super layoutSubviews];
 	
 	CGRect fr = self.contentView.frame;

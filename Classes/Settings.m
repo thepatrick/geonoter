@@ -45,7 +45,7 @@
 	if(!cell) {
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"aboutInfo"] autorelease];
 	}
-	cell.text = @"Version 1.0";
+	cell.textLabel.text = @"Version 1.0";
 	//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	return cell;

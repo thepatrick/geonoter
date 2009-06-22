@@ -84,7 +84,7 @@
 	}
 	
 	Tag *tag = [[self.tags objectAtIndex:indexPath.row] hydrate];
-	cell.text = tag.name;
+	cell.textLabel.text = tag.name;
 	
 	if([chosenTags containsObject:tag]) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;

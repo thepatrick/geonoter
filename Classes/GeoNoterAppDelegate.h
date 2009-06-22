@@ -33,6 +33,7 @@
 
 
 - (NSString*)getDocumentPath:(NSString*)path;
+- (NSString*)attachmentsDirectory;
 - (void)startUpdates;
 
 @end
