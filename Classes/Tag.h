@@ -32,9 +32,13 @@
 
 -initWithPrimaryKey:(NSInteger)theID andStore:(PersistStore*)newStore;
 
+-(void)destroy;
 -(Tag*)hydrate;
 -(void)dehydrate;
 -(void)save;
 -(void)saveForNew;
+
+-(NSArray*)points;
+
 
 @end

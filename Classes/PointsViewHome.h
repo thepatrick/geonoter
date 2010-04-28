@@ -21,8 +21,8 @@
 	
 	NSArray *points;
 	
-	GNPoint *pointAwaitingGeocoding;
-	
+	NSArray* (^datasourceFetchAll)();
+	void (^datasourceDidCreateNewPoint)(GNPoint*);
 }
 
 
@@ -33,6 +33,8 @@
 -(void)reloadData;
 -(IBAction)addPoint:(id)sender;
 -(void)showLoading;
--(void)newPointComplete:(GNPoint*)point;
+
+-(void)setDatasourceFetchAll:(NSArray* (^)())block;
+-(void)setDatasourceDidCreateNewPoint:(void (^)(GNPoint*))block;
 
 @end

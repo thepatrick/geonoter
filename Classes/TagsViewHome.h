@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSArray *tags;
 
 -(void)reloadData;
+-(void)fetchData;
 
 -(IBAction)cancelAddTagNow:(id)sender;
 

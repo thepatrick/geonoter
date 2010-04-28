@@ -169,8 +169,11 @@
 
 
 -(void)setTags:(NSArray*)newTags {
+	DLog(@"Removing existing tags...");
 	[store removeTagFromPoint:[self.dbId integerValue]];
 	for(Tag *t in newTags) {
+		DLog(@"Adding tag tag... %@", t);
+		DLog(@"Using store %@", store);
 		[store addTag:[t.dbId integerValue] toPoint:[self.dbId integerValue]];
 	}
 }
@@ -187,6 +190,7 @@
 			self->populateDelegate = nil;
 			[[UIApplication sharedApplication] endBackgroundTask:self->bgTask];
 			self->bgTask = UIInvalidBackgroundTask;
+			Block_release(completionCallback);
 		}
 	});
 }
@@ -198,11 +202,13 @@
 	self.recordedAt = [NSDate date];
 	self.name = @"Awaiting geocoder...";
 	self.friendlyName = @"Awaiting geocoder...";
+	self.memo = @"No memo";
 	return self;
 }
 
--(void)populateNewPoint:(id)delegate {
+-(void)geocodeWithCompletionBlock:(void (^)())completion {
 	[self storePointData];
+	completionCallback = Block_copy(completion);
 	
 	CLLocationCoordinate2D coords;
 	coords.latitude = self.latitude;
@@ -216,18 +222,18 @@
 	self->bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
 		[geo cancel];
 		self.friendlyName = @"Geocoder Unavailable";
-		[populateDelegate newPointComplete:self]; 
+		if(completionCallback != nil) completionCallback();
 		[self geocoderFinishedCleanup];
+		[geo release];
 	}];
-	populateDelegate = delegate;
 	[geo start];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
 	NSLog(@"Failed to reverse geocode ... error %@", error);
 	self.friendlyName = @"Geocoder Unavailable";
-	[populateDelegate newPointComplete:self]; 
-	
+	if(completionCallback != nil) completionCallback();
+	[geocoder release];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
@@ -271,9 +277,10 @@
 	
 	self.name = simpleName;
 	self.friendlyName = base;
-	
-	[populateDelegate newPointComplete:self];
+
+	if(completionCallback != nil) completionCallback();
 	[self geocoderFinishedCleanup];
+	[geocoder release];
 }
 
 

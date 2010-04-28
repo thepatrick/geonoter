@@ -11,7 +11,6 @@
 #import "PersistStore.h"
 #import "PointsViewHome.h"
 #import "PointsDetail.h"
-#import "JSON.h"
 
 
 @implementation PointsViewHome
@@ -20,6 +19,15 @@
 @synthesize points;
 @synthesize addPoint;
 
+- (void)setDatasourceFetchAll:(NSArray* (^)())block {
+	if(datasourceFetchAll) Block_release(datasourceFetchAll);
+	if(block != nil) 	datasourceFetchAll = Block_copy(block);
+}
+
+- (void)setDatasourceDidCreateNewPoint:(void (^)(GNPoint*))block {
+	if(datasourceDidCreateNewPoint) Block_release(datasourceDidCreateNewPoint);
+	if(block != nil) 	datasourceDidCreateNewPoint = Block_copy(block);	
+}
 
 - (void)viewDidLoad {
 	self.title = @"Locations";
@@ -40,13 +48,15 @@
 
 -(void)reloadData
 {
-	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
-	self.points = [del.store getAllPoints];
+	if(datasourceFetchAll) {
+		self.points = datasourceFetchAll();
+	}
 	[pointsTable reloadData];
 }
 
 - (void)dealloc {
 	[points release];
+	if(datasourceFetchAll) Block_release(datasourceFetchAll);
     [super dealloc];
 }
 
@@ -86,9 +96,19 @@
 #pragma mark Other UI Actions
 
 -(IBAction)addPoint:(id)sender {
-	GNPoint *point = [[GNPoint point] retain];
+	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
+	GNPoint *point = [GNPoint point];
+	point.store = del.store;
 	[self showLoading];
-	[point populateNewPoint:self];
+	[point storePointData];
+	[point geocodeWithCompletionBlock:^{
+		[del.store insertOrUpdatePoint:point];
+		self.navigationItem.rightBarButtonItem = addPoint;
+		if(self->datasourceDidCreateNewPoint) {
+			self->datasourceDidCreateNewPoint(point);
+		}
+		[self reloadData];
+	}];
 }
 
 -(void)showLoading {
@@ -111,15 +131,6 @@
 	
 	self.navigationItem.rightBarButtonItem = loadingView;
 	
-}
-
--(void)newPointComplete:(GNPoint*)point {
-	point.memo = @"No memo";	
-	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
-	[del.store insertOrUpdatePoint:point];
-	[self reloadData];	
-	self.navigationItem.rightBarButtonItem = addPoint;
-	[point release];
 }
 
 @end

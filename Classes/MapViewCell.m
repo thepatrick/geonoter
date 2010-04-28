@@ -15,10 +15,9 @@
 @synthesize latitude;
 @synthesize coordinate;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
-		
-		mapView = [[MKMapView alloc] initWithFrame:frame];
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+		mapView = [[MKMapView alloc] initWithFrame:self.frame];
 		mapView.delegate = self;
 		[self addSubview:mapView];
 		

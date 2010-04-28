@@ -10,7 +10,7 @@
 #import "GeoNoterAppDelegate.h"
 #import "PersistStore.h"
 #import "TagsViewHome.h"
-
+#import "PointsViewHome.h"
 
 @implementation TagsViewHome
 
@@ -20,8 +20,17 @@
 @synthesize cancelAddTag;
 @synthesize addTag;
 
+- (PersistStore*)store {
+	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
+	return del.store;	
+}
+
 - (void)viewDidLoad {
 	self.title = @"Tags";
+	
+	UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(edit:)];
+	self.navigationItem.rightBarButtonItem = [edit autorelease];
+	
     [super viewDidLoad];
 }
 
@@ -36,18 +45,27 @@
 	NSLog(@"tags: %@", tags);
 }
 
--(void)reloadData
-{
-	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
-	self.tags = [del.store getAllTags];
+-(void)reloadData {
+	[self fetchData];
 	[tagsTable reloadData];
 }
 
+-(void)fetchData {
+	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
+	self.tags = [del.store getAllTags];
+}
 
 - (void)dealloc {
 	[tags release];
     [super dealloc];
 }
+
+-(void)edit:(id)sender {
+	self.tagsTable.editing = !self.tagsTable.editing;
+}
+
+#pragma mark -
+#pragma mark TableView Delegate/DataSource Methods
 
 -(UITableViewCell*)tableView:(UITableView*)tv cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
@@ -64,11 +82,38 @@
 	return cell;
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return UITableViewCellEditingStyleDelete;
+}
+
 -(NSInteger)tableView:(UITableView*)tv numberOfRowsInSection:(NSInteger)section
 {
 	return [self.tags count];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	Tag *tag = [self.tags objectAtIndex:indexPath.row];
+	PointsViewHome *pvh = [[[PointsViewHome alloc] initWithNibName:@"PointsViewHome" bundle:nil] autorelease];
+	[pvh setDatasourceFetchAll:^() {
+		return [tag points];
+	}];
+	[pvh setDatasourceDidCreateNewPoint:^(GNPoint* point) {
+		DLog(@"setDatasourceDidCreateNewPoint!");
+		[point setTags:[NSArray arrayWithObject:tag]];
+	}];
+	[self.navigationController pushViewController:pvh animated:YES];
+	pvh.title = tag.name;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if(editingStyle != UITableViewCellEditingStyleDelete)
+		return;
+	Tag *tag = [self.tags objectAtIndex:indexPath.row];
+	[tag destroy];
+	[self fetchData];
+	[tagsTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+}
 
 #pragma mark -
 #pragma mark Add Text Field Delegates

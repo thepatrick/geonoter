@@ -34,6 +34,8 @@
 	
 	id populateDelegate;
 	
+	void (^completionCallback)();
+	
 }
 
 @property (copy) NSNumber *dbId;
@@ -63,6 +65,7 @@
 -(NSArray*)attachments;
 
 -(GNPoint*)storePointData;
--(void)populateNewPoint:(id)delegate;
+
+-(void)geocodeWithCompletionBlock:(void (^)())completion;
 
 @end

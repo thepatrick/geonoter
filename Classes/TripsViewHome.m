@@ -18,22 +18,6 @@
 @synthesize trips;
 @synthesize addTrip;
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	self.title = @"Trips";
@@ -41,14 +25,12 @@
     [super viewDidLoad];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
 	[self reloadData];
 	NSLog(@"trips: %@", trips);
 }
 
--(void)reloadData
-{
+-(void)reloadData {
 	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
 	self.trips = [del.store getAllTrips];
 	[tripsTable reloadData];
@@ -65,8 +47,11 @@
     [super dealloc];
 }
 
--(UITableViewCell*)tableView:(UITableView*)tv cellForRowAtIndexPath:(NSIndexPath*)indexPath
-{
+#pragma mark -
+#pragma mark TableView Delegate/DataSource Methods
+
+
+-(UITableViewCell*)tableView:(UITableView*)tv cellForRowAtIndexPath:(NSIndexPath*)indexPath {
 	
 	UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:@"trip"];
 	if(!cell) {
@@ -80,9 +65,25 @@
 	return cell;
 }
 
--(NSInteger)tableView:(UITableView*)tv numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView*)tv numberOfRowsInSection:(NSInteger)section {
 	return [self.trips count];
+}
+
+#pragma mark -
+#pragma mark Other UI Actions
+
+-(IBAction)addTrip:(id)sender {
+	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
+	
+	Trip *trip = [Trip trip];
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+	[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+	trip.name = [dateFormatter stringFromDate:[NSDate date]];
+	
+	[del.store insertOrUpdateTrip:trip];
+	
+	[self reloadData];
 }
 
 @end

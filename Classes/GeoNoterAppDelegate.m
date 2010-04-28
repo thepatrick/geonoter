@@ -105,27 +105,18 @@
 		latitude = newLocation.coordinate.latitude;
 		longitude = newLocation.coordinate.longitude;
         DLog(@"latitude %+.6f, longitude %+.6f\n", latitude, longitude);
-		if(background) {
-			[self newPointComplete:[[[GNPoint point] retain] storePointData]];	
-		}
     }
-}
-
--(void)newPointComplete:(GNPoint*)point {
-	point.memo = @"No memo";
-	[self.store insertOrUpdatePoint:point];
-	[point release];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 	background = YES;
-	[locationManager startMonitoringSignificantLocationChanges];
+	//[locationManager startMonitoringSignificantLocationChanges];//
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 	background = NO;
-	[locationManager stopUpdatingLocation];
-	[locationManager startUpdatingLocation];
+//	[locationManager stopUpdatingLocation];
+//	[locationManager startUpdatingLocation];
 }
 
 @end

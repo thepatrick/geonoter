@@ -35,11 +35,8 @@
 
 	NSString *base = [(GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate] attachmentsDirectory];
 	
-	imageView.image = [UIImage imageWithContentsOfFile:[base stringByAppendingPathComponent:attachment.fileName]];
 	
-	//imageView.url = imageURL;
-	
-	//NSLog(@"Should load image: %@ (%@, %@)", imageURL, base, attachment.fileName);
+	imageView.urlPath = [@"file://" stringByAppendingString:[base stringByAppendingPathComponent:attachment.fileName]];
 }
 
 

@@ -52,6 +52,10 @@
 	return [NSString stringWithFormat:@"<%@> ID: '%@'. Name: '%@'.", [self class], self.dbId, self.name];
 }
 
+-(void)destroy {
+	[store deleteTagFromStore:[dbId integerValue]];
+}
+
 -(Tag*)hydrate
 {
 	if(self.dbId == nil || hydrated) {
@@ -110,6 +114,11 @@
 	[name release];
 	name = [newName copy];
 	dirty = YES;	
+}
+
+-(NSArray*)points {
+	NSString *cond = [NSString stringWithFormat:@"id IN (SELECT point_id FROM point_tag WHERE tag_id = %@)", self.dbId];
+	return [store getPointsWithConditions:cond andSort:@"name ASC"];
 }
 
 @end

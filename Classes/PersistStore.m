@@ -168,12 +168,12 @@
 
 -(NSInteger)insertTrip:(Trip*)trip
 {	
-	NSString *sql = [NSString stringWithFormat:@"INSERT INTO trip (id, name, start, end)",
+	NSString *sql = [NSString stringWithFormat:@"INSERT INTO trip (id, name, start, end) VALUES (%@, '%@', '%@', '%@')",
 					 @"NULL",
 					 [SQLDatabase prepareStringForQuery:trip.name],
 					 [trip.start sqlDateString],
 					 [trip.end sqlDateString]];
-	
+	DLog(@"insertTrip: SQL: %@", sql);
 	[dbLock lock];
 	[db performQuery:sql];	
 	[dbLock unlock];
@@ -311,10 +311,14 @@
 	return shouldInsert;
 }
 
--(void)deleteTagFromStore:(NSInteger)tripId
+-(void)deleteTagFromStore:(NSInteger)tagId
 {
-	[self removeTagFromCache:tripId];
-	[db performQueryWithFormat:@"DELETE FROM trip WHERE id = %d", tripId];
+	// remove any pointa ssociations!
+	[self removeTagFromCache:tagId];
+	[dbLock lock];
+	[db performQueryWithFormat:@"DELETE FROM point_tag WHERE tag_id = %d", tagId];
+	[db performQueryWithFormat:@"DELETE FROM tag WHERE id = %d", tagId];
+	[dbLock unlock];
 }
 
 -(void)removeTagFromCache:(NSInteger)tagId
@@ -427,6 +431,7 @@
 {
 	[self removePointFromCache:pointId];
 	[dbLock lock];
+	[db performQueryWithFormat:@"DELETE FROM point_trip WHERE point_id = %d", pointId];
 	[db performQueryWithFormat:@"DELETE FROM point WHERE id = %d", pointId];
 	[dbLock unlock];
 }
@@ -481,10 +486,11 @@
 	[dbLock unlock];
 }
 
--(void)addTag:(NSInteger)tagId toPoint:(NSInteger)pointId 
-{
+-(void)addTag:(NSInteger)tagId toPoint:(NSInteger)pointId {
+	DLog(@"WTF Why am I not being called?!");
 	NSString *sql = [NSString stringWithFormat:@"INSERT INTO point_tag (tag_id, point_id) VALUES (%d, %d)",
 					 tagId, pointId];
+	DLog(@"addTag:toPoint: SQL %@", sql);
 	[dbLock lock];
 	[db performQuery:sql];
 	[dbLock unlock];

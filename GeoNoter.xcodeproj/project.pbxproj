@@ -53,9 +53,6 @@
 		CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEB578F0F454A74009E9F8E /* NSDateJSON.m */; };
 		CDED257D0F92D18A00EC66CB /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDED257C0F92D18A00EC66CB /* Three20.bundle */; };
 		CDED257F0F92D1D100EC66CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDED257E0F92D1D100EC66CB /* QuartzCore.framework */; };
-		CDF7D0B10F479C2700F59C34 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0AC0F479C2700F59C34 /* NSObject+SBJSON.m */; };
-		CDF7D0B20F479C2700F59C34 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0AE0F479C2700F59C34 /* NSString+SBJSON.m */; };
-		CDF7D0B30F479C2700F59C34 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D0B00F479C2700F59C34 /* SBJSON.m */; };
 		CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */; };
 		CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D1000F47A63500F59C34 /* PointsAddTags.m */; };
 		CDFF7D310F4D203C005479D6 /* GNAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFF7D300F4D203C005479D6 /* GNAttachment.m */; };
@@ -75,6 +72,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
 			remoteInfo = Three20;
+		};
+		CDB01FBB11886BA700D79A63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD45A7DF0FEEFD2D00AF459A /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* UnitTests.octest */;
+			remoteInfo = UnitTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -148,13 +152,6 @@
 		CDEB57900F454A74009E9F8E /* NSDateJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateJSON.h; sourceTree = "<group>"; };
 		CDED257C0F92D18A00EC66CB /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		CDED257E0F92D1D100EC66CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CDF7D0AA0F479C2700F59C34 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		CDF7D0AB0F479C2700F59C34 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		CDF7D0AC0F479C2700F59C34 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		CDF7D0AD0F479C2700F59C34 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		CDF7D0AE0F479C2700F59C34 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		CDF7D0AF0F479C2700F59C34 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		CDF7D0B00F479C2700F59C34 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsAddTags.xib; sourceTree = "<group>"; };
 		CDF7D0FF0F47A63500F59C34 /* PointsAddTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsAddTags.h; sourceTree = "<group>"; };
 		CDF7D1000F47A63500F59C34 /* PointsAddTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsAddTags.m; sourceTree = "<group>"; };
@@ -184,7 +181,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CDF7D0A90F479C2700F59C34 /* JSON */,
 				CDEB578E0F454A68009E9F8E /* Categories */,
 				CDC811D10F1C691100265C90 /* Views */,
 				CDD6DF150F1ABCB7003880D0 /* SQLDatabase */,
@@ -259,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				CD45A7E70FEEFD2E00AF459A /* libThree20.a */,
+				CDB01FBC11886BA700D79A63 /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -399,20 +396,6 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		CDF7D0A90F479C2700F59C34 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				CDF7D0AA0F479C2700F59C34 /* JSON.h */,
-				CDF7D0AB0F479C2700F59C34 /* NSObject+SBJSON.h */,
-				CDF7D0AC0F479C2700F59C34 /* NSObject+SBJSON.m */,
-				CDF7D0AD0F479C2700F59C34 /* NSString+SBJSON.h */,
-				CDF7D0AE0F479C2700F59C34 /* NSString+SBJSON.m */,
-				CDF7D0AF0F479C2700F59C34 /* SBJSON.h */,
-				CDF7D0B00F479C2700F59C34 /* SBJSON.m */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,6 +451,13 @@
 			remoteRef = CD45A7E60FEEFD2E00AF459A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		CDB01FBC11886BA700D79A63 /* UnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.octest;
+			remoteRef = CDB01FBB11886BA700D79A63 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -520,9 +510,6 @@
 				CDCCFD900F1F0F5C00F0ED08 /* PointsDetail.m in Sources */,
 				CDCCFDE70F1F234B00F0ED08 /* MapViewCell.m in Sources */,
 				CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */,
-				CDF7D0B10F479C2700F59C34 /* NSObject+SBJSON.m in Sources */,
-				CDF7D0B20F479C2700F59C34 /* NSString+SBJSON.m in Sources */,
-				CDF7D0B30F479C2700F59C34 /* SBJSON.m in Sources */,
 				CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */,
 				CDDA007C0F49358200534DFD /* Settings.m in Sources */,
 				CDFF7D310F4D203C005479D6 /* GNAttachment.m in Sources */,

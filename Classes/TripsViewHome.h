@@ -23,5 +23,6 @@
 @property (nonatomic, retain) NSArray *trips;
 
 -(void)reloadData;
+-(IBAction)addTrip:(id)sender;
 
 @end
