@@ -8,6 +8,7 @@
 
 #import "GeoNoterAppDelegate.h"
 #import "PersistStore.h"
+#import "GNPoint.h"
 
 
 @implementation GeoNoterAppDelegate
@@ -28,6 +29,7 @@
     [window addSubview:tabBarController.view];
 	
 	[self startUpdates];
+	background = NO;
 }
 
 - (void)dealloc {
@@ -37,8 +39,7 @@
 }
 
 // Creates a writable copy of the bundled default database in the application Documents directory.
-- (NSString*)getDocumentPath:(NSString*)path
-{
+- (NSString*)getDocumentPath:(NSString*)path {
     // First, test for existence.
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -77,8 +78,7 @@
 }
 
 
-- (void)startUpdates
-{
+- (void)startUpdates {
     // Create the location manager if this object does not
     // already have one.
     if (nil == locationManager)
@@ -97,20 +97,35 @@
 // Delegate method from the CLLocationManagerDelegate protocol.
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
-		   fromLocation:(CLLocation *)oldLocation
-{
+		   fromLocation:(CLLocation *)oldLocation {
     // If it's a relatively recent event, turn off updates to save power
     NSDate* eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 5.0)
-    {
-		
+    if (abs(howRecent) < 5.0) {
 		latitude = newLocation.coordinate.latitude;
 		longitude = newLocation.coordinate.longitude;
-				
         DLog(@"latitude %+.6f, longitude %+.6f\n", latitude, longitude);
-		
+		if(background) {
+			[self newPointComplete:[[[GNPoint point] retain] storePointData]];	
+		}
     }
+}
+
+-(void)newPointComplete:(GNPoint*)point {
+	point.memo = @"No memo";
+	[self.store insertOrUpdatePoint:point];
+	[point release];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+	background = YES;
+	[locationManager startMonitoringSignificantLocationChanges];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+	background = NO;
+	[locationManager stopUpdatingLocation];
+	[locationManager startUpdatingLocation];
 }
 
 @end

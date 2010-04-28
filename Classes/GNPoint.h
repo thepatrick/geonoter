@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 @class PersistStore;
 
-@interface GNPoint : NSObject {
+@interface GNPoint : NSObject<MKReverseGeocoderDelegate> {
 	
 	BOOL dirty;
 	BOOL hydrated;
@@ -28,6 +29,10 @@
 	CGFloat longitude;
 	
 	PersistStore *store;
+	
+	UIBackgroundTaskIdentifier bgTask;
+	
+	id populateDelegate;
 	
 }
 
@@ -56,5 +61,8 @@
 -(void)setTags:(NSArray*)newTags;
 
 -(NSArray*)attachments;
+
+-(GNPoint*)storePointData;
+-(void)populateNewPoint:(id)delegate;
 
 @end

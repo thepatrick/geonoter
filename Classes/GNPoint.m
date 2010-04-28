@@ -10,6 +10,7 @@
 #import "PersistStore.h"
 #import "GNPoint.h"
 #import "Tag.h"
+#import "GeoNoterAppDelegate.h"
 
 @implementation GNPoint
 
@@ -179,6 +180,102 @@
 	NSString *cond = [NSString stringWithFormat:@"point_id = %d", [self.dbId integerValue]];
 	return [store getAttachmentsWithConditions:cond andSort:@"recorded_at ASC"];
 }
+
+-(void)geocoderFinishedCleanup {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if (self->bgTask != UIInvalidBackgroundTask) {
+			self->populateDelegate = nil;
+			[[UIApplication sharedApplication] endBackgroundTask:self->bgTask];
+			self->bgTask = UIInvalidBackgroundTask;
+		}
+	});
+}
+
+-(GNPoint*)storePointData {
+	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
+	self.latitude = del.latitude;
+	self.longitude = del.longitude;
+	self.recordedAt = [NSDate date];
+	self.name = @"Awaiting geocoder...";
+	self.friendlyName = @"Awaiting geocoder...";
+	return self;
+}
+
+-(void)populateNewPoint:(id)delegate {
+	[self storePointData];
+	
+	CLLocationCoordinate2D coords;
+	coords.latitude = self.latitude;
+	coords.longitude = self.longitude;
+	
+	UIApplication *app = [UIApplication sharedApplication];
+	NSAssert(self->bgTask == UIInvalidBackgroundTask, nil);
+	
+	MKReverseGeocoder *geo = [[MKReverseGeocoder alloc] initWithCoordinate:coords];
+	geo.delegate = self;
+	self->bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+		[geo cancel];
+		self.friendlyName = @"Geocoder Unavailable";
+		[populateDelegate newPointComplete:self]; 
+		[self geocoderFinishedCleanup];
+	}];
+	populateDelegate = delegate;
+	[geo start];
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
+	NSLog(@"Failed to reverse geocode ... error %@", error);
+	self.friendlyName = @"Geocoder Unavailable";
+	[populateDelegate newPointComplete:self]; 
+	
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+	NSLog(@"Did find placemark! %@", placemark);
+	
+	
+	NSString *base = placemark.country;
+	NSString *simpleName = placemark.country;
+	
+	
+	if(placemark.administrativeArea && ![placemark.administrativeArea isEqualToString:@""]) {
+		base = [placemark.administrativeArea stringByAppendingFormat:@", %@", base];
+		simpleName = placemark.administrativeArea;
+	}
+	
+	if(placemark.locality && ![placemark.locality isEqualToString:@""]) {
+		base = [placemark.locality stringByAppendingFormat:@", %@", base];
+		simpleName = placemark.locality;
+	}
+	
+	if(placemark.subLocality && ![placemark.subLocality isEqualToString:@""]) {
+		base = [placemark.subLocality stringByAppendingFormat:@", %@", base];
+		simpleName = placemark.subLocality;
+	}
+	
+	
+	if(placemark.thoroughfare && ![placemark.thoroughfare isEqualToString:@""]) {
+		base = [placemark.thoroughfare stringByAppendingFormat:@", %@", base];
+		if(!placemark.subLocality || [placemark.subLocality isEqualToString:@""]) {
+			simpleName = placemark.thoroughfare;
+		}
+	}
+	
+	
+	if(placemark.subThoroughfare && ![placemark.subThoroughfare isEqualToString:@""]) {
+		base = [placemark.subThoroughfare stringByAppendingFormat:@" %@", base];
+		if(!placemark.subLocality || [placemark.subLocality isEqualToString:@""]) {
+			simpleName = [placemark.subThoroughfare stringByAppendingFormat:@" %@", placemark.thoroughfare];
+		}
+	}
+	
+	self.name = simpleName;
+	self.friendlyName = base;
+	
+	[populateDelegate newPointComplete:self];
+	[self geocoderFinishedCleanup];
+}
+
 
 
 @end

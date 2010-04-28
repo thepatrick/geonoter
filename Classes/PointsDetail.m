@@ -361,7 +361,7 @@
 -(void)actionSheetTakePhoto {
 	UIImagePickerController *pc = [[UIImagePickerController alloc] init];
 	pc.sourceType = UIImagePickerControllerSourceTypeCamera;
-	pc.allowsImageEditing = NO;
+	pc.allowsEditing = NO;
 	pc.delegate = self;
 	
 	[self.navigationController presentModalViewController:pc animated:YES];
@@ -370,7 +370,7 @@
 -(void)actionSheetPickPhoto {
 	UIImagePickerController *pc = [[UIImagePickerController alloc] init];
 	pc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-	pc.allowsImageEditing = NO;
+	pc.allowsEditing = NO;
 	pc.delegate = self;
 	
 	[self.navigationController presentModalViewController:pc animated:YES];	

@@ -2,18 +2,18 @@
 {
 	1D3623240D0F684500981E51 /* GeoNoterAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {866, 602}}";
-			sepNavSelRange = "{883, 20}";
-			sepNavVisRange = "{0, 933}";
-			sepNavWindowFrame = "{{386, 61}, {818, 730}}";
+			sepNavIntBoundsRect = "{{0, 0}, {866, 601}}";
+			sepNavSelRange = "{543, 10}";
+			sepNavVisRange = "{0, 949}";
+			sepNavWindowFrame = "{{386, 49}, {818, 729}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* GeoNoterAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {759, 1560}}";
-			sepNavSelRange = "{1759, 32}";
-			sepNavVisRange = "{662, 1517}";
-			sepNavWindowFrame = "{{1092, 128}, {818, 730}}";
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1862}}";
+			sepNavSelRange = "{1985, 0}";
+			sepNavVisRange = "{2544, 1301}";
+			sepNavWindowFrame = "{{55, 49}, {818, 729}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* GeoNoter */ = {
@@ -49,7 +49,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = CDD0F78A0F1AA3DD00BBBBAA /* GeoNoter */;
-		activeSDKPreference = iphoneos3.0;
+		activeSDKPreference = iphoneos4.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* GeoNoter */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* GeoNoter */,
@@ -62,16 +62,8 @@
 			CDD0F78A0F1AA3DD00BBBBAA /* GeoNoter */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 267230241;
-			PBXWorkspaceStateSaveDate = 267230241;
-		};
-		perUserProjectItems = {
-			CD45A9AA0FEF137A00AF459A /* PBXBookmark */ = CD45A9AA0FEF137A00AF459A /* PBXBookmark */;
-			CD45A9AE0FEF183000AF459A /* PBXBookmark */ = CD45A9AE0FEF183000AF459A /* PBXBookmark */;
-			CD45A9CC0FEF1A6C00AF459A /* PBXTextBookmark */ = CD45A9CC0FEF1A6C00AF459A /* PBXTextBookmark */;
-			CD45A9DF0FEF1E6A00AF459A /* PBXTextBookmark */ = CD45A9DF0FEF1E6A00AF459A /* PBXTextBookmark */;
-			CD45A9E00FEF1E6A00AF459A /* PBXTextBookmark */ = CD45A9E00FEF1E6A00AF459A /* PBXTextBookmark */;
-			CD45A9E10FEF1E6A00AF459A /* PBXTextBookmark */ = CD45A9E10FEF1E6A00AF459A /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 294050623;
+			PBXWorkspaceStateSaveDate = 294050623;
 		};
 		sourceControlManager = CDD0F7930F1AA3F400BBBBAA /* Source Control */;
 		userBuildSettings = {
@@ -79,7 +71,7 @@
 	};
 	8D1107310486CEB800E47090 /* Info.plist */ = {
 		uiCtxt = {
-			sepNavWindowFrame = "{{84, 64}, {819, 646}}";
+			sepNavWindowFrame = "{{23, 129}, {819, 646}}";
 		};
 	};
 	CD444CF40F1AFB0100A2934E /* Tag.h */ = {
@@ -143,9 +135,9 @@
 		ignoreCount = 0;
 		lineNumber = 21;
 		location = GeoNoter;
-		modificationTime = 267328108.291407;
+		modificationTime = 294051534.358237;
 		originalNumberOfMultipleMatches = 1;
-		state = 0;
+		state = 1;
 	};
 	CD45A8480FEF001B00AF459A /* PointAttachmentImage.h */ = {
 		uiCtxt = {
@@ -162,51 +154,6 @@
 			sepNavVisRange = "{920, 1339}";
 			sepNavWindowFrame = "{{671, 142}, {1220, 847}}";
 		};
-	};
-	CD45A9AA0FEF137A00AF459A /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = CDC812760F1C831000265C90 /* PointsViewHome.m */;
-	};
-	CD45A9AE0FEF183000AF459A /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */;
-	};
-	CD45A9CC0FEF1A6C00AF459A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CDC812750F1C831000265C90 /* PointsViewHome.h */;
-		rLen = 0;
-		rLoc = 9223372036854775892;
-		rType = 0;
-	};
-	CD45A9DF0FEF1E6A00AF459A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CDC812760F1C831000265C90 /* PointsViewHome.m */;
-		name = "PointsViewHome.m: 138";
-		rLen = 0;
-		rLoc = 3853;
-		rType = 0;
-		vrLen = 4100;
-		vrLoc = 3405;
-	};
-	CD45A9E00FEF1E6A00AF459A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CDC812750F1C831000265C90 /* PointsViewHome.h */;
-		name = "PointsViewHome.h: 37";
-		rLen = 0;
-		rLoc = 816;
-		rType = 0;
-		vrLen = 864;
-		vrLoc = 0;
-	};
-	CD45A9E10FEF1E6A00AF459A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */;
-		name = "PointsDetail.m: 57";
-		rLen = 36;
-		rLoc = 1455;
-		rType = 0;
-		vrLen = 1332;
-		vrLoc = 757;
 	};
 	CDC811D40F1C693500265C90 /* TagsViewController.h */ = {
 		uiCtxt = {
@@ -242,18 +189,18 @@
 	};
 	CDC812370F1C736800265C90 /* GNPoint.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {668, 793}}";
-			sepNavSelRange = "{1138, 0}";
-			sepNavVisRange = "{367, 773}";
+			sepNavIntBoundsRect = "{{0, 0}, {668, 966}}";
+			sepNavSelRange = "{1265, 0}";
+			sepNavVisRange = "{586, 740}";
 			sepNavWindowFrame = "{{26, 149}, {727, 629}}";
 		};
 	};
 	CDC812380F1C736800265C90 /* GNPoint.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1077, 2574}}";
-			sepNavSelRange = "{3746, 0}";
-			sepNavVisRange = "{2890, 874}";
-			sepNavWindowFrame = "{{7, 117}, {1136, 659}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1077, 3836}}";
+			sepNavSelRange = "{5029, 0}";
+			sepNavVisRange = "{4065, 1176}";
+			sepNavWindowFrame = "{{144, 118}, {1136, 659}}";
 		};
 	};
 	CDC812710F1C82E100265C90 /* PointsViewController.h */ = {
@@ -274,19 +221,18 @@
 	};
 	CDC812750F1C831000265C90 /* PointsViewHome.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {831, 533}}";
-			sepNavSelRange = "{816, 0}";
-			sepNavVisRange = "{0, 864}";
-			sepNavWindowFrame = "{{963, 370}, {721, 635}}";
+			sepNavIntBoundsRect = "{{0, 0}, {662, 546}}";
+			sepNavSelRange = "{495, 0}";
+			sepNavVisRange = "{24, 769}";
+			sepNavWindowFrame = "{{5, 82}, {721, 635}}";
 		};
 	};
 	CDC812760F1C831000265C90 /* PointsViewHome.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{5857, 1646}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 7792}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1173, 2561}}";
-			sepNavSelRange = "{3853, 0}";
-			sepNavVisRange = "{3405, 2455}";
-			sepNavWindowFrame = "{{514, 177}, {1232, 971}}";
+			sepNavIntBoundsRect = "{{0, 0}, {776, 1750}}";
+			sepNavSelRange = "{2168, 24}";
+			sepNavVisRange = "{2117, 1166}";
+			sepNavWindowFrame = "{{5, 58}, {835, 720}}";
 		};
 	};
 	CDC812BB0F1C871E00265C90 /* AdHoc.plist */ = {
@@ -304,10 +250,10 @@
 	};
 	CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1202, 5369}}";
-			sepNavSelRange = "{1455, 36}";
-			sepNavVisRange = "{757, 1332}";
-			sepNavWindowFrame = "{{708, 137}, {1150, 830}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1166, 5810}}";
+			sepNavSelRange = "{10580, 0}";
+			sepNavVisRange = "{9648, 1054}";
+			sepNavWindowFrame = "{{120, 61}, {1150, 717}}";
 		};
 	};
 	CDCCFDE50F1F234B00F0ED08 /* MapViewCell.h */ = {
@@ -320,9 +266,9 @@
 	};
 	CDCCFDE60F1F234B00F0ED08 /* MapViewCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1186, 1014}}";
-			sepNavSelRange = "{607, 0}";
-			sepNavVisRange = "{0, 809}";
+			sepNavIntBoundsRect = "{{0, 0}, {1186, 1092}}";
+			sepNavSelRange = "{1112, 0}";
+			sepNavVisRange = "{811, 908}";
 			sepNavWindowFrame = "{{30, 105}, {1245, 635}}";
 		};
 	};
@@ -355,6 +301,8 @@
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
+		variableFormatDictionary = {
+		};
 	};
 	CDD0F7930F1AA3F400BBBBAA /* Source Control */ = {
 		isa = PBXSourceControlManager;
@@ -445,9 +393,9 @@
 	};
 	CDDA007B0F49358200534DFD /* Settings.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {988, 793}}";
-			sepNavSelRange = "{1223, 0}";
-			sepNavVisRange = "{402, 1034}";
+			sepNavIntBoundsRect = "{{0, 0}, {988, 854}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{430, 1006}";
 			sepNavWindowFrame = "{{0, 97}, {1047, 681}}";
 		};
 	};

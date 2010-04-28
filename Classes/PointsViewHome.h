@@ -14,7 +14,7 @@
 @protocol MKReverseGeocoderDelegate;
 
 
-@interface PointsViewHome : UIViewController<UITableViewDelegate, UITableViewDataSource, MKReverseGeocoderDelegate> {
+@interface PointsViewHome : UIViewController<UITableViewDelegate, UITableViewDataSource> {
 
 	IBOutlet UITableView *pointsTable;
 	IBOutlet UIBarButtonItem *addPoint;
@@ -33,8 +33,6 @@
 -(void)reloadData;
 -(IBAction)addPoint:(id)sender;
 -(void)showLoading;
-
--(void)populateNewPointV2:(GNPoint*)point;
 -(void)newPointComplete:(GNPoint*)point;
 
 @end

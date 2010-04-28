@@ -20,7 +20,7 @@
 	CLLocationManager *locationManager;
 	float longitude;
 	float latitude;
-	
+	BOOL background;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
