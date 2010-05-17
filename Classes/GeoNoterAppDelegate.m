@@ -13,12 +13,8 @@
 
 @implementation GeoNoterAppDelegate
 
-@synthesize window;
-@synthesize tabBarController;
-@synthesize store;
-
-@synthesize longitude;
-@synthesize latitude;
+@synthesize window, tabBarController;
+@synthesize store, longitude, latitude;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
@@ -37,6 +33,9 @@
     [window release];
     [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Filesystem stuff
 
 // Creates a writable copy of the bundled default database in the application Documents directory.
 - (NSString*)getDocumentPath:(NSString*)path {
@@ -77,6 +76,8 @@
 	return dir;
 }
 
+#pragma mark -
+#pragma mark CoreLocation interface
 
 - (void)startUpdates {
     // Create the location manager if this object does not
@@ -108,6 +109,9 @@
     }
 }
 
+#pragma mark -
+#pragma mark Multitasking callbacks
+
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 	background = YES;
 	//[locationManager startMonitoringSignificantLocationChanges];//
@@ -117,6 +121,15 @@
 	background = NO;
 //	[locationManager stopUpdatingLocation];
 //	[locationManager startUpdatingLocation];
+}
+
+#pragma mark -
+#pragma mark Misc utils
+
+// Launches the Mail application on the device.
+-(void)launchMailAppOnDevice {
+    NSString *recipients = @"mailto:";
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:recipients]];
 }
 
 @end

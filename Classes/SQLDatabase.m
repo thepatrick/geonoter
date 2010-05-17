@@ -125,7 +125,7 @@
 	
 	//NSLog(@"SQLITE said %@ ok!", inQuery);
 	
-	sqlResult = [[SQLResult alloc] initWithTable:results rows:rows columns:columns];
+	sqlResult = [[[SQLResult alloc] initWithTable:results rows:rows columns:columns] autorelease];
 	if( !sqlResult )
 		sqlite3_free_table( results );
 	

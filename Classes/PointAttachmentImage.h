@@ -7,24 +7,37 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Three20/Three20.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+#import "MBProgressHUD.h"
 
-@class TTImageView;
 @class GNAttachment;
 
-@interface PointAttachmentImage : UIViewController<TTImageViewDelegate, UIScrollViewDelegate> {
+@interface PointAttachmentImage : UIViewController<UIScrollViewDelegate, MBProgressHUDDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 	
 	IBOutlet UIScrollView *scrollView; 
-	TTImageView *imageView;
-	
+	UIImageView *imageView;
+	IBOutlet UIBarButtonItem *actionButton;
+	UIActionSheet *pointActions;
+	MBProgressHUD *HUD;
+
 	GNAttachment *attachment;
-	
+	BOOL firstLoad;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) TTImageView *imageView;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *actionButton;
+@property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) GNAttachment *attachment;
 
 +attachmentImageWithAttachment:(GNAttachment*)attach;
+
+- (IBAction)actionButtonAction:(id)sender;
+
+-(void)actionSheetDeleteMe;
+-(void)actionSheetSendEmail;
+-(void)actionSheetSaveToRoll;
+-(void)actionSheetRenameMe;
 
 @end

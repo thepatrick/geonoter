@@ -9,6 +9,7 @@
 #import "SQLDatabase.h"
 #import "PersistStore.h"
 #import "GNAttachment.h"
+#import "GeoNoterAppDelegate.h"
 
 
 @implementation GNAttachment
@@ -55,7 +56,7 @@
 
 -(NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@> ID: '%@'. Name: '%@'.", [self class], self.dbId, self.fileName];
+	return [NSString stringWithFormat:@"<%@> ID: '%@'. File Name: '%@'. Name: '%@'", [self class], self.dbId, self.fileName, self.friendlyName];
 }
 
 -hydrate
@@ -156,5 +157,15 @@
 	dirty = YES;	
 }
 
+-(NSString*)filesystemPath {
+	NSString *base = [(GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate] attachmentsDirectory];
+	return [base stringByAppendingPathComponent:self.fileName];	
+}
+
+-(void)deleteAttachment {
+	[store deleteAttachmentFromStore:[self.dbId integerValue]];
+	[[NSFileManager defaultManager] removeItemAtPath:[self filesystemPath] error:nil];
+	[[NSFileManager defaultManager] removeItemAtPath:[[self filesystemPath] stringByAppendingString:@".cached.jpg"] error:nil];
+}
 
 @end

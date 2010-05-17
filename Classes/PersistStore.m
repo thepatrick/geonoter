@@ -432,6 +432,7 @@
 	[self removePointFromCache:pointId];
 	[dbLock lock];
 	[db performQueryWithFormat:@"DELETE FROM point_trip WHERE point_id = %d", pointId];
+	[db performQueryWithFormat:@"DELETE FROM point_tag WHERE point_id = %d", pointId];
 	[db performQueryWithFormat:@"DELETE FROM point WHERE id = %d", pointId];
 	[dbLock unlock];
 }
@@ -540,7 +541,7 @@
 	} else { // shouldInsert == NO.
 		
 		
-		NSString *sql = [NSString stringWithFormat:@"UPDATE attachment set point_id = %d, friendly_name = '%@', kind = '%@', memo = '%@', recorded_at = '%@', file_name = '%@' where id = %d",
+		NSString *sql = [NSString stringWithFormat:@"UPDATE attachment set point_id = %d, friendly_name = '%@', kind = '%@', memo = '%@', recorded_at = '%@', file_name = '%@' where id = %@",
 						 attachment.pointId,
 						 [SQLDatabase prepareStringForQuery:attachment.friendlyName],
 						 [SQLDatabase prepareStringForQuery:attachment.kind],

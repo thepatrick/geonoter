@@ -54,4 +54,8 @@
 -(void)dehydrate;
 -(void)save;
 
+-(NSString*)filesystemPath;
+
+-(void)deleteAttachment;
+
 @end

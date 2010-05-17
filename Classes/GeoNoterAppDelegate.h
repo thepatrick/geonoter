@@ -35,5 +35,6 @@
 - (NSString*)getDocumentPath:(NSString*)path;
 - (NSString*)attachmentsDirectory;
 - (void)startUpdates;
+-(void)launchMailAppOnDevice;
 
 @end

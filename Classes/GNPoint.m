@@ -184,6 +184,22 @@
 	return [store getAttachmentsWithConditions:cond andSort:@"recorded_at ASC"];
 }
 
+-(GNPoint*)storePointData {
+	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
+	self.latitude = del.latitude;
+	self.longitude = del.longitude;
+	self.recordedAt = [NSDate date];
+	self.name = @"Untitled";
+	self.friendlyName = @"Untitled";
+	self.memo = @"No memo";
+	return self;
+}
+
+#pragma mark -
+#pragma mark Geocoder
+
+
+
 -(void)geocoderFinishedCleanup {
 	dispatch_async(dispatch_get_main_queue(), ^{
 		if (self->bgTask != UIInvalidBackgroundTask) {
@@ -193,17 +209,6 @@
 			Block_release(completionCallback);
 		}
 	});
-}
-
--(GNPoint*)storePointData {
-	GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
-	self.latitude = del.latitude;
-	self.longitude = del.longitude;
-	self.recordedAt = [NSDate date];
-	self.name = @"Awaiting geocoder...";
-	self.friendlyName = @"Awaiting geocoder...";
-	self.memo = @"No memo";
-	return self;
 }
 
 -(void)geocodeWithCompletionBlock:(void (^)())completion {
@@ -229,6 +234,9 @@
 	[geo start];
 }
 
+#pragma mark -
+#pragma mark Geocoder Delegate methods
+
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
 	NSLog(@"Failed to reverse geocode ... error %@", error);
 	self.friendlyName = @"Geocoder Unavailable";
@@ -237,46 +245,41 @@
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
-	NSLog(@"Did find placemark! %@", placemark);
+	DLog(@"Did find placemark! %@", placemark);
 	
-	
-	NSString *base = placemark.country;
 	NSString *simpleName = placemark.country;
-	
+//	NSArray *address = [placemark.addressDictionary valueForKey:@"FormattedAddressLines"];
+
+	NSMutableString *addressFormatted = [NSMutableString stringWithString:@""];
+	for(NSString *fragment in [placemark.addressDictionary valueForKey:@"FormattedAddressLines"]) {
+		if(![addressFormatted isEqualToString:@""]) {
+			[addressFormatted appendString:@", "];
+		}
+		[addressFormatted appendString:fragment];
+	}
 	
 	if(placemark.administrativeArea && ![placemark.administrativeArea isEqualToString:@""]) {
-		base = [placemark.administrativeArea stringByAppendingFormat:@", %@", base];
 		simpleName = placemark.administrativeArea;
 	}
-	
 	if(placemark.locality && ![placemark.locality isEqualToString:@""]) {
-		base = [placemark.locality stringByAppendingFormat:@", %@", base];
 		simpleName = placemark.locality;
 	}
-	
 	if(placemark.subLocality && ![placemark.subLocality isEqualToString:@""]) {
-		base = [placemark.subLocality stringByAppendingFormat:@", %@", base];
 		simpleName = placemark.subLocality;
 	}
-	
-	
 	if(placemark.thoroughfare && ![placemark.thoroughfare isEqualToString:@""]) {
-		base = [placemark.thoroughfare stringByAppendingFormat:@", %@", base];
 		if(!placemark.subLocality || [placemark.subLocality isEqualToString:@""]) {
 			simpleName = placemark.thoroughfare;
 		}
 	}
-	
-	
 	if(placemark.subThoroughfare && ![placemark.subThoroughfare isEqualToString:@""]) {
-		base = [placemark.subThoroughfare stringByAppendingFormat:@" %@", base];
 		if(!placemark.subLocality || [placemark.subLocality isEqualToString:@""]) {
 			simpleName = [placemark.subThoroughfare stringByAppendingFormat:@" %@", placemark.thoroughfare];
 		}
 	}
 	
 	self.name = simpleName;
-	self.friendlyName = base;
+	self.friendlyName = addressFormatted;
 
 	if(completionCallback != nil) completionCallback();
 	[self geocoderFinishedCleanup];

@@ -60,6 +60,7 @@
 	NSLog(@"points: %@", point);
 	[point hydrate];
 	self.locationName.text = point.name;
+	[self reloadData];
 }
 
 - (void)dealloc {
@@ -225,24 +226,24 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 4; // assumes includes recordings
+	if(attachmentCache == nil) {
+		attachmentCache = [[point attachments] retain];
+	}
+	return [attachmentCache count] == 0 ? 3 : 4; // assumes includes recordings
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	return [sectionNames objectAtIndex:section];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.section == 0)
 		return 200.0;
 	else
 		return 46.0;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{	
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {	
 	switch (indexPath.section) {
 		case PointsDetailSectionMap: 
 			return nil;
@@ -325,6 +326,10 @@
 				[self actionSheetAddTags];
 				break;
 				
+			case 2: // 2 = add sound
+				// @TODO: Implement sound recording!
+				break;
+				
 			case 3: // 3 = take photo
 				[self actionSheetTakePhoto];
 				break;
@@ -333,16 +338,11 @@
 				[self actionSheetPickPhoto];
 				break;
 				
-			default:
+			default: // else... cancel
 				break;
 				
 		}
 		
-		// 1 = add tag
-		// 2 = add sound
-		// 3 = take photo
-		// 4 = existing
-		// else... cancel
 		
 	}
 }

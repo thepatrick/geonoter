@@ -15,15 +15,23 @@
 		282CCBFE0DB6C98000C4EA27 /* TagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* TagsView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		CD0645AA119E4AEB009B8405 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0645A9119E4AEB009B8405 /* MBProgressHUD.m */; };
+		CD06464B119E618D009B8405 /* TextAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD06464A119E618D009B8405 /* TextAlertView.m */; };
+		CD0646A0119E6C07009B8405 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = CD06469F119E6C07009B8405 /* 20-gear2.png */; };
+		CD0646C4119E6CC7009B8405 /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0646C3119E6CC7009B8405 /* 07-map-marker.png */; };
+		CD0646C6119E6CD1009B8405 /* 15-tags.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0646C5119E6CD1009B8405 /* 15-tags.png */; };
+		CD0646CA119E6D3A009B8405 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0646C9119E6D3A009B8405 /* gear.png */; };
+		CD0646F1119E8DF3009B8405 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0646F0119E8DF3009B8405 /* AssetsLibrary.framework */; };
+		CD06470E119E910E009B8405 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06470D119E910E009B8405 /* MessageUI.framework */; };
 		CD444CF60F1AFB0100A2934E /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CD444CF50F1AFB0100A2934E /* Tag.m */; };
 		CD45A5BE0FED9B1700AF459A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD45A5BD0FED9B1700AF459A /* MapKit.framework */; };
 		CD45A66D0FEDA32700AF459A /* PointMemo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45A66B0FEDA32700AF459A /* PointMemo.m */; };
 		CD45A66E0FEDA32700AF459A /* PointMemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45A66C0FEDA32700AF459A /* PointMemo.xib */; };
 		CD45A7260FEDC7DD00AF459A /* NSStringUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45A7250FEDC7DD00AF459A /* NSStringUUID.m */; };
-		CD45A8130FEEFEAA00AF459A /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD45A7E70FEEFD2E00AF459A /* libThree20.a */; };
 		CD45A84B0FEF001B00AF459A /* PointAttachmentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45A8490FEF001B00AF459A /* PointAttachmentImage.m */; };
 		CD45A84C0FEF001B00AF459A /* PointAttachmentImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45A84A0FEF001B00AF459A /* PointAttachmentImage.xib */; };
 		CD7B921C0F4411C300A66996 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7B921B0F4411C300A66996 /* CoreLocation.framework */; };
+		CDA482BF118EF27700A5A87F /* UIImageSizer.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA482BE118EF27700A5A87F /* UIImageSizer.m */; };
 		CDC811D60F1C693500265C90 /* TagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC811D50F1C693500265C90 /* TagsViewController.m */; };
 		CDC811EC0F1C69F000265C90 /* TagsViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC811EB0F1C69F000265C90 /* TagsViewHome.m */; };
 		CDC811EE0F1C6A5D00265C90 /* TagsViewHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC811ED0F1C6A5D00265C90 /* TagsViewHome.xib */; };
@@ -51,36 +59,11 @@
 		CDDA007C0F49358200534DFD /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDA007B0F49358200534DFD /* Settings.m */; };
 		CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDEB574B0F4537C5009E9F8E /* Icon.png */; };
 		CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEB578F0F454A74009E9F8E /* NSDateJSON.m */; };
-		CDED257D0F92D18A00EC66CB /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDED257C0F92D18A00EC66CB /* Three20.bundle */; };
 		CDED257F0F92D1D100EC66CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDED257E0F92D1D100EC66CB /* QuartzCore.framework */; };
 		CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */; };
 		CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D1000F47A63500F59C34 /* PointsAddTags.m */; };
 		CDFF7D310F4D203C005479D6 /* GNAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFF7D300F4D203C005479D6 /* GNAttachment.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CD45A7E60FEEFD2E00AF459A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CD45A7DF0FEEFD2D00AF459A /* Three20.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = Three20;
-		};
-		CD45A82C0FEEFEF000AF459A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CD45A7DF0FEEFD2D00AF459A /* Three20.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = Three20;
-		};
-		CDB01FBB11886BA700D79A63 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CD45A7DF0FEEFD2D00AF459A /* Three20.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* UnitTests.octest */;
-			remoteInfo = UnitTests;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,6 +79,16 @@
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD0645A8119E4AEB009B8405 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		CD0645A9119E4AEB009B8405 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		CD064649119E618D009B8405 /* TextAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAlertView.h; sourceTree = "<group>"; };
+		CD06464A119E618D009B8405 /* TextAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAlertView.m; sourceTree = "<group>"; };
+		CD06469F119E6C07009B8405 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
+		CD0646C3119E6CC7009B8405 /* 07-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-map-marker.png"; sourceTree = "<group>"; };
+		CD0646C5119E6CD1009B8405 /* 15-tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "15-tags.png"; sourceTree = "<group>"; };
+		CD0646C9119E6D3A009B8405 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		CD0646F0119E8DF3009B8405 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		CD06470D119E910E009B8405 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CD444CF40F1AFB0100A2934E /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		CD444CF50F1AFB0100A2934E /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		CD45A5BD0FED9B1700AF459A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -104,11 +97,12 @@
 		CD45A66C0FEDA32700AF459A /* PointMemo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PointMemo.xib; path = Classes/PointMemo.xib; sourceTree = "<group>"; };
 		CD45A7240FEDC7DD00AF459A /* NSStringUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringUUID.h; sourceTree = "<group>"; };
 		CD45A7250FEDC7DD00AF459A /* NSStringUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUUID.m; sourceTree = "<group>"; };
-		CD45A7DF0FEEFD2D00AF459A /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		CD45A8480FEF001B00AF459A /* PointAttachmentImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointAttachmentImage.h; sourceTree = "<group>"; };
 		CD45A8490FEF001B00AF459A /* PointAttachmentImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointAttachmentImage.m; sourceTree = "<group>"; };
 		CD45A84A0FEF001B00AF459A /* PointAttachmentImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PointAttachmentImage.xib; path = Classes/PointAttachmentImage.xib; sourceTree = "<group>"; };
 		CD7B921B0F4411C300A66996 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CDA482BD118EF27700A5A87F /* UIImageSizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageSizer.h; sourceTree = "<group>"; };
+		CDA482BE118EF27700A5A87F /* UIImageSizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageSizer.m; sourceTree = "<group>"; };
 		CDC811D40F1C693500265C90 /* TagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsViewController.h; sourceTree = "<group>"; };
 		CDC811D50F1C693500265C90 /* TagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsViewController.m; sourceTree = "<group>"; };
 		CDC811EA0F1C69F000265C90 /* TagsViewHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsViewHome.h; sourceTree = "<group>"; };
@@ -164,7 +158,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD45A8130FEEFEAA00AF459A /* libThree20.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -172,6 +165,8 @@
 				CD7B921C0F4411C300A66996 /* CoreLocation.framework in Frameworks */,
 				CDED257F0F92D1D100EC66CB /* QuartzCore.framework in Frameworks */,
 				CD45A5BE0FED9B1700AF459A /* MapKit.framework in Frameworks */,
+				CD0646F1119E8DF3009B8405 /* AssetsLibrary.framework in Frameworks */,
+				CD06470E119E910E009B8405 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +182,8 @@
 				CDD6DF0D0F1ABC93003880D0 /* Models */,
 				1D3623240D0F684500981E51 /* GeoNoterAppDelegate.h */,
 				1D3623250D0F684500981E51 /* GeoNoterAppDelegate.m */,
+				CDA482BD118EF27700A5A87F /* UIImageSizer.h */,
+				CDA482BE118EF27700A5A87F /* UIImageSizer.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -202,7 +199,6 @@
 		29B97314FDCFA39411CA2CEA /* GeoNoter */ = {
 			isa = PBXGroup;
 			children = (
-				CD45A7DF0FEEFD2D00AF459A /* Three20.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -247,17 +243,21 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
+				CD0646F0119E8DF3009B8405 /* AssetsLibrary.framework */,
+				CD06470D119E910E009B8405 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CD45A7E00FEEFD2D00AF459A /* Products */ = {
+		CD064648119E617D009B8405 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				CD45A7E70FEEFD2E00AF459A /* libThree20.a */,
-				CDB01FBC11886BA700D79A63 /* UnitTests.octest */,
+				CD0645A8119E4AEB009B8405 /* MBProgressHUD.h */,
+				CD0645A9119E4AEB009B8405 /* MBProgressHUD.m */,
+				CD064649119E618D009B8405 /* TextAlertView.h */,
+				CD06464A119E618D009B8405 /* TextAlertView.m */,
 			);
-			name = Products;
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 		CDC811BE0F1C68B700265C90 /* Trips */ = {
@@ -292,6 +292,7 @@
 		CDC811D10F1C691100265C90 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD064648119E617D009B8405 /* Custom Views */,
 				CDC8126F0F1C82BA00265C90 /* Points */,
 				CDC811D20F1C692100265C90 /* Tags */,
 				CDC811D00F1C690500265C90 /* Trips */,
@@ -378,6 +379,10 @@
 		CDDA00080F4929C200534DFD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD0646C9119E6D3A009B8405 /* gear.png */,
+				CD06469F119E6C07009B8405 /* 20-gear2.png */,
+				CD0646C5119E6CD1009B8405 /* 15-tags.png */,
+				CD0646C3119E6CC7009B8405 /* 07-map-marker.png */,
 				CDCCFDD60F1F206D00F0ED08 /* SampleMap.png */,
 				CDDA00020F49285700534DFD /* Default.png */,
 				CDEB574B0F4537C5009E9F8E /* Icon.png */,
@@ -399,9 +404,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* GeoNoter */ = {
+		1D6058900D05DD3D006BFB54 /* Geonoter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "GeoNoter" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Geonoter" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -410,9 +415,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				CD45A82D0FEEFEF000AF459A /* PBXTargetDependency */,
 			);
-			name = GeoNoter;
+			name = Geonoter;
 			productName = GeoNoter;
 			productReference = 1D6058910D05DD3D006BFB54 /* GeoNoter.app */;
 			productType = "com.apple.product-type.application";
@@ -430,35 +434,12 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* GeoNoter */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = CD45A7E00FEEFD2D00AF459A /* Products */;
-					ProjectRef = CD45A7DF0FEEFD2D00AF459A /* Three20.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* GeoNoter */,
+				1D6058900D05DD3D006BFB54 /* Geonoter */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		CD45A7E70FEEFD2E00AF459A /* libThree20.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libThree20.a;
-			remoteRef = CD45A7E60FEEFD2E00AF459A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CDB01FBC11886BA700D79A63 /* UnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UnitTests.octest;
-			remoteRef = CDB01FBB11886BA700D79A63 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -479,9 +460,12 @@
 				CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */,
 				CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */,
 				CDDA00030F49285700534DFD /* Default.png in Resources */,
-				CDED257D0F92D18A00EC66CB /* Three20.bundle in Resources */,
 				CD45A66E0FEDA32700AF459A /* PointMemo.xib in Resources */,
 				CD45A84C0FEF001B00AF459A /* PointAttachmentImage.xib in Resources */,
+				CD0646A0119E6C07009B8405 /* 20-gear2.png in Resources */,
+				CD0646C4119E6CC7009B8405 /* 07-map-marker.png in Resources */,
+				CD0646C6119E6CD1009B8405 /* 15-tags.png in Resources */,
+				CD0646CA119E6D3A009B8405 /* gear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,18 +500,13 @@
 				CD45A66D0FEDA32700AF459A /* PointMemo.m in Sources */,
 				CD45A7260FEDC7DD00AF459A /* NSStringUUID.m in Sources */,
 				CD45A84B0FEF001B00AF459A /* PointAttachmentImage.m in Sources */,
+				CDA482BF118EF27700A5A87F /* UIImageSizer.m in Sources */,
+				CD0645AA119E4AEB009B8405 /* MBProgressHUD.m in Sources */,
+				CD06464B119E618D009B8405 /* TextAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CD45A82D0FEEFEF000AF459A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Three20;
-			targetProxy = CD45A82C0FEEFEF000AF459A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -578,6 +557,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				PRODUCT_NAME = Geonoter;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.0;
 			};
@@ -593,6 +573,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../three20/src;
 				PREBINDING = NO;
+				PRODUCT_NAME = Geonoter;
 				SDKROOT = iphoneos4.0;
 			};
 			name = Release;
@@ -607,6 +588,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../three20/src;
 				PREBINDING = NO;
+				PRODUCT_NAME = Geonoter;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.0;
 			};
@@ -631,7 +613,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "GeoNoter" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Geonoter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

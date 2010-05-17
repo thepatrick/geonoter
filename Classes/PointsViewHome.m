@@ -105,8 +105,11 @@
 		[del.store insertOrUpdatePoint:point];
 		self.navigationItem.rightBarButtonItem = addPoint;
 		if(self->datasourceDidCreateNewPoint) {
+			NSLog(@"calling datasourceDidCreateNewPoint %@", self->datasourceDidCreateNewPoint);
 			self->datasourceDidCreateNewPoint(point);
 		}
+		PointsDetail *pd = [PointsDetail pointsDetailWithPoint:point andStore:del.store];
+		[self.navigationController pushViewController:pd animated:YES];
 		[self reloadData];
 	}];
 }
