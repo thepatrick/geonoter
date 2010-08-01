@@ -52,13 +52,10 @@
 
 - (BOOL)open
 {
-	char*	err;
-	int rc;
 	
-	rc = sqlite3_open( [mPath fileSystemRepresentation], &mDatabase );
+    sqlite3_open( [mPath fileSystemRepresentation], &mDatabase );
 	if( !mDatabase )
 	{
-		free( err );
 		return NO;
 	}
 	

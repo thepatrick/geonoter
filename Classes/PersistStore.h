@@ -3,7 +3,7 @@
 //  Movies
 //
 //  Created by Patrick Quinn-Graham on 14/03/08.
-//  Copyright 2008 Patrick Quinn-Graham. All rights reserved.
+//  Copyright 2008-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

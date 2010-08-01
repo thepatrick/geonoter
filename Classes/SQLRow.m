@@ -55,7 +55,7 @@
 	if( inIndex >= mColumnCount || ![self valid] )
 		return nil;
 	
-	return [NSString stringWithCString:mColumns[ inIndex ]];
+	return [NSString stringWithCString:mColumns[ inIndex ] encoding:NSUTF8StringEncoding];
 }
 
 - (NSString*)nameOfColumnAtIndexNoCopy:(int)inIndex
@@ -111,7 +111,7 @@
 	if( inIndex >= mColumnCount || ![self valid] || mRowData[ inIndex ] == nil)
 		return nil;
 	
-	return [NSString stringWithCString:mRowData[ inIndex ]];
+	return [NSString stringWithCString:mRowData[ inIndex ] encoding:NSUTF8StringEncoding];
 }
 
 - (NSString*)stringForColumnAtIndexNoCopy:(int)inIndex

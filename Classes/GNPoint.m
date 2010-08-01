@@ -1,9 +1,9 @@
 //
 //  Point.m
-//  GeoNoter
+//  Geonoter
 //
 //  Created by Patrick Quinn-Graham on 12/01/09.
-//  Copyright 2009 Bunkerworld Publishing Ltd.. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import "SQLDatabase.h"
@@ -202,10 +202,10 @@
 
 -(void)geocoderFinishedCleanup {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		if (self->bgTask != UIInvalidBackgroundTask) {
+		if (self->bgTask != UIBackgroundTaskInvalid) {
 			self->populateDelegate = nil;
 			[[UIApplication sharedApplication] endBackgroundTask:self->bgTask];
-			self->bgTask = UIInvalidBackgroundTask;
+			self->bgTask = UIBackgroundTaskInvalid;
 			Block_release(completionCallback);
 		}
 	});
@@ -220,7 +220,7 @@
 	coords.longitude = self.longitude;
 	
 	UIApplication *app = [UIApplication sharedApplication];
-	NSAssert(self->bgTask == UIInvalidBackgroundTask, nil);
+	NSAssert(self->bgTask == UIBackgroundTaskInvalid, nil);
 	
 	MKReverseGeocoder *geo = [[MKReverseGeocoder alloc] initWithCoordinate:coords];
 	geo.delegate = self;

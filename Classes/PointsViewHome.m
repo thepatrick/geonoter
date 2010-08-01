@@ -3,7 +3,7 @@
 //  GeoNoter
 //
 //  Created by Patrick Quinn-Graham on 13/01/09.
-//  Copyright 2009 Bunkerworld Publishing Ltd.. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import "GNPoint.h"
@@ -22,11 +22,13 @@
 - (void)setDatasourceFetchAll:(NSArray* (^)())block {
 	if(datasourceFetchAll) Block_release(datasourceFetchAll);
 	if(block != nil) 	datasourceFetchAll = Block_copy(block);
+	else datasourceFetchAll = nil;
 }
 
 - (void)setDatasourceDidCreateNewPoint:(void (^)(GNPoint*))block {
 	if(datasourceDidCreateNewPoint) Block_release(datasourceDidCreateNewPoint);
 	if(block != nil) 	datasourceDidCreateNewPoint = Block_copy(block);	
+	else datasourceDidCreateNewPoint = nil;
 }
 
 - (void)viewDidLoad {

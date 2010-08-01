@@ -3,7 +3,7 @@
 //  GeoNoter
 //
 //  Created by Patrick Quinn-Graham on 10-05-15.
-//  Copyright 2010 Patrick Quinn-Graham. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import "TextAlertView.h"

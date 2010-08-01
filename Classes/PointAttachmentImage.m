@@ -1,9 +1,9 @@
 //
 //  PointAttachmentImage.m
-//  GeoNoter
+//  Geonoter
 //
 //  Created by Patrick Quinn-Graham on 09-06-21.
-//  Copyright 2009 Patrick Quinn-Graham. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import "PointAttachmentImage.h"
@@ -161,7 +161,7 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(actionSheet = pointActions) {
+	if(actionSheet == pointActions) {
 		switch(buttonIndex) {
 				
 			case 0: // 0 = delete
@@ -212,7 +212,8 @@
 -(void)actionSheetSaveToRoll {
 	ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
 	UIImage *image = [UIImage imageWithContentsOfFile:[attachment filesystemPath]];
-	[library writeImageToSavedPhotosAlbum:image completionBlock:^(NSURL *assetURL, NSError *error){
+    
+    [library writeImageToSavedPhotosAlbum:image.CGImage orientation:image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error){
 		if(error != nil) {
 			[[[UIAlertView alloc] initWithTitle:@"Your photo could not be saved to the photo roll." message:[error description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
 		} else {

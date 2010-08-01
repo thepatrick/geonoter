@@ -1,9 +1,9 @@
 //
 //  MapViewCell.m
-//  GeoNoter
+//  Geonoter
 //
 //  Created by Patrick Quinn-Graham on 14/01/09.
-//  Copyright 2009 Bunkerworld Publishing Ltd.. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import "MapViewCell.h"
@@ -49,7 +49,7 @@
 - (MKAnnotationView *)mapView:(MKMapView *)thisMapView viewForAnnotation:(id <MKAnnotation>)annotation {
 	MKPinAnnotationView *pin =  (MKPinAnnotationView*)[thisMapView dequeueReusableAnnotationViewWithIdentifier:@"standardPin"];
 	if(!pin) {
-		pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"standardPin"];
+		pin = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"standardPin"] autorelease];
 	}
 	pin.annotation = annotation;
 	pin.animatesDrop = NO;

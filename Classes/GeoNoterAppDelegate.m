@@ -1,14 +1,15 @@
 //
 //  GeoNoterAppDelegate.m
-//  GeoNoter
+//  Geonoter
 //
 //  Created by Patrick Quinn-Graham on 11/01/09.
-//  Copyright Bunkerworld Publishing Ltd. 2009. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import "GeoNoterAppDelegate.h"
 #import "PersistStore.h"
 #import "GNPoint.h"
+#import "Settings.h"
 
 
 @implementation GeoNoterAppDelegate
@@ -18,6 +19,12 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
+	NSMutableDictionary *defaults = [NSMutableDictionary dictionaryWithCapacity:1];
+	
+	[Settings registerDefaultsInDictionary:defaults];
+	
+	[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+	
     // Add the tab bar controller's current view as a subview of the window
 	
 	self.store = [PersistStore storeWithFile:[self getDocumentPath:@"geonoter.db"]];
@@ -49,7 +56,8 @@
     // Workaround for Beta issue where Documents directory is not created during install.
     BOOL exists = [fileManager fileExistsAtPath:documentsDirectory];
     if (!exists) {
-        BOOL success = [fileManager createDirectoryAtPath:documentsDirectory attributes:nil];
+		NSError *err;
+        BOOL success = [fileManager createDirectoryAtPath:documentsDirectory withIntermediateDirectories:YES attributes:nil error:&err];
         if (!success) {
             NSAssert(0, @"Failed to create Documents directory.");
         }
@@ -67,7 +75,9 @@
 
 	BOOL isDirectory;
 	if(![fileManager fileExistsAtPath:dir isDirectory:&isDirectory]) {
-		BOOL success = [fileManager createDirectoryAtPath:dir attributes:nil];
+		NSError *err;
+        BOOL success = [fileManager createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:&err];
+		
         if (!success) {
             NSAssert(0, @"Failed to create Attachments directory.");
         }

@@ -3,7 +3,7 @@
 //  GeoNoter
 //
 //  Created by Patrick Quinn-Graham on 14/01/09.
-//  Copyright 2009 Bunkerworld Publishing Ltd.. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import "MapViewCell.h"
@@ -298,16 +298,16 @@
 	
 	if(!cameras && !photoLibrarys) {
 		pointActions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" 
-									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Record Sound", nil];
+									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", nil];
 	} else if(!cameras) { // no camera, but we do have a photo library
 		pointActions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" 
-									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Record Sound", @"Add Existing Photo", nil];
+									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Add Existing Photo", nil];
 	} else if(!photoLibrarys) { // no photo library, but (as we've got this far!) we do have a camera
 		pointActions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" 
-									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Record Sound", @"Take Photo", nil];
+									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Take Photo", nil];
 	} else { // We have both a camera and a photo library to pick from
 		pointActions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" 
-									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Record Sound", @"Take Photo", @"Add Existing Photo", nil];
+									 destructiveButtonTitle:@"Delete Point" otherButtonTitles:@"Manage Tags", @"Take Photo", @"Add Existing Photo", nil];
 	}
 	
 	
@@ -315,7 +315,7 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(actionSheet = pointActions) {
+	if(actionSheet == pointActions) {
 		switch(buttonIndex) {
 				
 			case 0: // 0 = delete
@@ -326,15 +326,15 @@
 				[self actionSheetAddTags];
 				break;
 				
-			case 2: // 2 = add sound
+			//case 2: // 2 = add sound
 				// @TODO: Implement sound recording!
-				break;
+			//	break;
 				
-			case 3: // 3 = take photo
+			case 2: // 3 = take photo
 				[self actionSheetTakePhoto];
 				break;
 			
-			case 4: // 4 = pick photo
+			case 3: // 4 = pick photo
 				[self actionSheetPickPhoto];
 				break;
 				
@@ -365,6 +365,7 @@
 	pc.delegate = self;
 	
 	[self.navigationController presentModalViewController:pc animated:YES];
+    [pc release];
 }
 
 -(void)actionSheetPickPhoto {
@@ -373,7 +374,8 @@
 	pc.allowsEditing = NO;
 	pc.delegate = self;
 	
-	[self.navigationController presentModalViewController:pc animated:YES];	
+	[self.navigationController presentModalViewController:pc animated:YES];
+	[pc release];
 }
 
 #pragma mark -

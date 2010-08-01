@@ -1,9 +1,9 @@
 //
 //  PointAttachmentImage.h
-//  GeoNoter
+//  Geonoter
 //
 //  Created by Patrick Quinn-Graham on 09-06-21.
-//  Copyright 2009 Patrick Quinn-Graham. All rights reserved.
+//  Copyright 2009-2010 Patrick Quinn-Graham. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
