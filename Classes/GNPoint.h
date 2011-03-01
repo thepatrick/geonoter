@@ -66,6 +66,8 @@
 
 -(GNPoint*)storePointData;
 
+-(void)determineDefaultName:(NSString*)locationName;
+
 -(void)geocodeWithCompletionBlock:(void (^)())completion;
 
 @end

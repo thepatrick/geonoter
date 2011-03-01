@@ -135,6 +135,15 @@
 }
 
 -(UITableViewCell*)tableView:(UITableView*)tv cellForTagsRow:(NSInteger)row {
+    if([tagCache count] == 0) {        
+        UITableViewCell *backupCell = [tv dequeueReusableCellWithIdentifier:@"detailsRowDisabled"];
+        if(!backupCell) {
+            backupCell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"detailsRowDisabled"] autorelease];
+        }
+        backupCell.textLabel.text = @"Tap to choose tags";
+        backupCell.textLabel.textColor = [UIColor darkGrayColor];
+        return backupCell;
+    }
 	UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:@"detailsRow"];
 	if(!cell) {
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"detailsRow"] autorelease];
@@ -213,7 +222,7 @@
 			if(tagCache == nil) {
 				tagCache = [[point tags] retain];
 			}
-			return [tagCache count];
+			return ([tagCache count] == 0) ? 1 : [tagCache count];
 			
 		case PointsDetailSectionAttachments: // attachments
 			if(attachmentCache == nil) {
@@ -257,6 +266,10 @@
 			return nil;
 			
 		case PointsDetailSectionTags: // tags
+            if([tagCache count] == 0) {
+                [self actionSheetAddTags];
+                return nil;
+            }
 			return indexPath;
 			
 		case PointsDetailSectionAttachments: // attachments
@@ -348,8 +361,24 @@
 }
 
 -(void)actionSheetDeleteMe {
-	[store deletePointFromStore:[point.dbId integerValue]];
-	[self.navigationController popViewControllerAnimated:YES];
+	deleteAlert = [[UIAlertView alloc] initWithTitle:@"Delete this point?" 
+											 message:@"Once you delete a point any attachments will also be deleted. This cannot be undone." 
+											delegate:self 
+								   cancelButtonTitle:@"Cancel" 
+								   otherButtonTitles:@"Delete", nil];
+	[deleteAlert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if(alertView == deleteAlert && buttonIndex == 1) {
+		DLog(@"delete clicked: %d", buttonIndex);
+		[deleteAlert release];
+		for (GNAttachment *attachment in attachmentCache) {
+			[attachment deleteAttachment];
+		}
+		[store deletePointFromStore:[point.dbId integerValue]];
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 -(void)actionSheetAddTags {
@@ -406,7 +435,13 @@
 	newAttachment.fileName = fileName;
 	newAttachment.kind = @"jpg";
 	newAttachment.pointId = [point.dbId integerValue];
-	newAttachment.friendlyName = @"New picture";
+    
+    
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    NSString *todaysDate = [dateFormatter stringFromDate:[NSDate date]];
+	newAttachment.friendlyName = [@"Picture - " stringByAppendingString:todaysDate];
 	newAttachment.memo = @"No memo";
 	newAttachment.recordedAt = [NSDate date];
 	[newAttachment save];

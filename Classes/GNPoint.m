@@ -11,6 +11,7 @@
 #import "GNPoint.h"
 #import "Tag.h"
 #import "GeoNoterAppDelegate.h"
+#import "Settings.h"
 
 @implementation GNPoint
 
@@ -195,6 +196,20 @@
 	return self;
 }
 
+-(void)determineDefaultName:(NSString*)locationName {
+	if ([[[NSUserDefaults standardUserDefaults] stringForKey:GNLocationsDefaultsDefaultName] isEqualToString:GNLocationsDefaultNameMostSpecific] && locationName != nil) {
+		self.name = locationName;
+	} else if([[[NSUserDefaults standardUserDefaults] stringForKey:GNLocationsDefaultsDefaultName] isEqualToString:GNLocationsDefaultNameCoordinates]) {
+		self.name = [NSString stringWithFormat:@"%f, %f", self.longitude, self.latitude];
+	} else {
+		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
+		[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+		[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+		self.name = [dateFormatter stringFromDate:[NSDate date]];			
+	}
+	
+}
+
 #pragma mark -
 #pragma mark Geocoder
 
@@ -278,7 +293,7 @@
 		}
 	}
 	
-	self.name = simpleName;
+	[self determineDefaultName:simpleName];
 	self.friendlyName = addressFormatted;
 
 	if(completionCallback != nil) completionCallback();

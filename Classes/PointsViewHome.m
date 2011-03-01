@@ -11,7 +11,7 @@
 #import "PersistStore.h"
 #import "PointsViewHome.h"
 #import "PointsDetail.h"
-
+#import "Settings.h"
 
 @implementation PointsViewHome
 
@@ -102,8 +102,21 @@
 	GNPoint *point = [GNPoint point];
 	point.store = del.store;
 	[self showLoading];
-	[point storePointData];
-	[point geocodeWithCompletionBlock:^{
+	if([[NSUserDefaults standardUserDefaults] boolForKey:GNLocationsDefaultsUseGeocoder]) {
+		[point geocodeWithCompletionBlock:^{
+			[del.store insertOrUpdatePoint:point];
+			self.navigationItem.rightBarButtonItem = addPoint;
+			if(self->datasourceDidCreateNewPoint) {
+				NSLog(@"calling datasourceDidCreateNewPoint %@", self->datasourceDidCreateNewPoint);
+				self->datasourceDidCreateNewPoint(point);
+			}
+			PointsDetail *pd = [PointsDetail pointsDetailWithPoint:point andStore:del.store];
+			[self.navigationController pushViewController:pd animated:YES];
+			[self reloadData];
+		}];
+	} else {
+		[point storePointData];
+		[point determineDefaultName:nil];
 		[del.store insertOrUpdatePoint:point];
 		self.navigationItem.rightBarButtonItem = addPoint;
 		if(self->datasourceDidCreateNewPoint) {
@@ -113,7 +126,7 @@
 		PointsDetail *pd = [PointsDetail pointsDetailWithPoint:point andStore:del.store];
 		[self.navigationController pushViewController:pd animated:YES];
 		[self reloadData];
-	}];
+	}
 }
 
 -(void)showLoading {

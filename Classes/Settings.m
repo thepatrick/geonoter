@@ -25,6 +25,11 @@
 - (void)viewDidLoad {
 	arrayOfDefaultNameOptions = [[NSArray arrayWithObjects:GNLocationsDefaultNameMostSpecific, GNLocationsDefaultNameCoordinates, GNLocationsDefaultNameDateTime, nil] retain];
 	arrayOfDefaultNameValues = [[NSArray arrayWithObjects:@"Most specific", @"Coordinates", @"Date and Time", nil] retain];
+
+	arrayOfDefaultNameNoGeocoderOptions = [[NSArray arrayWithObjects:GNLocationsDefaultNameCoordinates, GNLocationsDefaultNameDateTime, nil] retain];
+	arrayOfDefaultNameNoGeocoderValues = [[NSArray arrayWithObjects:@"Coordinates", @"Date and Time", nil] retain];
+
+	
 	settingsGroups = [[NSArray arrayWithObjects:@"About", @"Locations", @"Debug", nil] retain];
 	settingsOptions = [[NSArray arrayWithObjects:[NSNumber numberWithInteger:1], [NSNumber numberWithInteger:2], [NSNumber numberWithInteger:1], nil] retain];
 	self.title = @"Settings";
@@ -152,8 +157,13 @@
 }
 
 -(void)locationsUseGeocoderChange:(UISwitch*)sender {
+	NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 	DLog(@"locationsUseGeocoderChange! %@", sender.on ? @"YES" : @"NO");
-	[[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:GNLocationsDefaultsUseGeocoder];
+	[d setBool:sender.on forKey:GNLocationsDefaultsUseGeocoder];
+	if(!sender.on && [[d stringForKey:GNLocationsDefaultsDefaultName] isEqualToString:GNLocationsDefaultNameMostSpecific]) {
+		[d setValue:GNLocationsDefaultNameDateTime forKey:GNLocationsDefaultsDefaultName];
+		[self.tableView reloadData];
+	}
 }
 
 -(void)didSelectLocationsRow:(NSInteger)row {
@@ -163,10 +173,18 @@
 			break;
 		case 1:
 			DLog(@"didSelectLocationsRow 1!");
-			NSInteger idx = [arrayOfDefaultNameOptions indexOfObject:[[NSUserDefaults standardUserDefaults] stringForKey:GNLocationsDefaultsDefaultName]];
-			SettingsChooseFromArray *scfa = [SettingsChooseFromArray chooserWithArrayOfOptions:arrayOfDefaultNameValues andPickedIndex:idx];
+			
+			NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+			
+			BOOL useGeocoder = [d boolForKey:GNLocationsDefaultsUseGeocoder];
+			
+			DLog(@"didSelectLocationsRow: Should use geocoder? %@", useGeocoder ? @"YES" : @"NO");
+			
+			NSInteger idx = [(useGeocoder ? arrayOfDefaultNameOptions : arrayOfDefaultNameNoGeocoderOptions) indexOfObject:[d stringForKey:GNLocationsDefaultsDefaultName]];
+			//[[NSUserDefaults standardUserDefaults] boolForKey:GNLocationsDefaultsUseGeocoder]
+			SettingsChooseFromArray *scfa = [SettingsChooseFromArray chooserWithArrayOfOptions:(useGeocoder ? arrayOfDefaultNameValues : arrayOfDefaultNameNoGeocoderValues) andPickedIndex:idx];
 			[scfa setUserPickedItem:^(NSInteger picked, id object){
-				[[NSUserDefaults standardUserDefaults] setObject:[arrayOfDefaultNameOptions objectAtIndex:picked] forKey:GNLocationsDefaultsDefaultName];
+				[d setObject:[(useGeocoder ? arrayOfDefaultNameOptions : arrayOfDefaultNameNoGeocoderOptions) objectAtIndex:picked] forKey:GNLocationsDefaultsDefaultName];
 				[scfa.navigationController popViewControllerAnimated:YES];
 				[self.tableView reloadData];
 			}];

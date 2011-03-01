@@ -215,7 +215,7 @@
     
     [library writeImageToSavedPhotosAlbum:image.CGImage orientation:image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error){
 		if(error != nil) {
-			[[[UIAlertView alloc] initWithTitle:@"Your photo could not be saved to the photo roll." message:[error description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
+			[[[[UIAlertView alloc] initWithTitle:@"Your photo could not be saved to the photo roll." message:[error description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] autorelease] show];
 		} else {
 			DLog(@"Photo saved to %@", assetURL);
 		}

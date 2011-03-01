@@ -27,6 +27,8 @@
 	NSArray *arrayOfDefaultNameOptions;
 	NSArray *arrayOfDefaultNameValues;
 	
+	NSArray *arrayOfDefaultNameNoGeocoderOptions;
+	NSArray *arrayOfDefaultNameNoGeocoderValues; 
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

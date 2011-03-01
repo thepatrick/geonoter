@@ -12,7 +12,7 @@
 @class GNPoint;
 
 
-@interface PointsDetail : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface PointsDetail : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate> {
 
 	IBOutlet UITableView *detailTable;
 	IBOutlet UITextField *locationName;
@@ -27,6 +27,8 @@
 	
 	NSArray *tagCache;
 	NSArray *attachmentCache;
+	
+	UIAlertView *deleteAlert;
 	
 }
 

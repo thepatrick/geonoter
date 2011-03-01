@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleShortVersionString</key>
-	<string></string>
+	<string>105</string>
 	<key>CFBundleDisplayName</key>
 	<string>Geonoter</string>
 	<key>CFBundleExecutable</key>
@@ -23,13 +23,13 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 	<key>UIFileSharingEnabled</key>
-	<true/>
+	<false/>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon.png</string>

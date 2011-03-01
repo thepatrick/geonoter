@@ -23,6 +23,9 @@
 		CD0646CA119E6D3A009B8405 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0646C9119E6D3A009B8405 /* gear.png */; };
 		CD0646F1119E8DF3009B8405 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0646F0119E8DF3009B8405 /* AssetsLibrary.framework */; };
 		CD06470E119E910E009B8405 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06470D119E910E009B8405 /* MessageUI.framework */; };
+		CD0647FC11A1767F009B8405 /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0647FB11A1767F009B8405 /* NSDateJSON.m */; };
+		CD1A1CAD120042AD00DE0A87 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1A1CAB120042AD00DE0A87 /* Default@2x.png */; };
+		CD1A1CAE120042AD00DE0A87 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1A1CAC120042AD00DE0A87 /* Icon@2x.png */; };
 		CD444CF60F1AFB0100A2934E /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CD444CF50F1AFB0100A2934E /* Tag.m */; };
 		CD45A5BE0FED9B1700AF459A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD45A5BD0FED9B1700AF459A /* MapKit.framework */; };
 		CD45A66D0FEDA32700AF459A /* PointMemo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45A66B0FEDA32700AF459A /* PointMemo.m */; };
@@ -30,6 +33,9 @@
 		CD45A7260FEDC7DD00AF459A /* NSStringUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45A7250FEDC7DD00AF459A /* NSStringUUID.m */; };
 		CD45A84B0FEF001B00AF459A /* PointAttachmentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD45A8490FEF001B00AF459A /* PointAttachmentImage.m */; };
 		CD45A84C0FEF001B00AF459A /* PointAttachmentImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD45A84A0FEF001B00AF459A /* PointAttachmentImage.xib */; };
+		CD7A09C91205308200D8880A /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CD7A09C81205308100D8880A /* Credits.html */; };
+		CD7A09D01205341F00D8880A /* SettingsAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7A09CE1205341F00D8880A /* SettingsAbout.m */; };
+		CD7A09D11205341F00D8880A /* SettingsAbout.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD7A09CF1205341F00D8880A /* SettingsAbout.xib */; };
 		CD7B921C0F4411C300A66996 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7B921B0F4411C300A66996 /* CoreLocation.framework */; };
 		CDA482BF118EF27700A5A87F /* UIImageSizer.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA482BE118EF27700A5A87F /* UIImageSizer.m */; };
 		CDC811D60F1C693500265C90 /* TagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC811D50F1C693500265C90 /* TagsViewController.m */; };
@@ -40,6 +46,10 @@
 		CDC812770F1C831000265C90 /* PointsViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC812760F1C831000265C90 /* PointsViewHome.m */; };
 		CDC8129F0F1C84F900265C90 /* PointsViewHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC8129E0F1C84F900265C90 /* PointsViewHome.xib */; };
 		CDC812BC0F1C871E00265C90 /* AdHoc.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDC812BB0F1C871E00265C90 /* AdHoc.plist */; };
+		CDCB7D2C11A79A4A003E56F7 /* SettingsChooseFromArray.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB7D2A11A79A4A003E56F7 /* SettingsChooseFromArray.m */; };
+		CDCB7D2D11A79A4A003E56F7 /* SettingsChooseFromArray.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCB7D2B11A79A4A003E56F7 /* SettingsChooseFromArray.xib */; };
+		CDCB7D9B11A7A748003E56F7 /* SettingsViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCB7D9A11A7A748003E56F7 /* SettingsViewContainer.xib */; };
+		CDCB7DA711A7A774003E56F7 /* SettingsViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB7DA611A7A774003E56F7 /* SettingsViewContainer.m */; };
 		CDCCFD8B0F1F0D1600F0ED08 /* PointsDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCCFD8A0F1F0D1600F0ED08 /* PointsDetailView.xib */; };
 		CDCCFD900F1F0F5C00F0ED08 /* PointsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */; };
 		CDCCFDD70F1F206D00F0ED08 /* SampleMap.png in Resources */ = {isa = PBXBuildFile; fileRef = CDCCFDD60F1F206D00F0ED08 /* SampleMap.png */; };
@@ -58,8 +68,12 @@
 		CDDA00030F49285700534DFD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CDDA00020F49285700534DFD /* Default.png */; };
 		CDDA007C0F49358200534DFD /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDA007B0F49358200534DFD /* Settings.m */; };
 		CDEB574C0F4537C5009E9F8E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDEB574B0F4537C5009E9F8E /* Icon.png */; };
-		CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEB578F0F454A74009E9F8E /* NSDateJSON.m */; };
 		CDED257F0F92D1D100EC66CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDED257E0F92D1D100EC66CB /* QuartzCore.framework */; };
+		CDF4A930121017CB0090BA15 /* 07-map-marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF4A92B121017CB0090BA15 /* 07-map-marker@2x.png */; };
+		CDF4A931121017CB0090BA15 /* 15-tags@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF4A92C121017CB0090BA15 /* 15-tags@2x.png */; };
+		CDF4A932121017CB0090BA15 /* 20-gear2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF4A92D121017CB0090BA15 /* 20-gear2@2x.png */; };
+		CDF4A933121017CB0090BA15 /* 71-compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF4A92E121017CB0090BA15 /* 71-compass@2x.png */; };
+		CDF4A934121017CB0090BA15 /* 72-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF4A92F121017CB0090BA15 /* 72-pin@2x.png */; };
 		CDF7D0FD0F47A3F100F59C34 /* PointsAddTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */; };
 		CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF7D1000F47A63500F59C34 /* PointsAddTags.m */; };
 		CDFF7D310F4D203C005479D6 /* GNAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFF7D300F4D203C005479D6 /* GNAttachment.m */; };
@@ -89,6 +103,9 @@
 		CD0646C9119E6D3A009B8405 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		CD0646F0119E8DF3009B8405 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CD06470D119E910E009B8405 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CD0647FB11A1767F009B8405 /* NSDateJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateJSON.m; sourceTree = "<group>"; };
+		CD1A1CAB120042AD00DE0A87 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CD1A1CAC120042AD00DE0A87 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		CD444CF40F1AFB0100A2934E /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		CD444CF50F1AFB0100A2934E /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		CD45A5BD0FED9B1700AF459A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -100,6 +117,10 @@
 		CD45A8480FEF001B00AF459A /* PointAttachmentImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointAttachmentImage.h; sourceTree = "<group>"; };
 		CD45A8490FEF001B00AF459A /* PointAttachmentImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointAttachmentImage.m; sourceTree = "<group>"; };
 		CD45A84A0FEF001B00AF459A /* PointAttachmentImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PointAttachmentImage.xib; path = Classes/PointAttachmentImage.xib; sourceTree = "<group>"; };
+		CD7A09C81205308100D8880A /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		CD7A09CD1205341F00D8880A /* SettingsAbout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAbout.h; sourceTree = "<group>"; };
+		CD7A09CE1205341F00D8880A /* SettingsAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAbout.m; sourceTree = "<group>"; };
+		CD7A09CF1205341F00D8880A /* SettingsAbout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsAbout.xib; sourceTree = "<group>"; };
 		CD7B921B0F4411C300A66996 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CDA482BD118EF27700A5A87F /* UIImageSizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageSizer.h; sourceTree = "<group>"; };
 		CDA482BE118EF27700A5A87F /* UIImageSizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageSizer.m; sourceTree = "<group>"; };
@@ -116,6 +137,12 @@
 		CDC812760F1C831000265C90 /* PointsViewHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsViewHome.m; sourceTree = "<group>"; };
 		CDC8129E0F1C84F900265C90 /* PointsViewHome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsViewHome.xib; sourceTree = "<group>"; };
 		CDC812BB0F1C871E00265C90 /* AdHoc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AdHoc.plist; sourceTree = "<group>"; };
+		CDCB7D2911A79A4A003E56F7 /* SettingsChooseFromArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsChooseFromArray.h; sourceTree = "<group>"; };
+		CDCB7D2A11A79A4A003E56F7 /* SettingsChooseFromArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsChooseFromArray.m; sourceTree = "<group>"; };
+		CDCB7D2B11A79A4A003E56F7 /* SettingsChooseFromArray.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsChooseFromArray.xib; path = Classes/SettingsChooseFromArray.xib; sourceTree = "<group>"; };
+		CDCB7D9A11A7A748003E56F7 /* SettingsViewContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewContainer.xib; sourceTree = "<group>"; };
+		CDCB7DA511A7A774003E56F7 /* SettingsViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewContainer.h; sourceTree = "<group>"; };
+		CDCB7DA611A7A774003E56F7 /* SettingsViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewContainer.m; sourceTree = "<group>"; };
 		CDCCFD8A0F1F0D1600F0ED08 /* PointsDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsDetailView.xib; sourceTree = "<group>"; };
 		CDCCFD8E0F1F0F5C00F0ED08 /* PointsDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsDetail.h; sourceTree = "<group>"; };
 		CDCCFD8F0F1F0F5C00F0ED08 /* PointsDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsDetail.m; sourceTree = "<group>"; };
@@ -142,10 +169,14 @@
 		CDDA007A0F49358200534DFD /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		CDDA007B0F49358200534DFD /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		CDEB574B0F4537C5009E9F8E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		CDEB578F0F454A74009E9F8E /* NSDateJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate\bJSON.m"; sourceTree = "<group>"; };
 		CDEB57900F454A74009E9F8E /* NSDateJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateJSON.h; sourceTree = "<group>"; };
 		CDED257C0F92D18A00EC66CB /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		CDED257E0F92D1D100EC66CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CDF4A92B121017CB0090BA15 /* 07-map-marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-map-marker@2x.png"; sourceTree = "<group>"; };
+		CDF4A92C121017CB0090BA15 /* 15-tags@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "15-tags@2x.png"; sourceTree = "<group>"; };
+		CDF4A92D121017CB0090BA15 /* 20-gear2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2@2x.png"; sourceTree = "<group>"; };
+		CDF4A92E121017CB0090BA15 /* 71-compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "71-compass@2x.png"; sourceTree = "<group>"; };
+		CDF4A92F121017CB0090BA15 /* 72-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72-pin@2x.png"; sourceTree = "<group>"; };
 		CDF7D0FC0F47A3F100F59C34 /* PointsAddTags.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsAddTags.xib; sourceTree = "<group>"; };
 		CDF7D0FF0F47A63500F59C34 /* PointsAddTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsAddTags.h; sourceTree = "<group>"; };
 		CDF7D1000F47A63500F59C34 /* PointsAddTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsAddTags.m; sourceTree = "<group>"; };
@@ -204,7 +235,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				CD45A5BD0FED9B1700AF459A /* MapKit.framework */,
 			);
 			name = GeoNoter;
 			sourceTree = "<group>";
@@ -221,6 +251,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD7A09C81205308100D8880A /* Credits.html */,
 				CDED257C0F92D18A00EC66CB /* Three20.bundle */,
 				CDDA00080F4929C200534DFD /* Images */,
 				CDC8129A0F1C84B600265C90 /* Points */,
@@ -228,6 +259,8 @@
 				CDC811BE0F1C68B700265C90 /* Trips */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				CDD0F79A0F1AA4E800BBBBAA /* SettingsView.xib */,
+				CDCB7D2B11A79A4A003E56F7 /* SettingsChooseFromArray.xib */,
+				CDCB7D9A11A7A748003E56F7 /* SettingsViewContainer.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				CDC812BB0F1C871E00265C90 /* AdHoc.plist */,
 			);
@@ -245,6 +278,7 @@
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
 				CD0646F0119E8DF3009B8405 /* AssetsLibrary.framework */,
 				CD06470D119E910E009B8405 /* MessageUI.framework */,
+				CD45A5BD0FED9B1700AF459A /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -292,12 +326,11 @@
 		CDC811D10F1C691100265C90 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CDCB7D2711A799E0003E56F7 /* Settings */,
 				CD064648119E617D009B8405 /* Custom Views */,
 				CDC8126F0F1C82BA00265C90 /* Points */,
 				CDC811D20F1C692100265C90 /* Tags */,
 				CDC811D00F1C690500265C90 /* Trips */,
-				CDDA007A0F49358200534DFD /* Settings.h */,
-				CDDA007B0F49358200534DFD /* Settings.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -347,6 +380,22 @@
 			name = Points;
 			sourceTree = "<group>";
 		};
+		CDCB7D2711A799E0003E56F7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CD7A09CD1205341F00D8880A /* SettingsAbout.h */,
+				CD7A09CE1205341F00D8880A /* SettingsAbout.m */,
+				CD7A09CF1205341F00D8880A /* SettingsAbout.xib */,
+				CDDA007A0F49358200534DFD /* Settings.h */,
+				CDDA007B0F49358200534DFD /* Settings.m */,
+				CDCB7D2911A79A4A003E56F7 /* SettingsChooseFromArray.h */,
+				CDCB7D2A11A79A4A003E56F7 /* SettingsChooseFromArray.m */,
+				CDCB7DA511A7A774003E56F7 /* SettingsViewContainer.h */,
+				CDCB7DA611A7A774003E56F7 /* SettingsViewContainer.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		CDD6DF0D0F1ABC93003880D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +428,13 @@
 		CDDA00080F4929C200534DFD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CDF4A92B121017CB0090BA15 /* 07-map-marker@2x.png */,
+				CDF4A92C121017CB0090BA15 /* 15-tags@2x.png */,
+				CDF4A92D121017CB0090BA15 /* 20-gear2@2x.png */,
+				CDF4A92E121017CB0090BA15 /* 71-compass@2x.png */,
+				CDF4A92F121017CB0090BA15 /* 72-pin@2x.png */,
+				CD1A1CAB120042AD00DE0A87 /* Default@2x.png */,
+				CD1A1CAC120042AD00DE0A87 /* Icon@2x.png */,
 				CD0646C9119E6D3A009B8405 /* gear.png */,
 				CD06469F119E6C07009B8405 /* 20-gear2.png */,
 				CD0646C5119E6CD1009B8405 /* 15-tags.png */,
@@ -393,7 +449,7 @@
 		CDEB578E0F454A68009E9F8E /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				CDEB578F0F454A74009E9F8E /* NSDateJSON.m */,
+				CD0647FB11A1767F009B8405 /* NSDateJSON.m */,
 				CDEB57900F454A74009E9F8E /* NSDateJSON.h */,
 				CD45A7240FEDC7DD00AF459A /* NSStringUUID.h */,
 				CD45A7250FEDC7DD00AF459A /* NSStringUUID.m */,
@@ -431,7 +487,11 @@
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GeoNoter" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* GeoNoter */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -466,6 +526,17 @@
 				CD0646C4119E6CC7009B8405 /* 07-map-marker.png in Resources */,
 				CD0646C6119E6CD1009B8405 /* 15-tags.png in Resources */,
 				CD0646CA119E6D3A009B8405 /* gear.png in Resources */,
+				CDCB7D2D11A79A4A003E56F7 /* SettingsChooseFromArray.xib in Resources */,
+				CDCB7D9B11A7A748003E56F7 /* SettingsViewContainer.xib in Resources */,
+				CD1A1CAD120042AD00DE0A87 /* Default@2x.png in Resources */,
+				CD1A1CAE120042AD00DE0A87 /* Icon@2x.png in Resources */,
+				CD7A09C91205308200D8880A /* Credits.html in Resources */,
+				CD7A09D11205341F00D8880A /* SettingsAbout.xib in Resources */,
+				CDF4A930121017CB0090BA15 /* 07-map-marker@2x.png in Resources */,
+				CDF4A931121017CB0090BA15 /* 15-tags@2x.png in Resources */,
+				CDF4A932121017CB0090BA15 /* 20-gear2@2x.png in Resources */,
+				CDF4A933121017CB0090BA15 /* 71-compass@2x.png in Resources */,
+				CDF4A934121017CB0090BA15 /* 72-pin@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +564,6 @@
 				CDC812770F1C831000265C90 /* PointsViewHome.m in Sources */,
 				CDCCFD900F1F0F5C00F0ED08 /* PointsDetail.m in Sources */,
 				CDCCFDE70F1F234B00F0ED08 /* MapViewCell.m in Sources */,
-				CDEB57910F454A74009E9F8E /* NSDateJSON.m in Sources */,
 				CDF7D1010F47A63500F59C34 /* PointsAddTags.m in Sources */,
 				CDDA007C0F49358200534DFD /* Settings.m in Sources */,
 				CDFF7D310F4D203C005479D6 /* GNAttachment.m in Sources */,
@@ -503,6 +573,10 @@
 				CDA482BF118EF27700A5A87F /* UIImageSizer.m in Sources */,
 				CD0645AA119E4AEB009B8405 /* MBProgressHUD.m in Sources */,
 				CD06464B119E618D009B8405 /* TextAlertView.m in Sources */,
+				CD0647FC11A1767F009B8405 /* NSDateJSON.m in Sources */,
+				CDCB7D2C11A79A4A003E56F7 /* SettingsChooseFromArray.m in Sources */,
+				CDCB7DA711A7A774003E56F7 /* SettingsViewContainer.m in Sources */,
+				CD7A09D01205341F00D8880A /* SettingsAbout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +626,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../three20/src;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
@@ -560,6 +634,7 @@
 				PRODUCT_NAME = Geonoter;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.0;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -567,14 +642,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Patrick F Quinn-Graham";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../three20/src;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = Geonoter;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "182C90AF-6B41-4C4F-87B0-BDBE234889AF";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos4.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -584,13 +662,15 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../three20/src;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = Geonoter;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = "Ad Hoc";
 		};
