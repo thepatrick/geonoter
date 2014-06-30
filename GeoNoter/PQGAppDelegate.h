@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class PersistStore;
+
 @interface PQGAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic, retain) PersistStore *store;
+
 
 @end

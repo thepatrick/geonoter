@@ -7,13 +7,40 @@
 //
 
 #import "PQGAppDelegate.h"
+#import "PersistStore.h"
+
+#import "GeoNoter-Swift.h"
 
 @implementation PQGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+  
+  [[NSUserDefaults standardUserDefaults] registerDefaults:@{
+    GNLocationsDefaultsUseGeocoder: @(YES),
+    GNLocationsDefaultsDefaultName: GNLocationsDefaultNameMostSpecific
+  }];
+  
+  // Add the tab bar controller's current view as a subview of the window
+  
+  self.window.backgroundColor = [UIColor whiteColor];
+  
+  self.store = [PersistStore storeWithFile:[PersistStore pathForResource:@"geonoter.db"]];
+  
+  NSError *error = [[PQGLocationHelper sharedHelper] requestIfNotYetDone];
+  if(error) {
+    NSLog(@"error! %@", error);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:error.localizedDescription message:@"You will not be able to add points at this time" preferredStyle:UIAlertControllerStyleAlert];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:^{
+      NSLog(@"presented mate!");
+    }];
+  } else {
+    NSLog(@"MOO %d", [[PQGLocationHelper sharedHelper] status]);
+    
+    [[[CLLocationManager alloc] init] requestWhenInUseAuthorization];
+  }
+  
+  return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
