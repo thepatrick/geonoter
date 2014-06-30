@@ -13,7 +13,7 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
   var point : GNPoint!
   
   var tags = Tag[]()
-  var chosenTags = Tag[]()
+  var chosenTags = Dictionary<Int, Tag>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,39 +26,26 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
-//  -(void)reloadData
-//  {
-//  GeoNoterAppDelegate *del = (GeoNoterAppDelegate*)[[UIApplication sharedApplication] delegate];
-//  self.tags = [del.store getAllTags];
-//  if(!chosenTags) {
-//		chosenTags = [[NSMutableArray arrayWithCapacity:[tags count]] retain];
-//		[chosenTags addObjectsFromArray:[point tags]];
-//  }
-//  [self.dataTable reloadData];
-//  }
-//  
-//  
-//  -(void)viewWillAppear:(BOOL)animated
-//  {
-//  [self reloadData];
-//  NSLog(@"tags: %@", tags);
-//  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    reloadData()
+  }
+  
+  func refreshSourceData() {
+    self.tags = point.store.getAllTags() as Array<Tag>
+    
+    chosenTags.removeAll(keepCapacity: false)
+    
+    let pointTags = point.tags() as Array<Tag>
+    for tag in pointTags {
+      chosenTags[tag.dbId.integerValue] = tag
+    }
+  }
   
   func reloadData() {
-    let myTags = point.store.getAllTags() as Array
-    
-    
-    var intTags : Tag?[] = myTags.map { (object: AnyObject!) -> Tag? in
-      nil
-    }
-    
-    
-//    for tag in myTags {
-//      if let tag = tag as? Tag {
-//        intTags += tag
-//      }
-//    }
+    refreshSourceData()
+    self.tableView.reloadData()
   }
   
   // #pragma mark - Table view data source
@@ -68,19 +55,38 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
   }
 
   override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0
+    return tags.count
   }
 
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
     let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
 
     // Configure the cell...
-
+    
+    let tag = tags[indexPath.row].hydrate()
+    
+    cell.textLabel.text = tag.name
+    if chosenTags[tag.dbId.integerValue] != nil {
+      cell.accessoryType = .Checkmark
+    } else {
+      cell.accessoryType = .None
+    }
+    
     return cell
   }
 
+  override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    let tag = tags[indexPath.row].hydrate()
+    if chosenTags[tag.dbId.integerValue] != nil {
+      point.removeTag(tag)
+    } else {
+      point.addTag(tag)
+    }
+    self.reloadData()
+    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Middle)
+  }
+  
   /*
   // #pragma mark - Navigation
 
