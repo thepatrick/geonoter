@@ -46,6 +46,8 @@
 - (void)save;
 
 - (NSArray*)tags;
+- (void)addTag:(Tag*)tag;
+- (void)removeTag:(Tag*)tag;
 - (void)setTags:(NSArray*)newTags;
 
 - (NSArray*)attachments;

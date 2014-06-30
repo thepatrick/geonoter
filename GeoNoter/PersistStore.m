@@ -408,7 +408,7 @@
 	[self.centralTagStore removeObjectForKey:@(tagId)];
 }
 
--(NSMutableArray*)getTagsWithConditions:(NSString*)conditions andSort:(NSString*)sort
+-(NSArray*)getTagsWithConditions:(NSString*)conditions andSort:(NSString*)sort
 {
 	[dbLock lock];
 	NSMutableArray *array = [NSMutableArray array];
@@ -424,12 +424,12 @@
 	}
 	[dbLock unlock];
 	
-	return array;
+	return [NSArray arrayWithArray:array];
 }
 
 
 
--(NSMutableArray*)getAllTags
+-(NSArray*)getAllTags
 {
 	return [self getTagsWithConditions:nil andSort:nil];
 }
@@ -567,10 +567,16 @@
 	return thePoint;
 }
 
--(void)removeTagFromPoint:(NSInteger)pointId
+-(void)removeTag:(NSInteger)tagId fromPoint:(NSInteger)pointId {
+  [dbLock lock];
+  [self.db performQueryWithFormat:@"DELETE FROM point_tag WHERE point_id = %ld and tag_id = %ld", (long)pointId, (long)tagId];
+  [dbLock unlock];
+}
+
+-(void)removeTagsFromPoint:(NSInteger)pointId
 {
 	[dbLock lock];
-	[self.db performQueryWithFormat:@"DELETE FROM point_tag WHERE point_id = %d", pointId];
+	[self.db performQueryWithFormat:@"DELETE FROM point_tag WHERE point_id = %ld", (long)pointId];
 	[dbLock unlock];
 }
 

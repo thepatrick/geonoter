@@ -155,17 +155,24 @@
 	return [self.store getTagsWithConditions:cond andSort:@"name ASC"];
 }
 
+-(void)addTag:(Tag*)tag {
+  DLog(@"Adding new tag... %ld", (long)tag.dbId.integerValue);
+  [self.store addTag:tag.dbId.integerValue toPoint:self.dbId.integerValue];
+}
+
+-(void)removeTag:(Tag*)tag {
+  DLog(@"Removing exist tag... %ld", (long)tag.dbId.integerValue);
+  [self.store removeTag:tag.dbId.integerValue fromPoint:self.dbId.integerValue];
+}
 
 -(void)setTags:(NSArray*)newTags {
 	DLog(@"Removing existing tags...");
-	[self.store removeTagFromPoint:[self.dbId integerValue]];
+	[self.store removeTagsFromPoint:[self.dbId integerValue]];
 	for(Tag *t in newTags) {
 		DLog(@"Adding tag tag... %@", t);
-		DLog(@"Using store %@", self.store);
-		[self.store addTag:[t.dbId integerValue] toPoint:[self.dbId integerValue]];
+    [self addTag:t];
 	}
 }
-
 
 -(NSArray*)attachments {
 	NSString *cond = [NSString stringWithFormat:@"point_id = %ld", [self.dbId longValue]];

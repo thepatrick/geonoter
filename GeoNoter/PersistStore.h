@@ -49,8 +49,8 @@
 - (BOOL)insertOrUpdateTag:(Tag*)tag;
 - (void)deleteTagFromStore:(NSInteger)tagId;
 - (void)removeTagFromCache:(NSInteger)tagId;
-- (NSMutableArray*)getTagsWithConditions:(NSString*)conditions andSort:(NSString*)sort;
-- (NSMutableArray*)getAllTags;
+- (NSArray*)getTagsWithConditions:(NSString*)conditions andSort:(NSString*)sort;
+- (NSArray*)getAllTags;
 - (Tag*)getTag:(NSInteger)tagId;
 
 
@@ -61,7 +61,8 @@
 - (NSArray*)getPointsWithConditions:(NSString*)conditions andSort:(NSString*)sort;
 - (NSArray*)getAllPoints;
 - (GNPoint*)getPoint:(NSInteger)pointId;
-- (void)removeTagFromPoint:(NSInteger)pointId;
+- (void)removeTag:(NSInteger)tagId fromPoint:(NSInteger)pointId;
+- (void)removeTagsFromPoint:(NSInteger)pointId;
 - (void)addTag:(NSInteger)tagId toPoint:(NSInteger)pointId;
 
 #pragma mark - Attachments
