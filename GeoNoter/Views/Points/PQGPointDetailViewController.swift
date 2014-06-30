@@ -275,7 +275,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   func manageTags(action: UIAlertAction!) {
-    
+    performSegueWithIdentifier("editTagsSegue", sender: self)
   }
   
   func takePhoto(action: UIAlertAction!) {
