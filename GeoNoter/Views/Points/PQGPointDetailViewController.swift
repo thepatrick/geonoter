@@ -259,6 +259,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   @IBAction func actionButtonPressed(sender: UIBarButtonItem) {
     let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    sheet.addAction(UIAlertAction(title: "Delete Point", style: UIAlertActionStyle.Destructive, handler: deletePoint))
     sheet.addAction(UIAlertAction(title: "Manage Tags", style: UIAlertActionStyle.Default, handler: manageTags))
     
     if UIImagePickerController.isSourceTypeAvailable(.Camera) {
@@ -269,7 +270,6 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       sheet.addAction(UIAlertAction(title: "Add Existing Photo", style: UIAlertActionStyle.Default, handler: addPhoto))
     }
     
-    sheet.addAction(UIAlertAction(title: "Delete Point", style: UIAlertActionStyle.Destructive, handler: deletePoint))
     sheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
     self.presentViewController(sheet, animated: true, completion: nil)
   }
