@@ -25,14 +25,15 @@
 }
 
 
-@property (nonatomic, copy) NSNumber *dbId;
-@property (nonatomic, assign) NSInteger pointId;
-@property (nonatomic, copy) NSString *friendlyName;
-@property (nonatomic, copy) NSString *kind;
-@property (nonatomic, copy) NSString *memo;
-@property (nonatomic, copy) NSString *fileName;
-@property (nonatomic, copy) NSDate *recordedAt;
-@property (nonatomic, retain) PersistStore *store;
+@property (nonatomic, copy)     NSNumber *dbId;
+@property (nonatomic, assign)   NSInteger pointId;
+@property (nonatomic, copy)     NSString *friendlyName;
+@property (nonatomic, copy)     NSString *kind;
+@property (nonatomic, copy)     NSString *memo;
+@property (nonatomic, copy)     NSString *fileName;
+@property (nonatomic, copy)     NSDate *recordedAt;
+@property (nonatomic, retain)   PersistStore *store;
+@property (nonatomic, readonly) NSData *data;
 
 +attachment;
 

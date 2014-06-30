@@ -146,4 +146,8 @@
 	[[NSFileManager defaultManager] removeItemAtPath:[[self filesystemPath] stringByAppendingString:@".cached.jpg"] error:nil];
 }
 
+- (NSData*)data {
+  return [NSData dataWithContentsOfFile:self.filesystemPath];
+}
+
 @end
