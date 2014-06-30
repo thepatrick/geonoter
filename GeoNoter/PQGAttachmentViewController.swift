@@ -7,19 +7,16 @@
 //
 
 import UIKit
+import MessageUI
+import AssetsLibrary
 
 //@interface PointAttachmentImage : UIViewController<UIScrollViewDelegate, MBProgressHUDDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 //  MBProgressHUD *HUD;
 //  BOOL firstLoad;
 //}
-//
-//-(void)actionSheetDeleteMe;
-//-(void)actionSheetSendEmail;
-//-(void)actionSheetSaveToRoll;
-//-(void)actionSheetRenameMe;
 
 
-class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate {
+class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMailComposeViewControllerDelegate {
   
   var attachment : GNAttachment!
   
@@ -146,7 +143,49 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate {
     centerScrollViewContents()
   }
   
+  // #pragma mark - Action Button
+  
   @IBAction func actionPressed(sender : AnyObject) {
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: actionSheetDeleteMe))
+    if MFMailComposeViewController.canSendMail() {
+      alert.addAction(UIAlertAction(title: "Email Photo", style: .Default, handler: actionSheetSendEmail))
+    }
+    alert.addAction(UIAlertAction(title: "Save to Camera Roll", style: .Default, handler: actionSheetSaveToRoll))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+    presentViewController(alert, animated: true, completion: nil)
   }
   
+  func actionSheetDeleteMe(action: UIAlertAction!) {
+    attachment.deleteAttachment()
+    navigationController.popViewControllerAnimated(true)
+  }
+  
+  func actionSheetSendEmail(action: UIAlertAction!) {
+    let composer = MFMailComposeViewController()
+    composer.mailComposeDelegate = self
+    composer.setSubject(attachment.friendlyName)
+    composer.addAttachmentData(attachment.data, mimeType: "image/jpg", fileName: attachment.fileName)
+    presentViewController(composer, animated: true, completion: nil)
+  }
+  
+  func actionSheetSaveToRoll(action: UIAlertAction!) {
+    ALAssetsLibrary().writeImageDataToSavedPhotosAlbum(attachment.data, metadata: [:]) {
+      url, error in
+      if error != nil {
+        let alert = UIAlertController(title: "Your photo could not be saved to the photo roll.", message: error.localizedDescription, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+      } else {
+        NSLog("Saved to %@", url)
+      }
+    }
+  }
+  
+  // #pragma mark Email stuff
+
+  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError) {
+    controller.dismissViewControllerAnimated(true, completion: nil)
+  }
+
 }
