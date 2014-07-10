@@ -10,9 +10,9 @@
 
 @implementation UIImage(Sizer)
 
-- (UIImage*)pqg_scaleandRotateImageWithMinimimSideLength:(int)minSize {
+- (UIImage*)pqg_scaleandRotateImageWithMinimimSideLength:(NSInteger)minSize {
 	
-	int kMaxResolution = minSize; // Or whatever
+    NSInteger kMaxResolution = minSize; // Or whatever
 	
     CGImageRef imgRef = self.CGImage;
 	
@@ -119,9 +119,9 @@
 	
 }
 
-- (UIImage*)pqg_scaleAndRotateImage:(int)maxSize {
+- (UIImage*)pqg_scaleAndRotateImage:(NSInteger)maxSize {
 
-	int kMaxResolution = maxSize; // Or whatever
+    NSInteger kMaxResolution = maxSize; // Or whatever
 	
     CGImageRef imgRef = self.CGImage;
 	

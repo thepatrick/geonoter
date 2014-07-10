@@ -11,7 +11,7 @@
 
 @interface UIImage(Sizer)
 
-- (UIImage*)pqg_scaleAndRotateImage:(int)maxSize;
-- (UIImage*)pqg_scaleandRotateImageWithMinimimSideLength:(int)minSize;
+- (UIImage*)pqg_scaleAndRotateImage:(NSInteger)maxSize;
+- (UIImage*)pqg_scaleandRotateImageWithMinimimSideLength:(NSInteger)minSize;
 
 @end

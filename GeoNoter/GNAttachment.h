@@ -35,17 +35,19 @@
 @property (nonatomic, retain)   PersistStore *store;
 @property (nonatomic, readonly) NSData *data;
 
-+attachment;
++ (instancetype)attachment;
 
-+attachmentWithPrimaryKey:(NSInteger)theID andStore:(PersistStore*)newStore;
--initWithPrimaryKey:(NSInteger)theID andStore:(PersistStore*)newStore;
++ (instancetype)attachmentWithPrimaryKey:(NSInteger)theID andStore:(PersistStore*)newStore;
+- (instancetype)initWithPrimaryKey:(NSInteger)theID andStore:(PersistStore*)newStore;
 
--hydrate;
--(void)dehydrate;
--(void)save;
+- (instancetype)hydrate;
+- (void)dehydrate;
+- (void)save;
 
--(NSString*)filesystemPath;
+- (NSString*)filesystemPath;
 
--(void)deleteAttachment;
+- (void)deleteAttachment;
+
+- (UIImage*)loadCachedImageForSize:(NSInteger)largestSide;
 
 @end

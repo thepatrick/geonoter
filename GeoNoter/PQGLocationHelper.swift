@@ -104,7 +104,7 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
   // mark - CoreLocation Interface
   
   func locationManager(manager: CLLocationManager!,
-    didUpdateLocations locations: AnyObject[]!) {
+    didUpdateLocations locations: [AnyObject]!) {
     let newLocation = locations[0] as CLLocation
     if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
       NSLog("Received new location info: %@", newLocation);
@@ -123,13 +123,13 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
     }
   }
   
-  func geocode(location : CLLocation, completionHandler: ((CLPlacemark[]?, NSError?)->())!) {
+  func geocode(location : CLLocation, completionHandler: (([CLPlacemark]?, NSError?)->())!) {
     let geo = CLGeocoder()
     geo.reverseGeocodeLocation(location) {
       places, error in
       if error {
         completionHandler(nil, error)
-      } else if let placesInternal = places as? CLPlacemark[] {
+      } else if let placesInternal = places as? [CLPlacemark] {
         completionHandler(placesInternal, nil)
       } else {
         assert(false, "Error is nil, but places is not an array of CLPlacemark objects, this is quite unexpected");

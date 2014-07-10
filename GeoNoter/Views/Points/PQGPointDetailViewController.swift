@@ -32,8 +32,8 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
 
   var store: PersistStore!
   
-  var tagCache: Tag[]?
-  var attachmentCache: GNAttachment[]?
+  var tagCache: [Tag]?
+  var attachmentCache: [GNAttachment]?
 
   var point: GNPoint! {
   didSet {
@@ -41,23 +41,23 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   }
   
-  var tags: Tag[] {
-    if tagCache == nil {
-      if let newTags = point.tags() as? Tag[] {
+  var tags: [Tag] {
+    if !tagCache {
+      if let newTags = point.tags() as? [Tag] {
         tagCache = newTags
       } else {
-        return Tag[]()
+        return [Tag]()
       }
     }
     return tagCache!
   }
   
-  var attachments: GNAttachment[] {
-    if attachmentCache == nil {
-      if let newAttachments = point.attachments() as? GNAttachment[] {
+  var attachments: [GNAttachment] {
+    if !attachmentCache {
+      if let newAttachments = point.attachments() as? [GNAttachment] {
         attachmentCache = newAttachments
       } else {
-        return GNAttachment[]()
+        return [GNAttachment]()
       }
     }
     return attachmentCache!
@@ -281,7 +281,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   func takePhoto(action: UIAlertAction!) {
     let picker = UIImagePickerController()
     picker.sourceType = .Camera
-    picker.allowsImageEditing = false
+    picker.allowsEditing = false
     picker.delegate = self
     navigationController.presentViewController(picker, animated: true, completion: nil)
   }
@@ -289,7 +289,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   func addPhoto(action: UIAlertAction!) {
     let picker = UIImagePickerController()
     picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-    picker.allowsImageEditing = false
+    picker.allowsEditing = false
     picker.delegate = self
     navigationController.presentViewController(picker, animated: true, completion: nil)
   }

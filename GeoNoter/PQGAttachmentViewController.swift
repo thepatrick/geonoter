@@ -15,12 +15,11 @@ import AssetsLibrary
 //  BOOL firstLoad;
 //}
 
-
 class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMailComposeViewControllerDelegate {
   
   var attachment : GNAttachment!
   
-  var initialZoomLevel : Float = 0
+  var initialZoomLevel : CGFloat = 0
   
   let queue = dispatch_queue_create("cacheQueue", DISPATCH_QUEUE_CONCURRENT)
   
@@ -48,29 +47,11 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   // #pragma mark - Image handling
   
-  func loadCachedImage(path: String) -> UIImage {
-    let cachedPath = PersistStore.attachmentCacheURL(path.lastPathComponent)
-    if NSFileManager.defaultManager().fileExistsAtPath(cachedPath.path) {
-      let image = UIImage(contentsOfFileURL: cachedPath)
-      NSLog("Loaded %@ from cache %@", path, cachedPath)
-      return image
-    } else {
-      let image = UIImage(contentsOfFile: path)
-      NSLog("img: %f x %f", image.size.width, image.size.height)
-      let image2 = image.pqg_scaleAndRotateImage(1024)
-      NSLog("img: %f x %f", image2.size.width, image2.size.height)
-      let data = UIImageJPEGRepresentation(image2, 1.0)
-      data.writeToURL(cachedPath, atomically: true)
-      NSLog("Wrote %@ to cache %@", path, cachedPath)
-      return image2
-    }
-  }
   
   func loadImage() {
-    let full = attachment.filesystemPath()
-    
+    let attachment = self.attachment
     dispatch_async(queue) {
-      let image = self.loadCachedImage(full)
+      let image = attachment.loadCachedImageForSize(1024)
       
       dispatch_async(dispatch_get_main_queue()) {
         let imageView = UIImageView(image: image)

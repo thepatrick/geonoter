@@ -12,10 +12,10 @@ class PQGPointsViewController: UITableViewController {
   
   @IBOutlet var addButton : UIBarButtonItem
   
-  var datasourceFetchAll : (() -> (GNPoint[]))?
+  var datasourceFetchAll : (() -> ([GNPoint]))?
   var datasourceCreatedNewPoint : ((GNPoint) -> ())?
   
-  var points = GNPoint[]()
+  var points = [GNPoint]()
 
   init(coder: NSCoder?) {
     super.init(coder: coder)

@@ -9,22 +9,20 @@
 #import "SQLDatabase.h"
 #import "PersistStore.h"
 #import "GNAttachment.h"
-
+#import "UIImageContentsOfFileURL.h"
+#import "UIImageSizer.h"
 
 @implementation GNAttachment
 
-+ (instancetype)attachment
-{
++ (instancetype)attachment {
   return [[[self class] alloc] init];
 }
 
-+ (instancetype)attachmentWithPrimaryKey:(NSInteger)theID andStore:(PersistStore *)newStore
-{
++ (instancetype)attachmentWithPrimaryKey:(NSInteger)theID andStore:(PersistStore *)newStore {
   return [[[self class] alloc] initWithPrimaryKey:theID andStore:newStore];
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
   if(self = [super init]) {
 		dirty = NO;
 		hydrated = NO;
@@ -32,8 +30,7 @@
 	return self;
 }
 
-- (instancetype)initWithPrimaryKey:(NSInteger)theID andStore:(PersistStore *)newStore
-{
+- (instancetype)initWithPrimaryKey:(NSInteger)theID andStore:(PersistStore *)newStore {
 	if(self = [super init]) {
 		self.dbId = @(theID);
 		self.store = newStore;
@@ -43,13 +40,11 @@
 	return self;
 }
 
--(NSString *)description
-{
+- (NSString *)description {
 	return [NSString stringWithFormat:@"<%@> ID: '%@'. File Name: '%@'. Name: '%@'. Point: %ld", [self class], self.dbId, self.fileName, self.friendlyName, (long)self.pointId];
 }
 
--hydrate
-{
+- (instancetype)hydrate {
 	if(self.dbId == nil || hydrated) {
 		return self; // we're not going to hydrate in this situation, it's unncessary!
 	}
@@ -73,8 +68,7 @@
 	return self;
 }
 
--(void)dehydrate
-{
+-(void)dehydrate {
 	if(!hydrated) return; // no point wasting time
 	
 	if(self.dbId == nil) {
@@ -92,46 +86,39 @@
 	hydrated = NO;
 }
 
--(void)save
-{
+-(void)save {
 	if(dirty) {
 		[self.store insertOrUpdateAttachment:self];
 		dirty = NO;
 	}	
 }
 
--(void)setPointId:(NSInteger)newValue
-{
+-(void)setPointId:(NSInteger)newValue {
 	_pointId = newValue;
 	dirty = YES;	
 }
 
--(void)setFriendlyName:(NSString*)newValue
-{
+-(void)setFriendlyName:(NSString*)newValue {
 	_friendlyName = [newValue copy];
 	dirty = YES;	
 }
 
--(void)setFileName:(NSString*)newValue
-{
+-(void)setFileName:(NSString*)newValue {
 	_fileName = [newValue copy];
 	dirty = YES;	
 }
 
--(void)setKind:(NSString*)newValue
-{
+-(void)setKind:(NSString*)newValue {
 	_kind = [newValue copy];
 	dirty = YES;	
 }
 
--(void)setMemo:(NSString*)newValue
-{
+-(void)setMemo:(NSString*)newValue {
 	_memo = [newValue copy];
 	dirty = YES;	
 }
 
--(void)setRecordedAt:(NSDate*)newValue
-{
+-(void)setRecordedAt:(NSDate*)newValue {
 	_recordedAt = [newValue copy];
 	dirty = YES;	
 }
@@ -148,6 +135,24 @@
 
 - (NSData*)data {
   return [NSData dataWithContentsOfFile:self.filesystemPath];
+}
+
+- (UIImage*)loadCachedImageForSize:(NSInteger)largestSide {
+  NSURL *cachedPath = [PersistStore attachmentCacheURL:[NSString stringWithFormat:@"%ld-%@", largestSide, self.fileName]];
+  if([[NSFileManager defaultManager] fileExistsAtPath:cachedPath.path]) {
+    UIImage *cachedImage = [[UIImage alloc] initWithContentsOfFileURL:cachedPath];
+    NSLog(@"Loaded %@ from cache %@", self.fileName, cachedPath);
+    return cachedImage;
+  } else {
+    UIImage *original = [UIImage imageWithContentsOfFile:self.filesystemPath];
+    NSLog(@"img: %f x %f", original.size.width, original.size.height);
+    UIImage *newCachedImage = [original pqg_scaleAndRotateImage:largestSide];
+    NSLog(@"img: %f x %f", newCachedImage.size.width, newCachedImage.size.height);
+    NSData *data = UIImageJPEGRepresentation(newCachedImage, 1.0);
+    [data writeToURL:cachedPath atomically:YES];
+    NSLog(@"Wrote %@ to cache %@", self.fileName, cachedPath);
+    return newCachedImage;
+  }
 }
 
 @end

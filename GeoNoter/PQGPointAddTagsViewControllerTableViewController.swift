@@ -12,7 +12,7 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
   
   var point : GNPoint!
   
-  var tags = Tag[]()
+  var tags = [Tag]()
   var chosenTags = Dictionary<Int, Tag>()
   
   override func viewDidLoad() {
