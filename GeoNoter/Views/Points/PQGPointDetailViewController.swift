@@ -130,8 +130,17 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       return cell
     } else {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as PQGCell
-      cell.textLabel.text = tags[indexPath.row].hydrate().name
+
+      NSLog("Cell %@", cell)
+      NSLog("Cell %@", cell.textLabel)
+      
+      let tag = tags[indexPath.row]
+      tag.hydrate()
+      let boo = tag.name
+      NSLog("boo is %@", boo)
+      cell.textLabel.text = boo
       cell.textLabel.textColor = UIColor.blackColor()
+      
       return cell
     }
   }

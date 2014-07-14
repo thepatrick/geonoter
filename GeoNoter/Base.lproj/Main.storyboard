@@ -67,24 +67,53 @@
         <!--Tags-->
         <scene sceneID="3ee-88-Biw">
             <objects>
-                <tableViewController id="uA2-rH-2TX" sceneMemberID="viewController">
+                <tableViewController id="uA2-rH-2TX" customClass="PQGTagsTableViewController" customModule="GeoNoter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cS6-4v-uCA">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="2Fz-TK-lbs">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZz-1W-wSf">
+                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="uA2-rH-2TX" id="HbD-Ti-Son"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tagCell" id="BKM-4v-aKY">
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tagCell" textLabel="fZi-fW-84o" style="IBUITableViewCellStyleDefault" id="BKM-4v-aKY">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BKM-4v-aKY" id="MDx-s2-7PE">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Tag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fZi-fW-84o">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="HVH-NQ-aZ8" kind="push" identifier="pushToTagPoints" id="oYX-7G-xRW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Tags" id="kaX-mv-dTe"/>
+                    <connections>
+                        <outlet property="newTagName" destination="CZz-1W-wSf" id="7a8-4w-sHO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Hd-iQ-vqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -231,7 +260,7 @@
         <!--Tags-->
         <scene sceneID="7a1-3I-amq">
             <objects>
-                <navigationController definesPresentationContext="YES" id="UcL-nn-oNU" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="UcL-nn-oNU" customClass="PQGTagsViewController" customModule="GeoNoter" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Tags" image="15-tags" id="M71-0z-fLM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zpT-i5-UWJ">
@@ -383,6 +412,9 @@
                                     <constraint firstAttribute="bottom" secondItem="q3k-sH-7KV" secondAttribute="bottom" constant="13" id="idh-c0-3ww"/>
                                 </constraints>
                                 <size key="customSize" width="320" height="46"/>
+                                <connections>
+                                    <outlet property="textLabel" destination="q3k-sH-7KV" id="GXt-re-Vxg"/>
+                                </connections>
                             </collectionViewCell>
                             <collectionViewCell appearanceType="aqua" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="attachmentCell" id="tPo-oP-aCB" customClass="PQGCell">
                                 <rect key="frame" x="0.0" y="114" width="320" height="80"/>
@@ -548,4 +580,7 @@
             <size key="landscapeSize" width="568" height="320"/>
         </simulatedScreenMetrics>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="oYX-7G-xRW"/>
+    </inferredMetricsTieBreakers>
 </document>

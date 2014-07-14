@@ -37,6 +37,11 @@
                BlueprintName = "GeoNoterTests"
                ReferencedContainer = "container:GeoNoter.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "PQGPersistStoreTrips">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

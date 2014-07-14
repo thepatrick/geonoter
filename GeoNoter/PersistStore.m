@@ -8,7 +8,6 @@
 
 #import "SQLDatabase.h"
 #import "PersistStore.h"
-#import "Trip.h"
 #import "Tag.h"
 #import "GNPoint.h"
 #import "GNAttachment.h"
@@ -238,111 +237,6 @@
     [dbLock lock];
     block();
     [dbLock unlock];
-}
-
-#pragma mark -
-#pragma mark Trips
-
--(NSInteger)insertTrip:(Trip*)trip
-{	
-	NSString *sql = [NSString stringWithFormat:@"INSERT INTO trip (id, name, start, end) VALUES (%@, '%@', '%@', '%@')",
-					 @"NULL",
-					 [SQLDatabase prepareStringForQuery:trip.name],
-					 [trip.start pqg_sqlDateString],
-					 [trip.end pqg_sqlDateString]];
-	DLog(@"insertTrip: SQL: %@", sql);
-    __block NSInteger newTripID;
-    [self lock:^{
-        [self.db performQuery:sql];
-        SQLResult *res = [self.db performQueryWithFormat:@"SELECT max(id) FROM trip"];
-        if(!res) {
-            [self.db performQuery:@"ROLLBACK"];
-        }
-        SQLRow *row = [res rowAtIndex:0];
-        if(!row) {
-            [self.db performQuery:@"ROLLBACK"];
-        }
-        
-        newTripID = [row integerForColumnAtIndex:0];
-        trip.dbId = [NSNumber numberWithInteger:newTripID];
-    }];
-	
-	return newTripID;
-}
-
--(BOOL)insertOrUpdateTrip:(Trip*)trip
-{
-	BOOL shouldInsert = (trip.dbId == nil);
-	
-	if(shouldInsert) {
-		[self insertTrip:trip];
-	} else { // shouldInsert == NO.
-		NSString *sql = [NSString stringWithFormat:@"UPDATE trip SET name = '%@', start = '%@', end = '%@' WHERE id = %@",
-						 [SQLDatabase prepareStringForQuery:trip.name],
-						 trip.start,
-						 trip.end,
-						 trip.dbId];
-		[self lock:^{
-            [self.db performQuery:sql];
-        }];
-	}
-	return shouldInsert;
-}
-
--(void)deleteTripFromStore:(NSInteger)tripId
-{
-	[self removeTripFromCache:tripId];
-    [self lock:^{
-        [self.db performQueryWithFormat:@"DELETE FROM trip WHERE id = %d", tripId];
-    }];
-}
-
--(void)removeTripFromCache:(NSInteger)tripId
-{
-	[self.centralTripStore removeObjectForKey:@(tripId)];
-}
-
--(NSMutableArray*)getTripsWithConditions:(NSString*)conditions andSort:(NSString*)sort
-{
-    NSMutableArray *array = [NSMutableArray array];
-	[self lock:^{
-        SQLResult *res = [self.db performQueryWithFormat:@"SELECT id FROM trip %@ ORDER BY %@",
-                          (conditions != nil ? [@"WHERE " stringByAppendingString:conditions] : @""),
-                          (sort != nil ? sort : @"name ASC")];
-        SQLRow *row;
-        for(row in [res rowEnumerator]) {
-            Trip *trip = [self getTrip:[row integerForColumn:@"id"]];
-            [array addObject:trip];
-        }
-    }];
-
-	return array;
-}
-
-
-
--(NSMutableArray*)getAllTrips
-{
-	return [self getTripsWithConditions:nil andSort:nil];
-}
-
--(Trip*)_getTrip:(NSInteger)tripId
-{
-    Trip *theTrip = self.centralTripStore[@(tripId)];
-	if(theTrip == nil) {
-		theTrip = [Trip tripWithPrimaryKey:tripId andStore:self];
-        self.centralTripStore[@(tripId)] = theTrip;
-	}
-	return theTrip;
-}
-
--(Trip*)getTrip:(NSInteger)tripId
-{
-    __block Trip *theTrip;
-    [self lock:^{
-        theTrip = [self _getTrip:tripId];
-    }];
-    return theTrip;
 }
 
 #pragma mark -

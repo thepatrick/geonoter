@@ -37,14 +37,6 @@
 
 - (void)lock:(void(^)())block;
 
-#pragma mark - Trips
-- (BOOL)insertOrUpdateTrip:(Trip*)trip;
-- (void)deleteTripFromStore:(NSInteger)tripId;
-- (void)removeTripFromCache:(NSInteger)tripId;
-- (NSMutableArray*)getTripsWithConditions:(NSString*)conditions andSort:(NSString*)sort;
-- (NSMutableArray*)getAllTrips;
-- (Trip*)getTrip:(NSInteger)tripId;
-
 #pragma mark - Tags
 - (BOOL)insertOrUpdateTag:(Tag*)tag;
 - (void)deleteTagFromStore:(NSInteger)tagId;

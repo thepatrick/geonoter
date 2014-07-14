@@ -17,10 +17,6 @@ class PQGPointsViewController: UITableViewController {
   
   var points = [GNPoint]()
 
-  init(coder: NSCoder?) {
-    super.init(coder: coder)
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Locations"
