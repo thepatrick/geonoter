@@ -70,8 +70,6 @@
 {
 	if( !mDatabase )
 		return;
-	
-	NSLog(@"Closing teh database");
 	sqlite3_close( mDatabase );
 	mDatabase = NULL;
 }

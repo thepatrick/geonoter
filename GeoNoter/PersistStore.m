@@ -153,29 +153,30 @@
 	self.dbIsOpen = NO;
 	[self.db performQuery:@"COMMIT"];
 	[self.db close];
+  self.db = nil;
 }
 
 -(void)migrateFrom:(NSInteger)version
 {
 	if(version < 1) {
-		DLog(@"Database migrating to v1...");
-        
+//		DLog(@"Database migrating to v1...");
+    
         [self.db performQueries:@[
                                   @"CREATE TABLE trip (id INTEGER PRIMARY KEY, name TEXT, start DATETIME, end DATETIME)",
                                   @"UPDATE sync_status_and_version SET version = 1"
                                   ]];
-        DLog(@"Database migrated to v1.");
+//        DLog(@"Database migrated to v1.");
 	}
 	if(version < 2) {
-		DLog(@"Database migrating to v2...");
+//		DLog(@"Database migrating to v2...");
         [self.db performQueries:@[
             @"INSERT INTO trip (name, start, end) VALUES ('Test Trip', '2008-01-01', '2008-12-31')",
             @"UPDATE sync_status_and_version SET version = 2"
         ]];
-		DLog(@"Database migrated to v2.");
+//		DLog(@"Database migrated to v2.");
 	}
 	if(version < 3) {
-		DLog(@"Database migrating to v3...");
+//		DLog(@"Database migrating to v3...");
         [self.db performQueries:@[
             @"CREATE TABLE tag (id INTEGER PRIMARY KEY, name TEXT)",
             @"CREATE TABLE trip_tag (trip_id INTEGER, tag_id INTEGER)",
@@ -183,35 +184,35 @@
             @"CREATE TABLE point_tag (point_id INTEGER, tag_id INTEGER)",
             @"UPDATE sync_status_and_version SET version = 3"
         ]];
-        DLog(@"Database migrated to v3.");
+//        DLog(@"Database migrated to v3.");
 	}
 	if(version < 4) {
-		DLog(@"Database migrating to v4...");
+//		DLog(@"Database migrating to v4...");
         [self.db performQueries:@[
 		    @"INSERT INTO tag (name) VALUES ('Test Tag')",
             @"INSERT INTO tag (name) VALUES ('Personal')",
             @"UPDATE sync_status_and_version SET version = 4"
         ]];
-		DLog(@"Database migrated to v4.");
+//		DLog(@"Database migrated to v4.");
 	}
 	if(version < 5) {
-		DLog(@"Database migrating to v5...");
+//		DLog(@"Database migrating to v5...");
         [self.db performQueries:@[
             @"INSERT INTO point (trip_id, friendly_name, name, memo, recorded_at, latitude, longitude) VALUES (1, 'Vancouver BC, Canada', 'Home', 'No memo', '2009-01-12 21:18:00', 49.283588, -123.126373)",
 		    @"INSERT INTO point_tag (point_id, tag_id) VALUES (1, 1)",
 		    @"INSERT INTO point_tag (point_id, tag_id) VALUES (1, 2)",
 		    @"UPDATE sync_status_and_version SET version = 5"
         ]];
-		DLog(@"Database migrated to v5.");
+//		DLog(@"Database migrated to v5.");
 	}
 	
 	if(version < 6) {
-		DLog(@"Database migrating to v6...");
+//		DLog(@"Database migrating to v6...");
 		[self.db performQueries:@[
 		    @"CREATE TABLE attachment (id INTEGER PRIMARY KEY, point_id INTEGER, friendly_name TEXT, kind TEXT, memo TEXT, file_name TEXT, recorded_at DATETIME)",
 		    @"UPDATE sync_status_and_version SET version = 6"
         ]];
-		DLog(@"Database migrated to v5.");
+//		DLog(@"Database migrated to v6.");
 	}
 }
 -(void)tellCacheToSave
