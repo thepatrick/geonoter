@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		46B37C6D3E4F4AB6B2F1DEF1 /* libPods-GeoNoter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */; };
+		CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275B19755536000091ED /* PQGImageSizerTests.swift */; };
+		CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275D19755570000091ED /* PQGDateJSONTests.swift */; };
+		CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */; };
 		CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */; };
 		CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */; };
 		CD63E33719608528008C610E /* UIImageContentsOfFileURL.m in Sources */ = {isa = PBXBuildFile; fileRef = CD63E33619608528008C610E /* UIImageContentsOfFileURL.m */; };
@@ -66,6 +69,9 @@
 /* Begin PBXFileReference section */
 		58C6827265EE4DE0891CB7F1 /* Pods-GeoNoter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoNoter.xcconfig"; path = "Pods/Pods-GeoNoter.xcconfig"; sourceTree = "<group>"; };
 		8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoNoter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3F275B19755536000091ED /* PQGImageSizerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGImageSizerTests.swift; sourceTree = "<group>"; };
+		CD3F275D19755570000091ED /* PQGDateJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGDateJSONTests.swift; sourceTree = "<group>"; };
+		CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGStringUUIDTests.swift; sourceTree = "<group>"; };
 		CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQGPersistStore.m; sourceTree = "<group>"; };
 		CD60DC2B197012BE00E4E019 /* GeoNoterTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoterTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPersistStoreTags.swift; sourceTree = "<group>"; };
@@ -161,6 +167,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD3F276119755588000091ED /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CD3F275B19755536000091ED /* PQGImageSizerTests.swift */,
+				CD3F275D19755570000091ED /* PQGDateJSONTests.swift */,
+				CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		CD3F276219755596000091ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */,
+				CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		CD6BAC911973F50C008EBBAE /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,9 +346,9 @@
 		CD84A5091769F25400266526 /* GeoNoterTests */ = {
 			isa = PBXGroup;
 			children = (
+				CD3F276119755588000091ED /* Categories */,
+				CD3F276219755596000091ED /* Models */,
 				CD84A50A1769F25400266526 /* Supporting Files */,
-				CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */,
-				CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */,
 				CD60DC2B197012BE00E4E019 /* GeoNoterTests-Bridging-Header.h */,
 			);
 			path = GeoNoterTests;
@@ -545,7 +570,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */,
+				CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */,
 				CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */,
+				CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */,
 				CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
