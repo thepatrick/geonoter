@@ -14,11 +14,10 @@
 @implementation PQGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-  
+{  
   [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-    GNLocationsDefaultsUseGeocoder: @(YES),
-    GNLocationsDefaultsDefaultName: GNLocationsDefaultNameMostSpecific
+    @"LocationsUseGeocoder": @(YES),
+    @"LocationsDefaultName": @"most-specific"
   }];
   
   // Add the tab bar controller's current view as a subview of the window

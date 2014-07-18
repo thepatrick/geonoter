@@ -180,10 +180,10 @@
 }
 
 -(void)determineDefaultName:(NSString*)locationName {
-	if ([[[NSUserDefaults standardUserDefaults] stringForKey:GNLocationsDefaultsDefaultName] isEqualToString:GNLocationsDefaultNameMostSpecific] && locationName != nil) {
+	if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"LocationsDefaultName"] isEqualToString:@"most-specific"] && locationName != nil) {
     NSLog(@"Use location name... %@", locationName);
 		self.name = locationName;
-	} else if([[[NSUserDefaults standardUserDefaults] stringForKey:GNLocationsDefaultsDefaultName] isEqualToString:GNLocationsDefaultNameCoordinates]) {
+	} else if([[[NSUserDefaults standardUserDefaults] stringForKey:@"LocationsDefaultName"] isEqualToString:@"coords"]) {
     self.name = [NSString stringWithFormat:@"%f, %f", self.longitude, self.latitude];
     NSLog(@"Use lat/long name... %@", self.name);
 	} else {
@@ -248,7 +248,7 @@
       self.friendlyName = @"Untitled";
       self.memo = @"No memo";
       
-      if([[NSUserDefaults standardUserDefaults] boolForKey:GNLocationsDefaultsUseGeocoder]) {
+      if([[NSUserDefaults standardUserDefaults] boolForKey:@"LocationsUseGeocoder"]) {
         NSLog(@"Geocoder time!");
         [self geocode:^(NSError *error){
           NSLog(@"self.store %@", self.store);
@@ -256,7 +256,7 @@
           completionHandler();
         }];
       } else {
-        NSLog(@"No geocoder here baby! %@", [[NSUserDefaults standardUserDefaults] boolForKey:GNLocationsDefaultsUseGeocoder] ? @"YES" : @"NO");
+        NSLog(@"No geocoder here baby! %@", [[NSUserDefaults standardUserDefaults] boolForKey:@"LocationsUseGeocoder"] ? @"YES" : @"NO");
         [self determineDefaultName:nil];
         NSLog(@"self.store %@", self.store);
         [self.store insertOrUpdatePoint:self];

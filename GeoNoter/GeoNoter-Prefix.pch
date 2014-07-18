@@ -24,11 +24,3 @@
 
 
 // define DLog(...) /* */
-
-
-#define GNLocationsDefaultsUseGeocoder     @"LocationsUseGeocoder"
-#define GNLocationsDefaultsDefaultName     @"LocationsDefaultName"
-
-#define GNLocationsDefaultNameMostSpecific @"most-specific"
-#define GNLocationsDefaultNameCoordinates  @"coords"
-#define GNLocationsDefaultNameDateTime     @"datetime"
