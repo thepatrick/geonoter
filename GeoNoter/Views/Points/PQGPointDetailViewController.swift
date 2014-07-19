@@ -328,7 +328,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
         NSLog("attachment? %@", vc.attachment)
       }
     } else if segue.identifier == "editTagsSegue" {
-      if let vc = segue.destinationViewController as? PQGPointAddTagsViewControllerTableViewController {
+      if let vc = segue.destinationViewController as? PQGPointAddTagsTableViewController {
         vc.point = point
       }
     }
