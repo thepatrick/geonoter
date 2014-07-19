@@ -599,7 +599,7 @@
         <!--Tags-->
         <scene sceneID="l5Z-3T-2wW">
             <objects>
-                <tableViewController id="ndg-VH-g9o" customClass="PQGPointAddTagsViewController" customModule="GeoNoter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ndg-VH-g9o" customClass="PQGPointAddTagsTableViewController" customModule="GeoNoter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pqg-Gz-G75">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

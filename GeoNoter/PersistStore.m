@@ -28,8 +28,7 @@
 
 @implementation PersistStore
 
-#pragma mark -
-#pragma mark Filesystem stuff
+#pragma mark - Filesystem stuff
 
 // Creates a writable copy of the bundled default database in the application Documents directory.
 + (NSString*)pathForResource:(NSString*)path
@@ -91,6 +90,8 @@
 + (NSURL*)attachmentCacheURL:(NSString*)attachmentName {
   return [[self attachmentsCacheDirectory] URLByAppendingPathComponent:attachmentName];
 }
+
+#pragma mark - Lifecycle
 
 +(instancetype)storeWithFile:(NSString*)file
 {
@@ -156,6 +157,8 @@
   self.db = nil;
 }
 
+#pragma mark - Migrations
+
 -(void)migrateFrom:(NSInteger)version
 {
 	if(version < 1) {
@@ -215,6 +218,9 @@
 //		DLog(@"Database migrated to v6.");
 	}
 }
+
+#pragma mark - Cache control
+
 -(void)tellCacheToSave
 {
 	[[self.centralTripStore allValues] makeObjectsPerformSelector:@selector(save)];
@@ -231,6 +237,8 @@
 	[[self.centralPointStore allValues] makeObjectsPerformSelector:@selector(dehydrate)];
 	[[self.centralAttachmentStore allValues] makeObjectsPerformSelector:@selector(dehydrate)];
 }
+
+#pragma mark - Locks
 
 -(void)lock:(void(^)())block
 {

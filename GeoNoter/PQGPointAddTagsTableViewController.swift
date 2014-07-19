@@ -8,23 +8,16 @@
 
 import UIKit
 
-class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
+class PQGPointAddTagsTableViewController: UITableViewController {
   
   var point : GNPoint!
   
   var tags = [Tag]()
   var chosenTags = Dictionary<Int, Tag>()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
-  }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+    point.store.tellCacheToDehydrate()
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -32,8 +25,8 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
     reloadData()
   }
   
-  func refreshSourceData() {
-    self.tags = point.store.getAllTags() as Array<Tag>
+  func reloadData() {
+    self.tags = point.store.getAllTags() as [Tag]
     
     chosenTags.removeAll(keepCapacity: false)
     
@@ -41,10 +34,6 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
     for tag in pointTags {
       chosenTags[tag.dbId.integerValue] = tag
     }
-  }
-  
-  func reloadData() {
-    refreshSourceData()
     self.tableView.reloadData()
   }
   
@@ -55,14 +44,11 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
   }
 
   override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-    // Return the number of rows in the section.
     return tags.count
   }
 
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
     let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
-
-    // Configure the cell...
     
     let tag = tags[indexPath.row].hydrate()
     
@@ -83,18 +69,8 @@ class PQGPointAddTagsViewControllerTableViewController: UITableViewController {
     } else {
       point.addTag(tag)
     }
-    self.reloadData()
-    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Middle)
+    reloadData()
+    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
   }
-  
-  /*
-  // #pragma mark - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-  }
-  */
 
 }

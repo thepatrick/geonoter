@@ -51,7 +51,7 @@
 		CD84A5051769F25400266526 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD84A4E11769F25400266526 /* Foundation.framework */; };
 		CD84A5061769F25400266526 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD84A4E51769F25400266526 /* UIKit.framework */; };
 		CD84A50E1769F25400266526 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD84A50C1769F25400266526 /* InfoPlist.strings */; };
-		CDA79559196092ED00D0D34B /* PQGPointAddTagsViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA79558196092ED00D0D34B /* PQGPointAddTagsViewControllerTableViewController.swift */; };
+		CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */; };
 		CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB6AB61947C27100DF47E5 /* PQGPointsNavigationController.swift */; };
 		CDAB6ABB1947C6BF00DF47E5 /* PQGPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB6ABA1947C6BF00DF47E5 /* PQGPointsViewController.swift */; };
 		CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB80F03195F86520087863A /* PQGAttachmentViewController.swift */; };
@@ -133,7 +133,7 @@
 		CD84A5031769F25400266526 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CD84A50B1769F25400266526 /* GeoNoterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeoNoterTests-Info.plist"; sourceTree = "<group>"; };
 		CD84A50D1769F25400266526 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CDA79558196092ED00D0D34B /* PQGPointAddTagsViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPointAddTagsViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPointAddTagsTableViewController.swift; sourceTree = "<group>"; };
 		CDAB6AB61947C27100DF47E5 /* PQGPointsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointsNavigationController.swift; path = Views/Points/PQGPointsNavigationController.swift; sourceTree = "<group>"; };
 		CDAB6ABA1947C6BF00DF47E5 /* PQGPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointsViewController.swift; path = Views/Points/PQGPointsViewController.swift; sourceTree = "<group>"; };
 		CDB80F03195F86520087863A /* PQGAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGAttachmentViewController.swift; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 		CDA795551960915F00D0D34B /* Tags */ = {
 			isa = PBXGroup;
 			children = (
-				CDA79558196092ED00D0D34B /* PQGPointAddTagsViewControllerTableViewController.swift */,
+				CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */,
 			);
 			name = Tags;
 			sourceTree = "<group>";
@@ -568,7 +568,7 @@
 				CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */,
 				CD6E3CAA19466F68005067DE /* SQLRow.m in Sources */,
 				CD73B2181948D34000C7D148 /* PQGCell.m in Sources */,
-				CDA79559196092ED00D0D34B /* PQGPointAddTagsViewControllerTableViewController.swift in Sources */,
+				CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */,
 				CD6E3CA919466F68005067DE /* SQLDatabase.m in Sources */,
 				CD84A4EE1769F25400266526 /* main.m in Sources */,
 				CD6E3C6919466D30005067DE /* UIImageSizer.m in Sources */,
