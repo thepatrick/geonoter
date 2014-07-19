@@ -311,7 +311,6 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   func reallyDelete(action: UIAlertAction!) {
-    NSLog("Delete clicked!")
     for attachment in attachments {
       attachment.deleteAttachment()
     }
@@ -330,6 +329,24 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     } else if segue.identifier == "editTagsSegue" {
       if let vc = segue.destinationViewController as? PQGPointAddTagsTableViewController {
         vc.point = point
+      }
+    } else if segue.identifier == "pushToTagPointsFromPoint" {
+      if let cell = sender as? PQGCell {
+        let indexPath = collectionView.indexPathForCell(cell)
+        let vc = segue.destinationViewController as PQGPointsViewController
+        let tag = tags[indexPath.row]
+        vc.datasourceFetchAll = {
+          if let points = tag.points() as? [GNPoint] {
+            return points
+          } else {
+            return [GNPoint]()
+          }
+        }
+        vc.datasourceCreatedNewPoint = { point in
+          point.addTag(tag)
+        }
+      } else {
+        assert(false, "pushToTagPointsFromPoint segue triggered from something other than a PQGCell")
       }
     }
   }
