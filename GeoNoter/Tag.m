@@ -43,6 +43,14 @@
 	return self;
 }
 
+- (instancetype)initWithName:(NSString*)name
+{
+  if(self = [self init]) {
+    self.name = name;
+  }
+  return self;
+}
+
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"<%@> ID: '%@'. Name: '%@'.", [self class], self.dbId, self.name];

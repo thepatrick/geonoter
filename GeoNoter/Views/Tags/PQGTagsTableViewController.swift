@@ -11,6 +11,7 @@ import UIKit
 class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   var tags = [Tag]()
+
   @IBOutlet var newTagName: UITextField
   
   override func viewDidLoad() {
@@ -115,9 +116,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
-    let t = Tag()
-    t.name = newTagName.text
-    store.insertOrUpdateTag(t)
+    store.insertOrUpdateTag(Tag(name: newTagName.text))
     reloadData()
     cancelAddTagNow(textField)
     return true

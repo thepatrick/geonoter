@@ -22,10 +22,10 @@
 @property (nonatomic, weak) PersistStore *store;
 
 + (instancetype)tag;
-
 + (instancetype)tagWithPrimaryKey:(NSInteger)theID andStore:(PersistStore*)newStore;
 
 - (instancetype)initWithPrimaryKey:(NSInteger)theID andStore:(PersistStore*)newStore;
+- (instancetype)initWithName:(NSString*)name;
 
 - (void)destroy;
 - (Tag*)hydrate;

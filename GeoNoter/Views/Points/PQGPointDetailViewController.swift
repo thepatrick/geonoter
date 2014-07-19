@@ -130,17 +130,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       return cell
     } else {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as PQGCell
-
-      NSLog("Cell %@", cell)
-      NSLog("Cell %@", cell.textLabel)
-      
-      let tag = tags[indexPath.row]
-      tag.hydrate()
-      let boo = tag.name
-      NSLog("boo is %@", boo)
-      cell.textLabel.text = boo
+      let tag = tags[indexPath.row].hydrate()
+      cell.textLabel.text = tag.name
       cell.textLabel.textColor = UIColor.blackColor()
-      
       return cell
     }
   }
@@ -198,14 +190,12 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       }
       return cell
     } else if kind == CSStickyHeaderParallaxHeader {
-      NSLog("Header section for %@", CSStickyHeaderParallaxHeader)
+      NSLog("Header section for CSStickyHeaderParallaxHeader")
       let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as PQGPointDetailHeader
       let coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
       let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
       cell.mapView.setRegion(region, animated: false)
-      
       cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name))
-      
       return cell
     }
     return nil
@@ -319,12 +309,12 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    NSLog("prepareForSegue %@", segue.identifier)
     if segue.identifier == "showAttachmentSegue" {
       if let vc = segue.destinationViewController as? PQGAttachmentViewController {
         // do stuff
-        vc.attachment = attachments[self.collectionView.indexPathsForSelectedItems()[0].row!]
-        NSLog("attachment? %@", vc.attachment)
+        if let cell = sender as? PQGCell {
+          vc.attachment = attachments[self.collectionView.indexPathForCell(cell).row]
+        }
       }
     } else if segue.identifier == "editTagsSegue" {
       if let vc = segue.destinationViewController as? PQGPointAddTagsTableViewController {
