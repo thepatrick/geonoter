@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @class PersistStore;
+@class PQGTag;
 
 @interface GNPoint : NSObject {
 	
@@ -46,8 +47,8 @@
 - (void)save;
 
 - (NSArray*)tags;
-- (void)addTag:(Tag*)tag;
-- (void)removeTag:(Tag*)tag;
+- (void)addTag:(PQGTag*)tag;
+- (void)removeTag:(PQGTag*)tag;
 - (void)setTags:(NSArray*)newTags;
 
 - (NSArray*)attachments;

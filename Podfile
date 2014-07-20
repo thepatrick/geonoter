@@ -3,6 +3,7 @@ platform :ios, "8.0"
 
 target "GeoNoter" do
   pod "CSStickyHeaderFlowLayout"
+  pod "FCModel"
 end
 
 target "GeoNoterTests" do

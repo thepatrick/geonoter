@@ -14,27 +14,12 @@ class PQGPointsNavigationController: UINavigationController {
     super.viewDidLoad()
 
     NSLog("PQGPointsNavigationController viewDidLoad %@", self.topViewController)
+    
+    let homeView = self.topViewController as PQGPointsViewController
+    let appDelegate = UIApplication.sharedApplication().delegate as PQGAppDelegate
 
-    if let homeView = self.topViewController as? PQGPointsViewController {
-      
-//      homeView.datasourceCreatedNewPoint = { point in
-//        NSLog("Created point %@", point)
-//      }
-      
-      homeView.datasourceFetchAll = {
-        if let appDelegate = UIApplication.sharedApplication().delegate as? PQGAppDelegate {
-          if let points = appDelegate.store.getAllPoints() as? [GNPoint] {
-            return points
-          } else {
-            assert(false, "appDelegate.store.getAllPoints() was not convertable to GNPoint[].")
-          }
-        } else {
-          assert(false, "UIApplication.sharedApplication().delegate is not a PQGAppDelegate as expected")
-        }
-        return [GNPoint]()
-      }
-    } else {
-      assert(false, "PQGPointsNavigationController topViewController is not a PQGPointsViewController as expected")
+    homeView.datasourceFetchAll = {
+      return PQGPoint.allInstances() as [PQGPoint]
     }
   }
 

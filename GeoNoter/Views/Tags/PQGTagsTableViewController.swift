@@ -10,7 +10,7 @@ import UIKit
 
 class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
-  var tags = [Tag]()
+  var tags = [PQGTag]()
 
   @IBOutlet var newTagName: UITextField
   
@@ -34,13 +34,8 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     tableView.reloadData()
   }
   
-  var store : PersistStore {
-    let appDelegate = UIApplication.sharedApplication().delegate as PQGAppDelegate
-    return appDelegate.store
-  }
-  
   func fetchData() {
-    if let tags = store.getAllTags() as? [Tag] {
+    if let tags = PQGTag.allInstances() as? [PQGTag] {
       self.tags = tags
     } else {
       assert(false, "appDelegate.store.getAllTags() was not convertable to [Tag].")
@@ -67,7 +62,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     
     let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
     
-    cell.textLabel.text = tags[indexPath.row].hydrate().name
+    cell.textLabel.text = tags[indexPath.row].name
     cell.accessoryType = .DisclosureIndicator;
     
     return cell
@@ -77,7 +72,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     if editingStyle == .Delete {
       // Delete the row from the data source
       let tag = self.tags[indexPath.row]
-      tag.destroy()
+      tag.delete()
       fetchData()
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
@@ -95,10 +90,10 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
       let vc = segue.destinationViewController as PQGPointsViewController
       let tag = self.tags[tableView.indexPathForSelectedRow().row]
       vc.datasourceFetchAll = {
-        if let points = tag.points() as? [GNPoint] {
+        if let points = tag.points as? [PQGPoint] {
           return points
         } else {
-          return [GNPoint]()
+          return [PQGPoint]()
         }
       }
       vc.datasourceCreatedNewPoint = { point in
@@ -116,7 +111,9 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
-    store.insertOrUpdateTag(Tag(name: newTagName.text))
+    let tag = PQGTag()
+    tag.name = newTagName.text
+    tag.save()
     reloadData()
     cancelAddTagNow(textField)
     return true

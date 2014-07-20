@@ -12,10 +12,10 @@ class PQGPointsViewController: UITableViewController {
   
   @IBOutlet var addButton : UIBarButtonItem
   
-  var datasourceFetchAll : (() -> ([GNPoint]))?
-  var datasourceCreatedNewPoint : ((GNPoint) -> ())?
+  var datasourceFetchAll : (() -> ([PQGPoint]))?
+  var datasourceCreatedNewPoint : ((PQGPoint) -> ())?
   
-  var points = [GNPoint]()
+  var points = [PQGPoint]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,9 +55,7 @@ class PQGPointsViewController: UITableViewController {
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as UITableViewCell
     
-    let point = self.points[indexPath.row].hydrate()
-    
-    cell.textLabel.text = point.name
+    cell.textLabel.text = self.points[indexPath.row].name
     cell.accessoryType = .DisclosureIndicator
     
     return cell
@@ -83,21 +81,6 @@ class PQGPointsViewController: UITableViewController {
   }
   */
 
-  /*
-  // Override to support rearranging the table view.
-  override func tableView(tableView: UITableView?, moveRowAtIndexPath fromIndexPath: NSIndexPath?, toIndexPath: NSIndexPath?) {
-
-  }
-  */
-
-  /*
-  // Override to support conditional rearranging of the table view.
-  override func tableView(tableView: UITableView?, canMoveRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
-      // Return NO if you do not want the item to be re-orderable.
-      return true
-  }
-  */
-
   // #pragma mark - Navigation
 
   override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
@@ -117,11 +100,8 @@ class PQGPointsViewController: UITableViewController {
   
   @IBAction func addPoint(sender : AnyObject) {
     NSLog("addPoint")
-    
-    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
-    
-    let point = GNPoint()
-    point.store = del.store
+
+    let point = PQGPoint()
     let addButton = showLoading()
     
     NSLog(">> setupAsNewItem")
@@ -130,8 +110,6 @@ class PQGPointsViewController: UITableViewController {
       NSLog("setting back %@", addButton)
       self.navigationItem.rightBarButtonItem = addButton
       self.datasourceCreatedNewPoint?(point)
-      // let pd = PointsDetail(point:point andStore: del.store)
-      // self.navigationController.pushViewController(pd, animated: true)
       self.reloadData()
     }
   }

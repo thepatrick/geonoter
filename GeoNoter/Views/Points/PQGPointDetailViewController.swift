@@ -32,32 +32,33 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
 
   var store: PersistStore!
   
-  var tagCache: [Tag]?
-  var attachmentCache: [GNAttachment]?
+  var tagCache: [PQGTag]?
+  var attachmentCache: [PQGAttachment]?
 
-  var point: GNPoint! {
+  var point: PQGPoint! {
   didSet {
-    self.store = point.store
+    self.tagCache = nil
+    self.attachmentCache = nil
   }
   }
   
-  var tags: [Tag] {
+  var tags: [PQGTag] {
     if !tagCache {
-      if let newTags = point.tags() as? [Tag] {
+      if let newTags = point.tags() as? [PQGTag] {
         tagCache = newTags
       } else {
-        return [Tag]()
+        return [PQGTag]()
       }
     }
     return tagCache!
   }
   
-  var attachments: [GNAttachment] {
+  var attachments: [PQGAttachment] {
     if !attachmentCache {
-      if let newAttachments = point.attachments() as? [GNAttachment] {
+      if let newAttachments = point.attachments() as? [PQGAttachment] {
         attachmentCache = newAttachments
       } else {
-        return [GNAttachment]()
+        return [PQGAttachment]()
       }
     }
     return attachmentCache!
@@ -82,7 +83,6 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   override func viewWillAppear(animated: Bool) {
-    point.hydrate()
     reloadData()
   }
   
@@ -130,8 +130,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       return cell
     } else {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as PQGCell
-      let tag = tags[indexPath.row].hydrate()
-      cell.textLabel.text = tag.name
+      cell.textLabel.text = tags[indexPath.row].name
       cell.textLabel.textColor = UIColor.blackColor()
       return cell
     }
@@ -140,7 +139,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   func cellForAttachmentsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("attachmentCell", forIndexPath: indexPath) as PQGCell
     
-    cell.textLabel.text = attachments[indexPath.row].hydrate().friendlyName
+    cell.textLabel.text = attachments[indexPath.row].friendlyName
     cell.textLabel.textColor = UIColor.blackColor()
 
     return cell
@@ -302,9 +301,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   func reallyDelete(action: UIAlertAction!) {
     for attachment in attachments {
-      attachment.deleteAttachment()
+      attachment.delete()
     }
-    store.deletePointFromStore(point.dbId.integerValue)
+    point.delete()
     self.navigationController.popViewControllerAnimated(true)
   }
   
@@ -326,10 +325,10 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
         let vc = segue.destinationViewController as PQGPointsViewController
         let tag = tags[indexPath.row]
         vc.datasourceFetchAll = {
-          if let points = tag.points() as? [GNPoint] {
+          if let points = tag.points as? [PQGPoint] {
             return points
           } else {
-            return [GNPoint]()
+            return [PQGPoint]()
           }
         }
         vc.datasourceCreatedNewPoint = { point in

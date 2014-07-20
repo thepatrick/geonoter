@@ -12,7 +12,8 @@
 #import "PersistStore.h"
 #import "GNPoint.h"
 #import "GNAttachment.h"
-#import "Tag.h"
+
+#import "PQGTag.h"
 
 #import "GeoNoter-Swift.h"
 
@@ -150,34 +151,33 @@
 	dirty = YES;	
 }
 
+#pragma mark - Tags
+
 -(NSArray*)tags {
 	NSString *cond = [NSString stringWithFormat:@"id IN (select tag_id FROM point_tag WHERE point_id = %@)", self.dbId];
 	return [self.store getTagsWithConditions:cond andSort:@"name ASC"];
 }
 
--(void)addTag:(Tag*)tag {
-  DLog(@"Adding new tag... %ld", (long)tag.dbId.integerValue);
-  [self.store addTag:tag.dbId.integerValue toPoint:self.dbId.integerValue];
+-(void)addTag:(PQGTag*)tag {
+  DLog(@"Adding new tag... %lld", tag.id);
+  [self.store addTag:tag.id toPoint:self.dbId.integerValue];
 }
 
--(void)removeTag:(Tag*)tag {
-  DLog(@"Removing exist tag... %ld", (long)tag.dbId.integerValue);
-  [self.store removeTag:tag.dbId.integerValue fromPoint:self.dbId.integerValue];
+-(void)removeTag:(PQGTag*)tag {
+  DLog(@"Removing exist tag... %lld", tag.id);
+  [self.store removeTag:tag.id fromPoint:self.dbId.integerValue];
 }
 
 -(void)setTags:(NSArray*)newTags {
 	DLog(@"Removing existing tags...");
 	[self.store removeTagsFromPoint:[self.dbId integerValue]];
-	for(Tag *t in newTags) {
+	for(PQGTag *t in newTags) {
 		DLog(@"Adding tag tag... %@", t);
     [self addTag:t];
 	}
 }
 
--(NSArray*)attachments {
-	NSString *cond = [NSString stringWithFormat:@"point_id = %ld", [self.dbId longValue]];
-	return [self.store getAttachmentsWithConditions:cond andSort:@"recorded_at ASC"];
-}
+#pragma mark - Defaults
 
 -(void)determineDefaultName:(NSString*)locationName {
 	if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"LocationsDefaultName"] isEqualToString:@"most-specific"] && locationName != nil) {
@@ -197,6 +197,12 @@
 }
 
 #pragma mark - Attachments
+
+-(NSArray*)attachments {
+  NSString *cond = [NSString stringWithFormat:@"point_id = %ld", [self.dbId longValue]];
+  return [self.store getAttachmentsWithConditions:cond andSort:@"recorded_at ASC"];
+}
+
 
 - (GNAttachment*)addAttachment:(NSData*)attachment withExtension:(NSString*)extension {
 //  let image = info[UIImagePickerControllerOriginalImage] as UIImage

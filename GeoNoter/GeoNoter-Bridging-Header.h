@@ -10,11 +10,10 @@
 #import "PQGAppDelegate.h"
 
 #import "PersistStore.h"
-#import "Tag.h"
-#import "GNPoint.h"
-#import "GNAttachment.h"
+#import "PQGTag.h"
+#import "PQGPoint.h"
+#import "PQGAttachment.h"
 
 #import "CSStickyHeaderFlowLayout.h"
 #import "PQGCell.h"
 #import "PQGPointDetailHeader.h"
-

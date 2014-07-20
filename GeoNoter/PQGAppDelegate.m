@@ -9,6 +9,8 @@
 #import "PQGAppDelegate.h"
 #import "PersistStore.h"
 
+#import "FCModel.h"
+
 #import "GeoNoter-Swift.h"
 
 @implementation PQGAppDelegate
@@ -24,7 +26,7 @@
   
   self.window.backgroundColor = [UIColor whiteColor];
   
-  self.store = [PersistStore storeWithFile:[PersistStore pathForResource:@"geonoter.db"]];
+  [PersistStore openDatabase:[PersistStore pathForResource:@"geonoter.db"]];
   
   NSError *error = [[PQGLocationHelper sharedHelper] requestIfNotYetDone];
   if(error) {
