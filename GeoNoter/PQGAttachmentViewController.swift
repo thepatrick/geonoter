@@ -23,7 +23,7 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   let queue = dispatch_queue_create("cacheQueue", DISPATCH_QUEUE_CONCURRENT)
   
-  @IBOutlet var scrollView : UIScrollView
+  @IBOutlet var scrollView : UIScrollView!
   var imageView : UIImageView?
   
   override func viewDidLoad() {

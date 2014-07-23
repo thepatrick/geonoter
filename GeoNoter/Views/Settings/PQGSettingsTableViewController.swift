@@ -38,11 +38,11 @@ enum LocationsDefaultName : String {
 
 class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
-  @IBOutlet var version: UILabel
+  @IBOutlet var version: UILabel!
   
-  @IBOutlet var defaultName: UILabel
+  @IBOutlet var defaultName: UILabel!
   
-  @IBOutlet var useGeocoder: UISwitch
+  @IBOutlet var useGeocoder: UISwitch!
   
   override func viewDidLoad() {
     super.viewDidLoad()

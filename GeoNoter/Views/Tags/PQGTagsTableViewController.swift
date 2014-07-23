@@ -12,7 +12,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   var tags = [PQGTag]()
 
-  @IBOutlet var newTagName: UITextField
+  @IBOutlet var newTagName: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()

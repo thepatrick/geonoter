@@ -92,6 +92,7 @@
     NSAssert(hasVersion, @"Unable to retrieve version from sync_status_and_version");
     NSString *version = [s stringForColumn:@"version"];
     NSInteger theVersion = [version integerValue];
+    [s close];
     
     DLog(@"Database: Version: '%ld'", (long)theVersion);
     
