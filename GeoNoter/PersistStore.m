@@ -78,6 +78,9 @@
 +(void)openDatabase:(NSString *)fileName
 {
 	BOOL newFile = ![[NSFileManager defaultManager] fileExistsAtPath:fileName];
+  [FCModel setClassName:@"PQGTag"        forTableName:@"tag"];
+  [FCModel setClassName:@"PQGPoint"      forTableName:@"point"];
+  [FCModel setClassName:@"PQGAttachment" forTableName:@"attachment"];
   [FCModel openDatabaseAtPath:fileName withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
     if(newFile) {
       if(newFile) {

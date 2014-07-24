@@ -24,7 +24,7 @@
 }
 
 -(NSArray*)points {
-  return [PQGPoint instancesWhere:@"id IN (SELECT point_id FROM point_tag WHERE tag_id = ?) ORDER BY name ASC", self.id];
+  return [PQGPoint instancesWhere:@"id IN (SELECT point_id FROM point_tag WHERE tag_id = ?) ORDER BY name ASC", @(self.id)];
 }
 
 @end

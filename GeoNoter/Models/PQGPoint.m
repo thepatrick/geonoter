@@ -73,24 +73,24 @@
 #pragma mark - Tags
 
 -(NSArray*)tags {
-  return [PQGTag instancesWhere:@"id IN (select tag_id FROM point_tag WHERE point_id = ?) ORDER BY name ASC", self.id];
+  return [PQGTag instancesWhere:@"id IN (select tag_id FROM point_tag WHERE point_id = ?) ORDER BY name ASC", @(self.id)];
 }
 
 -(void)addTag:(PQGTag*)tag {
 //  [FCD]
   DLog(@"Add tag... %lld", tag.id);
-  [FCModel executeUpdateQuery:@"INSERT INTO point_tag (tag_id, point_id) VALUES (?, ?)", tag.id, self.id];
+  [FCModel executeUpdateQuery:@"INSERT INTO point_tag (tag_id, point_id) VALUES (?, ?)", @(tag.id), @(self.id)];
 }
 
 -(void)removeTag:(PQGTag*)tag {
-  DLog(@"Removing exist tag... %lld", tag.id);
-  [FCModel executeUpdateQuery:@"DELETE FROM point_tag WHERE tag_id = ? AND point_id = ?", tag.id, self.id];
+  DLog(@"Removing exist tag... %@", @(tag.id));
+  [FCModel executeUpdateQuery:@"DELETE FROM point_tag WHERE tag_id = ? AND point_id = ?", @(tag.id), @(self.id)];
 }
 
 #pragma mark - Attachments
 
 -(NSArray*)attachments {
-  return [PQGAttachment instancesWhere:@"point_id = ? ORDER BY recorded_at ASC", self.id];
+  return [PQGAttachment instancesWhere:@"point_id = ? ORDER BY recorded_at ASC", @(self.id)];
 }
 
 -(PQGAttachment*)addAttachment:(NSData*)attachment withExtension:(NSString *)extension {
@@ -237,6 +237,18 @@
   NSString *address = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
   
   self.friendlyName = address;
+}
+
+- (id)valueOfFieldName:(NSString *)fieldName byResolvingReloadConflictWithDatabaseValue:(id)valueInDatabase {
+  id localValue = [self serializedDatabaseRepresentationOfValue:[self valueForKey:fieldName] forPropertyNamed:fieldName];
+  if(![valueInDatabase isEqual:localValue]) {
+    [[NSException exceptionWithName:@"FCReloadConflict" reason:
+      [NSString stringWithFormat:@"%@ ID %@ cannot resolve reload conflict for \"%@\"", NSStringFromClass(self.class), self.primaryKey, fieldName]
+                           userInfo:nil] raise];
+    
+  }
+  return valueInDatabase;
+
 }
 
 @end
