@@ -10,7 +10,7 @@ import UIKit
 
 class PQGPointsViewController: UITableViewController {
   
-  @IBOutlet var addButton : UIBarButtonItem
+  @IBOutlet var addButton : UIBarButtonItem!
   
   var datasourceFetchAll : (() -> ([GNPoint]))?
   var datasourceCreatedNewPoint : ((GNPoint) -> ())?
