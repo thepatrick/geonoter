@@ -30,35 +30,27 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   var headerNib = UINib(nibName: "PQGPointDetailHeader", bundle: nil)
 
-  var store: PersistStore!
+  var store: PQGPersistStore!
   
-  var tagCache: [Tag]?
-  var attachmentCache: [GNAttachment]?
+  private var tagCache: [PQGTag]?
+  private var attachmentCache: [PQGAttachment]?
 
-  var point: GNPoint! {
+  var point: PQGPoint! {
   didSet {
     self.store = point.store
   }
   }
   
-  var tags: [Tag] {
+  var tags: [PQGTag] {
     if !tagCache {
-      if let newTags = point.tags() as? [Tag] {
-        tagCache = newTags
-      } else {
-        return [Tag]()
-      }
+      tagCache = point.tags
     }
     return tagCache!
   }
   
-  var attachments: [GNAttachment] {
+  var attachments: [PQGAttachment] {
     if !attachmentCache {
-      if let newAttachments = point.attachments() as? [GNAttachment] {
-        attachmentCache = newAttachments
-      } else {
-        return [GNAttachment]()
-      }
+      attachmentCache = point.attachments
     }
     return attachmentCache!
   }
@@ -192,10 +184,10 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     } else if kind == CSStickyHeaderParallaxHeader {
       NSLog("Header section for CSStickyHeaderParallaxHeader")
       let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as PQGPointDetailHeader
-      let coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+      let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
       let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
       cell.mapView.setRegion(region, animated: false)
-      cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name))
+      cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
       return cell
     }
     return nil
@@ -302,9 +294,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   func reallyDelete(action: UIAlertAction!) {
     for attachment in attachments {
-      attachment.deleteAttachment()
+      attachment.destroy()
     }
-    store.deletePointFromStore(point.dbId.integerValue)
+    point.destroy()
     self.navigationController.popViewControllerAnimated(true)
   }
   
@@ -326,11 +318,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
         let vc = segue.destinationViewController as PQGPointsViewController
         let tag = tags[indexPath.row]
         vc.datasourceFetchAll = {
-          if let points = tag.points() as? [GNPoint] {
-            return points
-          } else {
-            return [GNPoint]()
-          }
+          return tag.points
         }
         vc.datasourceCreatedNewPoint = { point in
           point.addTag(tag)

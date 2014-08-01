@@ -10,7 +10,7 @@ import UIKit
 
 class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
-  var tags = [Tag]()
+  var tags = [PQGTag]()
 
   @IBOutlet var newTagName: UITextField!
   
@@ -34,17 +34,13 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     tableView.reloadData()
   }
   
-  var store : PersistStore {
+  var store : PQGPersistStore {
     let appDelegate = UIApplication.sharedApplication().delegate as PQGAppDelegate
     return appDelegate.store
   }
   
   func fetchData() {
-    if let tags = store.getAllTags() as? [Tag] {
-      self.tags = tags
-    } else {
-      assert(false, "appDelegate.store.getAllTags() was not convertable to [Tag].")
-    }
+    self.tags = store.getAllTags()
   }
   
   // #pragma mark - Table view delegate
@@ -95,11 +91,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
       let vc = segue.destinationViewController as PQGPointsViewController
       let tag = self.tags[tableView.indexPathForSelectedRow().row]
       vc.datasourceFetchAll = {
-        if let points = tag.points() as? [GNPoint] {
-          return points
-        } else {
-          return [GNPoint]()
-        }
+        return tag.points
       }
       vc.datasourceCreatedNewPoint = { point in
         point.addTag(tag)
@@ -116,7 +108,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
-    store.insertOrUpdateTag(Tag(name: newTagName.text))
+    PQGTag(name: newTagName.text, store: store).save()
     reloadData()
     cancelAddTagNow(textField)
     return true

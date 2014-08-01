@@ -12,10 +12,10 @@ class PQGPointsViewController: UITableViewController {
   
   @IBOutlet var addButton : UIBarButtonItem!
   
-  var datasourceFetchAll : (() -> ([GNPoint]))?
-  var datasourceCreatedNewPoint : ((GNPoint) -> ())?
+  var datasourceFetchAll : (() -> ([PQGPoint]))?
+  var datasourceCreatedNewPoint : ((PQGPoint) -> ())?
   
-  var points = [GNPoint]()
+  var points = [PQGPoint]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -120,12 +120,11 @@ class PQGPointsViewController: UITableViewController {
     
     let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
     
-    let point = GNPoint()
-    point.store = del.store
+    let point = PQGPoint(store: del.store)
     let addButton = showLoading()
     
     NSLog(">> setupAsNewItem")
-    point.setupAsNewItem {
+    point.setupAsNewItem { error in
       NSLog("<< setupAsNewItem")
       NSLog("setting back %@", addButton)
       self.navigationItem.rightBarButtonItem = addButton

@@ -51,6 +51,21 @@
 
 #pragma mark -
 
+- (double)doubleForColumn:(NSString*)inColumnName
+{
+  return [[self stringForColumn:@"inColumnName"] doubleValue];
+}
+
+- (long long)longLongForColumn:(NSString*)inColumnName
+{
+  return [[self stringForColumn:@"inColumnName"] longLongValue];
+}
+
+- (NSNumber*)numberForColumn:(NSString*)inColumnName
+{
+  return @([[self stringForColumn:@"inColumnName"] longLongValue]);
+}
+
 - (NSInteger)integerForColumn:(NSString*)inColumnName
 {
 	return [[self stringForColumn:inColumnName] integerValue];

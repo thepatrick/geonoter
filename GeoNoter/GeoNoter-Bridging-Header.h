@@ -7,14 +7,14 @@
 #import "NSDateJSON.h"
 #import "NSStringUUID.h"
 
+#import "SQLDatabase.h"
+
 #import "PQGAppDelegate.h"
 
-#import "PersistStore.h"
-#import "Tag.h"
-#import "GNPoint.h"
-#import "GNAttachment.h"
+#import "PQGPersistStoreHelper.h"
 
 #import "CSStickyHeaderFlowLayout.h"
 #import "PQGCell.h"
 #import "PQGPointDetailHeader.h"
+
 

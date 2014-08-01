@@ -43,6 +43,8 @@
 
 @property int columnCount;
 
+- (double)doubleForColumn:(NSString*)inColumnName;
+- (long long)longLongForColumn:(NSString*)inColumnName;
 - (NSInteger)integerForColumn:(NSString*)inColumnName;
 - (NSInteger)integerForColumnAtIndex:(int)inIndex;
 

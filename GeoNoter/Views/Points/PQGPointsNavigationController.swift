@@ -23,15 +23,11 @@ class PQGPointsNavigationController: UINavigationController {
       
       homeView.datasourceFetchAll = {
         if let appDelegate = UIApplication.sharedApplication().delegate as? PQGAppDelegate {
-          if let points = appDelegate.store.getAllPoints() as? [GNPoint] {
-            return points
-          } else {
-            assert(false, "appDelegate.store.getAllPoints() was not convertable to GNPoint[].")
-          }
+          return appDelegate.store.getAllPoints()
         } else {
           assert(false, "UIApplication.sharedApplication().delegate is not a PQGAppDelegate as expected")
         }
-        return [GNPoint]()
+        return [PQGPoint]()
       }
     } else {
       assert(false, "PQGPointsNavigationController topViewController is not a PQGPointsViewController as expected")

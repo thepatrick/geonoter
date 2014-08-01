@@ -100,8 +100,8 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
       } else {
         let picker = MFMailComposeViewController()
         picker.setSubject("Geonoter Database")
-        let path = PersistStore.pathForResource("geonoter.db")
-        let data = NSData(contentsOfFile: path)
+        let path = PQGPersistStore.URLForDocument("geonoter.db")
+        let data = NSData(contentsOfURL: path)
         picker.addAttachmentData(data, mimeType: "application/x-sqlite3", fileName: "geonoter.db")
         picker.setToRecipients(["support@thepatrick.io"])
         picker.mailComposeDelegate = self

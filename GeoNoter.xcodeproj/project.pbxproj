@@ -11,6 +11,10 @@
 		CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275B19755536000091ED /* PQGImageSizerTests.swift */; };
 		CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275D19755570000091ED /* PQGDateJSONTests.swift */; };
 		CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */; };
+		CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
+		CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E2198B904F009DBCAE /* PQGPoint.swift */; };
+		CD4353E8198BB128009DBCAE /* PQGPersistStoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E7198BB128009DBCAE /* PQGPersistStoreHelper.m */; };
+		CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */; };
 		CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */; };
 		CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */; };
 		CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6147EF197929B80023C142 /* PQGSettingsTableViewController.swift */; };
@@ -30,10 +34,6 @@
 		CD6E3CA919466F68005067DE /* SQLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CA519466F68005067DE /* SQLDatabase.m */; };
 		CD6E3CAA19466F68005067DE /* SQLRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CA619466F68005067DE /* SQLRow.m */; };
 		CD6E3CAB19466F68005067DE /* SQLResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CA819466F68005067DE /* SQLResult.m */; };
-		CD6E3CB719467E7C005067DE /* PersistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CAE19467E7C005067DE /* PersistStore.m */; };
-		CD6E3CB919467E7C005067DE /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CB219467E7C005067DE /* Tag.m */; };
-		CD6E3CBA19467E7C005067DE /* GNPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CB419467E7C005067DE /* GNPoint.m */; };
-		CD6E3CBB19467E7C005067DE /* GNAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CB619467E7C005067DE /* GNAttachment.m */; };
 		CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */; };
 		CD73B2111948D00600C7D148 /* PQGPointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD73B2101948D00600C7D148 /* PQGPointDetailViewController.swift */; };
 		CD73B2131948D29200C7D148 /* PQGPointDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD73B2121948D29200C7D148 /* PQGPointDetailHeader.xib */; };
@@ -54,6 +54,8 @@
 		CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */; };
 		CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB6AB61947C27100DF47E5 /* PQGPointsNavigationController.swift */; };
 		CDAB6ABB1947C6BF00DF47E5 /* PQGPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB6ABA1947C6BF00DF47E5 /* PQGPointsViewController.swift */; };
+		CDB5DA71198A5D3400A205B1 /* PQGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA70198A5D3400A205B1 /* PQGModel.swift */; };
+		CDB5DA73198A748E00A205B1 /* PQGTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA72198A748E00A205B1 /* PQGTag.swift */; };
 		CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB80F03195F86520087863A /* PQGAttachmentViewController.swift */; };
 		CDBE67BD19480D1C0096E1CF /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBE67BC19480D1C0096E1CF /* AddressBookUI.framework */; };
 		CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD3BA919793FB900DE6699 /* PQGDefaultNameTableViewController.swift */; };
@@ -76,6 +78,11 @@
 		CD3F275B19755536000091ED /* PQGImageSizerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGImageSizerTests.swift; sourceTree = "<group>"; };
 		CD3F275D19755570000091ED /* PQGDateJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGDateJSONTests.swift; sourceTree = "<group>"; };
 		CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGStringUUIDTests.swift; sourceTree = "<group>"; };
+		CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAttachment.swift; path = Models/PQGAttachment.swift; sourceTree = "<group>"; };
+		CD4353E2198B904F009DBCAE /* PQGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPoint.swift; path = Models/PQGPoint.swift; sourceTree = "<group>"; };
+		CD4353E6198BB128009DBCAE /* PQGPersistStoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PQGPersistStoreHelper.h; path = Models/PQGPersistStoreHelper.h; sourceTree = "<group>"; };
+		CD4353E7198BB128009DBCAE /* PQGPersistStoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PQGPersistStoreHelper.m; path = Models/PQGPersistStoreHelper.m; sourceTree = "<group>"; };
+		CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPersistStore.swift; path = Models/PQGPersistStore.swift; sourceTree = "<group>"; };
 		CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQGPersistStore.m; sourceTree = "<group>"; };
 		CD60DC2B197012BE00E4E019 /* GeoNoterTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoterTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPersistStoreTags.swift; sourceTree = "<group>"; };
@@ -102,14 +109,6 @@
 		CD6E3CA619466F68005067DE /* SQLRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLRow.m; sourceTree = "<group>"; };
 		CD6E3CA719466F68005067DE /* SQLDatabasePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDatabasePrivate.h; sourceTree = "<group>"; };
 		CD6E3CA819466F68005067DE /* SQLResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLResult.m; sourceTree = "<group>"; };
-		CD6E3CAD19467E7C005067DE /* PersistStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistStore.h; sourceTree = "<group>"; };
-		CD6E3CAE19467E7C005067DE /* PersistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistStore.m; sourceTree = "<group>"; };
-		CD6E3CB119467E7C005067DE /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
-		CD6E3CB219467E7C005067DE /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
-		CD6E3CB319467E7C005067DE /* GNPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNPoint.h; sourceTree = "<group>"; };
-		CD6E3CB419467E7C005067DE /* GNPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNPoint.m; sourceTree = "<group>"; };
-		CD6E3CB519467E7C005067DE /* GNAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAttachment.h; sourceTree = "<group>"; };
-		CD6E3CB619467E7C005067DE /* GNAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAttachment.m; sourceTree = "<group>"; };
 		CD6E3CBC1947B37A005067DE /* GeoNoter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoter-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGLocationHelper.swift; sourceTree = "<group>"; };
 		CD73B2101948D00600C7D148 /* PQGPointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointDetailViewController.swift; path = Views/Points/PQGPointDetailViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +135,8 @@
 		CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPointAddTagsTableViewController.swift; sourceTree = "<group>"; };
 		CDAB6AB61947C27100DF47E5 /* PQGPointsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointsNavigationController.swift; path = Views/Points/PQGPointsNavigationController.swift; sourceTree = "<group>"; };
 		CDAB6ABA1947C6BF00DF47E5 /* PQGPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointsViewController.swift; path = Views/Points/PQGPointsViewController.swift; sourceTree = "<group>"; };
+		CDB5DA70198A5D3400A205B1 /* PQGModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGModel.swift; path = Models/PQGModel.swift; sourceTree = "<group>"; };
+		CDB5DA72198A748E00A205B1 /* PQGTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTag.swift; path = Models/PQGTag.swift; sourceTree = "<group>"; };
 		CDB80F03195F86520087863A /* PQGAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGAttachmentViewController.swift; sourceTree = "<group>"; };
 		CDBE67BC19480D1C0096E1CF /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		CDCD3BA919793FB900DE6699 /* PQGDefaultNameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGDefaultNameTableViewController.swift; path = Views/Settings/PQGDefaultNameTableViewController.swift; sourceTree = "<group>"; };
@@ -251,14 +252,13 @@
 		CD6E3CAC19467E65005067DE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CD6E3CAD19467E7C005067DE /* PersistStore.h */,
-				CD6E3CAE19467E7C005067DE /* PersistStore.m */,
-				CD6E3CB119467E7C005067DE /* Tag.h */,
-				CD6E3CB219467E7C005067DE /* Tag.m */,
-				CD6E3CB319467E7C005067DE /* GNPoint.h */,
-				CD6E3CB419467E7C005067DE /* GNPoint.m */,
-				CD6E3CB519467E7C005067DE /* GNAttachment.h */,
-				CD6E3CB619467E7C005067DE /* GNAttachment.m */,
+				CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */,
+				CD4353E6198BB128009DBCAE /* PQGPersistStoreHelper.h */,
+				CD4353E7198BB128009DBCAE /* PQGPersistStoreHelper.m */,
+				CDB5DA70198A5D3400A205B1 /* PQGModel.swift */,
+				CDB5DA72198A748E00A205B1 /* PQGTag.swift */,
+				CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */,
+				CD4353E2198B904F009DBCAE /* PQGPoint.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -561,11 +561,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6E3CB919467E7C005067DE /* Tag.m in Sources */,
 				CD6E3C6619466A2A005067DE /* NSStringUUID.m in Sources */,
-				CD6E3CBB19467E7C005067DE /* GNAttachment.m in Sources */,
+				CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */,
+				CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */,
 				CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */,
 				CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */,
+				CDB5DA71198A5D3400A205B1 /* PQGModel.swift in Sources */,
 				CD6E3CAA19466F68005067DE /* SQLRow.m in Sources */,
 				CD73B2181948D34000C7D148 /* PQGCell.m in Sources */,
 				CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */,
@@ -576,8 +577,9 @@
 				CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */,
 				CD6E3CAB19466F68005067DE /* SQLResult.m in Sources */,
 				CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */,
-				CD6E3CB719467E7C005067DE /* PersistStore.m in Sources */,
 				CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */,
+				CD4353E8198BB128009DBCAE /* PQGPersistStoreHelper.m in Sources */,
+				CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */,
 				CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */,
 				CD6BAC931973F6B3008EBBAE /* PQGTagsViewController.swift in Sources */,
 				CDAB6ABB1947C6BF00DF47E5 /* PQGPointsViewController.swift in Sources */,
@@ -586,7 +588,7 @@
 				CD73B2111948D00600C7D148 /* PQGPointDetailViewController.swift in Sources */,
 				CDF172FA1948D81C00CD351F /* PQGPointDetailHeader.m in Sources */,
 				CD63E33719608528008C610E /* UIImageContentsOfFileURL.m in Sources */,
-				CD6E3CBA19467E7C005067DE /* GNPoint.m in Sources */,
+				CDB5DA73198A748E00A205B1 /* PQGTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

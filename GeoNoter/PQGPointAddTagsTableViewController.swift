@@ -10,10 +10,10 @@ import UIKit
 
 class PQGPointAddTagsTableViewController: UITableViewController {
   
-  var point : GNPoint!
+  var point : PQGPoint!
   
-  var tags = [Tag]()
-  var chosenTags = Dictionary<Int, Tag>()
+  var tags = [PQGTag]()
+  var chosenTags = Dictionary<Int64, PQGTag>()
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -26,13 +26,12 @@ class PQGPointAddTagsTableViewController: UITableViewController {
   }
   
   func reloadData() {
-    self.tags = point.store.getAllTags() as [Tag]
+    self.tags = point.store.getAllTags()
     
     chosenTags.removeAll(keepCapacity: false)
     
-    let pointTags = point.tags() as Array<Tag>
-    for tag in pointTags {
-      chosenTags[tag.dbId.integerValue] = tag
+    for tag in point.tags {
+      chosenTags[tag.primaryKey] = tag
     }
     self.tableView.reloadData()
   }
@@ -53,7 +52,7 @@ class PQGPointAddTagsTableViewController: UITableViewController {
     let tag = tags[indexPath.row].hydrate()
     
     cell.textLabel.text = tag.name
-    if chosenTags[tag.dbId.integerValue] != nil {
+    if chosenTags[tag.primaryKey] != nil {
       cell.accessoryType = .Checkmark
     } else {
       cell.accessoryType = .None
@@ -64,7 +63,7 @@ class PQGPointAddTagsTableViewController: UITableViewController {
 
   override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
     let tag = tags[indexPath.row].hydrate()
-    if chosenTags[tag.dbId.integerValue] != nil {
+    if chosenTags[tag.primaryKey] != nil {
       point.removeTag(tag)
     } else {
       point.addTag(tag)

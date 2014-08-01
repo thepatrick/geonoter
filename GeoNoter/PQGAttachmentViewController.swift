@@ -17,7 +17,7 @@ import AssetsLibrary
 
 class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMailComposeViewControllerDelegate {
   
-  var attachment : GNAttachment!
+  var attachment : PQGAttachment!
   
   var initialZoomLevel : CGFloat = 0
   
@@ -31,7 +31,6 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   }
   
   override func viewWillAppear(animated: Bool) {
-    attachment.hydrate()
     title = attachment.friendlyName
     scrollView.zoomScale = 1.0
   }
@@ -138,7 +137,7 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   }
   
   func actionSheetDeleteMe(action: UIAlertAction!) {
-    attachment.deleteAttachment()
+    attachment.destroy()
     navigationController.popViewControllerAnimated(true)
   }
   
