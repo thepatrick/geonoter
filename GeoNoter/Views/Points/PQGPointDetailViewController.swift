@@ -55,7 +55,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     return attachmentCache!
   }
   
-  // #pragma mark - View Controller life cycle
+  //MARK: - View Controller life cycle
 
   override func viewDidLoad() {
     assert(self.point != nil, "viewDidLoad with no point!")
@@ -84,7 +84,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     collectionView.reloadData()
   }
   
-  // #pragma mark - Cell methods
+  //MARK: - Cell methods
   
   func cellForDetailsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as PQGCell
@@ -138,7 +138,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     return cell
   }
   
-  // #pragma mark - CollectionView delegate/datasource methods
+  //MARK: - CollectionView delegate/datasource methods
   
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
     return attachments.count > 0 ? 3 : 2
@@ -212,7 +212,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     NSLog("didSelectItemAtIndexPath %@", indexPath)
   }
   
-  // #pragma mark - MapViewDelegate
+  //MARK: - MapViewDelegate
   
   func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
     var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("standardPin") as MKPinAnnotationView
@@ -227,7 +227,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     return pin
   }
   
-  // #pragma mark - UIImagePickerControllerDelegate
+  //MARK: - UIImagePickerControllerDelegate
   
   func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
     NSLog("Good news, the image picker went away!")
@@ -246,7 +246,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     reloadData()
   }
   
-  // #pragma mark - Action Button
+  //MARK: - Action Button
   
   @IBAction func actionButtonPressed(sender: UIBarButtonItem) {
     let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -304,27 +304,23 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     if segue.identifier == "showAttachmentSegue" {
       if let vc = segue.destinationViewController as? PQGAttachmentViewController {
         // do stuff
-        if let cell = sender as? PQGCell {
-          vc.attachment = attachments[self.collectionView.indexPathForCell(cell).row]
-        }
+        let cell = sender as PQGCell
+        vc.attachment = attachments[self.collectionView.indexPathForCell(cell).row]
       }
     } else if segue.identifier == "editTagsSegue" {
       if let vc = segue.destinationViewController as? PQGPointAddTagsTableViewController {
         vc.point = point
       }
     } else if segue.identifier == "pushToTagPointsFromPoint" {
-      if let cell = sender as? PQGCell {
-        let indexPath = collectionView.indexPathForCell(cell)
-        let vc = segue.destinationViewController as PQGPointsViewController
-        let tag = tags[indexPath.row]
-        vc.datasourceFetchAll = {
-          return tag.points
-        }
-        vc.datasourceCreatedNewPoint = { point in
-          point.addTag(tag)
-        }
-      } else {
-        assert(false, "pushToTagPointsFromPoint segue triggered from something other than a PQGCell")
+      let cell = sender as PQGCell
+      let indexPath = collectionView.indexPathForCell(cell)
+      let vc = segue.destinationViewController as PQGPointsViewController
+      let tag = tags[indexPath.row]
+      vc.datasourceFetchAll = {
+        return tag.points
+      }
+      vc.datasourceCreatedNewPoint = { point in
+        point.addTag(tag)
       }
     }
   }
