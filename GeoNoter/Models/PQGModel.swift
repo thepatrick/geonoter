@@ -10,7 +10,7 @@ import Foundation
 
 class PQGModel: NSObject {
 
-  var primaryKey: Int64
+  let primaryKey: Int64
 
   let store: PQGPersistStore
   
@@ -22,12 +22,18 @@ class PQGModel: NSObject {
     assert(false, "tableName not implemented in PQGModel subclass")
     return ""
   }
+  
+  class func primaryKeyForNewInstance() -> Int64 {
+    let urandom = (UInt64(arc4random()) << 32 | UInt64(arc4random()))
+    
+    return Int64(urandom & 0x7FFFFFFFFFFFFFFF)
+  }
 
   //MARK: - Initializers
   
   init(store: PQGPersistStore) {
     self.store = store
-    self.primaryKey = PQGPersistStoreHelper.primaryKeyForNewInstance()
+    self.primaryKey = PQGModel.primaryKeyForNewInstance()
     self.isNew = true
     self.isHydrated = true
   }

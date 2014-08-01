@@ -13,7 +13,6 @@
 		CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */; };
 		CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
 		CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E2198B904F009DBCAE /* PQGPoint.swift */; };
-		CD4353E8198BB128009DBCAE /* PQGPersistStoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E7198BB128009DBCAE /* PQGPersistStoreHelper.m */; };
 		CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */; };
 		CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */; };
 		CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */; };
@@ -80,8 +79,6 @@
 		CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGStringUUIDTests.swift; sourceTree = "<group>"; };
 		CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAttachment.swift; path = Models/PQGAttachment.swift; sourceTree = "<group>"; };
 		CD4353E2198B904F009DBCAE /* PQGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPoint.swift; path = Models/PQGPoint.swift; sourceTree = "<group>"; };
-		CD4353E6198BB128009DBCAE /* PQGPersistStoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PQGPersistStoreHelper.h; path = Models/PQGPersistStoreHelper.h; sourceTree = "<group>"; };
-		CD4353E7198BB128009DBCAE /* PQGPersistStoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PQGPersistStoreHelper.m; path = Models/PQGPersistStoreHelper.m; sourceTree = "<group>"; };
 		CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPersistStore.swift; path = Models/PQGPersistStore.swift; sourceTree = "<group>"; };
 		CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQGPersistStore.m; sourceTree = "<group>"; };
 		CD60DC2B197012BE00E4E019 /* GeoNoterTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoterTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -253,8 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */,
-				CD4353E6198BB128009DBCAE /* PQGPersistStoreHelper.h */,
-				CD4353E7198BB128009DBCAE /* PQGPersistStoreHelper.m */,
 				CDB5DA70198A5D3400A205B1 /* PQGModel.swift */,
 				CDB5DA72198A748E00A205B1 /* PQGTag.swift */,
 				CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */,
@@ -578,7 +573,6 @@
 				CD6E3CAB19466F68005067DE /* SQLResult.m in Sources */,
 				CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */,
 				CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */,
-				CD4353E8198BB128009DBCAE /* PQGPersistStoreHelper.m in Sources */,
 				CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */,
 				CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */,
 				CD6BAC931973F6B3008EBBAE /* PQGTagsViewController.swift in Sources */,

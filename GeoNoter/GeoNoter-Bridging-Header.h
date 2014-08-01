@@ -11,8 +11,6 @@
 
 #import "PQGAppDelegate.h"
 
-#import "PQGPersistStoreHelper.h"
-
 #import "CSStickyHeaderFlowLayout.h"
 #import "PQGCell.h"
 #import "PQGPointDetailHeader.h"
