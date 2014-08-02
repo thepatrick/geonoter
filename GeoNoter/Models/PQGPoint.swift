@@ -13,19 +13,6 @@ import CoreLocation
 
 extension PQGPersistStore {
   
-  func getPoint(pointId: Int64) -> PQGPoint {
-    if let point = centralPointStore[pointId] {
-      return point
-    }
-    let point = PQGPoint(primaryKey: pointId, store: self)
-    centralPointStore[pointId] = point
-    return point
-  }
-  
-  func removePointFromCache(pointId: Int64) {
-    self.centralPointStore.removeValueForKey(pointId)
-  }
-
   func getPointsWithConditions(conditions: String?, sort: String?) -> [PQGPoint] {
     var points = [PQGPoint]()
     withDatabase { db in
@@ -35,7 +22,7 @@ extension PQGPersistStore {
 
       let enumerator = res.rowEnumerator()
       while let row = enumerator.nextObject() as? SQLRow {
-        points.append(self.getPoint(row.longLongForColumn("id")))
+        points.append(self.points.get(row.longLongForColumn("id")))
       }
     }
     return points
@@ -150,7 +137,7 @@ class PQGPoint: PQGModel {
   }
   
   override func wasDestroyed() {
-    store.removePointFromCache(primaryKey)
+    store.points.removeCachedObject(primaryKey)
     store.withDatabase { db in
       db.performQuery("DELETE FROM point_tag WHERE id = \(self.primaryKey)")
       return

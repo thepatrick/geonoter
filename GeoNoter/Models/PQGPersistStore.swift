@@ -10,9 +10,9 @@ import Foundation
 
 @objc class PQGPersistStore: NSObject {
   
-  var centralTagStore        = Dictionary<Int64, PQGTag>()
-  var centralPointStore      = Dictionary<Int64, PQGPoint>()
-  var centralAttachmentStore = Dictionary<Int64, PQGAttachment>()
+  lazy var tags : PQGModelCache<PQGTag> = PQGModelCache<PQGTag>(store: self)
+  lazy var attachments : PQGModelCache<PQGAttachment> = PQGModelCache<PQGAttachment>(store: self)
+  lazy var points : PQGModelCache<PQGPoint> = PQGModelCache<PQGPoint>(store: self)
   
   private var db : SQLDatabase?
   private let dbLock   = dispatch_queue_create("PQGPersistStore", DISPATCH_QUEUE_SERIAL)
@@ -200,27 +200,15 @@ import Foundation
   //MARK: - Cache control
   
   func tellCacheToSave() {
-    for value in centralAttachmentStore.values {
-      value.save()
-    }
-    for value in centralPointStore.values {
-      value.save()
-    }
-    for value in centralTagStore.values {
-      value.save()
-    }
+    attachments.save()
+    points.save()
+    tags.save()
   }
   
   func tellCacheToDehydrate() {
-    for value in centralAttachmentStore.values {
-      value.dehydrate()
-    }
-    for value in centralPointStore.values {
-      value.dehydrate()
-    }
-    for value in centralTagStore.values {
-      value.dehydrate()
-    }
+    attachments.dehydrate()
+    points.dehydrate()
+    tags.dehydrate()
   }
   
 }

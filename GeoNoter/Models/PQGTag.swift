@@ -10,19 +10,6 @@ import Foundation
 
 extension PQGPersistStore {
   
-  func getTag(tagId: Int64) -> PQGTag {
-    if let tag = centralTagStore[tagId] {
-      return tag
-    }
-    let tag = PQGTag(primaryKey: tagId, store: self)
-    centralTagStore[tagId] = tag
-    return tag
-  }
-  
-  func removeTagFromCache(primaryKey: Int64) {
-    self.centralTagStore.removeValueForKey(primaryKey)
-  }
-  
   func getTagsWithConditions(conditions: String?, sort: String?) -> [PQGTag] {
     var tags = [PQGTag]()
     withDatabase { db in
@@ -32,7 +19,7 @@ extension PQGPersistStore {
       
       let enumerator = res.rowEnumerator()
       while let row = enumerator.nextObject() as? SQLRow {
-        tags.append(self.getTag(row.longLongForColumn("id")))
+        tags.append(self.tags.get(row.longLongForColumn("id")))
       }
     }
     return tags
@@ -96,7 +83,7 @@ class PQGTag: PQGModel {
   }
   
   override func wasDestroyed() {
-      store.removeTagFromCache(primaryKey)
+    store.tags.removeCachedObject(primaryKey)
   }
   
 }

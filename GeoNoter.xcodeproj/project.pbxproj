@@ -20,6 +20,7 @@
 		CD6147F31979315E0023C142 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CD6147F11979315E0023C142 /* Credits.html */; };
 		CD6147F51979341C0023C142 /* PQGCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6147F41979341C0023C142 /* PQGCreditsViewController.swift */; };
 		CD63E33719608528008C610E /* UIImageContentsOfFileURL.m in Sources */ = {isa = PBXBuildFile; fileRef = CD63E33619608528008C610E /* UIImageContentsOfFileURL.m */; };
+		CD6870AD198BE67500C20C35 /* PQGModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6870AC198BE67500C20C35 /* PQGModelCache.swift */; };
 		CD6BAC931973F6B3008EBBAE /* PQGTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BAC921973F6B3008EBBAE /* PQGTagsViewController.swift */; };
 		CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BAC951973F80E008EBBAE /* PQGTagsTableViewController.swift */; };
 		CD6E3C6519466A2A005067DE /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3C6119466A2A005067DE /* NSDateJSON.m */; };
@@ -88,6 +89,7 @@
 		CD6147F41979341C0023C142 /* PQGCreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGCreditsViewController.swift; path = Views/Settings/PQGCreditsViewController.swift; sourceTree = "<group>"; };
 		CD63E33519608528008C610E /* UIImageContentsOfFileURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageContentsOfFileURL.h; sourceTree = "<group>"; };
 		CD63E33619608528008C610E /* UIImageContentsOfFileURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageContentsOfFileURL.m; sourceTree = "<group>"; };
+		CD6870AC198BE67500C20C35 /* PQGModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGModelCache.swift; path = Models/PQGModelCache.swift; sourceTree = "<group>"; };
 		CD6BAC921973F6B3008EBBAE /* PQGTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTagsViewController.swift; path = Views/Tags/PQGTagsViewController.swift; sourceTree = "<group>"; };
 		CD6BAC951973F80E008EBBAE /* PQGTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTagsTableViewController.swift; path = Views/Tags/PQGTagsTableViewController.swift; sourceTree = "<group>"; };
 		CD6E3C6119466A2A005067DE /* NSDateJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateJSON.m; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				CDB5DA72198A748E00A205B1 /* PQGTag.swift */,
 				CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */,
 				CD4353E2198B904F009DBCAE /* PQGPoint.swift */,
+				CD6870AC198BE67500C20C35 /* PQGModelCache.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				CD6147F51979341C0023C142 /* PQGCreditsViewController.swift in Sources */,
 				CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */,
 				CD6E3CAB19466F68005067DE /* SQLResult.m in Sources */,
+				CD6870AD198BE67500C20C35 /* PQGModelCache.swift in Sources */,
 				CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */,
 				CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */,
 				CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */,

@@ -10,19 +10,6 @@ import Foundation
 
 extension PQGPersistStore {
   
-  func getAttachment(attachmentId: Int64) -> PQGAttachment {
-    if let attachment = centralAttachmentStore[attachmentId] {
-      return attachment
-    }
-    let attachment = PQGAttachment(primaryKey: attachmentId, store: self)
-    centralAttachmentStore[attachmentId] = attachment
-    return attachment
-  }
-  
-  func removeAttachmentFromCache(attachmentId: Int64) {
-    self.centralAttachmentStore.removeValueForKey(attachmentId)
-  }
-  
   func getAttachmentsWithConditions(conditions: String?, sort: String?) -> [PQGAttachment] {
     var attachments = [PQGAttachment]()
     withDatabase { db in
@@ -32,7 +19,7 @@ extension PQGPersistStore {
       
       let enumerator = res.rowEnumerator()
       while let row = enumerator.nextObject() as? SQLRow {
-        attachments.append(self.getAttachment(row.longLongForColumn("id")))
+        attachments.append(self.attachments.get(row.longLongForColumn("id")))
       }
     }
     return attachments
@@ -115,7 +102,7 @@ class PQGAttachment: PQGModel {
   
   var point: PQGPoint {
   get {
-    return store.getPoint(pointId!)
+    return store.points.get(pointId!)
   }
   set (point) {
     hydrate()._pointId = point.primaryKey
@@ -170,7 +157,7 @@ class PQGAttachment: PQGModel {
   }
   
   override func wasDestroyed() {
-    store.removeAttachmentFromCache(primaryKey)
+    store.attachments.removeCachedObject(primaryKey)
     if let fsURL = filesystemURL {
       NSFileManager.defaultManager().removeItemAtURL(fsURL, error: nil)
       NSFileManager.defaultManager().removeItemAtURL(fsURL.URLByAppendingPathExtension("cached.jpg"), error: nil)
