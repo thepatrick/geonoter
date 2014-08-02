@@ -85,11 +85,9 @@ class PQGModelQueryBuilder<T: PQGModel> {
   var items = [T]()
     cache.store.withDatabase { db in
       let whereClause = self.conditions ? "WHERE \(self.conditions)" : ""
-      let res = db.performQuery("SELECT id FROM tag \(whereClause) ORDER BY \(self.sort)")
-      
-      let enumerator = res.rowEnumerator()
-      while let row = enumerator.nextObject() as? SQLRow {
-        items.append(self.cache.get(row.longLongForColumn("id")))
+      let res = db.executeQuery("SELECT id FROM tag \(whereClause) ORDER BY \(self.sort)")
+      while res.next() {
+        items.append(self.cache.get(res.longLongIntForColumn("id")))
       }
     }
     return items

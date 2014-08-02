@@ -31,9 +31,6 @@
 		CD6E3C9C19466F2C005067DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3C9B19466F2C005067DE /* QuartzCore.framework */; };
 		CD6E3CA019466F38005067DE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3C9F19466F38005067DE /* AssetsLibrary.framework */; };
 		CD6E3CA219466F3E005067DE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3CA119466F3E005067DE /* MessageUI.framework */; };
-		CD6E3CA919466F68005067DE /* SQLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CA519466F68005067DE /* SQLDatabase.m */; };
-		CD6E3CAA19466F68005067DE /* SQLRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CA619466F68005067DE /* SQLRow.m */; };
-		CD6E3CAB19466F68005067DE /* SQLResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CA819466F68005067DE /* SQLResult.m */; };
 		CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */; };
 		CD73B2111948D00600C7D148 /* PQGPointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD73B2101948D00600C7D148 /* PQGPointDetailViewController.swift */; };
 		CD73B2131948D29200C7D148 /* PQGPointDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD73B2121948D29200C7D148 /* PQGPointDetailHeader.xib */; };
@@ -103,11 +100,6 @@
 		CD6E3C9B19466F2C005067DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CD6E3C9F19466F38005067DE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CD6E3CA119466F3E005067DE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		CD6E3CA419466F68005067DE /* SQLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDatabase.h; sourceTree = "<group>"; };
-		CD6E3CA519466F68005067DE /* SQLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLDatabase.m; sourceTree = "<group>"; };
-		CD6E3CA619466F68005067DE /* SQLRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLRow.m; sourceTree = "<group>"; };
-		CD6E3CA719466F68005067DE /* SQLDatabasePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDatabasePrivate.h; sourceTree = "<group>"; };
-		CD6E3CA819466F68005067DE /* SQLResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLResult.m; sourceTree = "<group>"; };
 		CD6E3CBC1947B37A005067DE /* GeoNoter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoter-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGLocationHelper.swift; sourceTree = "<group>"; };
 		CD73B2101948D00600C7D148 /* PQGPointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointDetailViewController.swift; path = Views/Points/PQGPointDetailViewController.swift; sourceTree = "<group>"; };
@@ -236,18 +228,6 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		CD6E3CA319466F5A005067DE /* SQLDatabase */ = {
-			isa = PBXGroup;
-			children = (
-				CD6E3CA419466F68005067DE /* SQLDatabase.h */,
-				CD6E3CA519466F68005067DE /* SQLDatabase.m */,
-				CD6E3CA619466F68005067DE /* SQLRow.m */,
-				CD6E3CA719466F68005067DE /* SQLDatabasePrivate.h */,
-				CD6E3CA819466F68005067DE /* SQLResult.m */,
-			);
-			name = SQLDatabase;
-			sourceTree = "<group>";
-		};
 		CD6E3CAC19467E65005067DE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,7 +316,6 @@
 				CD84A4F31769F25400266526 /* Main.storyboard */,
 				CD84A4FC1769F25400266526 /* Images.xcassets */,
 				CD6E3C6019466A1D005067DE /* Categories */,
-				CD6E3CA319466F5A005067DE /* SQLDatabase */,
 				CD6E3CAC19467E65005067DE /* Models */,
 				CDAB6AB21947C0BA00DF47E5 /* Views */,
 				CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */,
@@ -565,15 +544,12 @@
 				CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */,
 				CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */,
 				CDB5DA71198A5D3400A205B1 /* PQGModel.swift in Sources */,
-				CD6E3CAA19466F68005067DE /* SQLRow.m in Sources */,
 				CD73B2181948D34000C7D148 /* PQGCell.m in Sources */,
 				CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */,
-				CD6E3CA919466F68005067DE /* SQLDatabase.m in Sources */,
 				CD84A4EE1769F25400266526 /* main.m in Sources */,
 				CD6E3C6919466D30005067DE /* UIImageSizer.m in Sources */,
 				CD6147F51979341C0023C142 /* PQGCreditsViewController.swift in Sources */,
 				CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */,
-				CD6E3CAB19466F68005067DE /* SQLResult.m in Sources */,
 				CD6870AD198BE67500C20C35 /* PQGModelCache.swift in Sources */,
 				CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */,
 				CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */,

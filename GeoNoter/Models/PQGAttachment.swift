@@ -111,8 +111,8 @@ class PQGAttachment: PQGModel {
     _recordedAt = nil
   }
   
-  override func hydrateRequired(row: SQLRow) {
-    _pointId      = row.longLongForColumn("point_id")
+  override func hydrateRequired(row: FMResultSet) {
+    _pointId      = row.longLongIntForColumn("point_id")
     _friendlyName = row.stringForColumn("friendly_name")
     _kind         = row.stringForColumn("kind")
     _memo         = row.stringForColumn("memo")
@@ -120,17 +120,30 @@ class PQGAttachment: PQGModel {
     _recordedAt   = row.dateForColumn("recorded_at")
   }
   
-  override func saveForNew(db: SQLDatabase) {
-    let sql = "INSERT INTO \(tableName) (id, point_id, friendly_name, kind, memo, file_name, recorded_at) " +
-      "VALUES (\(primaryKey), \(_pointId), \(str(_friendlyName)), \(str(_kind)), \(str(_memo)), \(str(_fileName)), \(str(_recordedAt?.pqg_sqlDateString())))"
-    db.performQuery(sql)
+  override func saveForNew(db: FMDatabase) {
+    db.executeUpdate("INSERT INTO \(tableName) (id, point_id, friendly_name, kind, memo, file_name, recorded_at), " +
+      "VALUES (?, ?, ?, ?, ?, ?, ?)",
+      int64OrNil(self.primaryKey),
+      int64OrNil(pointId),
+      orNil(friendlyName),
+      orNil(kind),
+      orNil(memo),
+      orNil(fileName),
+      orNil(recordedAt)
+    )
   }
   
-  override func saveForUpdate(db: SQLDatabase)  {
-    let sql = "UPDATE \(tableName) SET point_id = \(_pointId), friendly_name = \(str(_friendlyName)), kind = \(str(_kind)), " +
-      "memo = \(str(_memo)), file_name = \(str(_fileName)), recorded_at =  \(str(_recordedAt?.pqg_sqlDateString()))" +
-      "WHERE id = \(primaryKey)"
-    db.performQuery(sql)
+  override func saveForUpdate(db: FMDatabase)  {
+    db.executeUpdate("UPDATE \(tableName) SET point_id = ?, friendly_name = ?, kind = ?, " +
+      "memo = ?, file_name = ?, recorded_at = ? WHERE id = ?",
+      int64OrNil(pointId),
+      orNil(friendlyName),
+      orNil(kind),
+      orNil(memo),
+      orNil(fileName),
+      orNil(recordedAt),
+      int64OrNil(primaryKey)
+    )
   }
   
   override func wasDestroyed() {
@@ -141,12 +154,6 @@ class PQGAttachment: PQGModel {
       //TODO: Remove all cached image for size variants
     }
   }
-  
-  
-//  convenience init(name: String, store: PersistStore) {
-//    self.init(store: store)
-//    self.name = name
-//  }
   
   //MARK: - Attachment helpers
   

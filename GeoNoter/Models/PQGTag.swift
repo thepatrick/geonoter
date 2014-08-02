@@ -33,18 +33,22 @@ class PQGTag: PQGModel {
     _name = nil
   }
   
-  override func hydrateRequired(row: SQLRow) {
+  override func hydrateRequired(row: FMResultSet) {
     _name = row.stringForColumn("name")
   }
   
-  override func saveForNew(db: SQLDatabase) {
-    let sql = "INSERT INTO \(tableName) (id, name) VALUES (\(primaryKey), '\(SQLDatabase.prepareStringForQuery(_name))')"
-    db.performQuery(sql)
+  override func saveForNew(db: FMDatabase) {
+    db.executeUpdate("INSERT INTO \(tableName) (id, name) VALUES (?, ?)",
+      int64OrNil(self.primaryKey),
+      orNil(name)
+    )
   }
   
-  override func saveForUpdate(db: SQLDatabase) {
-    let sql = "UPDATE \(tableName) SET name = '\(SQLDatabase.prepareStringForQuery(_name))' WHERE id = \(primaryKey)"
-    db.performQuery(sql)
+  override func saveForUpdate(db: FMDatabase) {
+    db.executeUpdate("UPDATE \(tableName) SET name = ? WHERE id = ?",
+      orNil(name),
+      int64OrNil(self.primaryKey)
+    )
   }
   
   var points : [PQGPoint] {
@@ -53,7 +57,7 @@ class PQGTag: PQGModel {
   
   override func willDestroy() {
     store.withDatabase { db in
-      db.performQuery("DELETE FROM point_tag WHERE tag_id = \(self.primaryKey)")
+      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", self.int64OrNil(self.primaryKey))
       return
     }
   }

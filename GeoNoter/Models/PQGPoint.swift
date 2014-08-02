@@ -91,7 +91,7 @@ class PQGPoint: PQGModel {
     _longitude = nil
   }
   
-  override func hydrateRequired(row: SQLRow) {
+  override func hydrateRequired(row: FMResultSet) {
     _friendlyName = row.stringForColumn("friendly_name")
     _name         = row.stringForColumn("name")
     _memo         = row.stringForColumn("memo")
@@ -100,23 +100,39 @@ class PQGPoint: PQGModel {
     _longitude    = row.doubleForColumn("longitude")
   }
   
-  override func saveForNew(db: SQLDatabase) {
-    let sql = "INSERT INTO \(tableName) (id, friendly_name, name, memo, recorded_at, latitude, longitude) " +
-      "VALUES (\(primaryKey), \(str(_friendlyName)), \(str(_name)), \(str(_memo)), \(str(_recordedAt?.pqg_sqlDateString())), \(orNil(_latitude)), \(orNil(_longitude)))"
-    db.performQuery(sql)
+  override func saveForNew(db: FMDatabase) {
+    db.executeUpdate("INSERT INTO \(tableName) (id, friendly_name, name, memo, recorded_at, latitude, longitude) " +
+      "(?, ?, ?, ?, ?, ?, ?)",
+      int64OrNil(primaryKey),
+      orNil(friendlyName),
+      orNil(name),
+      orNil(memo),
+      orNil(recordedAt),
+      orNil(latitude),
+      orNil(longitude)
+    )
   }
   
-  override func saveForUpdate(db: SQLDatabase)  {
-    let sql = "UPDATE \(tableName) SET friendly_name = \(str(_friendlyName)), name = \(str(_name)), " +
-      "memo = \(str(_memo)), recorded_at =  \(str(_recordedAt?.pqg_sqlDateString())), longitude = \(orNil(_latitude)), latitude = \(orNil(_longitude)) " +
-      "WHERE id = \(primaryKey)"
-    db.performQuery(sql)
+  override func saveForUpdate(db: FMDatabase)  {
+    db.executeUpdate("UPDATE \(tableName) SET friendly_name = ?, name = ?, memo = ?, " +
+      "recorded_at = ?, latitude = ?, longitude =? WHERE id = ?",
+      orNil(friendlyName),
+      orNil(name),
+      orNil(memo),
+      orNil(recordedAt),
+      orNil(latitude),
+      orNil(longitude),
+      int64OrNil(primaryKey)
+    )
   }
   
   override func wasDestroyed() {
     store.points.removeCachedObject(primaryKey)
     store.withDatabase { db in
-      db.performQuery("DELETE FROM point_tag WHERE id = \(self.primaryKey)")
+      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?",
+        self.int64OrNil(self.primaryKey)
+      )
+
       return
     }
     
@@ -142,21 +158,29 @@ class PQGPoint: PQGModel {
   
   func addTag(tag: PQGTag) {
     store.withDatabase { db in
-      db.performQuery("INSERT INTO point_tag (tag_id, point_id) VALUES (\(tag.primaryKey), \(self.primaryKey))")
+      db.executeUpdate("INSERT INTO point_tag (tag_id, point_id) VALUES (?, ?)",
+        self.int64OrNil(self.primaryKey),
+        self.int64OrNil(tag.primaryKey)
+      )
       return
     }
   }
   
   func removeTag(tag: PQGTag) {
     store.withDatabase { db in
-      db.performQuery("DELETE FROM point_tag WHERE tag_id = \(tag.primaryKey) AND point_id = \(self.primaryKey)")
+      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ? AND point_id = ?",
+        self.int64OrNil(self.primaryKey),
+        self.int64OrNil(tag.primaryKey)
+      )
       return
     }
   }
   
   private func removeAllTags() {
     store.withDatabase { db in
-      db.performQuery("DELETE FROM point_tag WHERE point_id = \(self.primaryKey)")
+      db.executeUpdate("DELETE FROM point_tag WHERE point_id = ?",
+        self.int64OrNil(self.primaryKey)
+      )
       return
     }
   }

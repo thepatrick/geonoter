@@ -48,17 +48,16 @@ class PQGModel: NSObject {
   func hydrate() -> Self {
     if !isHydrated {
       store.withDatabase { db in
-        let result = db.performQuery("SELECT * FROM TAG WHERE id = \( self.primaryKey )")
-        assert(result.rowCount > 0, "Could not hydrate a tag that does not exist in the database");
-        let row = result.rowAtIndex(0)
-        self.hydrateRequired(row!)
+        let result = db.executeQuery("SELECT * FROM TAG WHERE id = ?", NSNumber.numberWithLongLong(self.primaryKey))
+        assert(result.next(), "Attempt to hydate a model that does not exist in the database")
+        self.hydrateRequired(result)
       }
       isHydrated = true
     }
     return self
   }
   
-  func hydrateRequired(row: SQLRow) {
+  func hydrateRequired(row: FMResultSet) {
     NSLog("hydrateRequired not implemeneted in \(tableName)")
     assert(false, "hydrateRequired not implemented in PQGModel subclass")
   }
@@ -85,12 +84,12 @@ class PQGModel: NSObject {
     }
   }
   
-  func saveForNew(db: SQLDatabase) {
+  func saveForNew(db: FMDatabase) {
     NSLog("saveForNew not implemeneted in \(tableName)")
     assert(false, "saveForNew not implemented in PQGModel subclass")
   }
   
-  func saveForUpdate(db: SQLDatabase) {
+  func saveForUpdate(db: FMDatabase) {
     NSLog("saveForUpdate not implemeneted in \(tableName)")
     assert(false, "saveForUpdate not implemented in PQGModel subclass")
   }
@@ -99,7 +98,7 @@ class PQGModel: NSObject {
     willDestroy()
     store.withDatabase { db in
       let sql = "DELETE FROM \(self.tableName) WHERE id = \(self.primaryKey)"
-      db.performQuery(sql)
+      db.executeUpdate("DELETE FROM \(self.tableName) WHERE id = ?", NSNumber.numberWithLongLong(self.primaryKey))
     }
     wasDestroyed()
   }
@@ -114,19 +113,19 @@ class PQGModel: NSObject {
   
   //MARK: - Helpers
   
-  func orNil(value: AnyObject?) -> String {
+  func orNil(value: AnyObject?) -> AnyObject {
     if let realValue: AnyObject = value {
       return "\(value)"
     } else {
-      return "null"
+      return NSNull()
     }
   }
   
-  func str(value: String?) -> String {
+  func int64OrNil(value: Int64?) -> AnyObject {
     if let realValue = value {
-      return "'\(SQLDatabase.prepareStringForQuery(value))'"
+      return NSNumber.numberWithLongLong(realValue)
     } else {
-      return "null"
+      return NSNull()
     }
   }
   
