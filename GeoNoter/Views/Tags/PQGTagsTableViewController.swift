@@ -40,7 +40,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   func fetchData() {
-    self.tags = store.getAllTags()
+    self.tags = store.tags.all
   }
   
   // #pragma mark - Table view delegate

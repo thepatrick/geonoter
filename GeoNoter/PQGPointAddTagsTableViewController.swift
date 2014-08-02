@@ -26,7 +26,8 @@ class PQGPointAddTagsTableViewController: UITableViewController {
   }
   
   func reloadData() {
-    self.tags = point.store.getAllTags()
+    
+    self.tags = point.store.tags.all
     
     chosenTags.removeAll(keepCapacity: false)
     

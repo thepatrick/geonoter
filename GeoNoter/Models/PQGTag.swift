@@ -8,29 +8,6 @@
 
 import Foundation
 
-extension PQGPersistStore {
-  
-  func getTagsWithConditions(conditions: String?, sort: String?) -> [PQGTag] {
-    var tags = [PQGTag]()
-    withDatabase { db in
-      let whereClause = conditions ? "WHERE \(conditions)" : ""
-      let orderBy = sort ? sort! : "name ASC"
-      let res = db.performQuery("SELECT id FROM tag \(whereClause) ORDER BY \(orderBy)")
-      
-      let enumerator = res.rowEnumerator()
-      while let row = enumerator.nextObject() as? SQLRow {
-        tags.append(self.tags.get(row.longLongForColumn("id")))
-      }
-    }
-    return tags
-  }
-  
-  func getAllTags() -> [PQGTag] {
-    return getTagsWithConditions(nil, sort: nil)
-  }
-  
-}
-
 class PQGTag: PQGModel {
   
   override var tableName : String { return "tag" }
@@ -71,8 +48,7 @@ class PQGTag: PQGModel {
   }
   
   var points : [PQGPoint] {
-    let cond = "id in (SELECT point_id FROM point_tag WHERE tag_id = \(primaryKey))"
-    return store.getPointsWithConditions(cond, sort: nil)
+    return store.points.find.with("id in (SELECT point_id FROM point_tag WHERE tag_id = \(primaryKey))").all
   }
   
   override func willDestroy() {

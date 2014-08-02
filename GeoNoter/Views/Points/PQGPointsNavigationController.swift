@@ -18,7 +18,7 @@ class PQGPointsNavigationController: UINavigationController {
     if let homeView = self.topViewController as? PQGPointsViewController {
       homeView.datasourceFetchAll = {
         let appDelegate = UIApplication.sharedApplication().delegate as PQGAppDelegate
-        return appDelegate.store.getAllPoints()
+        return appDelegate.store.points.all
       }
     } else {
       assert(false, "PQGPointsNavigationController topViewController is not a PQGPointsViewController as expected")

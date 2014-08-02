@@ -11,29 +11,6 @@ import MapKit
 import AddressBookUI
 import CoreLocation
 
-extension PQGPersistStore {
-  
-  func getPointsWithConditions(conditions: String?, sort: String?) -> [PQGPoint] {
-    var points = [PQGPoint]()
-    withDatabase { db in
-      let whereClause = conditions ? "WHERE \(conditions)" : ""
-      let orderBy = sort ? sort! : "name ASC"
-      let res = db.performQuery("SELECT id FROM point \(whereClause) ORDER BY \(orderBy)")
-
-      let enumerator = res.rowEnumerator()
-      while let row = enumerator.nextObject() as? SQLRow {
-        points.append(self.points.get(row.longLongForColumn("id")))
-      }
-    }
-    return points
-  }
-
-  func getAllPoints() -> [PQGPoint] {
-    return getPointsWithConditions(nil, sort: nil)
-  }
-  
-}
-
 class PQGPoint: PQGModel {
   
   override var tableName : String { return "point" }
@@ -142,7 +119,8 @@ class PQGPoint: PQGModel {
       db.performQuery("DELETE FROM point_tag WHERE id = \(self.primaryKey)")
       return
     }
-    for attachment in store.getAttachmentsWithConditions("point_id = \(primaryKey)", sort: nil) {
+    
+    for attachment in store.attachments.find.with("point_id = \(primaryKey)").all {
       attachment.destroy()
     }
   }
@@ -152,7 +130,7 @@ class PQGPoint: PQGModel {
   var tags : [PQGTag] {
   get {
     let cond = "id IN (select tag_id FROM point_tag WHERE point_id = \(primaryKey))"
-    return store.getTagsWithConditions(cond, sort: "name ASC")
+    return store.tags.find.with(cond).all
   }
   set (tags) {
     removeAllTags()
@@ -186,7 +164,7 @@ class PQGPoint: PQGModel {
   //MARK: - Attachments
   
   var attachments : [PQGAttachment] {
-    return store.getAttachmentsWithConditions("point_id = \(primaryKey)", sort: "recorded_at ASC")
+    return store.attachments.find.with("point_id = \(primaryKey)").all
   }
   
   func addAttachment(data: NSData, withExtension: String) -> PQGAttachment {

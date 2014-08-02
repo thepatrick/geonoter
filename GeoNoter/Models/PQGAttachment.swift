@@ -8,29 +8,6 @@
 
 import Foundation
 
-extension PQGPersistStore {
-  
-  func getAttachmentsWithConditions(conditions: String?, sort: String?) -> [PQGAttachment] {
-    var attachments = [PQGAttachment]()
-    withDatabase { db in
-      let whereClause = conditions ? "WHERE \(conditions)" : ""
-      let orderBy = sort ? sort! : "name ASC"
-      let res = db.performQuery("SELECT id FROM attachment \(whereClause) ORDER BY \(orderBy)")
-      
-      let enumerator = res.rowEnumerator()
-      while let row = enumerator.nextObject() as? SQLRow {
-        attachments.append(self.attachments.get(row.longLongForColumn("id")))
-      }
-    }
-    return attachments
-  }
-  
-  func getAllAttachments() -> [PQGAttachment] {
-    return getAttachmentsWithConditions(nil, sort: nil)
-  }
-  
-}
-
 class PQGAttachment: PQGModel {
   
   override var tableName : String { return "attachment" }

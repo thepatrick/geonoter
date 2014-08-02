@@ -10,9 +10,9 @@ import Foundation
 
 @objc class PQGPersistStore: NSObject {
   
-  lazy var tags : PQGModelCache<PQGTag> = PQGModelCache<PQGTag>(store: self)
-  lazy var attachments : PQGModelCache<PQGAttachment> = PQGModelCache<PQGAttachment>(store: self)
-  lazy var points : PQGModelCache<PQGPoint> = PQGModelCache<PQGPoint>(store: self)
+  lazy var tags : PQGModelCache<PQGTag> = PQGModelCache<PQGTag>(store: self, defaultSort: "name ASC")
+  lazy var attachments : PQGModelCache<PQGAttachment> = PQGModelCache<PQGAttachment>(store: self, defaultSort: "recorded_at DESC")
+  lazy var points : PQGModelCache<PQGPoint> = PQGModelCache<PQGPoint>(store: self, defaultSort: "name ASC")
   
   private var db : SQLDatabase?
   private let dbLock   = dispatch_queue_create("PQGPersistStore", DISPATCH_QUEUE_SERIAL)
