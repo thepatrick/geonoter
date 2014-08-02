@@ -14,17 +14,17 @@
 		CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
 		CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E2198B904F009DBCAE /* PQGPoint.swift */; };
 		CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */; };
+		CD4A4A8C198CEDD700BAC650 /* PQGNSDateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */; };
+		CD4A4A8E198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */; };
+		CD4A4A90198CF0AD00BAC650 /* PQGNSStringUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */; };
 		CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */; };
 		CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */; };
 		CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6147EF197929B80023C142 /* PQGSettingsTableViewController.swift */; };
 		CD6147F31979315E0023C142 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CD6147F11979315E0023C142 /* Credits.html */; };
 		CD6147F51979341C0023C142 /* PQGCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6147F41979341C0023C142 /* PQGCreditsViewController.swift */; };
-		CD63E33719608528008C610E /* UIImageContentsOfFileURL.m in Sources */ = {isa = PBXBuildFile; fileRef = CD63E33619608528008C610E /* UIImageContentsOfFileURL.m */; };
 		CD6870AD198BE67500C20C35 /* PQGModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6870AC198BE67500C20C35 /* PQGModelCache.swift */; };
 		CD6BAC931973F6B3008EBBAE /* PQGTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BAC921973F6B3008EBBAE /* PQGTagsViewController.swift */; };
 		CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BAC951973F80E008EBBAE /* PQGTagsTableViewController.swift */; };
-		CD6E3C6519466A2A005067DE /* NSDateJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3C6119466A2A005067DE /* NSDateJSON.m */; };
-		CD6E3C6619466A2A005067DE /* NSStringUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3C6419466A2A005067DE /* NSStringUUID.m */; };
 		CD6E3C6919466D30005067DE /* UIImageSizer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3C6819466D30005067DE /* UIImageSizer.m */; };
 		CD6E3C9819466F1E005067DE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3C9719466F1E005067DE /* libsqlite3.dylib */; };
 		CD6E3C9A19466F24005067DE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3C9919466F24005067DE /* CoreLocation.framework */; };
@@ -78,21 +78,18 @@
 		CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAttachment.swift; path = Models/PQGAttachment.swift; sourceTree = "<group>"; };
 		CD4353E2198B904F009DBCAE /* PQGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPoint.swift; path = Models/PQGPoint.swift; sourceTree = "<group>"; };
 		CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPersistStore.swift; path = Models/PQGPersistStore.swift; sourceTree = "<group>"; };
+		CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGNSDateJSON.swift; path = Categories/PQGNSDateJSON.swift; sourceTree = "<group>"; };
+		CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGUIImageContentsOfFileURL.swift; path = Categories/PQGUIImageContentsOfFileURL.swift; sourceTree = "<group>"; };
+		CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGNSStringUUID.swift; path = Categories/PQGNSStringUUID.swift; sourceTree = "<group>"; };
 		CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQGPersistStore.m; sourceTree = "<group>"; };
 		CD60DC2B197012BE00E4E019 /* GeoNoterTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoterTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPersistStoreTags.swift; sourceTree = "<group>"; };
 		CD6147EF197929B80023C142 /* PQGSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGSettingsTableViewController.swift; path = Views/Settings/PQGSettingsTableViewController.swift; sourceTree = "<group>"; };
 		CD6147F21979315E0023C142 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/Credits.html; sourceTree = "<group>"; };
 		CD6147F41979341C0023C142 /* PQGCreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGCreditsViewController.swift; path = Views/Settings/PQGCreditsViewController.swift; sourceTree = "<group>"; };
-		CD63E33519608528008C610E /* UIImageContentsOfFileURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageContentsOfFileURL.h; sourceTree = "<group>"; };
-		CD63E33619608528008C610E /* UIImageContentsOfFileURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageContentsOfFileURL.m; sourceTree = "<group>"; };
 		CD6870AC198BE67500C20C35 /* PQGModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGModelCache.swift; path = Models/PQGModelCache.swift; sourceTree = "<group>"; };
 		CD6BAC921973F6B3008EBBAE /* PQGTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTagsViewController.swift; path = Views/Tags/PQGTagsViewController.swift; sourceTree = "<group>"; };
 		CD6BAC951973F80E008EBBAE /* PQGTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTagsTableViewController.swift; path = Views/Tags/PQGTagsTableViewController.swift; sourceTree = "<group>"; };
-		CD6E3C6119466A2A005067DE /* NSDateJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateJSON.m; sourceTree = "<group>"; };
-		CD6E3C6219466A2A005067DE /* NSDateJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateJSON.h; sourceTree = "<group>"; };
-		CD6E3C6319466A2A005067DE /* NSStringUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringUUID.h; sourceTree = "<group>"; };
-		CD6E3C6419466A2A005067DE /* NSStringUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUUID.m; sourceTree = "<group>"; };
 		CD6E3C6719466D30005067DE /* UIImageSizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageSizer.h; sourceTree = "<group>"; };
 		CD6E3C6819466D30005067DE /* UIImageSizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageSizer.m; sourceTree = "<group>"; };
 		CD6E3C9719466F1E005067DE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -218,12 +215,9 @@
 			children = (
 				CD6E3C6719466D30005067DE /* UIImageSizer.h */,
 				CD6E3C6819466D30005067DE /* UIImageSizer.m */,
-				CD6E3C6119466A2A005067DE /* NSDateJSON.m */,
-				CD6E3C6219466A2A005067DE /* NSDateJSON.h */,
-				CD6E3C6319466A2A005067DE /* NSStringUUID.h */,
-				CD6E3C6419466A2A005067DE /* NSStringUUID.m */,
-				CD63E33519608528008C610E /* UIImageContentsOfFileURL.h */,
-				CD63E33619608528008C610E /* UIImageContentsOfFileURL.m */,
+				CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */,
+				CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */,
+				CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -538,8 +532,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6E3C6619466A2A005067DE /* NSStringUUID.m in Sources */,
+				CD4A4A8E198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift in Sources */,
 				CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */,
+				CD4A4A90198CF0AD00BAC650 /* PQGNSStringUUID.swift in Sources */,
 				CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */,
 				CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */,
 				CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */,
@@ -555,13 +550,12 @@
 				CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */,
 				CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */,
 				CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */,
+				CD4A4A8C198CEDD700BAC650 /* PQGNSDateJSON.swift in Sources */,
 				CD6BAC931973F6B3008EBBAE /* PQGTagsViewController.swift in Sources */,
 				CDAB6ABB1947C6BF00DF47E5 /* PQGPointsViewController.swift in Sources */,
 				CD84A4F21769F25400266526 /* PQGAppDelegate.m in Sources */,
-				CD6E3C6519466A2A005067DE /* NSDateJSON.m in Sources */,
 				CD73B2111948D00600C7D148 /* PQGPointDetailViewController.swift in Sources */,
 				CDF172FA1948D81C00CD351F /* PQGPointDetailHeader.m in Sources */,
-				CD63E33719608528008C610E /* UIImageContentsOfFileURL.m in Sources */,
 				CDB5DA73198A748E00A205B1 /* PQGTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

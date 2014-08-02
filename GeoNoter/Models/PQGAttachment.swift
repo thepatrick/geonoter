@@ -160,11 +160,11 @@ class PQGAttachment: PQGModel {
   func loadCachedImageForSize(largestSide: Int) -> UIImage? {
     let cachedPath = PQGPersistStore.attachmentsCacheDirectory().URLByAppendingPathComponent("\(largestSide)-\(fileName))")
     if NSFileManager.defaultManager().fileExistsAtPath(cachedPath.path) {
-      let cachedImage = UIImage(contentsOfFileURL: cachedPath)
+      let cachedImage = UIImage(contentsOfURL: cachedPath)
       NSLog("Loaded \(fileName) from \(cachedPath)")
       return cachedImage
     }
-    let original = UIImage(contentsOfFileURL: filesystemURL)
+    let original = UIImage(contentsOfURL: filesystemURL!)
     NSLog("img: \(original.size.width) x \(original.size.height)")
     let newCachedImage = original.pqg_scaleAndRotateImage(largestSide)
     NSLog("img: \(newCachedImage.size.width) x \(newCachedImage.size.height)")

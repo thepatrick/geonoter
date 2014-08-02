@@ -10,13 +10,4 @@
 
 @implementation PQGPointDetailHeader
 
-- (instancetype)initWithFrame:(CGRect)frameRect
-{
-    self = [super initWithFrame:frameRect];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 @end
