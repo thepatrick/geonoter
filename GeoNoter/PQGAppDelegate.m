@@ -28,12 +28,8 @@
   if(error) {
     NSLog(@"error! %@", error);
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:error.localizedDescription message:@"You will not be able to add points at this time" preferredStyle:UIAlertControllerStyleAlert];
-    [self.window.rootViewController presentViewController:alert animated:YES completion:^{
-      NSLog(@"presented mate!");
-    }];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
   } else {
-    NSLog(@"MOO %d", [[PQGLocationHelper sharedHelper] status]);
-    
     [[[CLLocationManager alloc] init] requestWhenInUseAuthorization];
   }
   

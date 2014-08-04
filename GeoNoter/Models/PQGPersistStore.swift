@@ -155,8 +155,6 @@ extension FMDatabase {
     withDatabase { db in
 
       if version < 1 {
-        NSLog("Database migrating to v1...")
-        
         db.executeStatements(
           "CREATE TABLE trip (id INTEGER PRIMARY KEY, name TEXT, start DATETIME, end DATETIME); " +
           "UPDATE sync_status_and_version SET version = 1;"
@@ -166,7 +164,6 @@ extension FMDatabase {
       }
       
       if version < 2 {
-        NSLog("Database migrating to v2...")
         db.executeStatements(
           "INSERT INTO trip (name, start, end) VALUES ('Test Trip', '2008-01-01', '2008-12-31');" +
           "UPDATE sync_status_and_version SET version = 2;"
@@ -175,7 +172,6 @@ extension FMDatabase {
       }
       
       if version < 3 {
-        NSLog("Database migrating to v3...")
         db.executeStatements(
           "CREATE TABLE tag (id INTEGER PRIMARY KEY, name TEXT);" +
           "CREATE TABLE trip_tag (trip_id INTEGER, tag_id INTEGER);" +
@@ -187,7 +183,6 @@ extension FMDatabase {
       }
       
       if version < 4 {
-        NSLog("Database migrating to v4...")
         db.executeStatements(
           "INSERT INTO tag (name) VALUES ('Test Tag'); " +
           "INSERT INTO tag (name) VALUES ('Personal'); " +
@@ -197,7 +192,6 @@ extension FMDatabase {
       }
       
       if version < 5 {
-        NSLog("Database migrating to v5...")
         db.executeStatements(
           "INSERT INTO point (trip_id, friendly_name, name, memo, recorded_at, latitude, longitude) VALUES (1, 'Vancouver BC, Canada', 'Home', 'No memo', '2009-01-12 21:18:00', 49.283588, -123.126373); " +
           "INSERT INTO point_tag (point_id, tag_id) VALUES (1, 1); " +
@@ -208,7 +202,6 @@ extension FMDatabase {
       }
   
       if version < 6 {
-        NSLog("Database migrating to v6...")
         db.executeStatements(
           "CREATE TABLE attachment (id INTEGER PRIMARY KEY, point_id INTEGER, friendly_name TEXT, kind TEXT, memo TEXT, file_name TEXT, recorded_at DATETIME); " +
           "UPDATE sync_status_and_version SET version = 6;"

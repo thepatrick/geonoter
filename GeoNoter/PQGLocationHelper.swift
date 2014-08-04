@@ -78,8 +78,6 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
   }
   
   func location(completionHandler: (location: CLLocation?, error: NSError?) -> ()) {
-    NSLog("Someone wants a location!")
-    
     if let error = errorIfDisabled() {
       dispatch_async(dispatch_get_main_queue()) {
         NSLog("We can't get location right now: %@", error.description())
@@ -88,12 +86,9 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
       return;
     }
     
-    NSLog("Ok we are good to go! :D")
     if var callbacks = awaitingLocation {
-      NSLog("Appending callback...")
       callbacks.append(completionHandler)
     } else {
-      NSLog("startUpdatingLocation!")
       self.awaitingLocation = [completionHandler]
       locationManager.delegate = self
       locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -107,19 +102,16 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
     didUpdateLocations locations: [AnyObject]!) {
     let newLocation = locations[0] as CLLocation
     if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
-      NSLog("Received new location info: %@", newLocation);
+      NSLog("Received new location info");
       locationManager.stopUpdatingLocation()
       if let callbacks = self.awaitingLocation {
-        NSLog("dispatch on the main queue........")
         for completionHandler in self.awaitingLocation! {
-          NSLog("completionHandler...")
           completionHandler(location: newLocation, error: nil)
         }
-        NSLog("killing awaitingLocation...")
       }
       self.awaitingLocation = nil
     } else {
-      NSLog("Received old location info: %@", newLocation);
+      NSLog("Received old location info");
     }
   }
   

@@ -71,7 +71,6 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   }
   
   func centerScrollViewContents() {
-    NSLog("centerScrollViewContents!")
     if let imageView = imageView {
       let boundsSize = scrollView.bounds.size
       let contentsSize = imageView.frame.size
@@ -81,18 +80,14 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
         let tempy = imageView.center.y - ( boundsSize.height / 2 )
         let myScrollViewOffset = CGPoint( x: tempx, y: tempy)
         scrollView.contentOffset = myScrollViewOffset;
-        
-        NSLog("Need to reset offset?")
       }
       
       var contentsInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
       if contentsSize.width < boundsSize.width {
-        NSLog("Need side padding!")
         contentsInset.left = (boundsSize.width - contentsSize.width) / 2.0
         contentsInset.right = contentsInset.left
       }
       if contentsSize.height < boundsSize.height {
-        NSLog("Need top/bottom padding!")
         contentsInset.top = (boundsSize.height - contentsSize.height) / 2.0
         contentsInset.bottom = contentsInset.top
       }
@@ -160,8 +155,6 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
         let alert = UIAlertController(title: "Your photo could not be saved to the photo roll.", message: error.localizedDescription, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-      } else {
-        NSLog("Saved to %@", url)
       }
     }
   }

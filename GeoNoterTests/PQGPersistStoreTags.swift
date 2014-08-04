@@ -14,7 +14,6 @@ class PQGPersistStoreTags: XCTestCase {
   var store : PersistStore!
   
   override func setUp() {
-    NSLog("setUp!")
     super.setUp()
     
     let testFile = PersistStore.pathForResource("test.db")
