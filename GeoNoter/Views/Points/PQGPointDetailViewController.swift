@@ -106,7 +106,11 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       dateFormatter.timeStyle = .MediumStyle
       cell.textLabel.text = dateFormatter.stringFromDate(point.recordedAt)
     case 3:
-      cell.textLabel.text = "\(point.latitude), \(point.longitude)"
+      if let lat = point.latitude {
+        if let lng = point.longitude {
+          cell.textLabel.text = "\(lat), \(lng)"
+        }
+      }
     default:
       assert(false, "Unexpected row count in cellForDetailsRow")
     }

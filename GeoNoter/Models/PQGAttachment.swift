@@ -8,10 +8,12 @@
 
 import Foundation
 
-class PQGAttachment: PQGModel {
+class PQGAttachment: PQGModel, PQGModelCacheable {
   
-  override var tableName : String { return "attachment" }
-  
+  override class func tableName() -> String {
+    return "attachment"
+  }
+    
   //MARK: - Private Variables
   
   private var _pointId:      Int64?
@@ -121,7 +123,7 @@ class PQGAttachment: PQGModel {
   }
   
   override func saveForNew(db: FMDatabase) {
-    db.executeUpdate("INSERT INTO \(tableName) (id, point_id, friendly_name, kind, memo, file_name, recorded_at), " +
+    db.executeUpdate("INSERT INTO \(tableName()) (id, point_id, friendly_name, kind, memo, file_name, recorded_at), " +
       "VALUES (?, ?, ?, ?, ?, ?, ?)",
       int64OrNil(self.primaryKey),
       int64OrNil(pointId),
@@ -134,7 +136,7 @@ class PQGAttachment: PQGModel {
   }
   
   override func saveForUpdate(db: FMDatabase)  {
-    db.executeUpdate("UPDATE \(tableName) SET point_id = ?, friendly_name = ?, kind = ?, " +
+    db.executeUpdate("UPDATE \(tableName()) SET point_id = ?, friendly_name = ?, kind = ?, " +
       "memo = ?, file_name = ?, recorded_at = ? WHERE id = ?",
       int64OrNil(pointId),
       orNil(friendlyName),

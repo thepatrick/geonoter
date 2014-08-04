@@ -51,7 +51,7 @@ class PQGPointsViewController: UITableViewController {
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as UITableViewCell
     
-    let point = self.points[indexPath.row].hydrate()
+    let point = self.points[indexPath.row]
     
     cell.textLabel.text = point.name
     cell.accessoryType = .DisclosureIndicator

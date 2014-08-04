@@ -41,10 +41,9 @@ extension FMDatabase {
 
 @objc class PQGPersistStore: NSObject {
   
-  lazy var tags : PQGModelCache<PQGTag> = PQGModelCache<PQGTag>(store: self, defaultSort: "name ASC")
-  lazy var attachments : PQGModelCache<PQGAttachment> = PQGModelCache<PQGAttachment>(store: self, defaultSort: "recorded_at DESC")
-  lazy var points : PQGModelCache<PQGPoint> = PQGModelCache<PQGPoint>(store: self, defaultSort: "name ASC")
-  
+  var tags : PQGModelCache<PQGTag>!
+  var attachments : PQGModelCache<PQGAttachment>!
+  var points : PQGModelCache<PQGPoint>!
   
   private var queue : FMDatabaseQueue?
   
@@ -98,6 +97,10 @@ extension FMDatabase {
   //MARK: - Lifecycle
   
   init() {
+    super.init()
+    tags = PQGModelCache<PQGTag>(store: self, defaultSort: "name ASC")
+    attachments = PQGModelCache<PQGAttachment>(store: self, defaultSort: "recorded_at DESC")
+    points = PQGModelCache<PQGPoint>(store: self, defaultSort: "name ASC")
   }
   
   convenience init(file: NSURL) {
@@ -125,16 +128,16 @@ extension FMDatabase {
     var version = 0
     
     withDatabase { db in
-      
       let res = db.executeQuery("SELECT version FROM sync_status_and_version;")
       if res.next() {
         version = res.longForColumn("version")
       }
+      res.close()
     }
     
     NSLog("The version: \(version)")
     
-    // migrateFrom(version)
+    migrateFrom(version)
     
     return true
   }

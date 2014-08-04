@@ -8,7 +8,21 @@
 
 import Foundation
 
-class PQGModelCache<T: PQGModel> {
+protocol PQGModelCacheable {
+  
+  init(store: PQGPersistStore)
+
+  init(primaryKey: Int64, store: PQGPersistStore)
+  
+  func save()
+  
+  func dehydrate()
+  
+  class func tableName() -> String
+  
+}
+
+class PQGModelCache<T: PQGModelCacheable> {
   
   unowned let store : PQGPersistStore
   private var defaultSort : String
@@ -54,18 +68,24 @@ class PQGModelCache<T: PQGModel> {
     return find.all
   }
   
+  var tableName : String {
+    return T.tableName()
+  }
+  
 }
 
 
-class PQGModelQueryBuilder<T: PQGModel> {
+class PQGModelQueryBuilder<T: PQGModelCacheable> {
   
-  unowned let cache: PQGModelCache<T>
+  let cache: PQGModelCache<T>
+  let store: PQGPersistStore
 
   private var conditions: String?
   private var sort: String
   
   init(cache: PQGModelCache<T>) {
     self.cache = cache
+    self.store = cache.store
     self.sort = cache.defaultSort
   }
   
@@ -82,10 +102,11 @@ class PQGModelQueryBuilder<T: PQGModel> {
   }
   
   var all: [T] {
-  var items = [T]()
+    var items = [T]()
     cache.store.withDatabase { db in
-      let whereClause = self.conditions ? "WHERE \(self.conditions)" : ""
-      let res = db.executeQuery("SELECT id FROM tag \(whereClause) ORDER BY \(self.sort)")
+      let whereClause = self.conditions ? "WHERE \(self.conditions!)" : ""
+      let query = "SELECT id FROM \(self.cache.tableName) \(whereClause) ORDER BY \(self.sort)"
+      let res = db.executeQuery(query)
       while res.next() {
         items.append(self.cache.get(res.longLongIntForColumn("id")))
       }

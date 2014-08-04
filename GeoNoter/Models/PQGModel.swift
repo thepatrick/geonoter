@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PQGModel: NSObject {
+class PQGModel: NSObject, PQGModelCacheable {
 
   let primaryKey: Int64
 
@@ -17,11 +17,6 @@ class PQGModel: NSObject {
   var isDirty = false
   var isHydrated : Bool = false
   var isNew = false
-  
-  var tableName: String {
-    assert(false, "tableName not implemented in PQGModel subclass")
-    return ""
-  }
   
   class func primaryKeyForNewInstance() -> Int64 {
     let urandom = (UInt64(arc4random()) << 32 | UInt64(arc4random()))
@@ -48,9 +43,11 @@ class PQGModel: NSObject {
   func hydrate() -> Self {
     if !isHydrated {
       store.withDatabase { db in
-        let result = db.executeQuery("SELECT * FROM TAG WHERE id = ?", NSNumber.numberWithLongLong(self.primaryKey))
-        assert(result.next(), "Attempt to hydate a model that does not exist in the database")
+        let result = db.executeQuery("SELECT * FROM \(self.tableName()) WHERE id = ?", self.int64OrNil(self.primaryKey))
+        let next = result.next()
+        assert(next == true, "Attempt to hydate a model that does not exist in the database")
         self.hydrateRequired(result)
+        result.close()
       }
       isHydrated = true
     }
@@ -58,7 +55,7 @@ class PQGModel: NSObject {
   }
   
   func hydrateRequired(row: FMResultSet) {
-    NSLog("hydrateRequired not implemeneted in \(tableName)")
+    NSLog("hydrateRequired not implemeneted in \(NSStringFromClass(self.dynamicType))")
     assert(false, "hydrateRequired not implemented in PQGModel subclass")
   }
   
@@ -70,7 +67,7 @@ class PQGModel: NSObject {
   }
   
   func dehydrate() {
-    NSLog("dehydrate not implemeneted in \(tableName)")
+    NSLog("dehydrate not implemeneted in \(NSStringFromClass(self.dynamicType))")
     assert(false, "dehydrate not implemented in PQGModel subclass")
   }
   
@@ -85,20 +82,30 @@ class PQGModel: NSObject {
   }
   
   func saveForNew(db: FMDatabase) {
-    NSLog("saveForNew not implemeneted in \(tableName)")
+    NSLog("saveForNew not implemeneted in \(NSStringFromClass(self.dynamicType))")
     assert(false, "saveForNew not implemented in PQGModel subclass")
   }
   
   func saveForUpdate(db: FMDatabase) {
-    NSLog("saveForUpdate not implemeneted in \(tableName)")
+    NSLog("saveForUpdate not implemeneted in \(NSStringFromClass(self.dynamicType))")
     assert(false, "saveForUpdate not implemented in PQGModel subclass")
+  }
+  
+  class func tableName() -> String {
+    NSLog("saveForUpdate not implemeneted in \(NSStringFromClass(self.dynamicType))")
+    assert(false, "tableName not implemented in PQGModel subclass")
+    return ""
+  }
+  
+  func tableName() -> String {
+    return self.dynamicType.tableName()
   }
   
   func destroy() {
     willDestroy()
     store.withDatabase { db in
-      let sql = "DELETE FROM \(self.tableName) WHERE id = \(self.primaryKey)"
-      db.executeUpdate("DELETE FROM \(self.tableName) WHERE id = ?", NSNumber.numberWithLongLong(self.primaryKey))
+      db.executeUpdate("DELETE FROM \(self.tableName()) WHERE id = ?", self.int64OrNil(self.primaryKey))
+      return
     }
     wasDestroyed()
   }

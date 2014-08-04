@@ -8,9 +8,11 @@
 
 import Foundation
 
-class PQGTag: PQGModel {
+class PQGTag: PQGModel, PQGModelCacheable {
   
-  override var tableName : String { return "tag" }
+  override class func tableName() -> String {
+    return "tag"
+  }
   
   private var _name : String?
   
@@ -38,14 +40,14 @@ class PQGTag: PQGModel {
   }
   
   override func saveForNew(db: FMDatabase) {
-    db.executeUpdate("INSERT INTO \(tableName) (id, name) VALUES (?, ?)",
+    db.executeUpdate("INSERT INTO \(tableName()) (id, name) VALUES (?, ?)",
       int64OrNil(self.primaryKey),
       orNil(name)
     )
   }
   
   override func saveForUpdate(db: FMDatabase) {
-    db.executeUpdate("UPDATE \(tableName) SET name = ? WHERE id = ?",
+    db.executeUpdate("UPDATE \(tableName()) SET name = ? WHERE id = ?",
       orNil(name),
       int64OrNil(self.primaryKey)
     )

@@ -11,9 +11,11 @@ import MapKit
 import AddressBookUI
 import CoreLocation
 
-class PQGPoint: PQGModel {
+class PQGPoint: PQGModel, PQGModelCacheable {
   
-  override var tableName : String { return "point" }
+  override class func tableName() -> String {
+    return "point"
+  }
   
   //MARK: - Private Variables
   private var _pointId:      Int64?
@@ -101,7 +103,7 @@ class PQGPoint: PQGModel {
   }
   
   override func saveForNew(db: FMDatabase) {
-    db.executeUpdate("INSERT INTO \(tableName) (id, friendly_name, name, memo, recorded_at, latitude, longitude) " +
+    db.executeUpdate("INSERT INTO \(tableName()) (id, friendly_name, name, memo, recorded_at, latitude, longitude) " +
       "(?, ?, ?, ?, ?, ?, ?)",
       int64OrNil(primaryKey),
       orNil(friendlyName),
@@ -114,7 +116,7 @@ class PQGPoint: PQGModel {
   }
   
   override func saveForUpdate(db: FMDatabase)  {
-    db.executeUpdate("UPDATE \(tableName) SET friendly_name = ?, name = ?, memo = ?, " +
+    db.executeUpdate("UPDATE \(tableName()) SET friendly_name = ?, name = ?, memo = ?, " +
       "recorded_at = ?, latitude = ?, longitude =? WHERE id = ?",
       orNil(friendlyName),
       orNil(name),
