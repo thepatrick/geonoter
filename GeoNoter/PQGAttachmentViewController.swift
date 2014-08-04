@@ -50,7 +50,11 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   func loadImage() {
     let attachment = self.attachment
     dispatch_async(queue) {
-      let image = attachment.loadCachedImageForSize(1024)
+      let mainScreen = UIScreen.mainScreen()
+      
+      let bounds = mainScreen.bounds
+      let largestSide = max(bounds.width, bounds.height) * mainScreen.scale * 2
+      let image = attachment.loadCachedImageForSize(Int(largestSide))
       
       dispatch_async(dispatch_get_main_queue()) {
         let imageView = UIImageView(image: image)
