@@ -157,20 +157,34 @@ class PQGAttachment: PQGModel {
   
   //MARK: - Attachment helpers
   
+  func createCacheDirIfMissing(cacheDirectory: NSURL) {
+    let (exists, isDirectory) = PQGPersistStore.fileExists(cacheDirectory)
+    
+    if !exists {
+      var err : NSError?
+      let success = NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path, withIntermediateDirectories: true, attributes: nil, error: &err)
+      if !success {
+        NSLog("Error trying to create directory! \(err!.localizedDescription)")
+      }
+    }
+  }
+  
   func loadCachedImageForSize(largestSide: Int) -> UIImage? {
-    let cachedPath = PQGPersistStore.attachmentsCacheDirectory().URLByAppendingPathComponent("\(largestSide)-\(fileName))")
+    let cachedItemDirectory = PQGPersistStore.attachmentsCacheDirectory().URLByAppendingPathComponent(fileName).URLByDeletingPathExtension
+    createCacheDirIfMissing(cachedItemDirectory)
+    
+    let cachedPath = cachedItemDirectory.URLByAppendingPathComponent("\(largestSide).\(kind!)")
     if NSFileManager.defaultManager().fileExistsAtPath(cachedPath.path) {
       let cachedImage = UIImage(contentsOfURL: cachedPath)
-      NSLog("Loaded \(fileName) from \(cachedPath)")
       return cachedImage
     }
     let original = UIImage(contentsOfURL: filesystemURL!)
-    NSLog("img: \(original.size.width) x \(original.size.height)")
     let newCachedImage = original.pqg_scaleAndRotateImage(largestSide)
-    NSLog("img: \(newCachedImage.size.width) x \(newCachedImage.size.height)")
     let data = UIImageJPEGRepresentation(newCachedImage, 1.0)
-    data.writeToURL(cachedPath, atomically: true)
-    NSLog("Wrote \(fileName) to \(cachedPath)")
+    let isWritten = data.writeToURL(cachedPath, atomically: true)
+    if !isWritten {
+      NSLog("Could not write %@ to %@", fileName!, cachedPath)
+    }
     return newCachedImage
   }
 }
