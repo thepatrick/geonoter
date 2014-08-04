@@ -74,6 +74,13 @@
 			remoteGlobalIDString = CD84A4DD1769F25400266526;
 			remoteInfo = GeoNoter;
 		};
+		CDD3FD64198FA52500C8E537 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD84A4D61769F25400266526 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD84A4DD1769F25400266526;
+			remoteInfo = GeoNoter;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -432,6 +439,7 @@
 			dependencies = (
 				CD84A5081769F25400266526 /* PBXTargetDependency */,
 				CDD3FD63198FA52500C8E537 /* PBXTargetDependency */,
+				CDD3FD65198FA52500C8E537 /* PBXTargetDependency */,
 			);
 			name = GeoNoterTests;
 			productName = GeoNoterTests;
@@ -592,6 +600,11 @@
 			isa = PBXTargetDependency;
 			target = CD84A4DD1769F25400266526 /* GeoNoter */;
 			targetProxy = CDD3FD62198FA52500C8E537 /* PBXContainerItemProxy */;
+		};
+		CDD3FD65198FA52500C8E537 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD84A4DD1769F25400266526 /* GeoNoter */;
+			targetProxy = CDD3FD64198FA52500C8E537 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
