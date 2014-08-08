@@ -9,8 +9,6 @@
 import Foundation
 
 protocol PQGModelCacheable {
-  
-  init(store: PQGPersistStore)
 
   init(primaryKey: Int64, store: PQGPersistStore)
   
@@ -104,7 +102,7 @@ class PQGModelQueryBuilder<T: PQGModelCacheable> {
   var all: [T] {
     var items = [T]()
     cache.store.withDatabase { db in
-      let whereClause = self.conditions ? "WHERE \(self.conditions!)" : ""
+      let whereClause = self.conditions != nil ? "WHERE \(self.conditions!)" : ""
       let query = "SELECT id FROM \(self.cache.tableName) \(whereClause) ORDER BY \(self.sort)"
       let res = db.executeQuery(query)
       while res.next() {

@@ -42,14 +42,14 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   var tags: [PQGTag] {
-    if !tagCache {
+    if tagCache == nil {
       tagCache = point.tags
     }
     return tagCache!
   }
   
   var attachments: [PQGAttachment] {
-    if !attachmentCache {
+    if attachmentCache == nil {
       attachmentCache = point.attachments
     }
     return attachmentCache!

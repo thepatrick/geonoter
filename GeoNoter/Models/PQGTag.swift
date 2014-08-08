@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PQGTag: PQGModel, PQGModelCacheable {
+final class PQGTag: PQGModel, PQGModelCacheable {
   
   override class func tableName() -> String {
     return "tag"

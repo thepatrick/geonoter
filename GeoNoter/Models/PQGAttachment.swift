@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PQGAttachment: PQGModel, PQGModelCacheable {
+final class PQGAttachment: PQGModel, PQGModelCacheable {
   
   override class func tableName() -> String {
     return "attachment"

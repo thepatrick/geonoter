@@ -11,7 +11,7 @@ import MapKit
 import AddressBookUI
 import CoreLocation
 
-class PQGPoint: PQGModel, PQGModelCacheable {
+final class PQGPoint: PQGModel, PQGModelCacheable {
   
   override class func tableName() -> String {
     return "point"
@@ -223,7 +223,7 @@ class PQGPoint: PQGModel, PQGModelCacheable {
   
   func determineDefaultName(locationName: String?) {
     let defaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
-    if defaultName == "most-specific" && !locationName {
+    if defaultName == "most-specific" && locationName != nil {
       name = locationName
     } else if defaultName == "coords" {
       name = "\(longitude) \(latitude)"
@@ -239,7 +239,7 @@ class PQGPoint: PQGModel, PQGModelCacheable {
   
   func setupAsNewItem(completionHandler: (NSError?)->()) {
     PQGLocationHelper.sharedHelper().location { location, error in
-      if error {
+      if (error != nil) {
         NSLog("Oh oh. Could not get location. Should explode")
         completionHandler(error!)
         return
@@ -284,7 +284,7 @@ class PQGPoint: PQGModel, PQGModelCacheable {
     PQGLocationHelper.sharedHelper().geocode(location) { placemarks, error in
       UIApplication.sharedApplication().endBackgroundTask(self.bgTask)
       self.bgTask = UIBackgroundTaskInvalid
-      if error || placemarks!.count == 0 {
+      if error != nil || placemarks!.count == 0 {
         self.friendlyName = "Geocoder Unavailable"
       } else {
         self.reverseGeocoderDidFindPlacemark(placemarks![0])
@@ -297,7 +297,7 @@ class PQGPoint: PQGModel, PQGModelCacheable {
   private func reverseGeocoderDidFindPlacemark(placemark: CLPlacemark) {
     var simpleName = placemark.country
     
-    if placemark.administrativeArea != "" {
+    if placemark.administrativeArea != nil && placemark.administrativeArea != "" {
       simpleName = placemark.administrativeArea
     }
 

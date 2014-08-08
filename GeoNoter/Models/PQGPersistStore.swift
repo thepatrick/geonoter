@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension FMDatabase {
+public extension FMDatabase {
   
 //  func executeUpdate(sql:String) -> Bool {
 //    return executeUpdate(sql, withArgumentsInArray: [])
@@ -17,7 +17,7 @@ extension FMDatabase {
   func executeUpdate(sql:String, _ arguments: AnyObject?...) -> Bool {
     var args = [AnyObject]()
     for arg in arguments {
-      if arg {
+      if arg != nil {
         args.append(arg!)
       } else {
         args.append(NSNull())
@@ -29,7 +29,7 @@ extension FMDatabase {
   func executeQuery(sql:String, _ arguments: AnyObject?...) -> FMResultSet! {
     var args = [AnyObject]()
     for arg in arguments {
-      if arg {
+      if (arg != nil) {
         args.append(arg!)
       } else {
         args.append(NSNull())
@@ -39,7 +39,7 @@ extension FMDatabase {
   }
 }
 
-@objc class PQGPersistStore: NSObject {
+@objc public class PQGPersistStore: NSObject {
   
   var tags : PQGModelCache<PQGTag>!
   var attachments : PQGModelCache<PQGAttachment>!
@@ -53,7 +53,7 @@ extension FMDatabase {
     var error: NSError?
     var isDirectory: ObjCBool = ObjCBool(0)
     if NSFileManager.defaultManager().fileExistsAtPath(path.path, isDirectory: &isDirectory) {
-      return (true, isDirectory.getLogicValue())
+      return (true, isDirectory.boolValue)
     } else {
       return (false, false)
     }
@@ -96,7 +96,7 @@ extension FMDatabase {
   
   //MARK: - Lifecycle
   
-  init() {
+  override init() {
     super.init()
     tags = PQGModelCache<PQGTag>(store: self, defaultSort: "name ASC")
     attachments = PQGModelCache<PQGAttachment>(store: self, defaultSort: "recorded_at DESC")
@@ -147,7 +147,7 @@ extension FMDatabase {
   }
   
   func withDatabase(block: (FMDatabase!)->()) {
-    assert(queue, "withDatabase called with no database available")
+    assert(queue != nil, "withDatabase called with no database available")
     queue?.inDatabase(block)
   }
   

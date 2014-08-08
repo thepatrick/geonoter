@@ -26,14 +26,14 @@ class PQGModel: NSObject, PQGModelCacheable {
 
   //MARK: - Initializers
   
-  init(store: PQGPersistStore) {
+  required init(store: PQGPersistStore) {
     self.store = store
     self.primaryKey = PQGModel.primaryKeyForNewInstance()
     self.isNew = true
     self.isHydrated = true
   }
   
-  init(primaryKey: Int64, store: PQGPersistStore) {
+  required init(primaryKey: Int64, store: PQGPersistStore) {
     self.store = store
     self.primaryKey = primaryKey
   }
