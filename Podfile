@@ -7,6 +7,7 @@ target "GeoNoter" do
 end
 
 target "GeoNoterTests" do
-
+  pod "CSStickyHeaderFlowLayout"
+  pod "FMDB"
 end
 

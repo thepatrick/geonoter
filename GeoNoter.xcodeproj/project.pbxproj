@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		46B37C6D3E4F4AB6B2F1DEF1 /* libPods-GeoNoter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */; };
+		94E98E8188294872A93EDB8B /* libPods-GeoNoterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */; };
+		CD27801B1998E4FC0027901F /* PQGAddPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27801A1998E4FC0027901F /* PQGAddPoint.swift */; };
 		CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275B19755536000091ED /* PQGImageSizerTests.swift */; };
 		CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275D19755570000091ED /* PQGDateJSONTests.swift */; };
 		CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */; };
 		CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
 		CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E2198B904F009DBCAE /* PQGPoint.swift */; };
 		CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */; };
+		CD45432319950CA200E29F06 /* PQGNSDateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */; };
+		CD45432419950CD700E29F06 /* PQGNSStringUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */; };
+		CD45432519950D3B00E29F06 /* PQGPersistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */; };
 		CD4A4A8C198CEDD700BAC650 /* PQGNSDateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */; };
 		CD4A4A8E198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */; };
 		CD4A4A90198CF0AD00BAC650 /* PQGNSStringUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */; };
@@ -48,6 +53,7 @@
 		CD84A5051769F25400266526 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD84A4E11769F25400266526 /* Foundation.framework */; };
 		CD84A5061769F25400266526 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD84A4E51769F25400266526 /* UIKit.framework */; };
 		CD84A50E1769F25400266526 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD84A50C1769F25400266526 /* InfoPlist.strings */; };
+		CD8870E1199706CB00E45A63 /* PQGModelCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8870E0199706CB00E45A63 /* PQGModelCacheTests.swift */; };
 		CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */; };
 		CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB6AB61947C27100DF47E5 /* PQGPointsNavigationController.swift */; };
 		CDAB6ABB1947C6BF00DF47E5 /* PQGPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAB6ABA1947C6BF00DF47E5 /* PQGPointsViewController.swift */; };
@@ -57,6 +63,12 @@
 		CDBE67BD19480D1C0096E1CF /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBE67BC19480D1C0096E1CF /* AddressBookUI.framework */; };
 		CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD3BA919793FB900DE6699 /* PQGDefaultNameTableViewController.swift */; };
 		CDF172FA1948D81C00CD351F /* PQGPointDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF172F91948D81C00CD351F /* PQGPointDetailHeader.m */; };
+		CDF89B381995101F006FD8A7 /* PQGModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6870AC198BE67500C20C35 /* PQGModelCache.swift */; };
+		CDF89B3919951027006FD8A7 /* PQGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E2198B904F009DBCAE /* PQGPoint.swift */; };
+		CDF89B3A1995102A006FD8A7 /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
+		CDF89B3B1995102C006FD8A7 /* PQGTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA72198A748E00A205B1 /* PQGTag.swift */; };
+		CDF89B3C1995102F006FD8A7 /* PQGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA70198A5D3400A205B1 /* PQGModel.swift */; };
+		CDF89B3D19951073006FD8A7 /* PQGLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +97,10 @@
 
 /* Begin PBXFileReference section */
 		58C6827265EE4DE0891CB7F1 /* Pods-GeoNoter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoNoter.xcconfig"; path = "Pods/Pods-GeoNoter.xcconfig"; sourceTree = "<group>"; };
+		695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoNoterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoNoter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF29F216D06A4AA1AE579C36 /* Pods-GeoNoterTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoNoterTests.xcconfig"; path = "Pods/Pods-GeoNoterTests.xcconfig"; sourceTree = "<group>"; };
+		CD27801A1998E4FC0027901F /* PQGAddPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAddPoint.swift; path = Views/Points/PQGAddPoint.swift; sourceTree = "<group>"; };
 		CD3F275B19755536000091ED /* PQGImageSizerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGImageSizerTests.swift; sourceTree = "<group>"; };
 		CD3F275D19755570000091ED /* PQGDateJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGDateJSONTests.swift; sourceTree = "<group>"; };
 		CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGStringUUIDTests.swift; sourceTree = "<group>"; };
@@ -134,6 +149,7 @@
 		CD84A5031769F25400266526 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CD84A50B1769F25400266526 /* GeoNoterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeoNoterTests-Info.plist"; sourceTree = "<group>"; };
 		CD84A50D1769F25400266526 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD8870E0199706CB00E45A63 /* PQGModelCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGModelCacheTests.swift; sourceTree = "<group>"; };
 		CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPointAddTagsTableViewController.swift; sourceTree = "<group>"; };
 		CDAB6AB61947C27100DF47E5 /* PQGPointsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointsNavigationController.swift; path = Views/Points/PQGPointsNavigationController.swift; sourceTree = "<group>"; };
 		CDAB6ABA1947C6BF00DF47E5 /* PQGPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointsViewController.swift; path = Views/Points/PQGPointsViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +188,7 @@
 				CD84A5041769F25400266526 /* XCTest.framework in Frameworks */,
 				CD84A5061769F25400266526 /* UIKit.framework in Frameworks */,
 				CD84A5051769F25400266526 /* Foundation.framework in Frameworks */,
+				94E98E8188294872A93EDB8B /* libPods-GeoNoterTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +210,7 @@
 			children = (
 				CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */,
 				CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */,
+				CD8870E0199706CB00E45A63 /* PQGModelCacheTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -287,6 +305,7 @@
 				CD84A4E01769F25400266526 /* Frameworks */,
 				CD84A4DF1769F25400266526 /* Products */,
 				58C6827265EE4DE0891CB7F1 /* Pods-GeoNoter.xcconfig */,
+				BF29F216D06A4AA1AE579C36 /* Pods-GeoNoterTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -314,6 +333,7 @@
 				CD84A4E51769F25400266526 /* UIKit.framework */,
 				CD84A5031769F25400266526 /* XCTest.framework */,
 				8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */,
+				695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -430,9 +450,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD84A5161769F25400266526 /* Build configuration list for PBXNativeTarget "GeoNoterTests" */;
 			buildPhases = (
+				9996844B21CC465B9F6A55E9 /* Check Pods Manifest.lock */,
 				CD84A4FE1769F25400266526 /* Sources */,
 				CD84A4FF1769F25400266526 /* Frameworks */,
 				CD84A5001769F25400266526 /* Resources */,
+				0341145C33C546F094C6A044 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -511,6 +533,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0341145C33C546F094C6A044 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-GeoNoterTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6DED8ADF426D4323B1F47B6A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -527,6 +564,21 @@
 			showEnvVarsInLog = 0;
 		};
 		8F199EB9B82C4A59BAE71132 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9996844B21CC465B9F6A55E9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -581,10 +633,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */,
+				CD45432319950CA200E29F06 /* PQGNSDateJSON.swift in Sources */,
+				CDF89B3A1995102A006FD8A7 /* PQGAttachment.swift in Sources */,
 				CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */,
+				CDF89B3919951027006FD8A7 /* PQGPoint.swift in Sources */,
+				CDF89B381995101F006FD8A7 /* PQGModelCache.swift in Sources */,
 				CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */,
 				CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */,
+				CDF89B3C1995102F006FD8A7 /* PQGModel.swift in Sources */,
+				CD8870E1199706CB00E45A63 /* PQGModelCacheTests.swift in Sources */,
+				CDF89B3D19951073006FD8A7 /* PQGLocationHelper.swift in Sources */,
 				CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */,
+				CD45432419950CD700E29F06 /* PQGNSStringUUID.swift in Sources */,
+				CD45432519950D3B00E29F06 /* PQGPersistStore.swift in Sources */,
+				CDF89B3B1995102C006FD8A7 /* PQGTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,19 +817,25 @@
 		};
 		CD84A5171769F25400266526 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF29F216D06A4AA1AE579C36 /* Pods-GeoNoterTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GeoNoter.app/GeoNoter";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP.app/Contents/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoNoter/GeoNoter-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/CSStickyHeaderFlowLayout\"",
+					"\"${PODS_ROOT}/Headers/FMDB\"",
 				);
 				INFOPLIST_FILE = "GeoNoterTests/GeoNoterTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -781,16 +849,22 @@
 		};
 		CD84A5181769F25400266526 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF29F216D06A4AA1AE579C36 /* Pods-GeoNoterTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GeoNoter.app/GeoNoter";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP.app/Contents/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoNoter/GeoNoter-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/CSStickyHeaderFlowLayout\"",
+					"\"${PODS_ROOT}/Headers/FMDB\"",
+				);
 				INFOPLIST_FILE = "GeoNoterTests/GeoNoterTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

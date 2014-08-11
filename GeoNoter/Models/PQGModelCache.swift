@@ -78,8 +78,8 @@ class PQGModelQueryBuilder<T: PQGModelCacheable> {
   let cache: PQGModelCache<T>
   let store: PQGPersistStore
 
-  private var conditions: String?
-  private var sort: String
+  var conditions: String?
+  var sort: String
   
   init(cache: PQGModelCache<T>) {
     self.cache = cache

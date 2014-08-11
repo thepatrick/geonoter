@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension NSDate {
+public extension NSDate {
   
   private class func pqg_JSONDateFormatter() -> NSDateFormatter {
     let formatter = NSDateFormatter()
