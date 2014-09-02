@@ -8,6 +8,7 @@
 
 #import "PQGAppDelegate.h"
 #import "GeoNoter-Swift.h"
+#import "Foursquare2.h"
 
 @implementation PQGAppDelegate
 
@@ -32,6 +33,12 @@
   } else {
     [[[CLLocationManager alloc] init] requestWhenInUseAuthorization];
   }
+  
+  
+  [Foursquare2 setupFoursquareWithClientId:@"QDD4H5DPDAQZBCMDPY2ZCKIW01WLVSO44NKVSDIYD3ULA10R"
+                                    secret:@"5AE4ZA1RGY0PQ15ADS51UFRF4MNYGJSRMGUUW2XZZ1O3LEVZ"
+                               callbackURL:@"x-com-pftqg-geonoter"];
+  
   
   return YES;
 }

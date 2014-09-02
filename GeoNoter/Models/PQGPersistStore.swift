@@ -52,7 +52,7 @@ public extension FMDatabase {
   class func fileExists(path: NSURL) -> (Bool, Bool) {
     var error: NSError?
     var isDirectory: ObjCBool = ObjCBool(0)
-    if NSFileManager.defaultManager().fileExistsAtPath(path.path, isDirectory: &isDirectory) {
+    if NSFileManager.defaultManager().fileExistsAtPath(path.path!, isDirectory: &isDirectory) {
       return (true, isDirectory.boolValue)
     } else {
       return (false, false)
@@ -64,14 +64,14 @@ public extension FMDatabase {
     var err : NSError?
     let pathURL = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
     assert(pathURL != nil, "Failed to get Documents directory")
-    return pathURL.URLByAppendingPathComponent(path)
+    return pathURL!.URLByAppendingPathComponent(path)
   }
   
   class func attachmentsDirectory() -> NSURL {
     let dir = URLForDocument("Attachments")
     let (exists, isDirectory) = fileExists(dir)
     if !exists {
-      let success = NSFileManager.defaultManager().createDirectoryAtPath(dir.path, withIntermediateDirectories: true, attributes: nil, error: nil)
+      let success = NSFileManager.defaultManager().createDirectoryAtPath(dir.path!, withIntermediateDirectories: true, attributes: nil, error: nil)
       assert(success, "Failed to create attachments directory")
     }
     return dir
@@ -81,14 +81,14 @@ public extension FMDatabase {
     var err : NSError?
     let pathURL = NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
     assert(pathURL != nil, "Failed to get caches directory")
-    return pathURL.URLByAppendingPathComponent(path)
+    return pathURL!.URLByAppendingPathComponent(path)
   }
   
   class func attachmentsCacheDirectory() -> NSURL {
     let dir = URLForCacheResource("Attachments")
     let (exists, isDirectory) = fileExists(dir)
     if !exists {
-      let success = NSFileManager.defaultManager().createDirectoryAtPath(dir.path, withIntermediateDirectories: true, attributes: nil, error: nil)
+      let success = NSFileManager.defaultManager().createDirectoryAtPath(dir.path!, withIntermediateDirectories: true, attributes: nil, error: nil)
       assert(success, "Failed to create attachments cache directory")
     }
     return dir

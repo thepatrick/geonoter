@@ -19,7 +19,7 @@ public extension NSDate {
   }
   
   class func pqg_dateWithJSONString(jsonDate: String) -> NSDate {
-    return pqg_JSONDateFormatter().dateFromString(jsonDate)
+    return pqg_JSONDateFormatter().dateFromString(jsonDate)!
   }
   
   func pqg_jsonString() -> String {

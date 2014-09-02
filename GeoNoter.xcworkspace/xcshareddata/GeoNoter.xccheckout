@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>43B73F87-3F27-4DDB-8001-6F930C7EE370</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GeoNoter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FE24969F7E673FEAF2C0E8A8BE7E0BE2620ABE1B</key>
+		<string>github.com:thepatrick/geonoter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GeoNoter.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FE24969F7E673FEAF2C0E8A8BE7E0BE2620ABE1B</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:thepatrick/geonoter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FE24969F7E673FEAF2C0E8A8BE7E0BE2620ABE1B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FE24969F7E673FEAF2C0E8A8BE7E0BE2620ABE1B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GeoNoter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

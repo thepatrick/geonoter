@@ -63,7 +63,10 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
   func setDefaultNameLabel() {
     let wantsDefaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
     NSLog("wantsDefaultName = \(wantsDefaultName)")
-    if let wantedDefaultName = LocationsDefaultName.fromRaw(wantsDefaultName) {
+    if wantsDefaultName == nil {
+      NSLog("wantsDefaultName not found")
+      defaultName.text = LocationsDefaultName.DateTime.toString()
+    } else if let wantedDefaultName = LocationsDefaultName.fromRaw(wantsDefaultName!) {
       defaultName.text = wantedDefaultName.toString()
     } else {
       NSLog("wantsDefaultName not found")
@@ -84,7 +87,10 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
     if segue.identifier == "changeDefaultName" {
       let vc = segue.destinationViewController as PQGDefaultNameTableViewController
       let wantsDefaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
-      if let wantedDefaultName = LocationsDefaultName.fromRaw(wantsDefaultName) {
+      if wantsDefaultName == nil {
+        NSLog("wantsDefaultName not found")
+        vc.pickedDefualt = LocationsDefaultName.DateTime        
+      } else if let wantedDefaultName = LocationsDefaultName.fromRaw(wantsDefaultName!) {
         vc.pickedDefualt = wantedDefaultName
       } else {
         NSLog("wantsDefaultName not found")

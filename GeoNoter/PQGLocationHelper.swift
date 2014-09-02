@@ -96,6 +96,11 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
     }
   }
   
+  func stopUpdatingLocation() {
+    locationManager.stopUpdatingLocation()
+    self.awaitingLocation = nil
+  }
+  
   // mark - CoreLocation Interface
   
   func locationManager(manager: CLLocationManager!,
@@ -103,13 +108,11 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
     let newLocation = locations[0] as CLLocation
     if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
       NSLog("Received new location info");
-      locationManager.stopUpdatingLocation()
       if let callbacks = self.awaitingLocation {
         for completionHandler in self.awaitingLocation! {
           completionHandler(location: newLocation, error: nil)
         }
       }
-      self.awaitingLocation = nil
     } else {
       NSLog("Received old location info");
     }
@@ -119,7 +122,7 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
     let geo = CLGeocoder()
     geo.reverseGeocodeLocation(location) {
       places, error in
-      if error {
+      if error != nil {
         completionHandler(nil, error)
       } else if let placesInternal = places as? [CLPlacemark] {
         completionHandler(placesInternal, nil)

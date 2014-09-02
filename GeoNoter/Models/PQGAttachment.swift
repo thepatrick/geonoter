@@ -164,7 +164,7 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
     
     if !exists {
       var err : NSError?
-      let success = NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path, withIntermediateDirectories: true, attributes: nil, error: &err)
+      let success = NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil, error: &err)
       if !success {
         NSLog("Error trying to create directory! \(err!.localizedDescription)")
       }
@@ -172,11 +172,11 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
   }
   
   func loadCachedImageForSize(largestSide: Int) -> UIImage? {
-    let cachedItemDirectory = PQGPersistStore.attachmentsCacheDirectory().URLByAppendingPathComponent(fileName).URLByDeletingPathExtension
-    createCacheDirIfMissing(cachedItemDirectory)
+    let cachedItemDirectory = PQGPersistStore.attachmentsCacheDirectory().URLByAppendingPathComponent(fileName!).URLByDeletingPathExtension
+    createCacheDirIfMissing(cachedItemDirectory!)
     
-    let cachedPath = cachedItemDirectory.URLByAppendingPathComponent("\(largestSide).\(kind!)")
-    if NSFileManager.defaultManager().fileExistsAtPath(cachedPath.path) {
+    let cachedPath = cachedItemDirectory!.URLByAppendingPathComponent("\(largestSide).\(kind!)")
+    if NSFileManager.defaultManager().fileExistsAtPath(cachedPath.path!) {
       let cachedImage = UIImage(contentsOfFile: cachedPath.path)
       return cachedImage
     }

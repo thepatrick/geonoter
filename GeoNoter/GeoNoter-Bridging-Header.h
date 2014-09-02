@@ -12,3 +12,4 @@
 #import "PQGCell.h"
 #import "PQGPointDetailHeader.h"
 
+#import "Foursquare2.h"

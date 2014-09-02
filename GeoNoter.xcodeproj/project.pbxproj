@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		46B37C6D3E4F4AB6B2F1DEF1 /* libPods-GeoNoter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */; };
 		94E98E8188294872A93EDB8B /* libPods-GeoNoterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */; };
-		CD27801B1998E4FC0027901F /* PQGAddPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27801A1998E4FC0027901F /* PQGAddPoint.swift */; };
 		CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275B19755536000091ED /* PQGImageSizerTests.swift */; };
 		CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275D19755570000091ED /* PQGDateJSONTests.swift */; };
 		CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */; };
@@ -27,6 +26,8 @@
 		CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6147EF197929B80023C142 /* PQGSettingsTableViewController.swift */; };
 		CD6147F31979315E0023C142 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CD6147F11979315E0023C142 /* Credits.html */; };
 		CD6147F51979341C0023C142 /* PQGCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6147F41979341C0023C142 /* PQGCreditsViewController.swift */; };
+		CD65C9B919B4727300B47362 /* PQGAddPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C9B819B4727300B47362 /* PQGAddPointViewController.swift */; };
+		CD65C9BB19B475BB00B47362 /* PQGAddPointTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C9BA19B475BB00B47362 /* PQGAddPointTableViewController.swift */; };
 		CD6870AD198BE67500C20C35 /* PQGModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6870AC198BE67500C20C35 /* PQGModelCache.swift */; };
 		CD6BAC931973F6B3008EBBAE /* PQGTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BAC921973F6B3008EBBAE /* PQGTagsViewController.swift */; };
 		CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BAC951973F80E008EBBAE /* PQGTagsTableViewController.swift */; };
@@ -100,7 +101,6 @@
 		695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoNoterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoNoter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF29F216D06A4AA1AE579C36 /* Pods-GeoNoterTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoNoterTests.xcconfig"; path = "Pods/Pods-GeoNoterTests.xcconfig"; sourceTree = "<group>"; };
-		CD27801A1998E4FC0027901F /* PQGAddPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAddPoint.swift; path = Views/Points/PQGAddPoint.swift; sourceTree = "<group>"; };
 		CD3F275B19755536000091ED /* PQGImageSizerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGImageSizerTests.swift; sourceTree = "<group>"; };
 		CD3F275D19755570000091ED /* PQGDateJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGDateJSONTests.swift; sourceTree = "<group>"; };
 		CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGStringUUIDTests.swift; sourceTree = "<group>"; };
@@ -116,6 +116,8 @@
 		CD6147EF197929B80023C142 /* PQGSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGSettingsTableViewController.swift; path = Views/Settings/PQGSettingsTableViewController.swift; sourceTree = "<group>"; };
 		CD6147F21979315E0023C142 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/Credits.html; sourceTree = "<group>"; };
 		CD6147F41979341C0023C142 /* PQGCreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGCreditsViewController.swift; path = Views/Settings/PQGCreditsViewController.swift; sourceTree = "<group>"; };
+		CD65C9B819B4727300B47362 /* PQGAddPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAddPointViewController.swift; path = Views/Points/PQGAddPointViewController.swift; sourceTree = "<group>"; };
+		CD65C9BA19B475BB00B47362 /* PQGAddPointTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAddPointTableViewController.swift; path = Views/Points/PQGAddPointTableViewController.swift; sourceTree = "<group>"; };
 		CD6870AC198BE67500C20C35 /* PQGModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGModelCache.swift; path = Models/PQGModelCache.swift; sourceTree = "<group>"; };
 		CD6BAC921973F6B3008EBBAE /* PQGTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTagsViewController.swift; path = Views/Tags/PQGTagsViewController.swift; sourceTree = "<group>"; };
 		CD6BAC951973F80E008EBBAE /* PQGTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTagsTableViewController.swift; path = Views/Tags/PQGTagsTableViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD2780191998E4D60027901F /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				CD65C9B819B4727300B47362 /* PQGAddPointViewController.swift */,
+				CD65C9BA19B475BB00B47362 /* PQGAddPointTableViewController.swift */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
 		CD3F276119755588000091ED /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +420,7 @@
 		CDAB6AB31947C22800DF47E5 /* Points */ = {
 			isa = PBXGroup;
 			children = (
+				CD2780191998E4D60027901F /* Add */,
 				CDAB6AB61947C27100DF47E5 /* PQGPointsNavigationController.swift */,
 				CD73B20E1948CFC200C7D148 /* List */,
 				CD73B20F1948CFDF00C7D148 /* Detail */,
@@ -605,6 +617,7 @@
 				CD4A4A90198CF0AD00BAC650 /* PQGNSStringUUID.swift in Sources */,
 				CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */,
 				CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */,
+				CD65C9BB19B475BB00B47362 /* PQGAddPointTableViewController.swift in Sources */,
 				CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */,
 				CDB5DA71198A5D3400A205B1 /* PQGModel.swift in Sources */,
 				CD73B2181948D34000C7D148 /* PQGCell.m in Sources */,
@@ -624,6 +637,7 @@
 				CD84A4F21769F25400266526 /* PQGAppDelegate.m in Sources */,
 				CD73B2111948D00600C7D148 /* PQGPointDetailViewController.swift in Sources */,
 				CDF172FA1948D81C00CD351F /* PQGPointDetailHeader.m in Sources */,
+				CD65C9B919B4727300B47362 /* PQGAddPointViewController.swift in Sources */,
 				CDB5DA73198A748E00A205B1 /* PQGTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

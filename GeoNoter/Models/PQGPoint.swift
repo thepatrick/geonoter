@@ -29,57 +29,77 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   //MARK: - Public properties
   
   var friendlyName : String? {
-  get {
-    return hydrate()._friendlyName
-  }
-  set (newFriendlyName) {
-    hydrate()._friendlyName = newFriendlyName
-  }
+    get {
+      return hydrate()._friendlyName
+    }
+    set (newFriendlyName) {
+      hydrate()._friendlyName = newFriendlyName
+    }
   }
   
   var name : String? {
-  get {
-    return hydrate()._name
-  }
-  set (name) {
-    hydrate()._name = name
-  }
+    get {
+      return hydrate()._name
+    }
+    set (name) {
+      hydrate()._name = name
+    }
   }
   
   var memo : String? {
-  get {
-    return hydrate()._memo
-  }
-  set (memo) {
-    hydrate()._memo = memo
-  }
+    get {
+      return hydrate()._memo
+    }
+    set (memo) {
+      hydrate()._memo = memo
+    }
   }
   
   var recordedAt : NSDate? {
-  get {
-    return hydrate()._recordedAt
-  }
-  set (recordedAt) {
-    hydrate()._recordedAt = recordedAt
-  }
+    get {
+      return hydrate()._recordedAt
+    }
+    set (recordedAt) {
+      hydrate()._recordedAt = recordedAt
+    }
   }
   
   var latitude : CLLocationDegrees? {
-  get {
-    return hydrate()._latitude
-  }
-  set (latitude) {
-    hydrate()._latitude = latitude
-  }
+    get {
+      return hydrate()._latitude
+    }
+    set (latitude) {
+      hydrate()._latitude = latitude
+    }
   }
   
   var longitude : CLLocationDegrees? {
-  get {
-    return hydrate()._longitude
+    get {
+      return hydrate()._longitude
+    }
+    set (longitude) {
+      hydrate()._longitude = longitude
+    }
   }
-  set (longitude) {
-    hydrate()._longitude = longitude
-  }
+  
+  var location: CLLocation? {
+    get {
+      if let lat = self.latitude {
+        if let lng = self.longitude {
+          return CLLocation(latitude: lat, longitude: lng)
+        }
+      }
+      return nil
+    }
+    set (location) {
+      if let coordinate = location?.coordinate {
+        self.longitude = coordinate.longitude
+        self.latitude = coordinate.latitude
+      } else {
+        self.longitude = nil
+        self.latitude = nil
+      }
+    }
   }
   
   //MARK: - Lifecycle
@@ -194,7 +214,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   }
   
   func addAttachment(data: NSData, withExtension: String) -> PQGAttachment {
-    let fileName = NSString.stringWithUUID().stringByAppendingPathExtension(withExtension)
+    let fileName : String! = NSString.stringWithUUID().stringByAppendingPathExtension(withExtension)
     
     let actualFile = PQGPersistStore.attachmentsDirectory().URLByAppendingPathComponent(fileName)
     

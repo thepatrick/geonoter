@@ -104,7 +104,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       let dateFormatter = NSDateFormatter()
       dateFormatter.dateStyle = .MediumStyle
       dateFormatter.timeStyle = .MediumStyle
-      cell.textLabel.text = dateFormatter.stringFromDate(point.recordedAt)
+      cell.textLabel.text = dateFormatter.stringFromDate(point.recordedAt!)
     case 3:
       if let lat = point.latitude {
         if let lng = point.longitude {
@@ -219,14 +219,14 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   //MARK: - MapViewDelegate
   
   func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-    var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("standardPin") as MKPinAnnotationView
+    var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("standardPin") as? MKPinAnnotationView
     
     if pin == nil {
       pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "standardPin")
     } else {
-      pin.annotation = annotation
+      pin!.annotation = annotation
     }
-    pin.animatesDrop = false
+    pin!.animatesDrop = false
 
     return pin
   }
