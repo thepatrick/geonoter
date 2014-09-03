@@ -26,7 +26,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   }
 
   // MARK: - Navigation
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "embeddable" {
       if let tableViewController = segue.destinationViewController as? PQGAddPointTableViewController {
         self.tableViewController = tableViewController

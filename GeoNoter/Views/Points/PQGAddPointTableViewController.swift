@@ -34,13 +34,13 @@ class PQGAddPointTableViewController: UITableViewController {
 
   // MARK: - Table view data source
 
-  override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     // #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 2
   }
 
-  override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete method implementation.
     // Return the number of rows in the section.
     if section == 0 {
@@ -54,7 +54,7 @@ class PQGAddPointTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
       if isLoading {
         let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as UITableViewCell
@@ -63,9 +63,9 @@ class PQGAddPointTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as UITableViewCell
         
         if let name = venues[indexPath.row]["name"] as? String {
-          cell.textLabel.text = name
+          cell.textLabel!.text = name
         } else {
-          cell.textLabel.text = "Venue \(indexPath.row)"
+          cell.textLabel!.text = "Venue \(indexPath.row)"
         }
         
         return cell

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
@@ -637,99 +637,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1824" y="178"/>
-        </scene>
-        <!--Add Point-->
-        <scene sceneID="xDo-uw-Zuu">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" title="Add Point" id="ZGb-6w-NWN" customClass="PQGAddPoint" customModule="GeoNoter" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="eh0-FW-dTT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="p5K-mb-KVF" customClass="CSStickyHeaderFlowLayout">
-                            <size key="itemSize" width="320" height="80"/>
-                            <size key="headerReferenceSize" width="0.0" height="50"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="cQL-iN-fvd" customClass="PQGCell">
-                                <rect key="frame" x="0.0" y="114" width="320" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Single-line cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpC-Gc-Lk7">
-                                            <rect key="frame" x="20" y="12" width="280" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="gpC-Gc-Lk7" secondAttribute="bottom" constant="13" id="2Df-3j-O9W"/>
-                                    <constraint firstAttribute="trailing" secondItem="gpC-Gc-Lk7" secondAttribute="trailing" constant="20" id="dK7-nQ-odR"/>
-                                    <constraint firstItem="gpC-Gc-Lk7" firstAttribute="leading" secondItem="cQL-iN-fvd" secondAttribute="leading" constant="20" id="ky2-i9-zX1"/>
-                                    <constraint firstItem="gpC-Gc-Lk7" firstAttribute="top" secondItem="cQL-iN-fvd" secondAttribute="top" constant="12" id="zJQ-bS-ovu"/>
-                                </constraints>
-                                <size key="customSize" width="320" height="46"/>
-                                <connections>
-                                    <outlet property="textLabel" destination="gpC-Gc-Lk7" id="lnB-fe-GdN"/>
-                                </connections>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="foursquareCell" id="hMi-gI-Dhi" customClass="PQGCell">
-                                <rect key="frame" x="0.0" y="114" width="320" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poweredByFoursquare_gray" translatesAutoresizingMaskIntoConstraints="NO" id="iaH-40-jx7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="customSize" width="320" height="46"/>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sectionHeader" id="o5S-Jx-XZx" customClass="PQGCell">
-                            <rect key="frame" x="0.0" y="64" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLK-GI-xha">
-                                    <rect key="frame" x="20" y="15" width="280" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.95706275200000002" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <outlet property="textLabel" destination="VLK-GI-xha" id="u4l-z2-FGK"/>
-                            </connections>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="ZGb-6w-NWN" id="ocj-KG-3oy"/>
-                            <outlet property="delegate" destination="ZGb-6w-NWN" id="4FD-6r-Xy4"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Parallax" id="bEF-9O-DEe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dvX-T5-2Th">
-                            <connections>
-                                <action selector="addPointNow:" destination="ZGb-6w-NWN" id="Fdj-qT-4r7"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AYh-SA-8Ru" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1666" y="916"/>
         </scene>
         <!--Add Point-->
         <scene sceneID="mCM-6w-94S">

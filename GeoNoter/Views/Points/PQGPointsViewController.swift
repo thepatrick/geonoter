@@ -48,12 +48,12 @@ class PQGPointsViewController: UITableViewController {
     return points.count
   }
   
-  override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as UITableViewCell
     
     let point = self.points[indexPath.row]
     
-    cell.textLabel.text = point.name
+    cell.textLabel!.text = point.name
     cell.accessoryType = .DisclosureIndicator
     
     return cell
@@ -61,14 +61,15 @@ class PQGPointsViewController: UITableViewController {
 
   //MARK: - Navigation
 
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     NSLog("prepare for segue %@", segue)
     if segue.identifier == "pushToPointDetail" {
       let pointsDetail = segue.destinationViewController as PQGPointDetailViewController
       let cell = sender as UITableViewCell
-      let indexPath = tableView.indexPathForCell(cell)
-      pointsDetail.point = points[indexPath.row]
-      NSLog("Set point to \(points[indexPath.row])")
+      if let indexPath = tableView.indexPathForCell(cell) {
+        pointsDetail.point = points[indexPath.row]
+        NSLog("Set point to \(points[indexPath.row])")
+      }
     }
   }
   
@@ -109,7 +110,7 @@ class PQGPointsViewController: UITableViewController {
     loadingView.style = .Bordered
     loadingView.target = self
     navigationItem.rightBarButtonItem = loadingView
-    return previousItem
+    return previousItem!
   }
 
 }

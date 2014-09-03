@@ -47,12 +47,12 @@ class PQGPointAddTagsTableViewController: UITableViewController {
     return tags.count
   }
 
-  override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
     
     let tag = tags[indexPath.row].hydrate()
     
-    cell.textLabel.text = tag.name
+    cell.textLabel!.text = tag.name
     if chosenTags[tag.primaryKey] != nil {
       cell.accessoryType = .Checkmark
     } else {
@@ -62,7 +62,7 @@ class PQGPointAddTagsTableViewController: UITableViewController {
     return cell
   }
 
-  override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let tag = tags[indexPath.row].hydrate()
     if chosenTags[tag.primaryKey] != nil {
       point.removeTag(tag)

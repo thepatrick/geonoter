@@ -45,31 +45,31 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   // #pragma mark - Table view delegate
   
-  override func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
+  override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
     return .Delete
   }
   
   // #pragma mark - Table view data source
   
-  override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tags.count
   }
   
-  override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
     
-    cell.textLabel.text = tags[indexPath.row].hydrate().name
+    cell.textLabel!.text = tags[indexPath.row].hydrate().name
     cell.accessoryType = .DisclosureIndicator;
     
     return cell
   }
   
-  override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       // Delete the row from the data source
       let tag = self.tags[indexPath.row]
@@ -80,16 +80,16 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   
-  override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
     return "Tags"
   }
   
   // #pragma mark - Navigation
   
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "pushToTagPoints" {
       let vc = segue.destinationViewController as PQGPointsViewController
-      let tag = self.tags[tableView.indexPathForSelectedRow().row]
+      let tag = self.tags[tableView.indexPathForSelectedRow()!.row]
       vc.datasourceFetchAll = {
         return tag.points
       }

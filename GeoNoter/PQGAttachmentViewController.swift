@@ -137,7 +137,7 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   func actionSheetDeleteMe(action: UIAlertAction!) {
     attachment.destroy()
-    navigationController.popViewControllerAnimated(true)
+    navigationController!.popViewControllerAnimated(true)
   }
   
   func actionSheetSendEmail(action: UIAlertAction!) {

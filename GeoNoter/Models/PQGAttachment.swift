@@ -177,10 +177,10 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
     
     let cachedPath = cachedItemDirectory!.URLByAppendingPathComponent("\(largestSide).\(kind!)")
     if NSFileManager.defaultManager().fileExistsAtPath(cachedPath.path!) {
-      let cachedImage = UIImage(contentsOfFile: cachedPath.path)
+      let cachedImage = UIImage(contentsOfFile: cachedPath.path!)
       return cachedImage
     }
-    let original = UIImage(contentsOfFile: filesystemURL!.path)
+    let original = UIImage(contentsOfFile: filesystemURL!.path!)
     let newCachedImage = original.pqg_scaleAndRotateImage(largestSide)
     let data = UIImageJPEGRepresentation(newCachedImage, 1.0)
     let isWritten = data.writeToURL(cachedPath, atomically: true)

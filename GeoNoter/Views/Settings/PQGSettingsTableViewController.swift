@@ -82,8 +82,8 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
       setDefaultNameLabel()
     }
   }
-  
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "changeDefaultName" {
       let vc = segue.destinationViewController as PQGDefaultNameTableViewController
       let wantsDefaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
@@ -99,7 +99,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
     }
   }
   
-  override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.section == 2 && indexPath.row == 0 {
       if !MFMailComposeViewController.canSendMail() {
         UIApplication.sharedApplication().openURL(NSURL(string: "mailto:"))

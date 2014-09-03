@@ -70,7 +70,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       assert(false, "Layout is not the expected CSStickyHeaderFlowLayout")
     }
     
-    self.collectionView.registerNib(self.headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header")
+    self.collectionView!.registerNib(self.headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header")
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -81,13 +81,13 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   func reloadData() {
     tagCache = nil
     attachmentCache = nil
-    collectionView.reloadData()
+    collectionView?.reloadData()
   }
   
   //MARK: - Cell methods
   
   func cellForDetailsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as PQGCell
+    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as PQGCell
 
     cell.textLabel.text = sectionNames[indexPath.section]
     cell.textLabel.textColor = UIColor.blackColor()
@@ -120,12 +120,12 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   func cellForTagRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     if tags.count == 0 {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("chooseTagsCell", forIndexPath: indexPath) as PQGCell
+      let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("chooseTagsCell", forIndexPath: indexPath) as PQGCell
       cell.textLabel.text = "Tap to choose tags"
       cell.textLabel.textColor = UIColor.darkGrayColor()
       return cell
     } else {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as PQGCell
+      let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as PQGCell
       let tag = tags[indexPath.row].hydrate()
       cell.textLabel.text = tag.name
       cell.textLabel.textColor = UIColor.blackColor()
@@ -134,7 +134,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   func cellForAttachmentsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("attachmentCell", forIndexPath: indexPath) as PQGCell
+    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("attachmentCell", forIndexPath: indexPath) as PQGCell
     
     cell.textLabel.text = attachments[indexPath.row].hydrate().friendlyName
     cell.textLabel.textColor = UIColor.blackColor()
@@ -144,11 +144,11 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   //MARK: - CollectionView delegate/datasource methods
   
-  override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+  override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
     return attachments.count > 0 ? 3 : 2
   }
   
-  override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+  override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     switch section {
     case 0:
       return 4
@@ -161,22 +161,27 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     }
   }
   
-  override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-    
+  override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     switch indexPath.section {
     case 0:
       return cellForDetailsRow(indexPath)
     case 1:
       return cellForTagRow(indexPath)
-    case 2:
-      return cellForAttachmentsRow(indexPath)
     default:
-      return nil
+      return cellForAttachmentsRow(indexPath)
     }
   }
   
-  override func collectionView(collectionView: UICollectionView!, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath!) -> UICollectionReusableView! {
-    if kind == UICollectionElementKindSectionHeader {
+  override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    if kind == CSStickyHeaderParallaxHeader {
+      NSLog("Header section for CSStickyHeaderParallaxHeader")
+      let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as PQGPointDetailHeader
+      let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
+      let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
+      cell.mapView.setRegion(region, animated: false)
+      cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
+      return cell
+    } else {
       NSLog("Header section for %@", sectionNames[indexPath.section])
       let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as PQGCell
       if indexPath.section == 0 {
@@ -185,16 +190,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
         cell.textLabel.text = sectionNames[indexPath.section]
       }
       return cell
-    } else if kind == CSStickyHeaderParallaxHeader {
-      NSLog("Header section for CSStickyHeaderParallaxHeader")
-      let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as PQGPointDetailHeader
-      let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
-      let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
-      cell.mapView.setRegion(region, animated: false)
-      cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
-      return cell
     }
-    return nil
   }
   
   func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
@@ -212,7 +208,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     return 1
   }
   
-  override func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     NSLog("didSelectItemAtIndexPath %@", indexPath)
   }
   
@@ -278,7 +274,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     picker.sourceType = .Camera
     picker.allowsEditing = false
     picker.delegate = self
-    navigationController.presentViewController(picker, animated: true, completion: nil)
+    navigationController!.presentViewController(picker, animated: true, completion: nil)
   }
   
   func addPhoto(action: UIAlertAction!) {
@@ -286,7 +282,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
     picker.allowsEditing = false
     picker.delegate = self
-    navigationController.presentViewController(picker, animated: true, completion: nil)
+    navigationController!.presentViewController(picker, animated: true, completion: nil)
   }
   
   func deletePoint(action: UIAlertAction!) {
@@ -301,15 +297,15 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       attachment.destroy()
     }
     point.destroy()
-    self.navigationController.popViewControllerAnimated(true)
+    self.navigationController!.popViewControllerAnimated(true)
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "showAttachmentSegue" {
       if let vc = segue.destinationViewController as? PQGAttachmentViewController {
         // do stuff
         let cell = sender as PQGCell
-        vc.attachment = attachments[self.collectionView.indexPathForCell(cell).row]
+        vc.attachment = attachments[self.collectionView!.indexPathForCell(cell)!.row]
       }
     } else if segue.identifier == "editTagsSegue" {
       if let vc = segue.destinationViewController as? PQGPointAddTagsTableViewController {
@@ -317,9 +313,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       }
     } else if segue.identifier == "pushToTagPointsFromPoint" {
       let cell = sender as PQGCell
-      let indexPath = collectionView.indexPathForCell(cell)
+      let indexPath = collectionView!.indexPathForCell(cell)
       let vc = segue.destinationViewController as PQGPointsViewController
-      let tag = tags[indexPath.row]
+      let tag = tags[indexPath!.row]
       vc.datasourceFetchAll = {
         return tag.points
       }

@@ -21,7 +21,7 @@ class PQGTagsViewController: UINavigationController {
     }
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     NSLog("prepareForSegue: %@", segue);
   }
 

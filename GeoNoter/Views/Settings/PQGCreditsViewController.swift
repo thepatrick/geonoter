@@ -20,7 +20,7 @@ class PQGCreditsViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     let credits = NSBundle.mainBundle().URLForResource("Credits", withExtension: "html")
-    webView.loadRequest(NSURLRequest(URL: credits))
+    webView.loadRequest(NSURLRequest(URL: credits!))
   }
 
   
