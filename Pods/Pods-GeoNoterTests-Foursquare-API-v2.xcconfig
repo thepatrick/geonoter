@@ -1,0 +1,1 @@
+PODS_GEONOTERTESTS_FOURSQUARE_API_V__OTHER_LDFLAGS = -framework Foundation -framework Security -framework UIKit

@@ -1,0 +1,20 @@
+PODS:
+  - CSStickyHeaderFlowLayout (0.2)
+  - FMDB (2.3):
+    - FMDB/standard
+  - FMDB/common (2.3)
+  - FMDB/standard (2.3):
+    - FMDB/common
+  - Foursquare-API-v2 (1.4.5)
+
+DEPENDENCIES:
+  - CSStickyHeaderFlowLayout
+  - FMDB
+  - Foursquare-API-v2
+
+SPEC CHECKSUMS:
+  CSStickyHeaderFlowLayout: b6530bc5f95d656b6963ddb6dd692c0f61890a98
+  FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
+  Foursquare-API-v2: 31b9b6a9e68bc914bae4d3e20d65dc2826f4394d
+
+COCOAPODS: 0.33.1
