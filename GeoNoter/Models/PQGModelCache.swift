@@ -25,24 +25,28 @@ class PQGModelCache<T: PQGModelCacheable> {
   unowned let store : PQGPersistStore
   private var defaultSort : String
   
-  private var cache = [Int64: T]()
+  private var cache = [NSNumber: T]()
   
   init(store: PQGPersistStore, defaultSort: String) {
     self.store = store
     self.defaultSort = defaultSort
   }
   
+  func cacheKey(primaryKey: Int64) -> NSNumber {
+    return NSNumber(longLong: primaryKey)
+  }
+  
   func get(primaryKey: Int64) -> T {
-    if let thing = cache[primaryKey] {
+    if let thing = cache[cacheKey(primaryKey)] {
       return thing
     }
     let newItem = T(primaryKey: primaryKey, store: store)
-    cache[primaryKey] = newItem
+    cache[cacheKey(primaryKey)] = newItem
     return newItem
   }
   
   func removeCachedObject(primaryKey: Int64) {
-    cache.removeValueForKey(primaryKey)
+    cache.removeValueForKey(cacheKey(primaryKey))
   }
   
   func save() {
