@@ -123,7 +123,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   }
   
   override func saveForNew(db: FMDatabase) {
-    db.executeUpdate("INSERT INTO \(tableName()) (id, friendly_name, name, memo, recorded_at, latitude, longitude) " +
+    db.executeUpdate("INSERT INTO \(tableName()) (id, friendly_name, name, memo, recorded_at, latitude, longitude) VALUES " +
       "(?, ?, ?, ?, ?, ?, ?)",
       int64OrNil(primaryKey),
       orNil(friendlyName),
