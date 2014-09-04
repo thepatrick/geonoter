@@ -257,33 +257,25 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     }
   }
   
-  func setupAsNewItem(completionHandler: (NSError?)->()) {
-    PQGLocationHelper.sharedHelper().location { location, error in
-      if (error != nil) {
-        NSLog("Oh oh. Could not get location. Should explode")
-        completionHandler(error!)
-        return
-      }
-      let coordinate = location!.coordinate
-      NSLog("Long! \(coordinate.latitude)")
-      NSLog("Lat! \(coordinate.longitude)")
-      self.longitude = coordinate.longitude
-      self.latitude = coordinate.latitude
-      self.name = "Untitled"
-      self.friendlyName = "Untitled"
-      self.memo = "No memo"
-      
-      if NSUserDefaults.standardUserDefaults().boolForKey("LocationsUseGeocoder") {
-        NSLog("Geocoder time")
-        self.geocode { error in
-          self.save()
-          completionHandler(nil)
-        }
-      } else {
-        NSLog("No geocoder here baby!")
-        self.determineDefaultName(nil)
+  func setupAsNewItem(coordinate: CLLocationCoordinate2D, completionHandler: (NSError?)->()) {
+    NSLog("Long! \(coordinate.latitude)")
+    NSLog("Lat! \(coordinate.longitude)")
+    self.longitude = coordinate.longitude
+    self.latitude = coordinate.latitude
+    self.name = "Untitled"
+    self.friendlyName = "Untitled"
+    self.memo = "No memo"
+    
+    if NSUserDefaults.standardUserDefaults().boolForKey("LocationsUseGeocoder") {
+      NSLog("Geocoder time")
+      self.geocode { error in
         self.save()
+        completionHandler(nil)
       }
+    } else {
+      NSLog("No geocoder here baby!")
+      self.determineDefaultName(nil)
+      self.save()
       completionHandler(nil)
     }
   }
@@ -315,35 +307,37 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   }
   
   private func reverseGeocoderDidFindPlacemark(placemark: CLPlacemark) {
-    var simpleName = placemark.country
+    var simpleName = ""
+   
+     func setIf(x: String?) -> Bool {
+      if let unwrapped = x {
+        if unwrapped != "" {
+          simpleName = unwrapped
+          return true
+        }
+      }
+      return false
+    }
     
-    if placemark.administrativeArea != nil && placemark.administrativeArea != "" {
-      simpleName = placemark.administrativeArea
+    setIf(placemark.country)
+    setIf(placemark.administrativeArea)
+    setIf(placemark.locality)
+    setIf(placemark.subLocality)
+    
+    if setIf(placemark.thoroughfare) {
+      if setIf(placemark.subThoroughfare) {
+        simpleName = placemark.subThoroughfare! + " " + placemark.thoroughfare!
+      }
     }
 
-    if placemark.locality != "" {
-      simpleName = placemark.locality
-    }
-
-    if placemark.subLocality != "" {
-      simpleName = placemark.subLocality
-    }
-
-    if placemark.thoroughfare != "" && placemark.subThoroughfare == "" {
-      simpleName = placemark.thoroughfare
-    }
-
-    if placemark.subThoroughfare != "" && placemark.subThoroughfare != "" {
-      simpleName = placemark.subThoroughfare + " " + placemark.thoroughfare
-    }
-
-    if placemark.areasOfInterest.count == 1 {
-      simpleName = placemark.areasOfInterest[0] as String
+    if placemark.areasOfInterest != nil && placemark.areasOfInterest.count == 1 {
+      setIf(placemark.areasOfInterest[0] as? String)
     }
 
     determineDefaultName(simpleName)
 
     friendlyName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, true)
+
   }
   
 }

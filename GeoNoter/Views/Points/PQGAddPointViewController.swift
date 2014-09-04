@@ -33,6 +33,19 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
       }
     }
   }
+  
+  @IBAction func addPointFromMap(sender: AnyObject) {
+    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+  
+    let point = PQGPoint(store: del.store)
+    
+    let coordinates = mapView.userTrackingMode == .Follow ? mapView.userLocation.coordinate : mapView.centerCoordinate
+    
+    point.setupAsNewItem(coordinates) { error in
+      self.navigationController?.popViewControllerAnimated(true)
+      return
+    }
+  }
 
   // MARK: - MapView Delegate
   func mapView(mapView: MKMapView!, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {

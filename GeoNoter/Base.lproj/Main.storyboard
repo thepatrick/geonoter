@@ -678,7 +678,13 @@
                             <constraint firstItem="BzY-93-wvc" firstAttribute="top" secondItem="jj0-YM-okw" secondAttribute="bottom" id="rnI-gd-KKK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Point" id="6GA-1K-8DN"/>
+                    <navigationItem key="navigationItem" title="Add Point" id="6GA-1K-8DN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XlK-VS-WtV">
+                            <connections>
+                                <action selector="addPointFromMap:" destination="wfd-Oy-aWA" id="z4P-O7-kBa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="jj0-YM-okw" id="BWf-Fq-eaX"/>
                     </connections>

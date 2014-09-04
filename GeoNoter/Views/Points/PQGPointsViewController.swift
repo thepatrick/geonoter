@@ -74,27 +74,7 @@ class PQGPointsViewController: UITableViewController {
   }
   
   //MARK: - Other UI Actions
-  
-  @IBAction func addPoint(sender : AnyObject) {
-    NSLog("addPoint")
     
-//    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
-//    
-//    let point = PQGPoint(store: del.store)
-//    let addButton = showLoading()
-//    
-//    NSLog(">> setupAsNewItem")
-//    point.setupAsNewItem { error in
-//      NSLog("<< setupAsNewItem")
-//      NSLog("setting back %@", addButton)
-//      self.navigationItem.rightBarButtonItem = addButton
-//      self.datasourceCreatedNewPoint?(point)
-//      // let pd = PointsDetail(point:point andStore: del.store)
-//      // self.navigationController.pushViewController(pd, animated: true)
-//      self.reloadData()
-//    }
-  }
-  
   func showLoading() -> UIBarButtonItem {
     let previousItem = navigationItem.rightBarButtonItem
     let frame = CGRect(x: 0, y: 0, width: 25, height: 25)
