@@ -104,7 +104,11 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       let dateFormatter = NSDateFormatter()
       dateFormatter.dateStyle = .MediumStyle
       dateFormatter.timeStyle = .MediumStyle
-      cell.textLabel.text = dateFormatter.stringFromDate(point.recordedAt!)
+      if let recordedAt = point.recordedAt {
+        cell.textLabel.text = dateFormatter.stringFromDate(recordedAt)
+      } else {
+        cell.textLabel.text = "Missing recordedAt"
+      }
     case 3:
       if let lat = point.latitude {
         if let lng = point.longitude {
