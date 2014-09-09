@@ -80,7 +80,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   func setCoordinates(location: CLLocationCoordinate2D) {
     mapView.removeAnnotations(mapView.annotations)
     mapView.addAnnotation(PQGLocation(coordinate: location, title: "Point to add"))
-    tableViewController.setCoordinates(location)
+//    tableViewController.setCoordinates(location)
   }
   
 }

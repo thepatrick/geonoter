@@ -43,7 +43,7 @@ class PQGModel: NSObject, PQGModelCacheable {
   func hydrate() -> Self {
     if !isHydrated {
       store.withDatabase { db in
-        let result = db.executeQuery("SELECT * FROM \(self.tableName()) WHERE id = ?", self.int64OrNil(self.primaryKey))
+        let result = db.executeQuery("SELECT * FROM \(self.tableName()) WHERE id = ?", NSNumber(longLong: self.primaryKey))
         let next = result.next()
         assert(next == true, "Attempt to hydate a model that does not exist in the database")
         self.hydrateRequired(result)
@@ -104,7 +104,7 @@ class PQGModel: NSObject, PQGModelCacheable {
   func destroy() {
     willDestroy()
     store.withDatabase { db in
-      db.executeUpdate("DELETE FROM \(self.tableName()) WHERE id = ?", self.int64OrNil(self.primaryKey))
+      db.executeUpdate("DELETE FROM \(self.tableName()) WHERE id = ?", NSNumber(longLong: self.primaryKey))
       return
     }
     wasDestroyed()
@@ -120,20 +120,18 @@ class PQGModel: NSObject, PQGModelCacheable {
   
   //MARK: - Helpers
   
-  func orNil(value: AnyObject?) -> AnyObject {
-    if let realValue: AnyObject = value {
-      return "\(value)"
-    } else {
-      return NSNull()
+  func numberWithInt64(number: Int64?) -> NSNumber? {
+    if let realValue = number {
+      return NSNumber.numberWithLongLong(realValue)
     }
+    return nil
   }
   
-  func int64OrNil(value: Int64?) -> AnyObject {
-    if let realValue = value {
-      return NSNumber.numberWithLongLong(realValue)
-    } else {
-      return NSNull()
+  func numberWithDouble(number: Double?) -> NSNumber? {
+    if let realValue = number {
+      return NSNumber(double: realValue)
     }
+    return nil
   }
   
 }

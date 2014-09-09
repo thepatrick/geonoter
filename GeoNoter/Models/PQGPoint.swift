@@ -123,37 +123,42 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   }
   
   override func saveForNew(db: FMDatabase) {
-    db.executeUpdate("INSERT INTO \(tableName()) (id, friendly_name, name, memo, recorded_at, latitude, longitude) VALUES " +
-      "(?, ?, ?, ?, ?, ?, ?)",
-      int64OrNil(primaryKey),
-      orNil(friendlyName),
-      orNil(name),
-      orNil(memo),
-      orNil(recordedAt),
-      orNil(latitude),
-      orNil(longitude)
+    if recordedAt == nil {
+      recordedAt = NSDate()
+    }
+    let lat = numberWithDouble(latitude) ?? NSNull()
+    let lon = numberWithDouble(longitude) ?? NSNull()    
+    NSLog("saveForNew recordedAt \(recordedAt)")
+    db.executeUpdate("INSERT INTO \(tableName())  (id, friendly_name, name, memo, recorded_at, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      NSNumber.numberWithLongLong(primaryKey),
+      friendlyName ?? NSNull(),
+      name ?? NSNull(),
+      memo ?? NSNull(),
+      recordedAt ?? NSNull(),
+      lat,
+      lon
     )
   }
   
   override func saveForUpdate(db: FMDatabase)  {
+    let lat = numberWithDouble(latitude) ?? NSNull()
+    let lon = numberWithDouble(longitude) ?? NSNull()
     db.executeUpdate("UPDATE \(tableName()) SET friendly_name = ?, name = ?, memo = ?, " +
       "recorded_at = ?, latitude = ?, longitude =? WHERE id = ?",
-      orNil(friendlyName),
-      orNil(name),
-      orNil(memo),
-      orNil(recordedAt),
-      orNil(latitude),
-      orNil(longitude),
-      int64OrNil(primaryKey)
+      friendlyName ?? NSNull(),
+      name ?? NSNull(),
+      memo ?? NSNull(),
+      recordedAt ?? NSNull(),
+      lat,
+      lon,
+      NSNumber.numberWithLongLong(primaryKey)
     )
   }
   
   override func wasDestroyed() {
     store.points.removeCachedObject(primaryKey)
     store.withDatabase { db in
-      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?",
-        self.int64OrNil(self.primaryKey)
-      )
+      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", NSNumber(longLong: self.primaryKey))
 
       return
     }
@@ -181,8 +186,8 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   func addTag(tag: PQGTag) {
     store.withDatabase { db in
       db.executeUpdate("INSERT INTO point_tag (tag_id, point_id) VALUES (?, ?)",
-        self.int64OrNil(self.primaryKey),
-        self.int64OrNil(tag.primaryKey)
+        NSNumber(longLong: self.primaryKey),
+        NSNumber(longLong: tag.primaryKey)
       )
       return
     }
@@ -191,8 +196,8 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   func removeTag(tag: PQGTag) {
     store.withDatabase { db in
       db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ? AND point_id = ?",
-        self.int64OrNil(self.primaryKey),
-        self.int64OrNil(tag.primaryKey)
+        NSNumber(longLong: self.primaryKey),
+        NSNumber(longLong: tag.primaryKey)
       )
       return
     }
@@ -201,7 +206,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   private func removeAllTags() {
     store.withDatabase { db in
       db.executeUpdate("DELETE FROM point_tag WHERE point_id = ?",
-        self.int64OrNil(self.primaryKey)
+        NSNumber(longLong: self.primaryKey)
       )
       return
     }

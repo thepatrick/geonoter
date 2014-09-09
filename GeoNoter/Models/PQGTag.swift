@@ -41,15 +41,15 @@ final class PQGTag: PQGModel, PQGModelCacheable {
   
   override func saveForNew(db: FMDatabase) {
     db.executeUpdate("INSERT INTO \(tableName()) (id, name) VALUES (?, ?)",
-      int64OrNil(self.primaryKey),
-      orNil(name)
+      NSNumber(longLong: self.primaryKey),
+      name ?? NSNull()
     )
   }
   
   override func saveForUpdate(db: FMDatabase) {
     db.executeUpdate("UPDATE \(tableName()) SET name = ? WHERE id = ?",
-      orNil(name),
-      int64OrNil(self.primaryKey)
+      name ?? NSNull(),
+      NSNumber(longLong: self.primaryKey)
     )
   }
   
@@ -59,7 +59,7 @@ final class PQGTag: PQGModel, PQGModelCacheable {
   
   override func willDestroy() {
     store.withDatabase { db in
-      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", self.int64OrNil(self.primaryKey))
+      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", NSNumber(longLong: self.primaryKey))
       return
     }
   }

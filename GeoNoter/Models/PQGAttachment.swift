@@ -125,26 +125,26 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
   override func saveForNew(db: FMDatabase) {
     db.executeUpdate("INSERT INTO \(tableName()) (id, point_id, friendly_name, kind, memo, file_name, recorded_at) " +
       "VALUES (?, ?, ?, ?, ?, ?, ?)",
-      int64OrNil(self.primaryKey),
-      int64OrNil(pointId),
-      orNil(friendlyName),
-      orNil(kind),
-      orNil(memo),
-      orNil(fileName),
-      orNil(recordedAt)
+      NSNumber(longLong: self.primaryKey),
+      numberWithInt64(pointId),
+      friendlyName ?? NSNull(),
+      kind ?? NSNull(),
+      memo ?? NSNull(),
+      fileName ?? NSNull(),
+      recordedAt ?? NSNull()
     )
   }
   
   override func saveForUpdate(db: FMDatabase)  {
     db.executeUpdate("UPDATE \(tableName()) SET point_id = ?, friendly_name = ?, kind = ?, " +
       "memo = ?, file_name = ?, recorded_at = ? WHERE id = ?",
-      int64OrNil(pointId),
-      orNil(friendlyName),
-      orNil(kind),
-      orNil(memo),
-      orNil(fileName),
-      orNil(recordedAt),
-      int64OrNil(primaryKey)
+      numberWithInt64(pointId),
+      friendlyName ?? NSNull(),
+      kind ?? NSNull(),
+      memo ?? NSNull(),
+      fileName ?? NSNull(),
+      recordedAt ?? NSNull(),
+      NSNumber(longLong: primaryKey)
     )
   }
   
