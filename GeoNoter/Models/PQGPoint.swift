@@ -25,6 +25,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   private var _recordedAt:   NSDate?
   private var _latitude:     CLLocationDegrees?
   private var _longitude:    CLLocationDegrees?
+  private var _foursquareId: String?
   
   //MARK: - Public properties
   
@@ -102,6 +103,15 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     }
   }
   
+  var foursquareId : String? {
+    get {
+      return hydrate()._foursquareId
+    }
+    set (foursquareId) {
+      hydrate()._foursquareId = foursquareId
+    }
+  }
+  
   //MARK: - Lifecycle
   
   override func dehydrate() {
@@ -111,6 +121,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     _memo = nil
     _recordedAt = nil
     _longitude = nil
+    _foursquareId = nil
   }
   
   override func hydrateRequired(row: FMResultSet) {
@@ -120,6 +131,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     _recordedAt   = row.dateForColumn("recorded_at")
     _latitude     = row.doubleForColumn("latitude")
     _longitude    = row.doubleForColumn("longitude")
+    _foursquareId = row.stringForColumn("foursqure_venue_id")
   }
   
   override func saveForNew(db: FMDatabase) {
@@ -129,14 +141,15 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     let lat = numberWithDouble(latitude) ?? NSNull()
     let lon = numberWithDouble(longitude) ?? NSNull()    
     NSLog("saveForNew recordedAt \(recordedAt)")
-    db.executeUpdate("INSERT INTO \(tableName())  (id, friendly_name, name, memo, recorded_at, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)",
+    db.executeUpdate("INSERT INTO \(tableName())  (id, friendly_name, name, memo, recorded_at, latitude, longitude, foursqure_venue_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       NSNumber.numberWithLongLong(primaryKey),
       friendlyName ?? NSNull(),
       name ?? NSNull(),
       memo ?? NSNull(),
       recordedAt ?? NSNull(),
       lat,
-      lon
+      lon,
+      foursquareId ?? NSNull()
     )
   }
   
@@ -144,13 +157,14 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     let lat = numberWithDouble(latitude) ?? NSNull()
     let lon = numberWithDouble(longitude) ?? NSNull()
     db.executeUpdate("UPDATE \(tableName()) SET friendly_name = ?, name = ?, memo = ?, " +
-      "recorded_at = ?, latitude = ?, longitude =? WHERE id = ?",
+      "recorded_at = ?, latitude = ?, longitude = ?, foursquare_venue_id = ? WHERE id = ?",
       friendlyName ?? NSNull(),
       name ?? NSNull(),
       memo ?? NSNull(),
       recordedAt ?? NSNull(),
       lat,
       lon,
+      foursquareId ?? NSNull(),
       NSNumber.numberWithLongLong(primaryKey)
     )
   }
@@ -260,6 +274,49 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
       name = dateFormatter.stringFromDate(NSDate())
       NSLog("Use date/time name... \(name)");
     }
+  }
+  
+  func setupFromFoursquareVenue(venue: NSDictionary) {
+    
+    if let name = venue["name"] as? String {
+      self.name = name
+    } else {
+      // TODO: Error
+      return
+    }
+    
+    if let location = venue["location"] as? NSDictionary {
+      
+      if let longitude = location["lng"] as? NSNumber {
+        self.longitude = longitude.doubleValue
+      }
+      
+      if let latitude = location["lat"] as? NSNumber {
+        self.latitude = latitude.doubleValue
+      }
+      
+      if let address = location["formattedAddress"] as? NSArray {
+        var addressString = ""
+        for line in address {
+          if let addressLine = line as? String {
+            addressString = addressString + "\n" + addressLine
+          }
+        }
+        self.friendlyName = addressString
+      }
+      
+    } else {
+      // TODO: Error
+      return
+    }
+    
+    if let memo = venue["url"] as? String {
+      self.memo = memo
+    } else {
+      self.memo = "No memo"
+    }
+    
+    self.save()
   }
   
   func setupAsNewItem(coordinate: CLLocationCoordinate2D, completionHandler: (NSError?)->()) {

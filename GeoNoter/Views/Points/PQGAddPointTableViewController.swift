@@ -11,6 +11,8 @@ import CoreLocation
 
 class PQGAddPointTableViewController: UITableViewController {
   
+  var didSelectVenue : ((NSDictionary)->())?
+  
   var isLoading : Bool = true {
     didSet {
       tableView.reloadData()
@@ -74,6 +76,14 @@ class PQGAddPointTableViewController: UITableViewController {
       let cell = tableView.dequeueReusableCellWithIdentifier("poweredByFoursquare", forIndexPath: indexPath) as UITableViewCell
       return cell
     }
+  }
+  
+  // MARK: - Table view delegate
+  
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let x = venues[indexPath.row]
+    NSLog("didSelectRowAtIndexPath \(x)")
+    didSelectVenue?(x)
   }
   
   // MARK: - FourSquare API

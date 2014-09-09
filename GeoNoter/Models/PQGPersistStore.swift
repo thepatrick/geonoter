@@ -211,6 +211,14 @@ public extension FMDatabase {
         )
         NSLog("Database migrated to v6.");
       }
+      
+      if version < 7 {
+        db.executeStatements(
+          "ALTER TABLE point ADD COLUMN foursqure_venue_id INTEGER;"
+        )
+        NSLog("Database migrated to v7")
+      }
+      
     }
   }
   

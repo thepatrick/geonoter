@@ -30,6 +30,9 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
     if segue.identifier == "embeddable" {
       if let tableViewController = segue.destinationViewController as? PQGAddPointTableViewController {
         self.tableViewController = tableViewController
+        self.tableViewController.didSelectVenue = { [unowned self] (venue) in
+          self.addPointFromFoursquare(venue)
+        }
       }
     }
   }
@@ -45,6 +48,16 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
       self.navigationController?.popViewControllerAnimated(true)
       return
     }
+  }
+  
+  func addPointFromFoursquare(venue: NSDictionary) {
+    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    
+    let point = PQGPoint(store: del.store)
+    
+    point.setupFromFoursquareVenue(venue)
+    
+    self.navigationController?.popViewControllerAnimated(true)
   }
 
   // MARK: - MapView Delegate
@@ -80,7 +93,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   func setCoordinates(location: CLLocationCoordinate2D) {
     mapView.removeAnnotations(mapView.annotations)
     mapView.addAnnotation(PQGLocation(coordinate: location, title: "Point to add"))
-//    tableViewController.setCoordinates(location)
+    tableViewController.setCoordinates(location)
   }
   
 }
