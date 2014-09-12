@@ -214,7 +214,8 @@ public extension FMDatabase {
       
       if version < 7 {
         db.executeStatements(
-          "ALTER TABLE point ADD COLUMN foursqure_venue_id INTEGER;"
+          "ALTER TABLE point ADD COLUMN foursqure_venue_id INTEGER; " +
+          "UPDATE sync_status_and_version SET version = 7;"
         )
         NSLog("Database migrated to v7")
       }

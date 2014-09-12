@@ -330,7 +330,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
         point.addTag(tag)
       }
     } else if segue.identifier == "editMemoSegue" {
-      NSLog("Segue time!")
+      if let vc = segue.destinationViewController as? PQGMemoEditorViewController {
+        vc.point = point
+      }
     }
   }
   

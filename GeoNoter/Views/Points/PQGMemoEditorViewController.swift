@@ -8,12 +8,16 @@
 
 import UIKit
 
-class PQGMemoEditorViewController: UIViewController, UITextFieldDelegate {
+class PQGMemoEditorViewController: UIViewController, UITextViewDelegate {
+  
+  var point : PQGPoint!
 
   @IBOutlet weak var textField: UITextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.title = "Memo"
 
     // Do any additional setup after loading the view.
   }
@@ -23,6 +27,8 @@ class PQGMemoEditorViewController: UIViewController, UITextFieldDelegate {
     
     let center = NSNotificationCenter.defaultCenter()
 //    center.
+    
+    textField.text = point.memo ?? "No Memo"
     
     textField.becomeFirstResponder()
   
@@ -37,8 +43,18 @@ class PQGMemoEditorViewController: UIViewController, UITextFieldDelegate {
     // Dispose of any resources that can be recreated.
   }
   
-  func textFieldDidBeginEditing(textField: UITextField) {
-    
+  func textViewDidBeginEditing(textView: UITextView) {
+    NSLog("textField did begin editing, boo!")
   }
   
+  func textViewDidChange(textView: UITextView) {
+    NSLog("textField did change")
+    point.memo = textView.text
+  }
+  
+  func textViewDidEndEditing(textView: UITextView) {
+    NSLog("textViewDidEndEditing")
+    point.save()
+  }
+ 
 }
