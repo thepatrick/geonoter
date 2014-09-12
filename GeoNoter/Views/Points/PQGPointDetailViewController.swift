@@ -87,7 +87,8 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   //MARK: - Cell methods
   
   func cellForDetailsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as PQGCell
+    let cellIdentifier = indexPath.row == 1 ? "multilineCell" : "cell"
+    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as PQGCell
 
     cell.textLabel.text = sectionNames[indexPath.section]
     cell.textLabel.textColor = UIColor.blackColor()
@@ -304,6 +305,8 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     self.navigationController!.popViewControllerAnimated(true)
   }
   
+  // MARK: - Navigation
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "showAttachmentSegue" {
       if let vc = segue.destinationViewController as? PQGAttachmentViewController {
@@ -326,6 +329,8 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       vc.datasourceCreatedNewPoint = { point in
         point.addTag(tag)
       }
+    } else if segue.identifier == "editMemoSegue" {
+      NSLog("Segue time!")
     }
   }
   

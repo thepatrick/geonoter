@@ -70,6 +70,7 @@
 		CDF89B3B1995102C006FD8A7 /* PQGTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA72198A748E00A205B1 /* PQGTag.swift */; };
 		CDF89B3C1995102F006FD8A7 /* PQGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA70198A5D3400A205B1 /* PQGModel.swift */; };
 		CDF89B3D19951073006FD8A7 /* PQGLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */; };
+		CDFC159819C27E620080EC29 /* PQGMemoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC159719C27E620080EC29 /* PQGMemoEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,7 @@
 		CDCD3BA919793FB900DE6699 /* PQGDefaultNameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGDefaultNameTableViewController.swift; path = Views/Settings/PQGDefaultNameTableViewController.swift; sourceTree = "<group>"; };
 		CDF172F81948D81C00CD351F /* PQGPointDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PQGPointDetailHeader.h; path = Views/Points/PQGPointDetailHeader.h; sourceTree = "<group>"; };
 		CDF172F91948D81C00CD351F /* PQGPointDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PQGPointDetailHeader.m; path = Views/Points/PQGPointDetailHeader.m; sourceTree = "<group>"; };
+		CDFC159719C27E620080EC29 /* PQGMemoEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGMemoEditorViewController.swift; path = Views/Points/PQGMemoEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +291,7 @@
 		CD73B20F1948CFDF00C7D148 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				CDFC159619C27E510080EC29 /* Memo */,
 				CD73B2101948D00600C7D148 /* PQGPointDetailViewController.swift */,
 				CD73B2121948D29200C7D148 /* PQGPointDetailHeader.xib */,
 				CDF172F81948D81C00CD351F /* PQGPointDetailHeader.h */,
@@ -434,6 +437,14 @@
 				CDB80F03195F86520087863A /* PQGAttachmentViewController.swift */,
 			);
 			name = Attachment;
+			sourceTree = "<group>";
+		};
+		CDFC159619C27E510080EC29 /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				CDFC159719C27E620080EC29 /* PQGMemoEditorViewController.swift */,
+			);
+			name = Memo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,6 +635,7 @@
 				CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */,
 				CD84A4EE1769F25400266526 /* main.m in Sources */,
 				CD6E3C6919466D30005067DE /* UIImageSizer.m in Sources */,
+				CDFC159819C27E620080EC29 /* PQGMemoEditorViewController.swift in Sources */,
 				CD6147F51979341C0023C142 /* PQGCreditsViewController.swift in Sources */,
 				CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */,
 				CD6870AD198BE67500C20C35 /* PQGModelCache.swift in Sources */,
