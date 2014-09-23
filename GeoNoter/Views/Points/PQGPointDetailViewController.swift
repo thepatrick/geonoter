@@ -26,7 +26,7 @@ class  PQGLocation : NSObject, MKAnnotation {
 
 class PQGPointDetailViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
-  var sectionNames = ["Details", "Tags", "Attachments"]
+  var sectionNames = ["Map", "Details", "Tags", "Attachments"]
   
   var headerNib = UINib(nibName: "PQGPointDetailHeader", bundle: nil)
 
@@ -64,13 +64,29 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     
     self.title = point.name
     
-    if let layout = self.collectionViewLayout as? CSStickyHeaderFlowLayout {
-      layout.parallaxHeaderReferenceSize = CGSize(width: 320, height: 200)
-    } else {
-      assert(false, "Layout is not the expected CSStickyHeaderFlowLayout")
-    }
+    layoutStuff()
+  }
+  
+  func layoutStuff() {
+//    if let layout = self.collectionViewLayout as? CSStickyHeaderFlowLayout {
+//      
+//      let x = self.collectionView!.traitCollection
+//      
+//      let y = self.collectionView!.frame
+//      layout.parallaxHeaderReferenceSize = CGSize(width: y.width, height: 200)
+//      
+//      
+//      //      if x.horizontalSizeClass
+//      
+//      layout.parallaxHeaderReferenceSize = CGSize(width: 320, height: 200)
+//    } else {
+//      assert(false, "Layout is not the expected CSStickyHeaderFlowLayout")
+//    }
+  }
+  
+  override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
     
-    self.collectionView!.registerNib(self.headerNib, forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "header")
+    self.reloadData()
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -85,6 +101,19 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   //MARK: - Cell methods
+  
+  func cellForMapRow(indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath) as PQGPointDetailHeader
+
+    NSLog("Header section for CSStickyHeaderParallaxHeader")
+    let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
+    let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
+    cell.mapView.setRegion(region, animated: false)
+    cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
+
+    
+    return cell
+  }
   
   func cellForDetailsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     let cellIdentifier = indexPath.row == 1 ? "multilineCell" : "cell"
@@ -150,16 +179,18 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   //MARK: - CollectionView delegate/datasource methods
   
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-    return attachments.count > 0 ? 3 : 2
+    return attachments.count > 0 ? 4 : 3
   }
   
   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     switch section {
     case 0:
-      return 4
+      return 1
     case 1:
-      return tags.count == 0 ? 1 : tags.count
+      return 4
     case 2:
+      return tags.count == 0 ? 1 : tags.count
+    case 3:
       return attachments.count
     default:
       return 0
@@ -169,39 +200,53 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     switch indexPath.section {
     case 0:
-      return cellForDetailsRow(indexPath)
+      return cellForMapRow(indexPath)
     case 1:
+      return cellForDetailsRow(indexPath)
+    case 2:
       return cellForTagRow(indexPath)
     default:
       return cellForAttachmentsRow(indexPath)
     }
   }
   
-  override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-    if kind == CSStickyHeaderParallaxHeader {
-      NSLog("Header section for CSStickyHeaderParallaxHeader")
-      let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as PQGPointDetailHeader
-      let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
-      let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
-      cell.mapView.setRegion(region, animated: false)
-      cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
-      return cell
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    if section < 2 {
+      return CGSizeMake(0, 0)
     } else {
-      NSLog("Header section for %@", sectionNames[indexPath.section])
-      let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as PQGCell
-      if indexPath.section == 0 {
-        cell.textLabel.text = point.name
-      } else {
-        cell.textLabel.text = sectionNames[indexPath.section]
-      }
-      return cell
+      return CGSizeMake(collectionView.bounds.size.width, 50)
     }
   }
   
+  override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    NSLog("Header section for %@", sectionNames[indexPath.section])
+    let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as PQGCell
+    if indexPath.section == 0 {
+      cell.textLabel.text = point.name
+    } else {
+      cell.textLabel.text = sectionNames[indexPath.section]
+    }
+    return cell
+  }
+  
+  
   func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+    let w = collectionView.frame.width
+
+    if indexPath.section == 0 {
+      return CGSize(width: w, height: 200)
+    }
 //    if indexPath.section == 0 && indexPath.row == 0 {
 //      return CGSize(width: 320, height: 100)
 //    }
+    NSLog("collectionView sizeForItemAtIndexPath \(indexPath)")
+    if collectionView.traitCollection.horizontalSizeClass == .Compact {
+      NSLog("horizontal size class is compact")
+      return CGSize(width: w, height: 46)
+    }
+    
+    
+    
     return CGSize(width: 320, height: 46)
   }
   
