@@ -31,7 +31,7 @@
             <objects>
                 <tableViewController id="HVH-NQ-aZ8" customClass="PQGPointsViewController" customModule="GeoNoter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fYA-lf-uUB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -79,7 +79,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add tag" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CZz-1W-wSf">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add tag" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CZz-1W-wSf">
                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
@@ -89,6 +89,12 @@
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailingMargin" secondItem="CZz-1W-wSf" secondAttribute="trailing" constant="12" id="IDB-oZ-7C8"/>
+                                <constraint firstItem="CZz-1W-wSf" firstAttribute="leading" secondItem="2Fz-TK-lbs" secondAttribute="leadingMargin" constant="12" id="XVg-sx-1Hm"/>
+                                <constraint firstItem="CZz-1W-wSf" firstAttribute="top" secondItem="2Fz-TK-lbs" secondAttribute="topMargin" constant="1" id="Y25-RD-QH0"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="CZz-1W-wSf" secondAttribute="bottom" constant="1" id="wxU-Fj-fND"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tagCell" textLabel="fZi-fW-84o" style="IBUITableViewCellStyleDefault" id="BKM-4v-aKY">
@@ -606,7 +612,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggT-7P-LIF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggT-7P-LIF">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="js4-tm-EAU">
@@ -619,6 +625,12 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ggT-7P-LIF" firstAttribute="leading" secondItem="gnP-5v-Jxe" secondAttribute="leading" id="IfB-uF-GbX"/>
+                            <constraint firstAttribute="bottom" secondItem="ggT-7P-LIF" secondAttribute="bottom" id="Wqv-Q2-50P"/>
+                            <constraint firstItem="ggT-7P-LIF" firstAttribute="top" secondItem="gnP-5v-Jxe" secondAttribute="top" id="flY-j6-BJP"/>
+                            <constraint firstAttribute="trailing" secondItem="ggT-7P-LIF" secondAttribute="trailing" id="pCm-An-cJM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rSt-Ks-OyY">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="Mzh-nY-7w6">
@@ -774,7 +786,7 @@
             <objects>
                 <tableViewController id="M5e-Fx-5hf" customClass="PQGAddPointTableViewController" customModule="GeoNoter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cHc-Mn-V3h">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="286"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Dgo-6z-DJN">
@@ -852,6 +864,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mrt-QD-FJ5"/>
+        <segue reference="oYX-7G-xRW"/>
     </inferredMetricsTieBreakers>
 </document>
