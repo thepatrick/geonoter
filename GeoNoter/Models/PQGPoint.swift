@@ -199,7 +199,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   
   func addTag(tag: PQGTag) {
     store.withDatabase { db in
-      db.executeUpdate("INSERT INTO point_tag (tag_id, point_id) VALUES (?, ?)",
+      db.executeUpdate("INSERT INTO point_tag (point_id, tag_id) VALUES (?, ?)",
         NSNumber(longLong: self.primaryKey),
         NSNumber(longLong: tag.primaryKey)
       )
@@ -209,7 +209,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
   
   func removeTag(tag: PQGTag) {
     store.withDatabase { db in
-      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ? AND point_id = ?",
+      db.executeUpdate("DELETE FROM point_tag WHERE point_id = ? AND tag_id = ?",
         NSNumber(longLong: self.primaryKey),
         NSNumber(longLong: tag.primaryKey)
       )
