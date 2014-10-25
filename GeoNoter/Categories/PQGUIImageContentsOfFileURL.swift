@@ -10,8 +10,8 @@ import UIKit
 
 extension UIImage {
   
-  convenience init(contentsOfURL: NSURL) {
-    return self.init(contentsOfFile: contentsOfURL.path!)
+  convenience init?(contentsOfURL: NSURL) {
+    self.init(contentsOfFile: contentsOfURL.path!)
   }
   
 }

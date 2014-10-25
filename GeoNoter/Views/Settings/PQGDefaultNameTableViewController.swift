@@ -31,7 +31,7 @@ class PQGDefaultNameTableViewController: UITableViewController {
 
     let item = pickList[indexPath.row]
     
-    cell.textLabel!.text = item.toString()
+    cell.textLabel.text = item.toString()
     
     if item == pickedDefualt {
       cell.accessoryType = .Checkmark
@@ -44,7 +44,7 @@ class PQGDefaultNameTableViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)  {
     let item = pickList[indexPath.row]
-    NSUserDefaults.standardUserDefaults().setValue(item.toRaw(), forKey: "LocationsDefaultName")
+    NSUserDefaults.standardUserDefaults().setValue(item.rawValue, forKey: "LocationsDefaultName")
     navigationController?.popViewControllerAnimated(true)
   }
 

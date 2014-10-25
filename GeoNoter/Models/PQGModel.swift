@@ -122,7 +122,7 @@ class PQGModel: NSObject, PQGModelCacheable {
   
   func numberWithInt64(number: Int64?) -> NSNumber? {
     if let realValue = number {
-      return NSNumber.numberWithLongLong(realValue)
+      return NSNumber(longLong: realValue)
     }
     return nil
   }

@@ -51,7 +51,7 @@ public extension FMDatabase {
   
   class func fileExists(path: NSURL) -> (Bool, Bool) {
     var error: NSError?
-    var isDirectory: ObjCBool = ObjCBool(0)
+    var isDirectory: ObjCBool = ObjCBool(true)
     if NSFileManager.defaultManager().fileExistsAtPath(path.path!, isDirectory: &isDirectory) {
       return (true, isDirectory.boolValue)
     } else {

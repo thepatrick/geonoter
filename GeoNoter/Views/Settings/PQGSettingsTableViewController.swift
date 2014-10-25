@@ -66,7 +66,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
     if wantsDefaultName == nil {
       NSLog("wantsDefaultName not found")
       defaultName.text = LocationsDefaultName.DateTime.toString()
-    } else if let wantedDefaultName = LocationsDefaultName.fromRaw(wantsDefaultName!) {
+    } else if let wantedDefaultName = LocationsDefaultName(rawValue: wantsDefaultName!) {
       defaultName.text = wantedDefaultName.toString()
     } else {
       NSLog("wantsDefaultName not found")
@@ -77,8 +77,8 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
   @IBAction func useGeocoderChanged(sender: AnyObject) {
     NSUserDefaults.standardUserDefaults().setBool(useGeocoder.on, forKey: "LocationsUseGeocoder")
     let defaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
-    if !useGeocoder.on && defaultName == LocationsDefaultName.MostSpecific.toRaw() {
-      NSUserDefaults.standardUserDefaults().setValue(LocationsDefaultName.DateTime.toRaw(), forKey: "LocationsDefaultName")
+    if !useGeocoder.on && defaultName == LocationsDefaultName.MostSpecific.rawValue {
+      NSUserDefaults.standardUserDefaults().setValue(LocationsDefaultName.DateTime.rawValue, forKey: "LocationsDefaultName")
       setDefaultNameLabel()
     }
   }
@@ -90,7 +90,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
       if wantsDefaultName == nil {
         NSLog("wantsDefaultName not found")
         vc.pickedDefualt = LocationsDefaultName.DateTime        
-      } else if let wantedDefaultName = LocationsDefaultName.fromRaw(wantsDefaultName!) {
+      } else if let wantedDefaultName = LocationsDefaultName(rawValue: wantsDefaultName!) {
         vc.pickedDefualt = wantedDefaultName
       } else {
         NSLog("wantsDefaultName not found")
@@ -102,7 +102,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.section == 2 && indexPath.row == 0 {
       if !MFMailComposeViewController.canSendMail() {
-        UIApplication.sharedApplication().openURL(NSURL(string: "mailto:"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "mailto:")!)
       } else {
         let picker = MFMailComposeViewController()
         picker.setSubject("Geonoter Database")

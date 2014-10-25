@@ -142,7 +142,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     let lon = numberWithDouble(longitude) ?? NSNull()    
     NSLog("saveForNew recordedAt \(recordedAt)")
     db.executeUpdate("INSERT INTO \(tableName())  (id, friendly_name, name, memo, recorded_at, latitude, longitude, foursqure_venue_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-      NSNumber.numberWithLongLong(primaryKey),
+      NSNumber(longLong: primaryKey),
       friendlyName ?? NSNull(),
       name ?? NSNull(),
       memo ?? NSNull(),
@@ -165,7 +165,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
       lat,
       lon,
       foursquareId ?? NSNull(),
-      NSNumber.numberWithLongLong(primaryKey)
+      NSNumber(longLong: primaryKey)
     )
   }
   

@@ -181,7 +181,7 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
       return cachedImage
     }
     let original = UIImage(contentsOfFile: filesystemURL!.path!)
-    let newCachedImage = original.pqg_scaleAndRotateImage(largestSide)
+    let newCachedImage = original!.pqg_scaleAndRotateImage(largestSide)
     let data = UIImageJPEGRepresentation(newCachedImage, 1.0)
     let isWritten = data.writeToURL(cachedPath, atomically: true)
     if !isWritten {

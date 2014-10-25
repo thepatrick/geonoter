@@ -26,7 +26,7 @@ enum PQGLocationHelperError: Int {
     }
   }
   func error() -> NSError {
-    return NSError(domain: "PQGLocationHelperError", code: -self.toRaw(), userInfo: [
+    return NSError(domain: "PQGLocationHelperError", code: -self.rawValue, userInfo: [
       NSLocalizedDescriptionKey: self.description()
     ])
   }

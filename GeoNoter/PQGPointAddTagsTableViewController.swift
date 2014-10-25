@@ -52,7 +52,7 @@ class PQGPointAddTagsTableViewController: UITableViewController {
     
     let tag = tags[indexPath.row].hydrate()
     
-    cell.textLabel!.text = tag.name
+    cell.textLabel.text = tag.name
     if chosenTags[tag.primaryKey] != nil {
       cell.accessoryType = .Checkmark
     } else {

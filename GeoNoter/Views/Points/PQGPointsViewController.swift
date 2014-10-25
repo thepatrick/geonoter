@@ -53,7 +53,7 @@ class PQGPointsViewController: UITableViewController {
     
     let point = self.points[indexPath.row]
     
-    cell.textLabel!.text = point.name
+    cell.textLabel.text = point.name
     cell.accessoryType = .DisclosureIndicator
     
     return cell
