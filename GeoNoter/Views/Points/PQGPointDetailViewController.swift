@@ -11,6 +11,15 @@ import MapKit
 
 let reuseIdentifier = "Cell"
 
+extension UIFont {
+  func sizeOfString (string: String, constrainedToWidth width: Double) -> CGSize {
+    return NSString(string: string).boundingRectWithSize(CGSize(width: width, height: DBL_MAX),
+      options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+      attributes: [NSFontAttributeName: self],
+      context: nil).size
+  }
+}
+
 class  PQGLocation : NSObject, MKAnnotation {
 
   var coordinate : CLLocationCoordinate2D
@@ -63,25 +72,6 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     super.viewDidLoad()
     
     self.title = point.name
-    
-    layoutStuff()
-  }
-  
-  func layoutStuff() {
-//    if let layout = self.collectionViewLayout as? CSStickyHeaderFlowLayout {
-//      
-//      let x = self.collectionView!.traitCollection
-//      
-//      let y = self.collectionView!.frame
-//      layout.parallaxHeaderReferenceSize = CGSize(width: y.width, height: 200)
-//      
-//      
-//      //      if x.horizontalSizeClass
-//      
-//      layout.parallaxHeaderReferenceSize = CGSize(width: 320, height: 200)
-//    } else {
-//      assert(false, "Layout is not the expected CSStickyHeaderFlowLayout")
-//    }
   }
   
   override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
@@ -90,6 +80,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   override func viewWillAppear(animated: Bool) {
     point.hydrate()
+    NSLog("point friendlyName \(point.friendlyName)")
     reloadData()
   }
   
@@ -123,10 +114,10 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     
     switch indexPath.row {
     case 0:
-      cell.textLabel.text = point.friendlyName
+      cell.textLabel.text = point.friendlyName?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) ?? ""
     case 1:
-      cell.textLabel.text = point.memo
-      if point.memo == "No memo" {
+      cell.textLabel.text = point.memo ?? "No memo"
+      if cell.textLabel.text == "No memo" {
         cell.textLabel.textColor = UIColor.lightGrayColor()
       }
     case 2:
@@ -186,7 +177,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     case 0:
       return 1
     case 1:
-      return 4
+      return 3
     case 2:
       return tags.count == 0 ? 1 : tags.count
     case 3:
@@ -230,23 +221,23 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   
   func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-    let w = collectionView.frame.width
-
+    var w = collectionView.frame.width
+    var h : CGFloat = 46.0
+    
     if indexPath.section == 0 {
-      return CGSize(width: w, height: 200)
-    }
-//    if indexPath.section == 0 && indexPath.row == 0 {
-//      return CGSize(width: 320, height: 100)
-//    }
-    NSLog("collectionView sizeForItemAtIndexPath \(indexPath)")
-    if collectionView.traitCollection.horizontalSizeClass == .Compact {
-      NSLog("horizontal size class is compact")
-      return CGSize(width: w, height: 46)
+      h = 200
+    } else  if collectionView.traitCollection.horizontalSizeClass != .Compact {
+      w = 320
     }
     
+    if indexPath.section == 1 && indexPath.row == 0 {
+      if let friendlyName = point.friendlyName?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
+        let f = UIFont.systemFontOfSize(17.0)
+        h = f.sizeOfString(friendlyName, constrainedToWidth: Double(w) - 40).height + 25
+      }
+    }
     
-    
-    return CGSize(width: 320, height: 46)
+    return CGSize(width: w, height: h)
   }
   
   func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
