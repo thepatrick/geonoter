@@ -99,9 +99,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
     let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
     cell.mapView.setRegion(region, animated: false)
-    cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
-
-    
+    if cell.mapView.annotations.count == 0 {
+        cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
+    }    
     return cell
   }
   
