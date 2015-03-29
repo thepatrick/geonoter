@@ -10,9 +10,9 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="GeoNoter_WatchKit_Extension">
                     <items>
-                        <button width="1" alignment="left" title="Add Point" id="T3T-LY-e5I">
+                        <button width="1" alignment="left" title="Nearby" id="T3T-LY-e5I">
                             <connections>
-                                <segue destination="5Jh-Hf-MeR" kind="modal" id="ibf-NM-Kja"/>
+                                <segue destination="5Jh-Hf-MeR" kind="push" id="ibf-NM-Kja"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Tags" id="8sI-du-t5m">
@@ -113,7 +113,7 @@
                                 <tableRow identifier="foursquare-row" id="Esq-iQ-Ldt" customClass="AddFoursquareRow" customModule="GeoNoter_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="Mvb-S7-IUb">
                                         <items>
-                                            <label alignment="center" verticalAlignment="center" text="XYZ St" id="5jQ-BF-vdk"/>
+                                            <label alignment="left" verticalAlignment="center" text="XYZ St" numberOfLines="0" id="5jQ-BF-vdk"/>
                                         </items>
                                     </group>
                                     <connections>
@@ -141,7 +141,7 @@
                             <items>
                                 <group width="1" alignment="left" id="vgn-aq-tzp">
                                     <items>
-                                        <label alignment="center" verticalAlignment="center" text="Label" id="Jdj-J3-5Vc">
+                                        <label alignment="center" verticalAlignment="center" text="Label" numberOfLines="0" id="Jdj-J3-5Vc">
                                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                         </label>
                                     </items>

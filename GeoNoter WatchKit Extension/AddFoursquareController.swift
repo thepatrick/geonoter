@@ -18,7 +18,14 @@ class AddFoursquareController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
+      
+      
+      loadingGroup.setHidden(false)
+      loadingText.setText("Finding you")
+      placeTable.setHidden(true)
+      
+      getPlaces()
+      
         // Configure interface objects here.
     }
     
@@ -26,12 +33,6 @@ class AddFoursquareController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         NSLog("willActivate AddFoursquareController!")
-        
-        loadingGroup.setHidden(false)
-        loadingText.setText("Finding you")
-        placeTable.setHidden(true)
-        
-        getPlaces()
     }
     
     override func didDeactivate() {
@@ -95,10 +96,9 @@ class AddFoursquareController: WKInterfaceController {
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         let context = AddFoursquareVenueContext(place: places[rowIndex], dismiss: { controller in
-            controller.dismissController()
-            self.dismissController()
-        })        
-        self.presentControllerWithName("addFoursquareVenue", context: context)
+            self.popToRootController()
+        })
+        self.pushControllerWithName("addFoursquareVenue", context: context)
     }
     
 }
