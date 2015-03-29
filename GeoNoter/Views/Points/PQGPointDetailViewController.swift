@@ -87,13 +87,13 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   func reloadData() {
     tagCache = nil
     attachmentCache = nil
-    collectionView.reloadData()
+    collectionView?.reloadData()
   }
   
   //MARK: - Cell methods
   
   func cellForMapRow(indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath) as PQGPointDetailHeader
+    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath) as PQGPointDetailHeader
 
     NSLog("Header section for CSStickyHeaderParallaxHeader")
     let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
@@ -107,7 +107,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   func cellForDetailsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     let cellIdentifier = indexPath.row < 2 ? "multilineCell" : "cell"
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as PQGCell
+    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as PQGCell
 
     cell.textLabel.text = sectionNames[indexPath.section]
     cell.textLabel.textColor = UIColor.blackColor()
@@ -144,12 +144,12 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   func cellForTagRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     if tags.count == 0 {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("chooseTagsCell", forIndexPath: indexPath) as PQGCell
+      let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("chooseTagsCell", forIndexPath: indexPath) as PQGCell
       cell.textLabel.text = "Tap to choose tags"
       cell.textLabel.textColor = UIColor.darkGrayColor()
       return cell
     } else {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as PQGCell
+      let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as PQGCell
       let tag = tags[indexPath.row].hydrate()
       cell.textLabel.text = tag.name
       cell.textLabel.textColor = UIColor.blackColor()
@@ -158,7 +158,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
   
   func cellForAttachmentsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("attachmentCell", forIndexPath: indexPath) as PQGCell
+    let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("attachmentCell", forIndexPath: indexPath) as PQGCell
     
     cell.textLabel.text = attachments[indexPath.row].hydrate().friendlyName
     cell.textLabel.textColor = UIColor.blackColor()
@@ -347,7 +347,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       if let vc = segue.destinationViewController as? PQGAttachmentViewController {
         // do stuff
         let cell = sender as PQGCell
-        vc.attachment = attachments[self.collectionView.indexPathForCell(cell)!.row]
+        vc.attachment = attachments[self.collectionView!.indexPathForCell(cell)!.row]
       }
     } else if segue.identifier == "editTagsSegue" {
       if let vc = segue.destinationViewController as? PQGPointAddTagsTableViewController {
@@ -355,7 +355,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
       }
     } else if segue.identifier == "pushToTagPointsFromPoint" {
       let cell = sender as PQGCell
-      let indexPath = collectionView.indexPathForCell(cell)
+      let indexPath = collectionView!.indexPathForCell(cell)
       let vc = segue.destinationViewController as PQGPointsViewController
       let tag = tags[indexPath!.row]
       vc.datasourceFetchAll = {

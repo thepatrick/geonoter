@@ -31,7 +31,7 @@ class PQGDefaultNameTableViewController: UITableViewController {
 
     let item = pickList[indexPath.row]
     
-    cell.textLabel.text = item.toString()
+    cell.textLabel!.text = item.toString()
     
     if item == pickedDefualt {
       cell.accessoryType = .Checkmark

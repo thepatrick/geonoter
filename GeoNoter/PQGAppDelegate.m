@@ -70,4 +70,43 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply
+{
+  NSString *watchWants = userInfo[@"watchWants"];
+  
+  if([watchWants isEqualToString:@"nearbyPlaces"]) {
+        
+    PQGFoursquareHelper *foursquareHelper = [[PQGFoursquareHelper alloc] init];
+    
+    NSNumber *lat = userInfo[@"location"][@"lat"];
+    NSNumber *lng = userInfo[@"location"][@"lng"];
+        
+    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(lat.doubleValue, lng.doubleValue);
+    
+    [foursquareHelper venuesForCoordinates:coordinates completion:^(NSArray *places, NSError *error) {
+      if (error) {
+        reply(@{ @"error": error.localizedDescription });
+      } else {
+      reply(@{ @"nearbyPlaces": places });
+      }
+    }];
+    
+  } else if ([watchWants isEqualToString:@"addFoursquareVenue"]) {
+        
+    PQGPoint *point = [[PQGPoint alloc] initWithStore:self.store];
+    [point setupFromFoursquareVenue:userInfo[@"venue"]];
+      
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"addedPoint" object:self userInfo:@{ @"point": point  }];
+        
+    reply(@{ @"pointId": @(point.primaryKey) });
+    
+  } else if ([watchWants isEqualToString:@"tags"]) {
+    
+    reply(@{ @"tags": [self.store allTagsForWatch] });
+    
+  } else {
+    reply(@{ @"error": @"unsupported request" });
+  }
+}
+
 @end

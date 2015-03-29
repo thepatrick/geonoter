@@ -65,9 +65,9 @@ class PQGAddPointTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as UITableViewCell
         
         if let name = venues[indexPath.row]["name"] as? String {
-          cell.textLabel.text = name
+          cell.textLabel!.text = name
         } else {
-          cell.textLabel.text = "Venue \(indexPath.row)"
+          cell.textLabel!.text = "Venue \(indexPath.row)"
         }
         
         return cell

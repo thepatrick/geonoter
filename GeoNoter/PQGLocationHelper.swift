@@ -72,7 +72,7 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
       return PQGLocationHelperError.Restricted
     case .Denied:
       return PQGLocationHelperError.Denied
-    case .Authorized, .AuthorizedWhenInUse:
+    case .AuthorizedAlways, .AuthorizedWhenInUse:
       return nil;
     }
   }

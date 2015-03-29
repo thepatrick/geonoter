@@ -63,7 +63,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     
     let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
     
-    cell.textLabel.text = tags[indexPath.row].hydrate().name
+    cell.textLabel!.text = tags[indexPath.row].hydrate().name
     cell.accessoryType = .DisclosureIndicator;
     
     return cell

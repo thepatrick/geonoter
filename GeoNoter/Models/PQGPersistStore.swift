@@ -237,4 +237,12 @@ public extension FMDatabase {
     tags.dehydrate()
   }
   
+  @objc func allTagsForWatch() -> [[NSObject: AnyObject]] {
+    return tags.all.map { point in
+      point.hydrate()
+      let id = NSNumber(longLong: point.primaryKey)
+      return [ "id": id, "name": point.name ?? "(Tag has no name)" ]
+    }
+  }
+  
 }

@@ -29,6 +29,11 @@ class PQGPointsViewController: UITableViewController {
   
   override func viewWillAppear(animated: Bool) {
     reloadData()
+    startListening()
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    stopListening()
   }
   
   func reloadData() {
@@ -36,6 +41,20 @@ class PQGPointsViewController: UITableViewController {
       self.points = fetch()
     }
     tableView.reloadData()
+  }
+    
+  func startListening() {
+    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "addedPoint:", name: "addedPoint", object: del);
+  }
+  
+  func stopListening() {
+    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: "addedPoint", object: del);
+  }
+  
+  func addedPoint(notification: NSNotification) {
+    reloadData();
   }
 
   //MARK: - Table view data source
@@ -53,7 +72,7 @@ class PQGPointsViewController: UITableViewController {
     
     let point = self.points[indexPath.row]
     
-    cell.textLabel.text = point.name
+    cell.textLabel!.text = point.name
     cell.accessoryType = .DisclosureIndicator
     
     return cell

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="14D113c" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="GeoNoter_WatchKit_Extension">
+                    <items>
+                        <button width="1" alignment="left" title="Add Point" id="T3T-LY-e5I">
+                            <connections>
+                                <segue destination="5Jh-Hf-MeR" kind="modal" id="ibf-NM-Kja"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Tags" id="8sI-du-t5m">
+                            <connections>
+                                <segue destination="coO-08-nH4" kind="push" id="WI0-t0-rqw"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="263" y="388"/>
+        </scene>
+        <!--Tags Controller-->
+        <scene sceneID="PDD-J9-yAZ">
+            <objects>
+                <controller id="coO-08-nH4" customClass="TagsController" customModule="GeoNoter_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" id="AQh-4x-7qw">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="n8X-Ae-fnq"/>
+                            </items>
+                        </group>
+                        <table alignment="left" id="Pny-bu-fYQ">
+                            <items>
+                                <tableRow identifier="tagRow" id="GPd-xt-Bvt" customClass="AddFoursquareRow" customModule="GeoNoter_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="1tv-EN-so6">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="XYZ Street" id="qyT-hu-7g1"/>
+                                        </items>
+                                        <connections>
+                                            <segue destination="sGs-tU-Ifc" kind="push" id="Djh-aT-7m2"/>
+                                        </connections>
+                                    </group>
+                                    <connections>
+                                        <outlet property="textLabel" destination="qyT-hu-7g1" id="3AH-nl-y5M"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="loadingGroup" destination="AQh-4x-7qw" id="OcC-Y3-qNh"/>
+                        <outlet property="loadingText" destination="n8X-Ae-fnq" id="92e-0N-6yJ"/>
+                        <outlet property="tagTable" destination="Pny-bu-fYQ" id="Ey2-Oo-NkB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="539" y="232"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="deD-Gj-3QQ">
+            <objects>
+                <controller id="sGs-tU-Ifc">
+                    <items>
+                        <table alignment="left" id="Lpz-0c-BIl">
+                            <items>
+                                <tableRow identifier="location-name" id="s56-vO-6qS">
+                                    <group key="rootItem" width="1" alignment="left" id="vyi-cx-V73">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="XYZ Street" id="zC8-lr-H31">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                                <tableRow identifier="location-map" id="8wi-es-wJr">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="UkR-Oo-KGo">
+                                        <items>
+                                            <map height="100" alignment="left" id="bJa-K9-KvN"/>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="817" y="548"/>
+        </scene>
+        <!--Add Foursquare Controller-->
+        <scene sceneID="FD4-De-AyU">
+            <objects>
+                <controller id="5Jh-Hf-MeR" customClass="AddFoursquareController" customModule="GeoNoter_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" id="jfR-1r-ZVU">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="VaG-gd-s0f"/>
+                            </items>
+                        </group>
+                        <table alignment="left" id="zZy-9O-s3u">
+                            <items>
+                                <tableRow identifier="foursquare-row" id="Esq-iQ-Ldt" customClass="AddFoursquareRow" customModule="GeoNoter_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="Mvb-S7-IUb">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="XYZ St" id="5jQ-BF-vdk"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="textLabel" destination="5jQ-BF-vdk" id="Lwl-6j-gX4"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="loadingGroup" destination="jfR-1r-ZVU" id="OoU-lx-BPR"/>
+                        <outlet property="loadingText" destination="VaG-gd-s0f" id="zO6-6h-WKA"/>
+                        <outlet property="placeTable" destination="zZy-9O-s3u" id="PnF-4m-u8a"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="350" y="748"/>
+        </scene>
+        <!--addFoursquareVenue-->
+        <scene sceneID="EoT-W8-qMQ">
+            <objects>
+                <controller identifier="addFoursquareVenue" id="Y0r-8F-Fie" customClass="AddFoursquareVenueController" customModule="GeoNoter_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="dXN-bm-Fxx">
+                            <items>
+                                <group width="1" alignment="left" id="vgn-aq-tzp">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="Label" id="Jdj-J3-5Vc">
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" id="tZA-Dr-i7I">
+                                    <items>
+                                        <map height="100" alignment="left" id="doq-PV-5Ms"/>
+                                    </items>
+                                </group>
+                                <button width="1" alignment="left" title="Add" id="p0B-0u-FDf">
+                                    <connections>
+                                        <action selector="addPlace" destination="Y0r-8F-Fie" id="mUE-5e-WPX"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="placeMap" destination="doq-PV-5Ms" id="LXc-Ka-Vh0"/>
+                        <outlet property="placeName" destination="Jdj-J3-5Vc" id="LOo-MY-iTn"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="499" y="736"/>
+        </scene>
+    </scenes>
+</document>
