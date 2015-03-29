@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import GeoNoterCore
 
 class AddFoursquareController: WKInterfaceController {
 
@@ -43,7 +44,7 @@ class AddFoursquareController: WKInterfaceController {
     func getPlaces() {
         NSLog("getPlaces()")
         
-        let helper = PQGLocationHelper.sharedHelper();
+        let helper = LocationHelper.sharedHelper();
         
         helper.requestIfNotYetDone()
         

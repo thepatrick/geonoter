@@ -10,6 +10,7 @@ import Foundation
 import MapKit
 import AddressBookUI
 import CoreLocation
+import GeoNoterCore
 
 final class PQGPoint: PQGModel, PQGModelCacheable {
   
@@ -355,7 +356,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     let location = CLLocation(latitude: latitude!, longitude: longitude!)
     NSLog("Geocoding \(location)")
     
-    PQGLocationHelper.sharedHelper().geocode(location) { placemarks, error in
+    LocationHelper.sharedHelper().geocode(location) { placemarks, error in
       UIApplication.sharedApplication().endBackgroundTask(self.bgTask)
       self.bgTask = UIBackgroundTaskInvalid
       if error != nil || placemarks!.count == 0 {

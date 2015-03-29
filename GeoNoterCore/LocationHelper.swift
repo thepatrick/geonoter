@@ -1,15 +1,15 @@
 //
-//  PQGLocationHelper.swift
+//  LocationHelper.swift
 //  GeoNoter
 //
-//  Created by Patrick Quinn-Graham on 10/06/2014.
-//  Copyright (c) 2014 Patrick Quinn-Graham. All rights reserved.
+//  Created by Patrick Quinn-Graham on 29/03/2015.
+//  Copyright (c) 2015 Patrick Quinn-Graham. All rights reserved.
 //
-//
+
 import UIKit
 import CoreLocation
 
-enum PQGLocationHelperError: Int {
+public enum LocationHelperError: Int {
   case DeviceDisabled = 1
   case NotDetermined, Restricted, Denied
   
@@ -26,23 +26,23 @@ enum PQGLocationHelperError: Int {
     }
   }
   func error() -> NSError {
-    return NSError(domain: "PQGLocationHelperError", code: -self.rawValue, userInfo: [
+    return NSError(domain: "LocationHelperError", code: -self.rawValue, userInfo: [
       NSLocalizedDescriptionKey: self.description()
-    ])
+      ])
   }
 }
 
 
-class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
+public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
-  class func sharedHelper() -> PQGLocationHelper {
-    return GlobalPQGLocationHelperSharedInstance
+  public class func sharedHelper() -> LocationHelper {
+    return GlobalLocationHelperSharedInstance
   }
   
   var locationManager = CLLocationManager()
   var awaitingLocation : Array<((location: CLLocation?, error: NSError?) -> ())>?
   
-  func requestIfNotYetDone() -> NSError? {
+  public func requestIfNotYetDone() -> NSError? {
     if let error = errorIfDisabled() {
       if error == .NotDetermined {
         locationManager.requestWhenInUseAuthorization()
@@ -53,31 +53,31 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
     return nil
   }
   
-  func deviceEnabled() -> Bool {
+  public func deviceEnabled() -> Bool {
     return CLLocationManager.locationServicesEnabled()
   }
   
-  func status() -> CLAuthorizationStatus {
+  public func status() -> CLAuthorizationStatus {
     return CLLocationManager.authorizationStatus()
   }
   
-  func errorIfDisabled() -> PQGLocationHelperError? {
+  public func errorIfDisabled() -> LocationHelperError? {
     if !deviceEnabled() {
-      return PQGLocationHelperError.DeviceDisabled
+      return .DeviceDisabled
     }
     switch self.status() {
     case .NotDetermined:
-      return PQGLocationHelperError.NotDetermined
+      return .NotDetermined
     case .Restricted:
-      return PQGLocationHelperError.Restricted
+      return .Restricted
     case .Denied:
-      return PQGLocationHelperError.Denied
+      return .Denied
     case .AuthorizedAlways, .AuthorizedWhenInUse:
       return nil;
     }
   }
   
-  func location(completionHandler: (location: CLLocation?, error: NSError?) -> ()) {
+  public func location(completionHandler: (location: CLLocation?, error: NSError?) -> ()) {
     if let error = errorIfDisabled() {
       dispatch_async(dispatch_get_main_queue()) {
         NSLog("We can't get location right now: %@", error.description())
@@ -96,29 +96,29 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
     }
   }
   
-  func stopUpdatingLocation() {
+  public func stopUpdatingLocation() {
     locationManager.stopUpdatingLocation()
     self.awaitingLocation = nil
   }
   
   // mark - CoreLocation Interface
   
-  func locationManager(manager: CLLocationManager!,
+  public func locationManager(manager: CLLocationManager!,
     didUpdateLocations locations: [AnyObject]!) {
-    let newLocation = locations[0] as CLLocation
-    if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
-      NSLog("Received new location info");
-      if let callbacks = self.awaitingLocation {
-        for completionHandler in self.awaitingLocation! {
-          completionHandler(location: newLocation, error: nil)
+      let newLocation = locations[0] as CLLocation
+      if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
+        NSLog("Received new location info");
+        if let callbacks = self.awaitingLocation {
+          for completionHandler in self.awaitingLocation! {
+            completionHandler(location: newLocation, error: nil)
+          }
         }
+      } else {
+        NSLog("Received old location info");
       }
-    } else {
-      NSLog("Received old location info");
-    }
   }
   
-  func geocode(location : CLLocation, completionHandler: (([CLPlacemark]?, NSError?)->())!) {
+  public func geocode(location : CLLocation, completionHandler: (([CLPlacemark]?, NSError?)->())!) {
     let geo = CLGeocoder()
     geo.reverseGeocodeLocation(location) {
       places, error in
@@ -134,4 +134,4 @@ class PQGLocationHelper: NSObject, CLLocationManagerDelegate {
   
 }
 
-let GlobalPQGLocationHelperSharedInstance = PQGLocationHelper()
+let GlobalLocationHelperSharedInstance = LocationHelper()

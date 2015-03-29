@@ -14,9 +14,24 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>GeoNoterCore.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>CD515B4A1AC7B0FD00632062</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD515B541AC7B0FD00632062</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CD84A4DD1769F25400266526</key>
 		<dict>
 			<key>primary</key>

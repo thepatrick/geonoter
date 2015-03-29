@@ -18,18 +18,13 @@ class TagsController: WKInterfaceController {
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
     // Configure interface objects here.
-  }
     
+    fetchTagsFromParentApplication()
+  }
+  
   override func willActivate() {
     // This method is called when watch view controller is about to be visible to user
     super.willActivate()
-    NSLog("willActivate AddFoursquareController!")
-    
-    loadingGroup.setHidden(false)
-    loadingText.setText("Finding tags")
-    tagTable.setHidden(true)
-    
-    getTags()
   }
   
   override func didDeactivate() {
@@ -39,9 +34,13 @@ class TagsController: WKInterfaceController {
   
   var tags : [[String: AnyObject]] = []
   
-  func getTags() {
+  func fetchTagsFromParentApplication() {
     NSLog("getTags()")
-        
+    
+    loadingGroup.setHidden(true)
+//    loadingText.setText("Finding tags")
+//    tagTable.setHidden(true)
+    
     WKInterfaceController.openParentApplication([ "watchWants": "tags" ]) { (result, error) in
       if let err = error {
         self.loadingText.setText("Oh oh!")
@@ -72,11 +71,11 @@ class TagsController: WKInterfaceController {
   }
   
   override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-//    let context = AddFoursquareVenueContext(place: tags[rowIndex], dismiss: { controller in
-//      controller.dismissController()
-//      self.dismissController()
-//    })
-//    self.presentControllerWithName("addFoursquareVenue", context: context)
+    let tag = tags[rowIndex]
+    let tagId = tag["id"] as NSNumber
+    let tagName = tag["name"] as String
+    let context = TagPointsContext(tagId: tagId.longLongValue, tagName: tagName)
+    self.pushControllerWithName("tagPoints", context: context)
   }
   
 }

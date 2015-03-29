@@ -21,6 +21,13 @@
 		CD4A4A8C198CEDD700BAC650 /* PQGNSDateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */; };
 		CD4A4A8E198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */; };
 		CD4A4A90198CF0AD00BAC650 /* PQGNSStringUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */; };
+		CD515B501AC7B0FD00632062 /* GeoNoterCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CD515B4F1AC7B0FD00632062 /* GeoNoterCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD515B561AC7B0FD00632062 /* GeoNoterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */; };
+		CD515B5F1AC7B0FD00632062 /* GeoNoterCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD515B5E1AC7B0FD00632062 /* GeoNoterCoreTests.swift */; };
+		CD515B621AC7B0FD00632062 /* GeoNoterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */; };
+		CD515B631AC7B0FD00632062 /* GeoNoterCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD515B6C1AC7B13D00632062 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD515B6B1AC7B13D00632062 /* LocationHelper.swift */; };
+		CD515B6D1AC7B18D00632062 /* GeoNoterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */; };
 		CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */; };
 		CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */; };
 		CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6147EF197929B80023C142 /* PQGSettingsTableViewController.swift */; };
@@ -37,7 +44,6 @@
 		CD6E3C9C19466F2C005067DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3C9B19466F2C005067DE /* QuartzCore.framework */; };
 		CD6E3CA019466F38005067DE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3C9F19466F38005067DE /* AssetsLibrary.framework */; };
 		CD6E3CA219466F3E005067DE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E3CA119466F3E005067DE /* MessageUI.framework */; };
-		CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */; };
 		CD73B2111948D00600C7D148 /* PQGPointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD73B2101948D00600C7D148 /* PQGPointDetailViewController.swift */; };
 		CD73B2131948D29200C7D148 /* PQGPointDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD73B2121948D29200C7D148 /* PQGPointDetailHeader.xib */; };
 		CD73B2181948D34000C7D148 /* PQGCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73B2161948D34000C7D148 /* PQGCell.m */; };
@@ -72,8 +78,9 @@
 		CDB5DA71198A5D3400A205B1 /* PQGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA70198A5D3400A205B1 /* PQGModel.swift */; };
 		CDB5DA73198A748E00A205B1 /* PQGTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA72198A748E00A205B1 /* PQGTag.swift */; };
 		CDB689181AC56006005AC10B /* PQGFoursquareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB689171AC56006005AC10B /* PQGFoursquareHelper.swift */; };
-		CDB6891A1AC56C62005AC10B /* PQGLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB689191AC56C62005AC10B /* PQGLocationHelper.swift */; };
 		CDB80F04195F86520087863A /* PQGAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB80F03195F86520087863A /* PQGAttachmentViewController.swift */; };
+		CDBB29151AC7BB2200B72C0D /* TagPointsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB29141AC7BB2200B72C0D /* TagPointsController.swift */; };
+		CDBB29171AC7C4C300B72C0D /* PointController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB29161AC7C4C300B72C0D /* PointController.swift */; };
 		CDBE67BD19480D1C0096E1CF /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBE67BC19480D1C0096E1CF /* AddressBookUI.framework */; };
 		CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD3BA919793FB900DE6699 /* PQGDefaultNameTableViewController.swift */; };
 		CDF172FA1948D81C00CD351F /* PQGPointDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF172F91948D81C00CD351F /* PQGPointDetailHeader.m */; };
@@ -82,11 +89,31 @@
 		CDF89B3A1995102A006FD8A7 /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
 		CDF89B3B1995102C006FD8A7 /* PQGTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA72198A748E00A205B1 /* PQGTag.swift */; };
 		CDF89B3C1995102F006FD8A7 /* PQGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5DA70198A5D3400A205B1 /* PQGModel.swift */; };
-		CDF89B3D19951073006FD8A7 /* PQGLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */; };
 		CDFC159819C27E620080EC29 /* PQGMemoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC159719C27E620080EC29 /* PQGMemoEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CD515B571AC7B0FD00632062 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD84A4D61769F25400266526 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD515B4A1AC7B0FD00632062;
+			remoteInfo = GeoNoterCore;
+		};
+		CD515B591AC7B0FD00632062 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD84A4D61769F25400266526 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD84A4DD1769F25400266526;
+			remoteInfo = GeoNoter;
+		};
+		CD515B601AC7B0FD00632062 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD84A4D61769F25400266526 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD515B4A1AC7B0FD00632062;
+			remoteInfo = GeoNoterCore;
+		};
 		CD84A5071769F25400266526 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD84A4D61769F25400266526 /* Project object */;
@@ -125,6 +152,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CD515B691AC7B0FE00632062 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD515B631AC7B0FD00632062 /* GeoNoterCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD9FFD501AC41DF500D916BA /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,6 +190,13 @@
 		CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGNSDateJSON.swift; path = Categories/PQGNSDateJSON.swift; sourceTree = "<group>"; };
 		CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGUIImageContentsOfFileURL.swift; path = Categories/PQGUIImageContentsOfFileURL.swift; sourceTree = "<group>"; };
 		CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGNSStringUUID.swift; path = Categories/PQGNSStringUUID.swift; sourceTree = "<group>"; };
+		CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeoNoterCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD515B4E1AC7B0FD00632062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD515B4F1AC7B0FD00632062 /* GeoNoterCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeoNoterCore.h; sourceTree = "<group>"; };
+		CD515B551AC7B0FD00632062 /* GeoNoterCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoNoterCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD515B5D1AC7B0FD00632062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD515B5E1AC7B0FD00632062 /* GeoNoterCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoNoterCoreTests.swift; sourceTree = "<group>"; };
+		CD515B6B1AC7B13D00632062 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		CD60DC2919700D8B00E4E019 /* PQGPersistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQGPersistStore.m; sourceTree = "<group>"; };
 		CD60DC2B197012BE00E4E019 /* GeoNoterTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoterTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD60DC2C197012BE00E4E019 /* PQGPersistStoreTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGPersistStoreTags.swift; sourceTree = "<group>"; };
@@ -171,7 +216,6 @@
 		CD6E3C9F19466F38005067DE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CD6E3CA119466F3E005067DE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CD6E3CBC1947B37A005067DE /* GeoNoter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoNoter-Bridging-Header.h"; sourceTree = "<group>"; };
-		CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGLocationHelper.swift; sourceTree = "<group>"; };
 		CD73B2101948D00600C7D148 /* PQGPointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPointDetailViewController.swift; path = Views/Points/PQGPointDetailViewController.swift; sourceTree = "<group>"; };
 		CD73B2121948D29200C7D148 /* PQGPointDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PQGPointDetailHeader.xib; sourceTree = "<group>"; };
 		CD73B2151948D34000C7D148 /* PQGCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQGCell.h; sourceTree = "<group>"; };
@@ -215,8 +259,9 @@
 		CDB5DA70198A5D3400A205B1 /* PQGModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGModel.swift; path = Models/PQGModel.swift; sourceTree = "<group>"; };
 		CDB5DA72198A748E00A205B1 /* PQGTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGTag.swift; path = Models/PQGTag.swift; sourceTree = "<group>"; };
 		CDB689171AC56006005AC10B /* PQGFoursquareHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGFoursquareHelper.swift; sourceTree = "<group>"; };
-		CDB689191AC56C62005AC10B /* PQGLocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGLocationHelper.swift; sourceTree = "<group>"; };
 		CDB80F03195F86520087863A /* PQGAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGAttachmentViewController.swift; sourceTree = "<group>"; };
+		CDBB29141AC7BB2200B72C0D /* TagPointsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagPointsController.swift; sourceTree = "<group>"; };
+		CDBB29161AC7C4C300B72C0D /* PointController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointController.swift; sourceTree = "<group>"; };
 		CDBE67BC19480D1C0096E1CF /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		CDCD3BA919793FB900DE6699 /* PQGDefaultNameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGDefaultNameTableViewController.swift; path = Views/Settings/PQGDefaultNameTableViewController.swift; sourceTree = "<group>"; };
 		CDF172F81948D81C00CD351F /* PQGPointDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PQGPointDetailHeader.h; path = Views/Points/PQGPointDetailHeader.h; sourceTree = "<group>"; };
@@ -225,6 +270,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CD515B471AC7B0FD00632062 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD515B521AC7B0FD00632062 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD515B561AC7B0FD00632062 /* GeoNoterCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD84A4DB1769F25400266526 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,6 +295,7 @@
 				CD6E3CA019466F38005067DE /* AssetsLibrary.framework in Frameworks */,
 				CD6E3C9C19466F2C005067DE /* QuartzCore.framework in Frameworks */,
 				CD6E3C9A19466F24005067DE /* CoreLocation.framework in Frameworks */,
+				CD515B621AC7B0FD00632062 /* GeoNoterCore.framework in Frameworks */,
 				CD6E3C9819466F1E005067DE /* libsqlite3.dylib in Frameworks */,
 				CD84A4E41769F25400266526 /* CoreGraphics.framework in Frameworks */,
 				CD84A4E61769F25400266526 /* UIKit.framework in Frameworks */,
@@ -258,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD515B6D1AC7B18D00632062 /* GeoNoterCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +353,41 @@
 				CD8870E0199706CB00E45A63 /* PQGModelCacheTests.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		CD515B4C1AC7B0FD00632062 /* GeoNoterCore */ = {
+			isa = PBXGroup;
+			children = (
+				CD515B4F1AC7B0FD00632062 /* GeoNoterCore.h */,
+				CD515B4D1AC7B0FD00632062 /* Supporting Files */,
+				CD515B6B1AC7B13D00632062 /* LocationHelper.swift */,
+			);
+			path = GeoNoterCore;
+			sourceTree = "<group>";
+		};
+		CD515B4D1AC7B0FD00632062 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD515B4E1AC7B0FD00632062 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD515B5B1AC7B0FD00632062 /* GeoNoterCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD515B5E1AC7B0FD00632062 /* GeoNoterCoreTests.swift */,
+				CD515B5C1AC7B0FD00632062 /* Supporting Files */,
+			);
+			path = GeoNoterCoreTests;
+			sourceTree = "<group>";
+		};
+		CD515B5C1AC7B0FD00632062 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD515B5D1AC7B0FD00632062 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CD6147EE197929690023C142 /* Settings */ = {
@@ -383,6 +480,8 @@
 				CD84A5091769F25400266526 /* GeoNoterTests */,
 				CD9FFD321AC41DF500D916BA /* GeoNoter WatchKit Extension */,
 				CD9FFD3F1AC41DF500D916BA /* GeoNoter WatchKit App */,
+				CD515B4C1AC7B0FD00632062 /* GeoNoterCore */,
+				CD515B5B1AC7B0FD00632062 /* GeoNoterCoreTests */,
 				CD84A4E01769F25400266526 /* Frameworks */,
 				CD84A4DF1769F25400266526 /* Products */,
 				58C6827265EE4DE0891CB7F1 /* Pods-GeoNoter.xcconfig */,
@@ -397,6 +496,8 @@
 				CD84A5021769F25400266526 /* GeoNoterTests.xctest */,
 				CD9FFD311AC41DF500D916BA /* GeoNoter WatchKit Extension.appex */,
 				CD9FFD3B1AC41DF500D916BA /* GeoNoter WatchKit App.app */,
+				CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */,
+				CD515B551AC7B0FD00632062 /* GeoNoterCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,7 +531,6 @@
 				CD6E3C6019466A1D005067DE /* Categories */,
 				CD6E3CAC19467E65005067DE /* Models */,
 				CDAB6AB21947C0BA00DF47E5 /* Views */,
-				CD6E3CBD1947B37B005067DE /* PQGLocationHelper.swift */,
 				CD84A4F01769F25400266526 /* PQGAppDelegate.h */,
 				CD84A4F11769F25400266526 /* PQGAppDelegate.m */,
 				CD84A4E81769F25400266526 /* Supporting Files */,
@@ -476,7 +576,6 @@
 			isa = PBXGroup;
 			children = (
 				CD9FFD581AC43EBF00D916BA /* GeoNoter WatchKit Extension.entitlements */,
-				CDB689191AC56C62005AC10B /* PQGLocationHelper.swift */,
 				CD9FFD371AC41DF500D916BA /* Images.xcassets */,
 				CD9FFD331AC41DF500D916BA /* Supporting Files */,
 				CD9FFD351AC41DF500D916BA /* InterfaceController.swift */,
@@ -485,6 +584,8 @@
 				CD83258E1AC77A3D00FD2458 /* AddFoursquareVenueController.swift */,
 				CD8325901AC782DB00FD2458 /* AddFoursquareVenueContext.swift */,
 				CD8325921AC7A55A00FD2458 /* TagsController.swift */,
+				CDBB29141AC7BB2200B72C0D /* TagPointsController.swift */,
+				CDBB29161AC7C4C300B72C0D /* PointController.swift */,
 			);
 			path = "GeoNoter WatchKit Extension";
 			sourceTree = "<group>";
@@ -563,7 +664,55 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		CD515B481AC7B0FD00632062 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD515B501AC7B0FD00632062 /* GeoNoterCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		CD515B4A1AC7B0FD00632062 /* GeoNoterCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD515B681AC7B0FE00632062 /* Build configuration list for PBXNativeTarget "GeoNoterCore" */;
+			buildPhases = (
+				CD515B461AC7B0FD00632062 /* Sources */,
+				CD515B471AC7B0FD00632062 /* Frameworks */,
+				CD515B481AC7B0FD00632062 /* Headers */,
+				CD515B491AC7B0FD00632062 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoNoterCore;
+			productName = GeoNoterCore;
+			productReference = CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CD515B541AC7B0FD00632062 /* GeoNoterCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD515B6A1AC7B0FE00632062 /* Build configuration list for PBXNativeTarget "GeoNoterCoreTests" */;
+			buildPhases = (
+				CD515B511AC7B0FD00632062 /* Sources */,
+				CD515B521AC7B0FD00632062 /* Frameworks */,
+				CD515B531AC7B0FD00632062 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD515B581AC7B0FD00632062 /* PBXTargetDependency */,
+				CD515B5A1AC7B0FD00632062 /* PBXTargetDependency */,
+			);
+			name = GeoNoterCoreTests;
+			productName = GeoNoterCoreTests;
+			productReference = CD515B551AC7B0FD00632062 /* GeoNoterCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CD84A4DD1769F25400266526 /* GeoNoter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD84A5131769F25400266526 /* Build configuration list for PBXNativeTarget "GeoNoter" */;
@@ -574,11 +723,13 @@
 				CD84A4DC1769F25400266526 /* Resources */,
 				6DED8ADF426D4323B1F47B6A /* Copy Pods Resources */,
 				CD9FFD501AC41DF500D916BA /* Embed App Extensions */,
+				CD515B691AC7B0FE00632062 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CD9FFD481AC41DF500D916BA /* PBXTargetDependency */,
+				CD515B611AC7B0FD00632062 /* PBXTargetDependency */,
 			);
 			name = GeoNoter;
 			productName = GeoNoter;
@@ -650,6 +801,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Patrick Quinn-Graham";
 				TargetAttributes = {
+					CD515B4A1AC7B0FD00632062 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = WA4JA55S9R;
+					};
+					CD515B541AC7B0FD00632062 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = CD84A4DD1769F25400266526;
+					};
 					CD84A4DD1769F25400266526 = {
 						DevelopmentTeam = WA4JA55S9R;
 						SystemCapabilities = {
@@ -695,11 +854,27 @@
 				CD84A5011769F25400266526 /* GeoNoterTests */,
 				CD9FFD301AC41DF500D916BA /* GeoNoter WatchKit Extension */,
 				CD9FFD3A1AC41DF500D916BA /* GeoNoter WatchKit App */,
+				CD515B4A1AC7B0FD00632062 /* GeoNoterCore */,
+				CD515B541AC7B0FD00632062 /* GeoNoterCoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CD515B491AC7B0FD00632062 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD515B531AC7B0FD00632062 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD84A4DC1769F25400266526 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -804,6 +979,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CD515B461AC7B0FD00632062 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD515B6C1AC7B13D00632062 /* LocationHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD515B511AC7B0FD00632062 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD515B5F1AC7B0FD00632062 /* GeoNoterCoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD84A4DA1769F25400266526 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -825,7 +1016,6 @@
 				CD6147F51979341C0023C142 /* PQGCreditsViewController.swift in Sources */,
 				CDAB6AB71947C27100DF47E5 /* PQGPointsNavigationController.swift in Sources */,
 				CD6870AD198BE67500C20C35 /* PQGModelCache.swift in Sources */,
-				CD6E3CBE1947B37B005067DE /* PQGLocationHelper.swift in Sources */,
 				CD6BAC961973F80E008EBBAE /* PQGTagsTableViewController.swift in Sources */,
 				CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */,
 				CD6147F0197929B80023C142 /* PQGSettingsTableViewController.swift in Sources */,
@@ -854,7 +1044,6 @@
 				CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */,
 				CDF89B3C1995102F006FD8A7 /* PQGModel.swift in Sources */,
 				CD8870E1199706CB00E45A63 /* PQGModelCacheTests.swift in Sources */,
-				CDF89B3D19951073006FD8A7 /* PQGLocationHelper.swift in Sources */,
 				CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */,
 				CD45432419950CD700E29F06 /* PQGNSStringUUID.swift in Sources */,
 				CD45432519950D3B00E29F06 /* PQGPersistStore.swift in Sources */,
@@ -867,11 +1056,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9FFD361AC41DF500D916BA /* InterfaceController.swift in Sources */,
-				CDB6891A1AC56C62005AC10B /* PQGLocationHelper.swift in Sources */,
 				CD8325931AC7A55A00FD2458 /* TagsController.swift in Sources */,
 				CD8325911AC782DB00FD2458 /* AddFoursquareVenueContext.swift in Sources */,
 				CD9FFD541AC42ABF00D916BA /* AddFoursquareController.swift in Sources */,
 				CD83258F1AC77A3D00FD2458 /* AddFoursquareVenueController.swift in Sources */,
+				CDBB29151AC7BB2200B72C0D /* TagPointsController.swift in Sources */,
+				CDBB29171AC7C4C300B72C0D /* PointController.swift in Sources */,
 				CD9FFD561AC42FD600D916BA /* AddFoursquareRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -879,6 +1069,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CD515B581AC7B0FD00632062 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD515B4A1AC7B0FD00632062 /* GeoNoterCore */;
+			targetProxy = CD515B571AC7B0FD00632062 /* PBXContainerItemProxy */;
+		};
+		CD515B5A1AC7B0FD00632062 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD84A4DD1769F25400266526 /* GeoNoter */;
+			targetProxy = CD515B591AC7B0FD00632062 /* PBXContainerItemProxy */;
+		};
+		CD515B611AC7B0FD00632062 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD515B4A1AC7B0FD00632062 /* GeoNoterCore */;
+			targetProxy = CD515B601AC7B0FD00632062 /* PBXContainerItemProxy */;
+		};
 		CD84A5081769F25400266526 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CD84A4DD1769F25400266526 /* GeoNoter */;
@@ -950,6 +1155,123 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CD515B641AC7B0FE00632062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = GeoNoterCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CD515B651AC7B0FE00632062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = GeoNoterCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CD515B661AC7B0FE00632062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = GeoNoterCoreTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNoter.app/GeoNoter";
+			};
+			name = Debug;
+		};
+		CD515B671AC7B0FE00632062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = GeoNoterCoreTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNoter.app/GeoNoter";
+			};
+			name = Release;
+		};
 		CD84A5111769F25400266526 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1220,6 +1542,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD515B681AC7B0FE00632062 /* Build configuration list for PBXNativeTarget "GeoNoterCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD515B641AC7B0FE00632062 /* Debug */,
+				CD515B651AC7B0FE00632062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD515B6A1AC7B0FE00632062 /* Build configuration list for PBXNativeTarget "GeoNoterCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD515B661AC7B0FE00632062 /* Debug */,
+				CD515B671AC7B0FE00632062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CD84A4D91769F25400266526 /* Build configuration list for PBXProject "GeoNoter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

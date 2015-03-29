@@ -20,6 +20,20 @@
                ReferencedContainer = "container:GeoNoter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD515B541AC7B0FD00632062"
+               BuildableName = "GeoNoterCoreTests.xctest"
+               BlueprintName = "GeoNoterCoreTests"
+               ReferencedContainer = "container:GeoNoter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -35,6 +49,16 @@
                BlueprintIdentifier = "CD84A5011769F25400266526"
                BuildableName = "GeoNoterTests.xctest"
                BlueprintName = "GeoNoterTests"
+               ReferencedContainer = "container:GeoNoter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD515B541AC7B0FD00632062"
+               BuildableName = "GeoNoterCoreTests.xctest"
+               BlueprintName = "GeoNoterCoreTests"
                ReferencedContainer = "container:GeoNoter.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -58,7 +82,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD84A4DD1769F25400266526"
@@ -76,7 +101,8 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD84A4DD1769F25400266526"

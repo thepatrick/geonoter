@@ -42,9 +42,6 @@
                                         <items>
                                             <label alignment="left" verticalAlignment="center" text="XYZ Street" id="qyT-hu-7g1"/>
                                         </items>
-                                        <connections>
-                                            <segue destination="sGs-tU-Ifc" kind="push" id="Djh-aT-7m2"/>
-                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="textLabel" destination="qyT-hu-7g1" id="3AH-nl-y5M"/>
@@ -62,35 +59,44 @@
             </objects>
             <point key="canvasLocation" x="539" y="232"/>
         </scene>
-        <!--Interface Controller-->
+        <!--viewPoint-->
         <scene sceneID="deD-Gj-3QQ">
             <objects>
-                <controller id="sGs-tU-Ifc">
+                <controller identifier="viewPoint" id="sGs-tU-Ifc" customClass="PointController" customModule="GeoNoter_WatchKit_Extension">
                     <items>
-                        <table alignment="left" id="Lpz-0c-BIl">
+                        <group width="1" alignment="left" id="SgZ-el-6gr">
                             <items>
-                                <tableRow identifier="location-name" id="s56-vO-6qS">
-                                    <group key="rootItem" width="1" alignment="left" id="vyi-cx-V73">
-                                        <items>
-                                            <label alignment="center" verticalAlignment="center" text="XYZ Street" id="zC8-lr-H31">
-                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                            </label>
-                                        </items>
-                                    </group>
-                                </tableRow>
-                                <tableRow identifier="location-map" id="8wi-es-wJr">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="UkR-Oo-KGo">
-                                        <items>
-                                            <map height="100" alignment="left" id="bJa-K9-KvN"/>
-                                        </items>
-                                    </group>
-                                </tableRow>
+                                <label alignment="center" verticalAlignment="center" text="Name" numberOfLines="0" id="tyb-my-Vim">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
                             </items>
-                        </table>
+                        </group>
+                        <group width="1" alignment="left" id="eJ2-V6-euG">
+                            <items>
+                                <map height="100" alignment="left" id="2od-MQ-Ixa"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="Grc-t5-S3r">
+                            <items>
+                                <label alignment="left" text="Friendly name" numberOfLines="0" id="ONL-1J-1Hi"/>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="LOG-0v-hFa"/>
+                        <group width="1" alignment="left" id="H4V-Kk-7F3">
+                            <items>
+                                <label alignment="left" text="Memo" numberOfLines="0" id="s7a-4N-KEs"/>
+                            </items>
+                        </group>
                     </items>
+                    <connections>
+                        <outlet property="friendlyName" destination="ONL-1J-1Hi" id="a1C-4P-QTK"/>
+                        <outlet property="map" destination="2od-MQ-Ixa" id="0Lp-5h-r7Q"/>
+                        <outlet property="memo" destination="s7a-4N-KEs" id="Ytz-hm-1eh"/>
+                        <outlet property="name" destination="tyb-my-Vim" id="ohy-bW-ZY0"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="817" y="548"/>
+            <point key="canvasLocation" x="876" y="231.5"/>
         </scene>
         <!--Add Foursquare Controller-->
         <scene sceneID="FD4-De-AyU">
@@ -160,6 +166,40 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="499" y="736"/>
+        </scene>
+        <!--tagPoints-->
+        <scene sceneID="88d-MO-U9N">
+            <objects>
+                <controller identifier="tagPoints" id="1vf-Do-xz5" customClass="TagPointsController" customModule="GeoNoter_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" id="1lW-vR-K3W">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="M7j-yF-Vqt"/>
+                            </items>
+                        </group>
+                        <table alignment="left" id="Qsy-fJ-cTT">
+                            <items>
+                                <tableRow identifier="tagRow" id="v7a-Ar-ZgR" customClass="AddFoursquareRow" customModule="GeoNoter_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="7O7-w3-aEo">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="XYZ Street" id="iL2-ry-cFw"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="textLabel" destination="iL2-ry-cFw" id="Ffa-gk-v7o"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="loadingGroup" destination="1lW-vR-K3W" id="SUe-14-aAf"/>
+                        <outlet property="loadingText" destination="M7j-yF-Vqt" id="Hor-Xe-5gQ"/>
+                        <outlet property="pointTable" destination="Qsy-fJ-cTT" id="99K-gY-M4C"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="713" y="231.75"/>
         </scene>
     </scenes>
 </document>

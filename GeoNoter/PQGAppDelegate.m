@@ -9,6 +9,7 @@
 #import "PQGAppDelegate.h"
 #import "GeoNoter-Swift.h"
 #import "Foursquare2.h"
+#import "GeoNoterCore.h"
 
 @implementation PQGAppDelegate
 
@@ -25,7 +26,7 @@
   
   self.store = [[PQGPersistStore alloc] initWithFile:[PQGPersistStore URLForDocument:@"geonoter.db"]];
   
-  NSError *error = [[PQGLocationHelper sharedHelper] requestIfNotYetDone];
+  NSError *error = [[LocationHelper sharedHelper] requestIfNotYetDone];
   if(error) {
     NSLog(@"error! %@", error);
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:error.localizedDescription message:@"You will not be able to add points at this time" preferredStyle:UIAlertControllerStyleAlert];
@@ -103,7 +104,12 @@
   } else if ([watchWants isEqualToString:@"tags"]) {
     
     reply(@{ @"tags": [self.store allTagsForWatch] });
+  
+  } else if ([watchWants isEqualToString:@"tagPoints"] && userInfo[@"tagId"] != nil) {
     
+    NSNumber *tagId = userInfo[@"tagId"];
+    reply(@{ @"points": [self.store allPointsInTagForWatch:tagId.longLongValue] });
+  
   } else {
     reply(@{ @"error": @"unsupported request" });
   }
