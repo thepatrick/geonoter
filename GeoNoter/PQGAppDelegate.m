@@ -100,7 +100,20 @@
   } else if ([watchWants isEqualToString:@"addFoursquareVenue"]) {
         
     PQGPoint *point = [[PQGPoint alloc] initWithStore:self.store];
+
+    NSLog(@"addFoursquareVenue =>");
+    
     [point setupFromFoursquareVenue:userInfo[@"venue"]];
+
+    NSLog(@"addFoursquareVenue <=");
+
+    
+    if (userInfo[@"memo"]) {
+      NSLog(@"adding memo %@", userInfo[@"memo"]);
+      [self.store setMemoForWatch:point.primaryKey memo:userInfo[@"memo"]];
+    } else {
+      NSLog(@"No memo!");
+    }
       
     [[NSNotificationCenter defaultCenter] postNotificationName:@"addedPoint" object:self userInfo:@{ @"point": point  }];
         
@@ -118,6 +131,11 @@
     reply(@{ @"points": [self.store allPointsInTagForWatch:tagId.longLongValue] });
     [application endBackgroundTask:bgTask];
   
+  } else if ([watchWants isEqualToString:@"recent"]) {
+    
+    reply(@{ @"points": self.store.recentPointsForWatch });
+    [application endBackgroundTask:bgTask];
+    
   } else {
     reply(@{ @"error": @"unsupported request" });
     [application endBackgroundTask:bgTask];

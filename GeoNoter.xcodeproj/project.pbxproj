@@ -64,7 +64,9 @@
 		CD84A5061769F25400266526 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD84A4E51769F25400266526 /* UIKit.framework */; };
 		CD84A50E1769F25400266526 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD84A50C1769F25400266526 /* InfoPlist.strings */; };
 		CD8870E1199706CB00E45A63 /* PQGModelCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8870E0199706CB00E45A63 /* PQGModelCacheTests.swift */; };
-		CD9FFD361AC41DF500D916BA /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9FFD351AC41DF500D916BA /* InterfaceController.swift */; };
+		CD9974601AC8D73A00547178 /* RecentPointsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD99745F1AC8D73A00547178 /* RecentPointsController.swift */; };
+		CD9974631AC8D7C700547178 /* WatchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9974621AC8D7C700547178 /* WatchPoint.swift */; };
+		CD9FFD361AC41DF500D916BA /* InitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9FFD351AC41DF500D916BA /* InitialController.swift */; };
 		CD9FFD381AC41DF500D916BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD9FFD371AC41DF500D916BA /* Images.xcassets */; };
 		CD9FFD3C1AC41DF500D916BA /* GeoNoter WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = CD9FFD3B1AC41DF500D916BA /* GeoNoter WatchKit App.app */; };
 		CD9FFD441AC41DF500D916BA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9FFD421AC41DF500D916BA /* Interface.storyboard */; };
@@ -241,9 +243,11 @@
 		CD84A50B1769F25400266526 /* GeoNoterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeoNoterTests-Info.plist"; sourceTree = "<group>"; };
 		CD84A50D1769F25400266526 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD8870E0199706CB00E45A63 /* PQGModelCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGModelCacheTests.swift; sourceTree = "<group>"; };
+		CD99745F1AC8D73A00547178 /* RecentPointsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentPointsController.swift; sourceTree = "<group>"; };
+		CD9974621AC8D7C700547178 /* WatchPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPoint.swift; sourceTree = "<group>"; };
 		CD9FFD311AC41DF500D916BA /* GeoNoter WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "GeoNoter WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9FFD341AC41DF500D916BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD9FFD351AC41DF500D916BA /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		CD9FFD351AC41DF500D916BA /* InitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialController.swift; sourceTree = "<group>"; };
 		CD9FFD371AC41DF500D916BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD9FFD3B1AC41DF500D916BA /* GeoNoter WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GeoNoter WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9FFD411AC41DF500D916BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -572,13 +576,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CD9974611AC8D7BA00547178 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD9974621AC8D7C700547178 /* WatchPoint.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CD9FFD321AC41DF500D916BA /* GeoNoter WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CD9974611AC8D7BA00547178 /* Model */,
 				CD9FFD581AC43EBF00D916BA /* GeoNoter WatchKit Extension.entitlements */,
 				CD9FFD371AC41DF500D916BA /* Images.xcassets */,
 				CD9FFD331AC41DF500D916BA /* Supporting Files */,
-				CD9FFD351AC41DF500D916BA /* InterfaceController.swift */,
+				CD9FFD351AC41DF500D916BA /* InitialController.swift */,
 				CD9FFD531AC42ABF00D916BA /* AddFoursquareController.swift */,
 				CD9FFD551AC42FD600D916BA /* AddFoursquareRow.swift */,
 				CD83258E1AC77A3D00FD2458 /* AddFoursquareVenueController.swift */,
@@ -586,6 +599,7 @@
 				CD8325921AC7A55A00FD2458 /* TagsController.swift */,
 				CDBB29141AC7BB2200B72C0D /* TagPointsController.swift */,
 				CDBB29161AC7C4C300B72C0D /* PointController.swift */,
+				CD99745F1AC8D73A00547178 /* RecentPointsController.swift */,
 			);
 			path = "GeoNoter WatchKit Extension";
 			sourceTree = "<group>";
@@ -834,6 +848,7 @@
 					};
 					CD9FFD3A1AC41DF500D916BA = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = WA4JA55S9R;
 					};
 				};
 			};
@@ -1055,13 +1070,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD9FFD361AC41DF500D916BA /* InterfaceController.swift in Sources */,
+				CD9974631AC8D7C700547178 /* WatchPoint.swift in Sources */,
+				CD9FFD361AC41DF500D916BA /* InitialController.swift in Sources */,
 				CD8325931AC7A55A00FD2458 /* TagsController.swift in Sources */,
 				CD8325911AC782DB00FD2458 /* AddFoursquareVenueContext.swift in Sources */,
 				CD9FFD541AC42ABF00D916BA /* AddFoursquareController.swift in Sources */,
 				CD83258F1AC77A3D00FD2458 /* AddFoursquareVenueController.swift in Sources */,
 				CDBB29151AC7BB2200B72C0D /* TagPointsController.swift in Sources */,
 				CDBB29171AC7C4C300B72C0D /* PointController.swift in Sources */,
+				CD9974601AC8D73A00547178 /* RecentPointsController.swift in Sources */,
 				CD9FFD561AC42FD600D916BA /* AddFoursquareRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1179,10 +1196,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1214,10 +1227,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1501,6 +1510,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1513,6 +1524,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1524,6 +1536,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1533,6 +1547,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";

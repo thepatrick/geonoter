@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--GeoNoter-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="GeoNoter_WatchKit_Extension">
+                <controller title="GeoNoter" id="AgC-eL-Hgc" customClass="InitialController" customModule="GeoNoter_WatchKit_Extension">
                     <items>
                         <button width="1" alignment="left" title="Nearby" id="T3T-LY-e5I">
                             <connections>
@@ -20,15 +20,20 @@
                                 <segue destination="coO-08-nH4" kind="push" id="WI0-t0-rqw"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Recent" id="7aD-fD-TDi">
+                            <connections>
+                                <segue destination="12Z-6N-2Up" kind="push" id="GKB-W0-IJM"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
             <point key="canvasLocation" x="263" y="388"/>
         </scene>
-        <!--Tags Controller-->
+        <!--Tags-->
         <scene sceneID="PDD-J9-yAZ">
             <objects>
-                <controller id="coO-08-nH4" customClass="TagsController" customModule="GeoNoter_WatchKit_Extension">
+                <controller title="Tags" id="coO-08-nH4" customClass="TagsController" customModule="GeoNoter_WatchKit_Extension">
                     <items>
                         <group width="1" height="1" alignment="left" id="AQh-4x-7qw">
                             <items>
@@ -98,12 +103,12 @@
             </objects>
             <point key="canvasLocation" x="876" y="231.5"/>
         </scene>
-        <!--Add Foursquare Controller-->
+        <!--Nearby-->
         <scene sceneID="FD4-De-AyU">
             <objects>
-                <controller id="5Jh-Hf-MeR" customClass="AddFoursquareController" customModule="GeoNoter_WatchKit_Extension">
+                <controller identifier="addFoursquareList" title="Nearby" id="5Jh-Hf-MeR" customClass="AddFoursquareController" customModule="GeoNoter_WatchKit_Extension">
                     <items>
-                        <group width="1" height="1" alignment="left" id="jfR-1r-ZVU">
+                        <group width="1" height="1" alignment="left" hidden="YES" id="jfR-1r-ZVU">
                             <items>
                                 <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="VaG-gd-s0f"/>
                             </items>
@@ -111,9 +116,15 @@
                         <table alignment="left" id="zZy-9O-s3u">
                             <items>
                                 <tableRow identifier="foursquare-row" id="Esq-iQ-Ldt" customClass="AddFoursquareRow" customModule="GeoNoter_WatchKit_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="Mvb-S7-IUb">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="Mvb-S7-IUb">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" text="XYZ St" numberOfLines="0" id="5jQ-BF-vdk"/>
+                                            <group width="1" height="5" alignment="left" id="wgN-Ni-jks"/>
+                                            <group width="1" alignment="left" id="PLe-x8-FNW">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="XYZ St" numberOfLines="0" id="5jQ-BF-vdk"/>
+                                                </items>
+                                            </group>
+                                            <group width="1" height="5" alignment="left" id="qaN-m3-f74"/>
                                         </items>
                                     </group>
                                     <connections>
@@ -158,8 +169,23 @@
                                 </button>
                             </items>
                         </group>
+                        <group width="1" alignment="left" id="2b4-dO-Hfu">
+                            <items>
+                                <label alignment="left" text="Friendly name" numberOfLines="0" id="Hbx-Me-Oh6"/>
+                            </items>
+                        </group>
                     </items>
+                    <menu key="menu" id="CGO-Kr-Jiv">
+                        <items>
+                            <menuItem title="Add Memo" icon="add" id="G03-fQ-xdK">
+                                <connections>
+                                    <action selector="addMemo" destination="Y0r-8F-Fie" id="1dH-Kb-af3"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
+                        <outlet property="formattedAddress" destination="Hbx-Me-Oh6" id="mPb-bo-gf6"/>
                         <outlet property="placeMap" destination="doq-PV-5Ms" id="LXc-Ka-Vh0"/>
                         <outlet property="placeName" destination="Jdj-J3-5Vc" id="LOo-MY-iTn"/>
                     </connections>
@@ -201,5 +227,40 @@
             </objects>
             <point key="canvasLocation" x="713" y="231.75"/>
         </scene>
+        <!--Recent-->
+        <scene sceneID="YCR-lo-3Au">
+            <objects>
+                <controller identifier="recentPoints" title="Recent" id="12Z-6N-2Up" customClass="RecentPointsController" customModule="GeoNoter_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" id="Wzx-x6-hVB">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="mnW-xN-m6Z"/>
+                            </items>
+                        </group>
+                        <table alignment="left" id="NjM-2e-d46">
+                            <items>
+                                <tableRow identifier="tagRow" id="j4L-1z-NOw" customClass="AddFoursquareRow" customModule="GeoNoter_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="jOH-cv-Dez">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="XYZ Street" id="eSd-c5-364"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="textLabel" destination="eSd-c5-364" id="vAy-Nd-2jW"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="loadingGroup" destination="Wzx-x6-hVB" id="Kmw-Yh-qUp"/>
+                        <outlet property="loadingText" destination="mnW-xN-m6Z" id="gRW-bQ-Bcl"/>
+                        <outlet property="pointTable" destination="NjM-2e-d46" id="eZe-KG-F1Z"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="713" y="493.75"/>
+        </scene>
     </scenes>
+    <color key="tintColor" red="0.67450980390000004" green="0.83137254900000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
 </document>

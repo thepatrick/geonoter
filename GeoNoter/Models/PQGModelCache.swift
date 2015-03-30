@@ -82,8 +82,9 @@ class PQGModelQueryBuilder<T: PQGModelCacheable> {
   let cache: PQGModelCache<T>
   let store: PQGPersistStore
 
-  var conditions: String?
-  var sort: String
+  private var conditions: String?
+  private var limitCount: Int64?
+  private var sort: String
   
   init(cache: PQGModelCache<T>) {
     self.cache = cache
@@ -103,11 +104,17 @@ class PQGModelQueryBuilder<T: PQGModelCacheable> {
     return self
   }
   
+  func limit(count: Int64) -> Self {
+    self.limitCount = count
+    return self
+  }
+  
   var all: [T] {
     var items = [T]()
     cache.store.withDatabase { db in
       let whereClause = self.conditions != nil ? "WHERE \(self.conditions!)" : ""
-      let query = "SELECT id FROM \(self.cache.tableName) \(whereClause) ORDER BY \(self.sort)"
+      let limitClause = self.limitCount != nil ? "LIMIT \(self.limitCount!)" : ""
+      let query = "SELECT id FROM \(self.cache.tableName) \(whereClause) ORDER BY \(self.sort) \(limitClause)"
       let res = db.executeQuery(query)
       while res.next() {
         items.append(self.cache.get(res.longLongIntForColumn("id")))

@@ -113,6 +113,29 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     }
   }
   
+  var serializedForWatch: [NSString: AnyObject] {
+    get {
+      hydrate()
+      let id = NSNumber(longLong: primaryKey)
+      
+      var serialized = [
+        "id": id,
+        "name": name ?? "(no name)",
+        "friendlyName": friendlyName ?? "",
+        "memo": memo ?? ""
+      ]
+      
+      if let location = location {
+        serialized["location"] = [
+          "lat": location.coordinate.latitude,
+          "lng": location.coordinate.longitude
+        ]
+      }
+      
+      return serialized
+    }
+  }
+  
   //MARK: - Lifecycle
   
   override func dehydrate() {

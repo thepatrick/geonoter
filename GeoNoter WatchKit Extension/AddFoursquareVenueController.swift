@@ -12,11 +12,14 @@ import CoreLocation
 
 class AddFoursquareVenueController: WKInterfaceController {
     
-    @IBOutlet weak var placeName: WKInterfaceLabel!
-    @IBOutlet weak var placeMap: WKInterfaceMap!
-    
-    var context: AddFoursquareVenueContext!
-    
+  @IBOutlet weak var placeName: WKInterfaceLabel!
+  @IBOutlet weak var placeMap: WKInterfaceMap!
+  @IBOutlet weak var formattedAddress: WKInterfaceLabel!
+  
+  var memo : String?
+  
+  var context: AddFoursquareVenueContext!
+  
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
@@ -29,11 +32,19 @@ class AddFoursquareVenueController: WKInterfaceController {
         }
         
         if let location = self.context.place["location"] as? [NSString: AnyObject] {
-            if let coords = coordinateFromLocation(location) {
-                let region = MKCoordinateRegionMakeWithDistance(coords, 200, 200)
-                self.placeMap.addAnnotation(coords, withPinColor: .Red)
-                self.placeMap.setRegion(region)
-            }
+          if let coords = coordinateFromLocation(location) {
+            let region = MKCoordinateRegionMakeWithDistance(coords, 200, 200)
+            self.placeMap.addAnnotation(coords, withPinColor: .Red)
+            self.placeMap.setRegion(region)
+          } else {
+            self.placeMap.setHidden(false)
+          }
+          if let formattedAddress = location["formattedAddress"] as? [String] {
+            let address = formattedAddress.reduce("", combine: { (collect, item) -> String in
+              collect + "\n" + item
+            })
+            self.formattedAddress.setText(address)
+          }
         }
         
         NSLog("context %@", self.context.place)
@@ -52,7 +63,15 @@ class AddFoursquareVenueController: WKInterfaceController {
     }
     
     @IBAction func addPlace() {
-        WKInterfaceController.openParentApplication([ "watchWants": "addFoursquareVenue", "venue": self.context.place]) { (response, error) -> Void in
+      var openDictionary = NSMutableDictionary(dictionary: [ "watchWants": "addFoursquareVenue", "venue": self.context.place ])
+      
+      if let memo = self.memo {
+        openDictionary["memo"] = memo
+      }
+      
+      NSLog("openDictionary %@", openDictionary)
+      
+      WKInterfaceController.openParentApplication(openDictionary) { (response, error) -> Void in
             if let err = error {
                 NSLog("watchWants error %@", err)
             } else {
@@ -71,5 +90,14 @@ class AddFoursquareVenueController: WKInterfaceController {
         }
         return nil
     }
+  
+  @IBAction func addMemo() {
+    self.presentTextInputControllerWithSuggestions(["Testing 123"], allowedInputMode: .Plain) { results in
+      if let result = results?[0] as? String {
+        NSLog("addMemo! %@", results)
+        self.memo = result
+      }
+    }
+  }
     
 }

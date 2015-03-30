@@ -24,15 +24,15 @@ class PointController: WKInterfaceController {
   @IBOutlet weak var map: WKInterfaceMap!
   @IBOutlet weak var memo: WKInterfaceLabel!
   
-  var context: TagPoint!
+  var context: WatchPoint!
   
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
     
-    if let contextObject = context as? TagPoint {
+    if let contextObject = context as? WatchPoint {
       self.context = contextObject
     }
-    
+
     self.name.setText(self.context.name)
     
     if let coordinates = self.context.coordinates {
@@ -55,15 +55,7 @@ class PointController: WKInterfaceController {
   }
   
   override func willActivate() {
-    // This method is called when watch view controller is about to be visible to user
     super.willActivate()
-    NSLog("willActivate AddFoursquareController!")
-    
-//    loadingGroup.setHidden(false)
-//    loadingText.setText("Finding places")
-//    pointTable.setHidden(true)
-//    
-//    getPoints()
   }
   
   override func didDeactivate() {

@@ -1,4 +1,13 @@
 //
+//  RecentPointsController.swift
+//  GeoNoter
+//
+//  Created by Patrick Quinn-Graham on 30/03/2015.
+//  Copyright (c) 2015 Patrick Quinn-Graham. All rights reserved.
+//
+
+import Foundation
+//
 //  TagPointsController.swift
 //  GeoNoter
 //
@@ -10,35 +19,15 @@ import Foundation
 import WatchKit
 import CoreLocation
 
-class TagPointsContext {
-  
-  let tagId: Int64
-  let tagName: String
-  
-  init (tagId: Int64, tagName: String) {
-    self.tagId = tagId
-    self.tagName = tagName
-  }
-  
-}
-
-class TagPointsController: WKInterfaceController {
+class RecentPointsController: WKInterfaceController {
   
   @IBOutlet weak var pointTable: WKInterfaceTable!
   @IBOutlet weak var loadingGroup: WKInterfaceGroup!
   @IBOutlet weak var loadingText: WKInterfaceLabel!
   
-  var context: TagPointsContext!
-  
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
     
-    if let contextObject = context as? TagPointsContext {
-      self.context = contextObject
-    }
-    
-    self.setTitle(self.context.tagName)
-
     loadingGroup.setHidden(false)
     loadingText.setText("Finding places")
     pointTable.setHidden(true)
@@ -51,6 +40,7 @@ class TagPointsController: WKInterfaceController {
   override func willActivate() {
     // This method is called when watch view controller is about to be visible to user
     super.willActivate()
+    NSLog("willActivate AddFoursquareController!")
   }
   
   override func didDeactivate() {
@@ -61,11 +51,9 @@ class TagPointsController: WKInterfaceController {
   var points : [[String: AnyObject]] = []
   
   func getPoints() {
-    let tagId = NSNumber(longLong: self.context.tagId)
-    WKInterfaceController.openParentApplication([ "watchWants": "tagPoints", "tagId": tagId ]) { (result, error) in
+    WKInterfaceController.openParentApplication([ "watchWants": "recent" ]) { (result, error) in
       if let err = error {
         self.loadingText.setText("Oh oh!")
-        NSLog("watchWants error %@", err)
       } else if let points = result?["points"] as? [[String: AnyObject]] {
         self.loadingGroup.setHidden(true)
         self.pointTable.setHidden(false)
@@ -78,6 +66,7 @@ class TagPointsController: WKInterfaceController {
         }
       }
     }
+    
   }
   
   func configureTableWithData(dataObjects: [[String: AnyObject]]) {

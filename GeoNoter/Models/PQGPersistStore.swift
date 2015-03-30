@@ -246,37 +246,18 @@ public extension FMDatabase {
   }
   
   @objc func allPointsInTagForWatch(tagId: Int64) -> [[NSObject: AnyObject]] {
-    let tag = self.tags.get(tagId)
-    
-    return tag.points.map { point in
-      point.hydrate()
-      let id = NSNumber(longLong: point.primaryKey)
-      
-//      private var _friendlyName: String?
-//      private var _name:         String?
-//      private var _memo:         String?
-//      private var _recordedAt:   NSDate?
-//      private var _latitude:     CLLocationDegrees?
-//      private var _longitude:    CLLocationDegrees?
-//      private var _foursquareId: String?
-      
-      
-      var serialized = [
-        "id": id,
-        "name": point.name ?? "(no name)",
-        "friendlyName": point.friendlyName ?? "",
-        "memo": point.memo ?? ""
-      ]
-      
-      if let location = point.location {
-        serialized["location"] = [
-          "lat": location.coordinate.latitude,
-          "lng": location.coordinate.longitude
-        ]
-      }
-      
-      return serialized
-    }
+    return self.tags.get(tagId).points.map { $0.serializedForWatch }
+  }
+  
+  @objc func recentPointsForWatch() -> [[NSObject: AnyObject]] {
+    return points.find.orderBy("recorded_at DESC").limit(5).all.map { $0.serializedForWatch }
+  }
+  
+  @objc func setMemoForWatch(primaryKey: Int64, memo: String) {
+    let point = points.get(primaryKey)
+    point.hydrate()
+    point.memo = memo
+    point.save()
     
   }
   
