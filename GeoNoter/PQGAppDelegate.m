@@ -73,6 +73,10 @@
 
 - (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply
 {
+  NSLog(@"handleWatchKitExtensionRequest:%@", userInfo);
+  UIBackgroundTaskIdentifier bgTask = [application beginBackgroundTaskWithName:@"handleWatchKitExtensionRequest" expirationHandler:^{
+    NSLog(@"WatchKit task timed out");
+  }];
   NSString *watchWants = userInfo[@"watchWants"];
   
   if([watchWants isEqualToString:@"nearbyPlaces"]) {
@@ -89,6 +93,7 @@
         reply(@{ @"error": error.localizedDescription });
       } else {
       reply(@{ @"nearbyPlaces": places });
+        [application endBackgroundTask:bgTask];
       }
     }];
     
@@ -100,18 +105,22 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"addedPoint" object:self userInfo:@{ @"point": point  }];
         
     reply(@{ @"pointId": @(point.primaryKey) });
+    [application endBackgroundTask:bgTask];
     
   } else if ([watchWants isEqualToString:@"tags"]) {
     
     reply(@{ @"tags": [self.store allTagsForWatch] });
+    [application endBackgroundTask:bgTask];
   
   } else if ([watchWants isEqualToString:@"tagPoints"] && userInfo[@"tagId"] != nil) {
     
     NSNumber *tagId = userInfo[@"tagId"];
     reply(@{ @"points": [self.store allPointsInTagForWatch:tagId.longLongValue] });
+    [application endBackgroundTask:bgTask];
   
   } else {
     reply(@{ @"error": @"unsupported request" });
+    [application endBackgroundTask:bgTask];
   }
 }
 
