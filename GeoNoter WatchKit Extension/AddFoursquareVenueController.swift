@@ -16,6 +16,10 @@ class AddFoursquareVenueController: WKInterfaceController {
   @IBOutlet weak var placeMap: WKInterfaceMap!
   @IBOutlet weak var formattedAddress: WKInterfaceLabel!
   
+  @IBOutlet weak var placeMemo: WKInterfaceLabel!
+  @IBOutlet weak var placeMemoHint: WKInterfaceLabel!
+  
+  
   var memo : String?
   
   var context: AddFoursquareVenueContext!
@@ -92,10 +96,13 @@ class AddFoursquareVenueController: WKInterfaceController {
     }
   
   @IBAction func addMemo() {
-    self.presentTextInputControllerWithSuggestions(["Testing 123"], allowedInputMode: .Plain) { results in
+    self.presentTextInputControllerWithSuggestions(nil, allowedInputMode: .Plain) { results in
       if let result = results?[0] as? String {
         NSLog("addMemo! %@", results)
         self.memo = result
+        self.placeMemo.setText(self.memo)
+        self.placeMemo.setHidden(false)
+        self.placeMemoHint.setHidden(true)
       }
     }
   }

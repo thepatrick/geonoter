@@ -181,7 +181,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     let lat = numberWithDouble(latitude) ?? NSNull()
     let lon = numberWithDouble(longitude) ?? NSNull()
     db.executeUpdate("UPDATE \(tableName()) SET friendly_name = ?, name = ?, memo = ?, " +
-      "recorded_at = ?, latitude = ?, longitude = ?, foursquare_venue_id = ? WHERE id = ?",
+      "recorded_at = ?, latitude = ?, longitude = ?, foursqure_venue_id = ? WHERE id = ?",
       friendlyName ?? NSNull(),
       name ?? NSNull(),
       memo ?? NSNull(),
