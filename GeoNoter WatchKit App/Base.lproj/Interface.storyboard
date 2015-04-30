@@ -180,14 +180,14 @@
                         </group>
                         <group width="1" alignment="left" layout="vertical" id="Kq2-kf-jpd">
                             <items>
-                                <label alignment="left" hidden="YES" text="Friendly name" numberOfLines="0" id="lci-cd-x5s"/>
+                                <label alignment="left" hidden="YES" text="This is my memo text it could be fairly long I guess." numberOfLines="0" id="lci-cd-x5s"/>
                                 <label alignment="center" text="Press firmly to add a memo" textAlignment="center" numberOfLines="0" id="9h7-qf-ZBC">
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                                 </label>
                             </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="10" bottom="10"/>
                         </group>
-                        <group width="1" height="10" alignment="left" id="4op-PY-hwa"/>
                         <button width="1" alignment="left" title="Add" id="p0B-0u-FDf">
                             <connections>
                                 <action selector="addPlace" destination="Y0r-8F-Fie" id="mUE-5e-WPX"/>

@@ -133,7 +133,7 @@
   
   } else if ([watchWants isEqualToString:@"recent"]) {
     
-    reply(@{ @"points": self.store.recentPointsForWatch });
+    reply(@{ @"points": [self.store recentPointsForWatch:5] });
     [application endBackgroundTask:bgTask];
     
   } else {

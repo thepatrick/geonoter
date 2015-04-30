@@ -249,8 +249,8 @@ public extension FMDatabase {
     return self.tags.get(tagId).points.map { $0.serializedForWatch }
   }
   
-  @objc func recentPointsForWatch() -> [[NSObject: AnyObject]] {
-    return points.find.orderBy("recorded_at DESC").limit(5).all.map { $0.serializedForWatch }
+  @objc func recentPointsForWatch(limit: Int64) -> [[NSObject: AnyObject]] {
+    return points.find.orderBy("recorded_at DESC").limit(limit).all.map { $0.serializedForWatch }
   }
   
   @objc func setMemoForWatch(primaryKey: Int64, memo: String) {
