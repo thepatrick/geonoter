@@ -16,7 +16,7 @@ protocol PQGModelCacheable {
   
   func dehydrate()
   
-  class func tableName() -> String
+  static func tableName() -> String
   
 }
 

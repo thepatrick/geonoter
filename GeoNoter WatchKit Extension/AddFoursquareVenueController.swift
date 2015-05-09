@@ -27,8 +27,7 @@ class AddFoursquareVenueController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        let realContext = context as AddFoursquareVenueContext
-        
+        let realContext = context as! AddFoursquareVenueContext
         self.context = realContext
         
         if let name = self.context.place["name"] as? String {
@@ -75,7 +74,7 @@ class AddFoursquareVenueController: WKInterfaceController {
       
       NSLog("openDictionary %@", openDictionary)
       
-      WKInterfaceController.openParentApplication(openDictionary) { (response, error) -> Void in
+      WKInterfaceController.openParentApplication(openDictionary as [NSObject : AnyObject]) { (response, error) -> Void in
             if let err = error {
                 NSLog("watchWants error %@", err)
             } else {

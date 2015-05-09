@@ -46,7 +46,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let infoDictionary = NSBundle.mainBundle().infoDictionary as [NSString:AnyObject]
+    let infoDictionary = NSBundle.mainBundle().infoDictionary as! [NSString:AnyObject]
     if let bundleVersion = infoDictionary["CFBundleVersion"] as? NSString {
       version.text = "Version \(bundleVersion)"
     } else {
@@ -85,7 +85,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "changeDefaultName" {
-      let vc = segue.destinationViewController as PQGDefaultNameTableViewController
+      let vc = segue.destinationViewController as! PQGDefaultNameTableViewController
       let wantsDefaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
       if wantsDefaultName == nil {
         NSLog("wantsDefaultName not found")

@@ -85,7 +85,7 @@ class AddFoursquareController: WKInterfaceController {
         places = dataObjects
         placeTable.setNumberOfRows(dataObjects.count, withRowType: "foursquare-row")
         for var i = 0; i < placeTable.numberOfRows; i++ {
-            let row = self.placeTable.rowControllerAtIndex(i) as AddFoursquareRow
+            let row = self.placeTable.rowControllerAtIndex(i) as! AddFoursquareRow
             if let name = dataObjects[i]["name"] as? String {
                 row.textLabel.setText(name)
             } else {

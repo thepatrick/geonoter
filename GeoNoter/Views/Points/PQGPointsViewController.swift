@@ -44,12 +44,12 @@ class PQGPointsViewController: UITableViewController {
   }
     
   func startListening() {
-    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "addedPoint:", name: "addedPoint", object: del);
   }
   
   func stopListening() {
-    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
     NSNotificationCenter.defaultCenter().removeObserver(self, name: "addedPoint", object: del);
   }
   
@@ -68,7 +68,7 @@ class PQGPointsViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as! UITableViewCell
     
     let point = self.points[indexPath.row]
     
@@ -83,8 +83,8 @@ class PQGPointsViewController: UITableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     NSLog("prepare for segue %@", segue)
     if segue.identifier == "pushToPointDetail" {
-      let pointsDetail = segue.destinationViewController as PQGPointDetailViewController
-      let cell = sender as UITableViewCell
+      let pointsDetail = segue.destinationViewController as! PQGPointDetailViewController
+      let cell = sender as! UITableViewCell
       if let indexPath = tableView.indexPathForCell(cell) {
         pointsDetail.point = points[indexPath.row]
         NSLog("Set point to \(points[indexPath.row])")
@@ -106,7 +106,7 @@ class PQGPointsViewController: UITableViewController {
       UIViewAutoresizing.FlexibleBottomMargin
     )
     let loadingView = UIBarButtonItem(customView: loading)
-    loadingView.style = .Bordered
+    loadingView.style = .Plain
     loadingView.target = self
     navigationItem.rightBarButtonItem = loadingView
     return previousItem!

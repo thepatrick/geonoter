@@ -61,7 +61,7 @@ class TagsController: WKInterfaceController {
     tags = dataObjects
     tagTable.setNumberOfRows(dataObjects.count, withRowType: "tagRow")
     for var i = 0; i < tagTable.numberOfRows; i++ {
-      let row = tagTable.rowControllerAtIndex(i) as AddFoursquareRow
+      let row = tagTable.rowControllerAtIndex(i) as! AddFoursquareRow
       if let name = dataObjects[i]["name"] as? String {
         row.textLabel.setText(name)
       } else {
@@ -72,8 +72,8 @@ class TagsController: WKInterfaceController {
   
   override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
     let tag = tags[rowIndex]
-    let tagId = tag["id"] as NSNumber
-    let tagName = tag["name"] as String
+    let tagId = tag["id"] as! NSNumber
+    let tagName = tag["name"] as! String
     let context = TagPointsContext(tagId: tagId.longLongValue, tagName: tagName)
     self.pushControllerWithName("tagPoints", context: context)
   }

@@ -109,19 +109,19 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   }
   
   // #pragma mark - ScrollView
-  
+
   func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-    return imageView?
+    return imageView
   }
   
   func scrollViewDidZoom(scrollView: UIScrollView) {
     centerScrollViewContents()
   }
   
-  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view:UIView, atScale scale:Float) {
+  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
     centerScrollViewContents()
   }
-  
+    
   // #pragma mark - Action Button
   
   @IBAction func actionPressed(sender : AnyObject) {

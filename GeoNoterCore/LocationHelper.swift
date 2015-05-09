@@ -105,16 +105,16 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
   public func locationManager(manager: CLLocationManager!,
     didUpdateLocations locations: [AnyObject]!) {
-      let newLocation = locations[0] as CLLocation
+      let newLocation = locations[0] as! CLLocation
       if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
-        NSLog("Received new location info");
+        NSLog("didUpdateLocations // Received new location info");
         if let callbacks = self.awaitingLocation {
           for completionHandler in self.awaitingLocation! {
             completionHandler(location: newLocation, error: nil)
           }
         }
       } else {
-        NSLog("Received old location info");
+        NSLog("didUpdateLocations // Received old location info");
       }
   }
   

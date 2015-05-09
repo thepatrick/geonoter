@@ -59,10 +59,10 @@ class PQGAddPointTableViewController: UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
       if isLoading {
-        let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as! UITableViewCell
         return cell
       } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as! UITableViewCell
         
         if let name = venues[indexPath.row]["name"] as? String {
           cell.textLabel!.text = name
@@ -73,7 +73,7 @@ class PQGAddPointTableViewController: UITableViewController {
         return cell
       }
     } else {
-      let cell = tableView.dequeueReusableCellWithIdentifier("poweredByFoursquare", forIndexPath: indexPath) as UITableViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier("poweredByFoursquare", forIndexPath: indexPath) as! UITableViewCell
       return cell
     }
   }

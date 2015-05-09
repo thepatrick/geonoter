@@ -71,7 +71,7 @@ class TagPointsController: WKInterfaceController {
         self.pointTable.setHidden(false)
         self.configureTableWithData(points)
       } else {
-        if let error = result["error"] as String? {
+        if let error = result["error"] as? String {
           self.loadingText.setText(error)
         } else {
           self.loadingText.setText("Oh oh!")
@@ -84,7 +84,7 @@ class TagPointsController: WKInterfaceController {
     points = dataObjects
     pointTable.setNumberOfRows(dataObjects.count, withRowType: "tagRow")
     for var i = 0; i < pointTable.numberOfRows; i++ {
-      let row = pointTable.rowControllerAtIndex(i) as AddFoursquareRow
+      let row = pointTable.rowControllerAtIndex(i) as! AddFoursquareRow
       
       if let name = dataObjects[i]["name"] as? String {
         row.textLabel.setText(name)

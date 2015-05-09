@@ -38,7 +38,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   }
   
   @IBAction func addPointFromMap(sender: AnyObject) {
-    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
   
     let point = PQGPoint(store: del.store)
     
@@ -51,7 +51,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   }
   
   func addPointFromFoursquare(venue: NSDictionary) {
-    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
     
     let point = PQGPoint(store: del.store)
     

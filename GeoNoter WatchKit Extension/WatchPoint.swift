@@ -13,32 +13,21 @@ class WatchPoint {
   let id: Int64
   let name: String
   let friendlyName: String?
-  let coordinates: CLLocationCoordinate2D?
   let memo: String?
-  
+  let coordinates: CLLocationCoordinate2D?
+
   init(point: [String: AnyObject]) {
-    if let id = point["id"] as? NSNumber {
-      self.id = id.longLongValue
+    self.id = (point["id"] as? NSNumber)?.longLongValue ?? 0
+    self.name = point["name"] as? String ?? "(no name)"
+    self.friendlyName = point["friendlyName"] as? String
+    self.memo = point["memo"] as? String
+
+    if let location = point["location"] as? [String: NSNumber],
+       let lat = location["lat"]?.doubleValue,
+       let lng = location["lng"]?.doubleValue {
+      self.coordinates = CLLocationCoordinate2DMake(lat, lng)
     } else {
-      self.id = 0
-    }
-    if let name = point["name"] as? String {
-      self.name = name
-    } else {
-      self.name = "(no name)"
-    }
-    if let friendlyName = point["friendlyName"] as? String {
-      self.friendlyName = friendlyName
-    }
-    if let memo = point["memo"] as? String {
-      self.memo = memo
-    }
-    if let location = point["location"] as? [String: NSNumber] {
-      if let lat = location["lat"]?.doubleValue {
-        if let lng = location["lng"]?.doubleValue {
-          self.coordinates = CLLocationCoordinate2DMake(lat, lng)
-        }
-      }
+      self.coordinates = nil
     }
   }
 }

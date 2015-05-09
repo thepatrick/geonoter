@@ -35,7 +35,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   var store : PQGPersistStore {
-    let appDelegate = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! PQGAppDelegate
     return appDelegate.store
   }
   
@@ -61,7 +61,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as! UITableViewCell
     
     cell.textLabel!.text = tags[indexPath.row].hydrate().name
     cell.accessoryType = .DisclosureIndicator;
@@ -88,7 +88,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "pushToTagPoints" {
-      let vc = segue.destinationViewController as PQGPointsViewController
+      let vc = segue.destinationViewController as! PQGPointsViewController
       let tag = self.tags[tableView.indexPathForSelectedRow()!.row]
       vc.datasourceFetchAll = {
         return tag.points
@@ -103,11 +103,11 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   //  #pragma mark - Add Text Field Delegates
   
-  func textFieldDidBeginEditing(textField: UITextField!) {
+  func textFieldDidBeginEditing(textField: UITextField) {
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelAddTagNow:")
   }
   
-  func textFieldShouldReturn(textField: UITextField!) -> Bool {
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
     PQGTag(name: newTagName.text, store: store).save()
     reloadData()
     cancelAddTagNow(textField)

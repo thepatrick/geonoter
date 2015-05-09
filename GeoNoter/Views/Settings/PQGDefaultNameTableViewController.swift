@@ -27,7 +27,7 @@ class PQGDefaultNameTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("defaultNameCell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("defaultNameCell", forIndexPath: indexPath) as! UITableViewCell
 
     let item = pickList[indexPath.row]
     
