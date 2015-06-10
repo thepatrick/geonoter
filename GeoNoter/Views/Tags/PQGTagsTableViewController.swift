@@ -27,7 +27,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     super.didReceiveMemoryWarning()
   }
   
-  // #pragma mark - Tags API
+  // MARK: - Tags API
   
   func reloadData() {
     fetchData()
@@ -35,7 +35,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   var store : PQGPersistStore {
-    let appDelegate = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! PQGAppDelegate
     return appDelegate.store
   }
   
@@ -43,13 +43,13 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     self.tags = store.tags.all
   }
   
-  // #pragma mark - Table view delegate
+  // MARK: - Table view delegate
   
   override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
     return .Delete
   }
   
-  // #pragma mark - Table view data source
+  // MARK: - Table view data source
   
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -63,7 +63,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     
     let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
     
-    cell.textLabel.text = tags[indexPath.row].hydrate().name
+    cell.textLabel!.text = tags[indexPath.row].hydrate().name
     cell.accessoryType = .DisclosureIndicator;
     
     return cell
@@ -84,12 +84,12 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     return "Tags"
   }
   
-  // #pragma mark - Navigation
+  // MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "pushToTagPoints" {
-      let vc = segue.destinationViewController as PQGPointsViewController
-      let tag = self.tags[tableView.indexPathForSelectedRow()!.row]
+      let vc = segue.destinationViewController as! PQGPointsViewController
+      let tag = self.tags[tableView.indexPathForSelectedRow!.row]
       vc.datasourceFetchAll = {
         return tag.points
       }
@@ -101,14 +101,14 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
 
   
-  //  #pragma mark - Add Text Field Delegates
+  //  MARK: - Add Text Field Delegates
   
-  func textFieldDidBeginEditing(textField: UITextField!) {
+  func textFieldDidBeginEditing(textField: UITextField) {
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelAddTagNow:")
   }
   
-  func textFieldShouldReturn(textField: UITextField!) -> Bool {
-    PQGTag(name: newTagName.text, store: store).save()
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    PQGTag(name: newTagName.text!, store: store).save()
     reloadData()
     cancelAddTagNow(textField)
     return true

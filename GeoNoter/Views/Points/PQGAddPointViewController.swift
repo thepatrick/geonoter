@@ -38,7 +38,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   }
   
   @IBAction func addPointFromMap(sender: AnyObject) {
-    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
   
     let point = PQGPoint(store: del.store)
     
@@ -51,7 +51,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   }
   
   func addPointFromFoursquare(venue: NSDictionary) {
-    let del = UIApplication.sharedApplication().delegate as PQGAppDelegate
+    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
     
     let point = PQGPoint(store: del.store)
     
@@ -61,7 +61,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   }
 
   // MARK: - MapView Delegate
-  func mapView(mapView: MKMapView!, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
+  func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
     switch mode {
     case .Follow:
       NSLog("mapView didChangeUserTrackingMode to Follow")
@@ -72,7 +72,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
     }
   }
   
-  func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+  func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
     if mapView.userTrackingMode == .Follow {
       NSLog("mapView:didUpdateUserLocation: lat \(userLocation.coordinate.latitude) long \(mapView.centerCoordinate.longitude)")
       setCoordinates(userLocation.coordinate)
@@ -81,7 +81,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
     }
   }
   
-  func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
+  func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
     if mapView.userTrackingMode == .None {
       NSLog("FourSquare results should show lat \(mapView.centerCoordinate.latitude) long \(mapView.centerCoordinate.longitude)")
       setCoordinates(mapView.centerCoordinate)

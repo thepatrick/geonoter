@@ -53,7 +53,7 @@ class PQGPointsViewController: UITableViewController {
     
     let point = self.points[indexPath.row]
     
-    cell.textLabel.text = point.name
+    cell.textLabel!.text = point.name
     cell.accessoryType = .DisclosureIndicator
     
     return cell
@@ -64,8 +64,8 @@ class PQGPointsViewController: UITableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     NSLog("prepare for segue %@", segue)
     if segue.identifier == "pushToPointDetail" {
-      let pointsDetail = segue.destinationViewController as PQGPointDetailViewController
-      let cell = sender as UITableViewCell
+      let pointsDetail = segue.destinationViewController as! PQGPointDetailViewController
+      let cell = sender as! UITableViewCell
       if let indexPath = tableView.indexPathForCell(cell) {
         pointsDetail.point = points[indexPath.row]
         NSLog("Set point to \(points[indexPath.row])")
@@ -81,13 +81,10 @@ class PQGPointsViewController: UITableViewController {
     let loading = UIActivityIndicatorView(frame: frame)
     loading.startAnimating()
     loading.sizeToFit()
-    loading.autoresizingMask = (UIViewAutoresizing.FlexibleLeftMargin |
-      UIViewAutoresizing.FlexibleRightMargin |
-      UIViewAutoresizing.FlexibleTopMargin |
-      UIViewAutoresizing.FlexibleBottomMargin
+    loading.autoresizingMask = ([UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
     )
     let loadingView = UIBarButtonItem(customView: loading)
-    loadingView.style = .Bordered
+    loadingView.style = .Plain
     loadingView.target = self
     navigationItem.rightBarButtonItem = loadingView
     return previousItem!

@@ -25,8 +25,7 @@ class PQGMemoEditorViewController: UIViewController, UITextViewDelegate {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    let center = NSNotificationCenter.defaultCenter()
-//    center.
+//    let center = NSNotificationCenter.defaultCenter()
     
     textField.text = point.memo ?? "No Memo"
     

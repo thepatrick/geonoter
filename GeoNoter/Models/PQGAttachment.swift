@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PQGAttachment: PQGModel, PQGModelCacheable {
+final class PQGAttachment: PQGModel {
   
   override class func tableName() -> String {
     return "attachment"
@@ -151,8 +151,14 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
   override func wasDestroyed() {
     store.attachments.removeCachedObject(primaryKey)
     if let fsURL = filesystemURL {
-      NSFileManager.defaultManager().removeItemAtURL(fsURL, error: nil)
-      NSFileManager.defaultManager().removeItemAtURL(fsURL.URLByAppendingPathExtension("cached.jpg"), error: nil)
+      do {
+        try NSFileManager.defaultManager().removeItemAtURL(fsURL)
+      } catch _ {
+      }
+      do {
+        try NSFileManager.defaultManager().removeItemAtURL(fsURL.URLByAppendingPathExtension("cached.jpg"))
+      } catch _ {
+      }
       //TODO: Remove all cached image for size variants
     }
   }
@@ -160,13 +166,13 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
   //MARK: - Attachment helpers
   
   func createCacheDirIfMissing(cacheDirectory: NSURL) {
-    let (exists, isDirectory) = PQGPersistStore.fileExists(cacheDirectory)
+    let (exists, _) = PQGPersistStore.fileExists(cacheDirectory)
     
     if !exists {
-      var err : NSError?
-      let success = NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil, error: &err)
-      if !success {
-        NSLog("Error trying to create directory! \(err!.localizedDescription)")
+      do {
+        try NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil)
+      } catch {
+        NSLog("Error trying to create directory! \(error.localizedDescription)")
       }
     }
   }
@@ -183,7 +189,7 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
     let original = UIImage(contentsOfFile: filesystemURL!.path!)
     let newCachedImage = original!.pqg_scaleAndRotateImage(largestSide)
     let data = UIImageJPEGRepresentation(newCachedImage, 1.0)
-    let isWritten = data.writeToURL(cachedPath, atomically: true)
+    let isWritten = data!.writeToURL(cachedPath, atomically: true)
     if !isWritten {
       NSLog("Could not write %@ to %@", fileName!, cachedPath)
     }

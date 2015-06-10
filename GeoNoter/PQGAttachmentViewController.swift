@@ -111,20 +111,20 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   // #pragma mark - ScrollView
   
   func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-    return imageView?
+    return imageView
   }
   
   func scrollViewDidZoom(scrollView: UIScrollView) {
     centerScrollViewContents()
   }
-  
-  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view:UIView, atScale scale:Float) {
+
+  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
     centerScrollViewContents()
   }
   
   // #pragma mark - Action Button
   
-  @IBAction func actionPressed(sender : AnyObject) {
+  @IBAction func actionPressed(sender: AnyObject) {
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
     alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: actionSheetDeleteMe))
     if MFMailComposeViewController.canSendMail() {
@@ -143,8 +143,8 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   func actionSheetSendEmail(action: UIAlertAction!) {
     let composer = MFMailComposeViewController()
     composer.mailComposeDelegate = self
-    composer.setSubject(attachment.friendlyName)
-    composer.addAttachmentData(attachment.data, mimeType: "image/jpg", fileName: attachment.fileName)
+    composer.setSubject(attachment.friendlyName ?? "No name")
+    composer.addAttachmentData(attachment.data!, mimeType: "image/jpg", fileName: attachment.fileName!)
     presentViewController(composer, animated: true, completion: nil)
   }
   
@@ -161,7 +161,7 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   // #pragma mark Email stuff
 
-  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError) {
+  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
     controller.dismissViewControllerAnimated(true, completion: nil)
   }
 

@@ -12,13 +12,6 @@ class PQGTagsViewController: UINavigationController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    NSLog("PQGPointsNavigationController viewDidLoad %@", self.topViewController)
-    
-    if let homeView = self.topViewController as? PQGTagsTableViewController {
-    } else {
-      assert(false, "PQGPointsNavigationController topViewController is not a PQGPointsViewController as expected")
-    }
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

@@ -11,7 +11,7 @@ import MapKit
 import AddressBookUI
 import CoreLocation
 
-final class PQGPoint: PQGModel, PQGModelCacheable {
+final class PQGPoint: PQGModel {
   
   override class func tableName() -> String {
     return "point"
@@ -372,11 +372,9 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     var simpleName = ""
    
      func setIf(x: String?) -> Bool {
-      if let unwrapped = x {
-        if unwrapped != "" {
-          simpleName = unwrapped
-          return true
-        }
+      if let unwrapped = x where unwrapped != "" {
+        simpleName = unwrapped
+        return true
       }
       return false
     }
@@ -386,14 +384,12 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     setIf(placemark.locality)
     setIf(placemark.subLocality)
     
-    if setIf(placemark.thoroughfare) {
-      if setIf(placemark.subThoroughfare) {
-        simpleName = placemark.subThoroughfare! + " " + placemark.thoroughfare!
-      }
+    if setIf(placemark.thoroughfare) && setIf(placemark.subThoroughfare) {
+      simpleName = placemark.subThoroughfare! + " " + placemark.thoroughfare!
     }
-
+    
     if placemark.areasOfInterest != nil && placemark.areasOfInterest.count == 1 {
-      setIf(placemark.areasOfInterest[0] as? String)
+      setIf(placemark.areasOfInterest[0])
     }
 
     determineDefaultName(simpleName)

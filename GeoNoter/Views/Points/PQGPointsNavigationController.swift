@@ -12,16 +12,14 @@ class PQGPointsNavigationController: UINavigationController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    NSLog("PQGPointsNavigationController viewDidLoad %@", self.topViewController)
-
-    if let homeView = self.topViewController as? PQGPointsViewController {
-      homeView.datasourceFetchAll = {
-        let appDelegate = UIApplication.sharedApplication().delegate as PQGAppDelegate
-        return appDelegate.store.points.all
-      }
-    } else {
+    
+    guard let homeView = self.topViewController as? PQGPointsViewController else {
       assert(false, "PQGPointsNavigationController topViewController is not a PQGPointsViewController as expected")
+    }
+    
+    homeView.datasourceFetchAll = {
+      let appDelegate = UIApplication.sharedApplication().delegate as! PQGAppDelegate
+      return appDelegate.store.points.all
     }
   }
 
