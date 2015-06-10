@@ -171,7 +171,7 @@ final class PQGAttachment: PQGModel {
       do {
         try NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil)
       } catch {
-        NSLog("Error trying to create directory! \(error.localizedDescription)")
+        NSLog("Error trying to create directory! \(error)")
       }
     }
   }
