@@ -52,7 +52,7 @@ class RecentPointsController: WKInterfaceController {
   
   func getPoints() {
     WKInterfaceController.openParentApplication([ "watchWants": "recent" ]) { (result, error) in
-      if let err = error {
+      if let _ = error {
         self.loadingText.setText("Oh oh!")
       } else if let points = result["points"] as? [[String: AnyObject]] {
         self.loadingGroup.setHidden(true)

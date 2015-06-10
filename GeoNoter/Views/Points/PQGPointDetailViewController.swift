@@ -98,9 +98,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     NSLog("Header section for CSStickyHeaderParallaxHeader")
     let coordinate = CLLocationCoordinate2D(latitude: point.latitude!, longitude: point.longitude!)
     let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
-    cell.mapView.setRegion(region, animated: false)
-    if cell.mapView.annotations.count == 0 {
-        cell.mapView.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
+    cell.mapView!.setRegion(region, animated: false)
+    if cell.mapView!.annotations.count == 0 {
+        cell.mapView!.addAnnotation(PQGLocation(coordinate: coordinate, title: point.name!))
     }    
     return cell
   }
@@ -109,30 +109,30 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     let cellIdentifier = indexPath.row < 2 ? "multilineCell" : "cell"
     let cell = collectionView!.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! PQGCell
 
-    cell.textLabel.text = sectionNames[indexPath.section]
-    cell.textLabel.textColor = UIColor.blackColor()
+    cell.textLabel!.text = sectionNames[indexPath.section]
+    cell.textLabel!.textColor = UIColor.blackColor()
     
     switch indexPath.row {
     case 0:
-      cell.textLabel.text = point.friendlyName?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) ?? ""
+      cell.textLabel!.text = point.friendlyName?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) ?? ""
     case 1:
-      cell.textLabel.text = point.memo ?? "No memo"
-      if cell.textLabel.text == "No memo" {
-        cell.textLabel.textColor = UIColor.lightGrayColor()
+      cell.textLabel!.text = point.memo ?? "No memo"
+      if cell.textLabel!.text == "No memo" {
+        cell.textLabel!.textColor = UIColor.lightGrayColor()
       }
     case 2:
       let dateFormatter = NSDateFormatter()
       dateFormatter.dateStyle = .MediumStyle
       dateFormatter.timeStyle = .MediumStyle
       if let recordedAt = point.recordedAt {
-        cell.textLabel.text = dateFormatter.stringFromDate(recordedAt)
+        cell.textLabel!.text = dateFormatter.stringFromDate(recordedAt)
       } else {
-        cell.textLabel.text = "Missing recordedAt"
+        cell.textLabel!.text = "Missing recordedAt"
       }
     case 3:
       if let lat = point.latitude {
         if let lng = point.longitude {
-          cell.textLabel.text = "\(lat), \(lng)"
+          cell.textLabel!.text = "\(lat), \(lng)"
         }
       }
     default:
@@ -145,14 +145,14 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   func cellForTagRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     if tags.count == 0 {
       let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("chooseTagsCell", forIndexPath: indexPath) as! PQGCell
-      cell.textLabel.text = "Tap to choose tags"
-      cell.textLabel.textColor = UIColor.darkGrayColor()
+      cell.textLabel!.text = "Tap to choose tags"
+      cell.textLabel!.textColor = UIColor.darkGrayColor()
       return cell
     } else {
       let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("tagCell", forIndexPath: indexPath) as! PQGCell
       let tag = tags[indexPath.row].hydrate()
-      cell.textLabel.text = tag.name
-      cell.textLabel.textColor = UIColor.blackColor()
+      cell.textLabel!.text = tag.name
+      cell.textLabel!.textColor = UIColor.blackColor()
       return cell
     }
   }
@@ -160,8 +160,8 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   func cellForAttachmentsRow(indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView!.dequeueReusableCellWithReuseIdentifier("attachmentCell", forIndexPath: indexPath) as! PQGCell
     
-    cell.textLabel.text = attachments[indexPath.row].hydrate().friendlyName
-    cell.textLabel.textColor = UIColor.blackColor()
+    cell.textLabel!.text = attachments[indexPath.row].hydrate().friendlyName
+    cell.textLabel!.textColor = UIColor.blackColor()
 
     return cell
   }
@@ -212,9 +212,9 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     NSLog("Header section for %@", sectionNames[indexPath.section])
     let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! PQGCell
     if indexPath.section == 0 {
-      cell.textLabel.text = point.name
+      cell.textLabel!.text = point.name
     } else {
-      cell.textLabel.text = sectionNames[indexPath.section]
+      cell.textLabel!.text = sectionNames[indexPath.section]
     }
     return cell
   }
@@ -254,7 +254,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   //MARK: - MapViewDelegate
   
-  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
+  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
     var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("standardPin") as? MKPinAnnotationView
     
     if pin == nil {
@@ -279,7 +279,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
     let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     let data = UIImageJPEGRepresentation(image, 1.0)
     
-    let attachment = self.point.addAttachment(data, withExtension: "jpg")
+    let attachment = self.point.addAttachment(data!, withExtension: "jpg")
     
     NSLog("attachment %@", attachment)
     

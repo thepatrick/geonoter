@@ -24,7 +24,7 @@
   
   self.window.backgroundColor = [UIColor whiteColor];
   
-  self.store = [[PQGPersistStore alloc] initWithFile:[PQGPersistStore URLForDocument:@"geonoter.db"]];
+  self.store = [PQGPersistStore withFile:[PQGPersistStore URLForDocument:@"geonoter.db"]];
   
   NSError *error = [[LocationHelper sharedHelper] requestIfNotYetDone];
   if(error) {

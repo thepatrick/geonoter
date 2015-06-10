@@ -50,7 +50,6 @@ public extension FMDatabase {
   //MARK: - Helpers
   
   class func fileExists(path: NSURL) -> (Bool, Bool) {
-    var error: NSError?
     var isDirectory: ObjCBool = ObjCBool(true)
     if NSFileManager.defaultManager().fileExistsAtPath(path.path!, isDirectory: &isDirectory) {
       return (true, isDirectory.boolValue)
@@ -61,21 +60,13 @@ public extension FMDatabase {
   }
 
   class func URLForDocument(path: String) -> NSURL {
-    var err : NSError?
-    let pathURL: NSURL?
-    do {
-      pathURL = try NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-    } catch var error as NSError {
-      err = error
-      pathURL = nil
-    }
-    assert(pathURL != nil, "Failed to get Documents directory")
-    return pathURL!.URLByAppendingPathComponent(path)
+    let pathURL = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+    return pathURL.URLByAppendingPathComponent(path)
   }
   
   class func attachmentsDirectory() -> NSURL {
     let dir = URLForDocument("Attachments")
-    let (exists, isDirectory) = fileExists(dir)
+    let (exists, _) = fileExists(dir)
     if !exists {
       let success: Bool
       do {
@@ -90,32 +81,21 @@ public extension FMDatabase {
   }
   
   private class func URLForCacheResource(path: String) -> NSURL {
-    var err : NSError?
-    let pathURL: NSURL?
-    do {
-      pathURL = try NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-    } catch var error as NSError {
-      err = error
-      pathURL = nil
-    }
-    assert(pathURL != nil, "Failed to get caches directory")
-    return pathURL!.URLByAppendingPathComponent(path)
+    let pathURL = try! NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+    return pathURL.URLByAppendingPathComponent(path)
   }
   
   class func attachmentsCacheDirectory() -> NSURL {
     let dir = URLForCacheResource("Attachments")
-    let (exists, isDirectory) = fileExists(dir)
+    let (exists, _) = fileExists(dir)
     if !exists {
-      let success: Bool
-      do {
-        try NSFileManager.defaultManager().createDirectoryAtPath(dir.path!, withIntermediateDirectories: true, attributes: nil)
-        success = true
-      } catch _ {
-        success = false
-      }
-      assert(success, "Failed to create attachments cache directory")
+      try! NSFileManager.defaultManager().createDirectoryAtPath(dir.path!, withIntermediateDirectories: true, attributes: nil)
     }
     return dir
+  }
+  
+  @objc class func withFile(file: NSURL) -> PQGPersistStore {
+    return PQGPersistStore(file: file)
   }
   
   //MARK: - Lifecycle
@@ -133,7 +113,7 @@ public extension FMDatabase {
   }
   
   func openDatabase(fileName: NSURL) -> Bool {
-    let (exists, isDirectory) = self.dynamicType.fileExists(fileName)
+    let (exists, _) = self.dynamicType.fileExists(fileName)
     
     self.queue = FMDatabaseQueue(path: fileName.path)
     

@@ -143,8 +143,8 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   func actionSheetSendEmail(action: UIAlertAction!) {
     let composer = MFMailComposeViewController()
     composer.mailComposeDelegate = self
-    composer.setSubject(attachment.friendlyName)
-    composer.addAttachmentData(attachment.data, mimeType: "image/jpg", fileName: attachment.fileName)
+    composer.setSubject(attachment.friendlyName!)
+    composer.addAttachmentData(attachment.data!, mimeType: "image/jpg", fileName: attachment.fileName!)
     presentViewController(composer, animated: true, completion: nil)
   }
   

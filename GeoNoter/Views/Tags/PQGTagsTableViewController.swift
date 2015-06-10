@@ -108,7 +108,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   func textFieldShouldReturn(textField: UITextField) -> Bool {
-    PQGTag(name: newTagName.text, store: store).save()
+    PQGTag(name: newTagName.text!, store: store).save()
     reloadData()
     cancelAddTagNow(textField)
     return true

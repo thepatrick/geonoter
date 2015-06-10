@@ -46,13 +46,13 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let infoDictionary = NSBundle.mainBundle().infoDictionary as! [NSString:AnyObject]
-    if let bundleVersion = infoDictionary["CFBundleVersion"] as? NSString {
-      version.text = "Version \(bundleVersion)"
-    } else {
-      version.text = "Version crasp"
-      
+    
+    guard let infoDictionary = NSBundle.mainBundle().infoDictionary,
+          let bundleVersion = infoDictionary["CFBundleVersion"] as? String else {
+      assert(false, "mainBundle().infoDictionary is nil. this is... I don't even...")
     }
+    
+    version.text = "Version \(bundleVersion)"
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -108,7 +108,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
         picker.setSubject("Geonoter Database")
         let path = PQGPersistStore.URLForDocument("geonoter.db")
         let data = NSData(contentsOfURL: path)
-        picker.addAttachmentData(data, mimeType: "application/x-sqlite3", fileName: "geonoter.db")
+        picker.addAttachmentData(data!, mimeType: "application/x-sqlite3", fileName: "geonoter.db")
         picker.setToRecipients(["support@thepatrick.io"])
         picker.mailComposeDelegate = self
         presentViewController(picker, animated: true, completion: nil)

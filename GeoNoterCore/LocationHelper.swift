@@ -108,8 +108,8 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
       let newLocation = locations[0] as! CLLocation
       if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
         NSLog("didUpdateLocations // Received new location info");
-        if let callbacks = self.awaitingLocation {
-          for completionHandler in self.awaitingLocation! {
+        if let completionHandlers = self.awaitingLocation {
+          for completionHandler in completionHandlers {
             completionHandler(location: newLocation, error: nil)
           }
         }
@@ -124,7 +124,7 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
       places, error in
       if error != nil {
         completionHandler(nil, error)
-      } else if let placesInternal = places as? [CLPlacemark] {
+      } else if let placesInternal = places {
         completionHandler(placesInternal, nil)
       } else {
         assert(false, "Error is nil, but places is not an array of CLPlacemark objects, this is quite unexpected");

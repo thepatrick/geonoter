@@ -12,7 +12,7 @@ import AddressBookUI
 import CoreLocation
 import GeoNoterCore
 
-final class PQGPoint: PQGModel, PQGModelCacheable {
+final class PQGPoint: PQGModel {
   
   override class func tableName() -> String {
     return "point"
@@ -417,7 +417,7 @@ final class PQGPoint: PQGModel, PQGModelCacheable {
     }
 
     if placemark.areasOfInterest != nil && placemark.areasOfInterest.count == 1 {
-      setIf(placemark.areasOfInterest[0] as? String)
+      setIf(placemark.areasOfInterest[0])
     }
 
     determineDefaultName(simpleName)
