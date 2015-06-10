@@ -117,7 +117,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
-  func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
     dismissViewControllerAnimated(true, completion: nil)
   }
   

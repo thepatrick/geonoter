@@ -23,7 +23,7 @@ extension UIFont {
 class  PQGLocation : NSObject, MKAnnotation {
 
   var coordinate : CLLocationCoordinate2D
-  var title: String
+  var title: String?
   
   init(coordinate: CLLocationCoordinate2D, title: String) {
     self.coordinate = coordinate
@@ -254,7 +254,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   
   //MARK: - MapViewDelegate
   
-  func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
     var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("standardPin") as? MKPinAnnotationView
     
     if pin == nil {
@@ -275,7 +275,7 @@ class PQGPointDetailViewController: UICollectionViewController, UICollectionView
   }
 
   
-  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
     let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     let data = UIImageJPEGRepresentation(image, 1.0)
     

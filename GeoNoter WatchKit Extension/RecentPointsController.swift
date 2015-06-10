@@ -54,7 +54,7 @@ class RecentPointsController: WKInterfaceController {
     WKInterfaceController.openParentApplication([ "watchWants": "recent" ]) { (result, error) in
       if let err = error {
         self.loadingText.setText("Oh oh!")
-      } else if let points = result?["points"] as? [[String: AnyObject]] {
+      } else if let points = result["points"] as? [[String: AnyObject]] {
         self.loadingGroup.setHidden(true)
         self.pointTable.setHidden(false)
         self.configureTableWithData(points)

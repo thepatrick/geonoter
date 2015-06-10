@@ -61,7 +61,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
     
     cell.textLabel!.text = tags[indexPath.row].hydrate().name
     cell.accessoryType = .DisclosureIndicator;
@@ -89,7 +89,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "pushToTagPoints" {
       let vc = segue.destinationViewController as! PQGPointsViewController
-      let tag = self.tags[tableView.indexPathForSelectedRow()!.row]
+      let tag = self.tags[tableView.indexPathForSelectedRow!.row]
       vc.datasourceFetchAll = {
         return tag.points
       }

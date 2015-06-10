@@ -66,7 +66,7 @@ class TagPointsController: WKInterfaceController {
       if let err = error {
         self.loadingText.setText("Oh oh!")
         NSLog("watchWants error %@", err)
-      } else if let points = result?["points"] as? [[String: AnyObject]] {
+      } else if let points = result["points"] as? [[String: AnyObject]] {
         self.loadingGroup.setHidden(true)
         self.pointTable.setHidden(false)
         self.configureTableWithData(points)

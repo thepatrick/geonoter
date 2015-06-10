@@ -151,8 +151,14 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
   override func wasDestroyed() {
     store.attachments.removeCachedObject(primaryKey)
     if let fsURL = filesystemURL {
-      NSFileManager.defaultManager().removeItemAtURL(fsURL, error: nil)
-      NSFileManager.defaultManager().removeItemAtURL(fsURL.URLByAppendingPathExtension("cached.jpg"), error: nil)
+      do {
+        try NSFileManager.defaultManager().removeItemAtURL(fsURL)
+      } catch _ {
+      }
+      do {
+        try NSFileManager.defaultManager().removeItemAtURL(fsURL.URLByAppendingPathExtension("cached.jpg"))
+      } catch _ {
+      }
       //TODO: Remove all cached image for size variants
     }
   }
@@ -164,7 +170,14 @@ final class PQGAttachment: PQGModel, PQGModelCacheable {
     
     if !exists {
       var err : NSError?
-      let success = NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil, error: &err)
+      let success: Bool
+      do {
+        try NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil)
+        success = true
+      } catch var error as NSError {
+        err = error
+        success = false
+      }
       if !success {
         NSLog("Error trying to create directory! \(err!.localizedDescription)")
       }

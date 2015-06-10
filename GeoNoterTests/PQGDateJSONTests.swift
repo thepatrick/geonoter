@@ -13,8 +13,7 @@ class PQGDateJSONTests: XCTestCase {
 
   let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
   
-  let allComponents = NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit |
-    NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.SecondCalendarUnit
+  let allComponents: NSCalendarUnit = [NSCalendarUnit.NSYearCalendarUnit, NSCalendarUnit.NSMonthCalendarUnit, NSCalendarUnit.NSDayCalendarUnit, NSCalendarUnit.NSHourCalendarUnit, NSCalendarUnit.NSMinuteCalendarUnit, NSCalendarUnit.NSSecondCalendarUnit]
   
   override func setUp() {
     super.setUp()

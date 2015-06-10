@@ -118,7 +118,7 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
     centerScrollViewContents()
   }
   
-  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
     centerScrollViewContents()
   }
     
@@ -161,7 +161,7 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   // #pragma mark Email stuff
 
-  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError) {
+  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
     controller.dismissViewControllerAnimated(true, completion: nil)
   }
 

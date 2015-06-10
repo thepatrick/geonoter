@@ -66,7 +66,7 @@ class AddFoursquareVenueController: WKInterfaceController {
     }
     
     @IBAction func addPlace() {
-      var openDictionary = NSMutableDictionary(dictionary: [ "watchWants": "addFoursquareVenue", "venue": self.context.place ])
+      let openDictionary = NSMutableDictionary(dictionary: [ "watchWants": "addFoursquareVenue", "venue": self.context.place ])
       
       if let memo = self.memo {
         openDictionary["memo"] = memo
@@ -96,7 +96,7 @@ class AddFoursquareVenueController: WKInterfaceController {
   
   @IBAction func addMemo() {
     self.presentTextInputControllerWithSuggestions(nil, allowedInputMode: .Plain) { results in
-      if let result = results?[0] as? String {
+      if let result = results[0] as? String {
         NSLog("addMemo! %@", results)
         self.memo = result
         self.placeMemo.setText(self.memo)

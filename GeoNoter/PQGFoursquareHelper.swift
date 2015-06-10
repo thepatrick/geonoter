@@ -43,10 +43,10 @@ class PQGFoursquareHelper : NSObject {
                         if let venues = response["venues"] as? [NSDictionary] {
                             completion(venues, nil)
                         } else {
-                            completion(nil, PQGFoursquareHelperMakeError(-1, "Unable to get venues"))
+                            completion(nil, PQGFoursquareHelperMakeError(-1, description: "Unable to get venues"))
                         }
                     } else {
-                        completion(nil, PQGFoursquareHelperMakeError(-2, "Unable to get venues"))
+                        completion(nil, PQGFoursquareHelperMakeError(-2, description: "Unable to get venues"))
                     }
                 }
             } else {

@@ -68,7 +68,7 @@ class PQGPointsViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as UITableViewCell
     
     let point = self.points[indexPath.row]
     
@@ -100,10 +100,7 @@ class PQGPointsViewController: UITableViewController {
     let loading = UIActivityIndicatorView(frame: frame)
     loading.startAnimating()
     loading.sizeToFit()
-    loading.autoresizingMask = (UIViewAutoresizing.FlexibleLeftMargin |
-      UIViewAutoresizing.FlexibleRightMargin |
-      UIViewAutoresizing.FlexibleTopMargin |
-      UIViewAutoresizing.FlexibleBottomMargin
+    loading.autoresizingMask = ([UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
     )
     let loadingView = UIBarButtonItem(customView: loading)
     loadingView.style = .Plain

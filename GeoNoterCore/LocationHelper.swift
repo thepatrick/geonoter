@@ -103,8 +103,8 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
   // mark - CoreLocation Interface
   
-  public func locationManager(manager: CLLocationManager!,
-    didUpdateLocations locations: [AnyObject]!) {
+  public func locationManager(manager: CLLocationManager,
+    didUpdateLocations locations: [AnyObject]) {
       let newLocation = locations[0] as! CLLocation
       if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
         NSLog("didUpdateLocations // Received new location info");

@@ -45,7 +45,7 @@ class TagsController: WKInterfaceController {
       if let err = error {
         self.loadingText.setText("Oh oh!")
         NSLog("watchWants error %@", err)
-      } else if let tags = result?["tags"] as? [[String: AnyObject]] {
+      } else if let tags = result["tags"] as? [[String: AnyObject]] {
         self.loadingGroup.setHidden(true)
         self.tagTable.setHidden(false)
         self.configureTableWithData(tags)
