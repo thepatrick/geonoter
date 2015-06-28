@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class PQGModel: NSObject, PQGModelCacheable {
 
   let primaryKey: Int64
@@ -55,8 +56,8 @@ class PQGModel: NSObject, PQGModelCacheable {
   }
   
   func hydrateRequired(row: FMResultSet) {
-    NSLog("hydrateRequired not implemeneted in \(NSStringFromClass(self.dynamicType))")
-    assert(false, "hydrateRequired not implemented in PQGModel subclass")
+    NSLog("hydrateRequired not implemeneted in \(self)")
+    fatalError("hydrateRequired not implemented in PQGModel subclass")
   }
   
   func dehydrateIfPossible() {
@@ -67,8 +68,8 @@ class PQGModel: NSObject, PQGModelCacheable {
   }
   
   func dehydrate() {
-    NSLog("dehydrate not implemeneted in \(NSStringFromClass(self.dynamicType))")
-    assert(false, "dehydrate not implemented in PQGModel subclass")
+    NSLog("dehydrate not implemeneted in \(self)")
+    fatalError("dehydrate not implemented in PQGModel subclass")
   }
   
   func save() {
@@ -82,19 +83,18 @@ class PQGModel: NSObject, PQGModelCacheable {
   }
   
   func saveForNew(db: FMDatabase) {
-    NSLog("saveForNew not implemeneted in \(NSStringFromClass(self.dynamicType))")
-    assert(false, "saveForNew not implemented in PQGModel subclass")
+    NSLog("saveForNew not implemeneted in \(self)")
+    fatalError("saveForNew not implemented in PQGModel subclass")
   }
   
   func saveForUpdate(db: FMDatabase) {
-    NSLog("saveForUpdate not implemeneted in \(NSStringFromClass(self.dynamicType))")
-    assert(false, "saveForUpdate not implemented in PQGModel subclass")
+    NSLog("saveForUpdate not implemeneted in \(self)")
+    fatalError("saveForUpdate not implemented in PQGModel subclass")
   }
   
   class func tableName() -> String {
-    NSLog("saveForUpdate not implemeneted in \(NSStringFromClass(self.dynamicType))")
-    assert(false, "tableName not implemented in PQGModel subclass")
-    return ""
+    NSLog("saveForUpdate not implemeneted in \(self)")
+    fatalError("tableName not implemented in PQGModel subclass")
   }
   
   func tableName() -> String {

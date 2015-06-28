@@ -103,19 +103,18 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
   // mark - CoreLocation Interface
   
-  public func locationManager(manager: CLLocationManager,
-    didUpdateLocations locations: [AnyObject]) {
-      let newLocation = locations[0] as! CLLocation
-      if(abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0) {
-        NSLog("didUpdateLocations // Received new location info");
-        if let completionHandlers = self.awaitingLocation {
-          for completionHandler in completionHandlers {
-            completionHandler(location: newLocation, error: nil)
-          }
+  public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    let newLocation = locations[0]
+    if abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0 {
+      NSLog("didUpdateLocations // Received new location info");
+      if let completionHandlers = self.awaitingLocation {
+        for completionHandler in completionHandlers {
+          completionHandler(location: newLocation, error: nil)
         }
-      } else {
-        NSLog("didUpdateLocations // Received old location info");
       }
+    } else {
+      NSLog("didUpdateLocations // Received old location info");
+    }
   }
   
   public func geocode(location : CLLocation, completionHandler: (([CLPlacemark]?, NSError?)->())!) {
