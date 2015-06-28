@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.pftqg.iphone.GeoNoter</string>
+	<string>io.thepatrick.GeoNoter2</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
