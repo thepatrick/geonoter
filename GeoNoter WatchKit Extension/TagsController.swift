@@ -15,8 +15,8 @@ class TagsController: WKInterfaceController {
   @IBOutlet weak var loadingGroup: WKInterfaceGroup!
   @IBOutlet weak var loadingText: WKInterfaceLabel!
   
-  override func awakeWithContext(context: AnyObject?) {
-    super.awakeWithContext(context)
+  override func awake(withContext context: AnyObject?) {
+    super.awake(withContext: context)
     // Configure interface objects here.
     
     fetchTagsFromParentApplication()
@@ -57,11 +57,11 @@ class TagsController: WKInterfaceController {
     
   }
   
-  func configureTableWithData(dataObjects: [[String: AnyObject]]) {
+  func configureTableWithData(_ dataObjects: [[String: AnyObject]]) {
     tags = dataObjects
     tagTable.setNumberOfRows(dataObjects.count, withRowType: "tagRow")
-    for var i = 0; i < tagTable.numberOfRows; i++ {
-      let row = tagTable.rowControllerAtIndex(i) as! AddFoursquareRow
+    for i in 0 ..< tagTable.numberOfRows {
+      let row = tagTable.rowController(at: i) as! AddFoursquareRow
       if let name = dataObjects[i]["name"] as? String {
         row.textLabel.setText(name)
       } else {
@@ -70,12 +70,12 @@ class TagsController: WKInterfaceController {
     }
   }
   
-  override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+  override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
     let tag = tags[rowIndex]
     let tagId = tag["id"] as! NSNumber
     let tagName = tag["name"] as! String
-    let context = TagPointsContext(tagId: tagId.longLongValue, tagName: tagName)
-    self.pushControllerWithName("tagPoints", context: context)
+    let context = TagPointsContext(tagId: tagId.int64Value, tagName: tagName)
+    self.pushController(withName: "tagPoints", context: context)
   }
   
 }

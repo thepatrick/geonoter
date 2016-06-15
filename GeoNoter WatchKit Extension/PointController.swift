@@ -26,8 +26,8 @@ class PointController: WKInterfaceController {
   
   var context: WatchPoint!
   
-  override func awakeWithContext(context: AnyObject?) {
-    super.awakeWithContext(context)
+  override func awake(withContext context: AnyObject?) {
+    super.awake(withContext: context)
     
     if let contextObject = context as? WatchPoint {
       self.context = contextObject
@@ -37,7 +37,7 @@ class PointController: WKInterfaceController {
     
     if let coordinates = self.context.coordinates {
       let region = MKCoordinateRegionMakeWithDistance(coordinates, 200, 200)
-      self.map.addAnnotation(coordinates, withPinColor: .Red)
+      self.map.addAnnotation(coordinates, with: .red)
       self.map.setRegion(region)
     }
     

@@ -8,22 +8,22 @@
 
 import UIKit
 
-public extension NSDate {
+public extension Date {
   
-  private class func pqg_JSONDateFormatter() -> NSDateFormatter {
-    let formatter = NSDateFormatter()
-    formatter.locale = NSLocale(localeIdentifier: "en_US")
+  private static func pqg_JSONDateFormatter() -> DateFormatter {
+    let formatter = DateFormatter()
+    formatter.locale = Locale(localeIdentifier: "en_US")
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-    formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+    formatter.timeZone = TimeZone(forSecondsFromGMT: 0)
     return formatter
   }
   
-  class func pqg_dateWithJSONString(jsonDate: String) -> NSDate {
-    return pqg_JSONDateFormatter().dateFromString(jsonDate)!
+  static func pqg_dateWithJSONString(_ jsonDate: String) -> Date {
+    return pqg_JSONDateFormatter().date(from: jsonDate)!
   }
   
   func pqg_jsonString() -> String {
-    return NSDate.pqg_JSONDateFormatter().stringFromDate(self)
+    return Date.pqg_JSONDateFormatter().string(from: self)
   }
   
 }

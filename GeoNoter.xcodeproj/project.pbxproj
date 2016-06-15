@@ -11,16 +11,13 @@
 		94E98E8188294872A93EDB8B /* libPods-GeoNoterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */; };
 		CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275B19755536000091ED /* PQGImageSizerTests.swift */; };
 		CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275D19755570000091ED /* PQGDateJSONTests.swift */; };
-		CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */; };
 		CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
 		CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E2198B904F009DBCAE /* PQGPoint.swift */; };
 		CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */; };
 		CD45432319950CA200E29F06 /* PQGNSDateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */; };
-		CD45432419950CD700E29F06 /* PQGNSStringUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */; };
 		CD45432519950D3B00E29F06 /* PQGPersistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */; };
 		CD4A4A8C198CEDD700BAC650 /* PQGNSDateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */; };
 		CD4A4A8E198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */; };
-		CD4A4A90198CF0AD00BAC650 /* PQGNSStringUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */; };
 		CD515B501AC7B0FD00632062 /* GeoNoterCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CD515B4F1AC7B0FD00632062 /* GeoNoterCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD515B561AC7B0FD00632062 /* GeoNoterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */; };
 		CD515B5F1AC7B0FD00632062 /* GeoNoterCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD515B5E1AC7B0FD00632062 /* GeoNoterCoreTests.swift */; };
@@ -186,13 +183,11 @@
 		CD19AF8E1B28F49200B1E115 /* ProtocolOrientedProgramming.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProtocolOrientedProgramming.playground; sourceTree = "<group>"; };
 		CD3F275B19755536000091ED /* PQGImageSizerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGImageSizerTests.swift; sourceTree = "<group>"; };
 		CD3F275D19755570000091ED /* PQGDateJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGDateJSONTests.swift; sourceTree = "<group>"; };
-		CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGStringUUIDTests.swift; sourceTree = "<group>"; };
 		CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAttachment.swift; path = Models/PQGAttachment.swift; sourceTree = "<group>"; };
 		CD4353E2198B904F009DBCAE /* PQGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPoint.swift; path = Models/PQGPoint.swift; sourceTree = "<group>"; };
 		CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGPersistStore.swift; path = Models/PQGPersistStore.swift; sourceTree = "<group>"; };
 		CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGNSDateJSON.swift; path = Categories/PQGNSDateJSON.swift; sourceTree = "<group>"; };
 		CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGUIImageContentsOfFileURL.swift; path = Categories/PQGUIImageContentsOfFileURL.swift; sourceTree = "<group>"; };
-		CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGNSStringUUID.swift; path = Categories/PQGNSStringUUID.swift; sourceTree = "<group>"; };
 		CD515B4B1AC7B0FD00632062 /* GeoNoterCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeoNoterCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD515B4E1AC7B0FD00632062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD515B4F1AC7B0FD00632062 /* GeoNoterCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeoNoterCore.h; sourceTree = "<group>"; };
@@ -345,7 +340,6 @@
 			children = (
 				CD3F275B19755536000091ED /* PQGImageSizerTests.swift */,
 				CD3F275D19755570000091ED /* PQGDateJSONTests.swift */,
-				CD3F275F19755583000091ED /* PQGStringUUIDTests.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -429,7 +423,6 @@
 				CD6E3C6819466D30005067DE /* UIImageSizer.m */,
 				CD4A4A8B198CEDD700BAC650 /* PQGNSDateJSON.swift */,
 				CD4A4A8D198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift */,
-				CD4A4A8F198CF0AD00BAC650 /* PQGNSStringUUID.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -821,13 +814,16 @@
 					CD515B4A1AC7B0FD00632062 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = WA4JA55S9R;
+						LastSwiftMigration = 0800;
 					};
 					CD515B541AC7B0FD00632062 = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 0800;
 						TestTargetID = CD84A4DD1769F25400266526;
 					};
 					CD84A4DD1769F25400266526 = {
 						DevelopmentTeam = WA4JA55S9R;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -838,11 +834,13 @@
 						};
 					};
 					CD84A5011769F25400266526 = {
+						LastSwiftMigration = 0800;
 						TestTargetID = CD84A4DD1769F25400266526;
 					};
 					CD9FFD301AC41DF500D916BA = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = WA4JA55S9R;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1019,7 +1017,6 @@
 			files = (
 				CD4A4A8E198CEF8700BAC650 /* PQGUIImageContentsOfFileURL.swift in Sources */,
 				CD4353E3198B904F009DBCAE /* PQGPoint.swift in Sources */,
-				CD4A4A90198CF0AD00BAC650 /* PQGNSStringUUID.swift in Sources */,
 				CD4353EA198BB1DB009DBCAE /* PQGPersistStore.swift in Sources */,
 				CDCD3BAA19793FB900DE6699 /* PQGDefaultNameTableViewController.swift in Sources */,
 				CD65C9BB19B475BB00B47362 /* PQGAddPointTableViewController.swift in Sources */,
@@ -1059,11 +1056,9 @@
 				CDF89B3919951027006FD8A7 /* PQGPoint.swift in Sources */,
 				CDF89B381995101F006FD8A7 /* PQGModelCache.swift in Sources */,
 				CD60DC2D197012BE00E4E019 /* PQGPersistStoreTags.swift in Sources */,
-				CD3F276019755583000091ED /* PQGStringUUIDTests.swift in Sources */,
 				CDF89B3C1995102F006FD8A7 /* PQGModel.swift in Sources */,
 				CD8870E1199706CB00E45A63 /* PQGModelCacheTests.swift in Sources */,
 				CD60DC2A19700D8B00E4E019 /* PQGPersistStore.m in Sources */,
-				CD45432419950CD700E29F06 /* PQGNSStringUUID.swift in Sources */,
 				CD45432519950D3B00E29F06 /* PQGPersistStore.swift in Sources */,
 				CDF89B3B1995102C006FD8A7 /* PQGTag.swift in Sources */,
 			);
@@ -1204,6 +1199,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1235,6 +1231,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.thepatrick.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1262,6 +1259,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.thepatrick.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNoter.app/GeoNoter";
 			};
 			name = Debug;
@@ -1284,6 +1282,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.thepatrick.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNoter.app/GeoNoter";
 			};
 			name = Release;
@@ -1380,6 +1379,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoNoter/GeoNoter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1406,6 +1406,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoNoter/GeoNoter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1438,6 +1439,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoNoterTests/GeoNoterTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1466,6 +1468,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pftqg.iphone.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoNoterTests/GeoNoterTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1494,6 +1497,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1516,6 +1520,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

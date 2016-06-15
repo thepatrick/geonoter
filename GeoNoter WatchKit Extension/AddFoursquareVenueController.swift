@@ -24,8 +24,8 @@ class AddFoursquareVenueController: WKInterfaceController {
   
   var context: AddFoursquareVenueContext!
   
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
         
         let realContext = context as! AddFoursquareVenueContext
         self.context = realContext
@@ -37,7 +37,7 @@ class AddFoursquareVenueController: WKInterfaceController {
         if let location = self.context.place["location"] as? [NSString: AnyObject] {
           if let coords = coordinateFromLocation(location) {
             let region = MKCoordinateRegionMakeWithDistance(coords, 200, 200)
-            self.placeMap.addAnnotation(coords, withPinColor: .Red)
+            self.placeMap.addAnnotation(coords, with: .red)
             self.placeMap.setRegion(region)
           } else {
             self.placeMap.setHidden(false)
@@ -83,7 +83,7 @@ class AddFoursquareVenueController: WKInterfaceController {
         }
     }
     
-    func coordinateFromLocation(location: [NSString: AnyObject]?) -> CLLocationCoordinate2D? {
+    func coordinateFromLocation(_ location: [NSString: AnyObject]?) -> CLLocationCoordinate2D? {
         if let locationDict = location {
             if let lat = locationDict["lat"] as? NSNumber {
                 if let lng = locationDict["lng"] as? NSNumber {
@@ -95,7 +95,7 @@ class AddFoursquareVenueController: WKInterfaceController {
     }
   
   @IBAction func addMemo() {
-    self.presentTextInputControllerWithSuggestions(nil, allowedInputMode: .Plain) { results in
+    self.presentTextInputController(withSuggestions: nil, allowedInputMode: .plain) { results in
       
       if let result = results?[0] as? String {
         NSLog("addMemo! %@", results!)

@@ -30,8 +30,8 @@ class TagPointsController: WKInterfaceController {
   
   var context: TagPointsContext!
   
-  override func awakeWithContext(context: AnyObject?) {
-    super.awakeWithContext(context)
+  override func awake(withContext context: AnyObject?) {
+    super.awake(withContext: context)
     
     if let contextObject = context as? TagPointsContext {
       self.context = contextObject
@@ -61,7 +61,7 @@ class TagPointsController: WKInterfaceController {
   var points : [[String: AnyObject]] = []
   
   func getPoints() {
-    let tagId = NSNumber(longLong: self.context.tagId)
+    let tagId = NSNumber(value: self.context.tagId)
     WKInterfaceController.openParentApplication([ "watchWants": "tagPoints", "tagId": tagId ]) { (result, error) in
       if let err = error {
         self.loadingText.setText("Oh oh!")
@@ -80,11 +80,11 @@ class TagPointsController: WKInterfaceController {
     }
   }
   
-  func configureTableWithData(dataObjects: [[String: AnyObject]]) {
+  func configureTableWithData(_ dataObjects: [[String: AnyObject]]) {
     points = dataObjects
     pointTable.setNumberOfRows(dataObjects.count, withRowType: "tagRow")
-    for var i = 0; i < pointTable.numberOfRows; i++ {
-      let row = pointTable.rowControllerAtIndex(i) as! AddFoursquareRow
+    for i in 0 ..< pointTable.numberOfRows {
+      let row = pointTable.rowController(at: i) as! AddFoursquareRow
       
       if let name = dataObjects[i]["name"] as? String {
         row.textLabel.setText(name)
@@ -94,9 +94,9 @@ class TagPointsController: WKInterfaceController {
     }
   }
   
-  override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+  override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
     let context = WatchPoint(point: points[rowIndex])
-    self.pushControllerWithName("viewPoint", context: context)
+    self.pushController(withName: "viewPoint", context: context)
   }
   
 }

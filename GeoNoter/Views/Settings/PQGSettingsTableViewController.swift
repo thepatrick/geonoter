@@ -47,7 +47,7 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    guard let infoDictionary = NSBundle.mainBundle().infoDictionary,
+    guard let infoDictionary = Bundle.main().infoDictionary,
           let bundleVersion = infoDictionary["CFBundleVersion"] as? String else {
       assert(false, "mainBundle().infoDictionary is nil. this is... I don't even...")
     }
@@ -55,13 +55,13 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
     version.text = "Version \(bundleVersion)"
   }
   
-  override func viewWillAppear(animated: Bool) {
-    useGeocoder.on = NSUserDefaults.standardUserDefaults().boolForKey("LocationsUseGeocoder")
+  override func viewWillAppear(_ animated: Bool) {
+    useGeocoder.isOn = UserDefaults.standard().bool(forKey: "LocationsUseGeocoder")
     setDefaultNameLabel()
   }
   
   func setDefaultNameLabel() {
-    let wantsDefaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
+    let wantsDefaultName = UserDefaults.standard().string(forKey: "LocationsDefaultName")
     NSLog("wantsDefaultName = \(wantsDefaultName)")
     if wantsDefaultName == nil {
       NSLog("wantsDefaultName not found")
@@ -74,19 +74,19 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
     }
   }
   
-  @IBAction func useGeocoderChanged(sender: AnyObject) {
-    NSUserDefaults.standardUserDefaults().setBool(useGeocoder.on, forKey: "LocationsUseGeocoder")
-    let defaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
-    if !useGeocoder.on && defaultName == LocationsDefaultName.MostSpecific.rawValue {
-      NSUserDefaults.standardUserDefaults().setValue(LocationsDefaultName.DateTime.rawValue, forKey: "LocationsDefaultName")
+  @IBAction func useGeocoderChanged(_ sender: AnyObject) {
+    UserDefaults.standard().set(useGeocoder.isOn, forKey: "LocationsUseGeocoder")
+    let defaultName = UserDefaults.standard().string(forKey: "LocationsDefaultName")
+    if !useGeocoder.isOn && defaultName == LocationsDefaultName.MostSpecific.rawValue {
+      UserDefaults.standard().setValue(LocationsDefaultName.DateTime.rawValue, forKey: "LocationsDefaultName")
       setDefaultNameLabel()
     }
   }
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "changeDefaultName" {
       let vc = segue.destinationViewController as! PQGDefaultNameTableViewController
-      let wantsDefaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
+      let wantsDefaultName = UserDefaults.standard().string(forKey: "LocationsDefaultName")
       if wantsDefaultName == nil {
         NSLog("wantsDefaultName not found")
         vc.pickedDefualt = LocationsDefaultName.DateTime        
@@ -99,26 +99,26 @@ class PQGSettingsTableViewController: UITableViewController, MFMailComposeViewCo
     }
   }
   
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    if indexPath.section == 2 && indexPath.row == 0 {
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == 0 {
       if !MFMailComposeViewController.canSendMail() {
-        UIApplication.sharedApplication().openURL(NSURL(string: "mailto:")!)
+        UIApplication.shared().openURL(URL(string: "mailto:")!)
       } else {
         let picker = MFMailComposeViewController()
         picker.setSubject("Geonoter Database")
         let path = PQGPersistStore.URLForDocument("geonoter.db")
-        let data = NSData(contentsOfURL: path)
+        let data = try? Data(contentsOf: path)
         picker.addAttachmentData(data!, mimeType: "application/x-sqlite3", fileName: "geonoter.db")
         picker.setToRecipients(["support@thepatrick.io"])
         picker.mailComposeDelegate = self
-        presentViewController(picker, animated: true, completion: nil)
+        present(picker, animated: true, completion: nil)
       }
     }
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
-  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-    dismissViewControllerAnimated(true, completion: nil)
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
+    dismiss(animated: true, completion: nil)
   }
   
 

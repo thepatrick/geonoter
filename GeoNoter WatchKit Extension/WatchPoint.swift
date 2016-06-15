@@ -17,7 +17,7 @@ class WatchPoint {
   let coordinates: CLLocationCoordinate2D?
 
   init(point: [String: AnyObject]) {
-    self.id = (point["id"] as? NSNumber)?.longLongValue ?? 0
+    self.id = (point["id"] as? NSNumber)?.int64Value ?? 0
     self.name = point["name"] as? String ?? "(no name)"
     self.friendlyName = point["friendlyName"] as? String
     self.memo = point["memo"] as? String

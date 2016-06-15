@@ -21,7 +21,7 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   var initialZoomLevel : CGFloat = 0
   
-  let queue = dispatch_queue_create("cacheQueue", DISPATCH_QUEUE_CONCURRENT)
+  let queue = DispatchQueue(label: "cacheQueue", attributes: DispatchQueueAttributes.concurrent)
   
   @IBOutlet var scrollView : UIScrollView!
   var imageView : UIImageView?
@@ -30,12 +30,12 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
     super.viewDidLoad()
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     title = attachment.friendlyName
     scrollView.zoomScale = 1.0
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     NSLog("Should show loading HUD...")
     //    HUD = [[MBProgressHUD alloc] initWithView:self.view];
     //    [self.view addSubview:HUD];
@@ -49,19 +49,19 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   func loadImage() {
     let attachment = self.attachment
-    dispatch_async(queue) {
-      let mainScreen = UIScreen.mainScreen()
+    queue.async {
+      let mainScreen = UIScreen.main()
       
       let bounds = mainScreen.bounds
       let largestSide = max(bounds.width, bounds.height) * mainScreen.scale * 2
-      let image = attachment.loadCachedImageForSize(Int(largestSide))
+      let image = attachment?.loadCachedImageForSize(Int(largestSide))
       
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         let imageView = UIImageView(image: image)
         imageView.frame = self.scrollView.frame
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         self.scrollView.addSubview(imageView)
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         self.imageView = imageView
         self.calculateScrollViewScale()
         self.scrollView.zoomScale = self.initialZoomLevel
@@ -110,59 +110,59 @@ class PQGAttachmentViewController : UIViewController, UIScrollViewDelegate, MFMa
   
   // #pragma mark - ScrollView
 
-  func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
     return imageView
   }
   
-  func scrollViewDidZoom(scrollView: UIScrollView) {
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
     centerScrollViewContents()
   }
   
-  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+  func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
     centerScrollViewContents()
   }
     
   // #pragma mark - Action Button
   
-  @IBAction func actionPressed(sender : AnyObject) {
-    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-    alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: actionSheetDeleteMe))
+  @IBAction func actionPressed(_ sender : AnyObject) {
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: actionSheetDeleteMe))
     if MFMailComposeViewController.canSendMail() {
-      alert.addAction(UIAlertAction(title: "Email Photo", style: .Default, handler: actionSheetSendEmail))
+      alert.addAction(UIAlertAction(title: "Email Photo", style: .default, handler: actionSheetSendEmail))
     }
-    alert.addAction(UIAlertAction(title: "Save to Camera Roll", style: .Default, handler: actionSheetSaveToRoll))
-    alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-    presentViewController(alert, animated: true, completion: nil)
+    alert.addAction(UIAlertAction(title: "Save to Camera Roll", style: .default, handler: actionSheetSaveToRoll))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    present(alert, animated: true, completion: nil)
   }
   
-  func actionSheetDeleteMe(action: UIAlertAction!) {
+  func actionSheetDeleteMe(_ action: UIAlertAction!) {
     attachment.destroy()
-    navigationController!.popViewControllerAnimated(true)
+    navigationController!.popViewController(animated: true)
   }
   
-  func actionSheetSendEmail(action: UIAlertAction!) {
+  func actionSheetSendEmail(_ action: UIAlertAction!) {
     let composer = MFMailComposeViewController()
     composer.mailComposeDelegate = self
     composer.setSubject(attachment.friendlyName!)
-    composer.addAttachmentData(attachment.data!, mimeType: "image/jpg", fileName: attachment.fileName!)
-    presentViewController(composer, animated: true, completion: nil)
+    composer.addAttachmentData(attachment.data! as Data, mimeType: "image/jpg", fileName: attachment.fileName!)
+    present(composer, animated: true, completion: nil)
   }
   
-  func actionSheetSaveToRoll(action: UIAlertAction!) {
-    ALAssetsLibrary().writeImageDataToSavedPhotosAlbum(attachment.data, metadata: [:]) {
+  func actionSheetSaveToRoll(_ action: UIAlertAction!) {
+    ALAssetsLibrary().writeImageData(toSavedPhotosAlbum: attachment.data, metadata: [:]) {
       url, error in
-      if error != nil {
-        let alert = UIAlertController(title: "Your photo could not be saved to the photo roll.", message: error.localizedDescription, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+      if let writeError = error {
+        let alert = UIAlertController(title: "Your photo could not be saved to the photo roll.", message: writeError.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
       }
     }
   }
   
   // #pragma mark Email stuff
 
-  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-    controller.dismissViewControllerAnimated(true, completion: nil)
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
+    controller.dismiss(animated: true, completion: nil)
   }
 
 }

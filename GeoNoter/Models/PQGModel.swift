@@ -44,18 +44,19 @@ class PQGModel: NSObject, PQGModelCacheable {
   func hydrate() -> Self {
     if !isHydrated {
       store.withDatabase { db in
-        let result = db.executeQuery("SELECT * FROM \(self.tableName()) WHERE id = ?", NSNumber(longLong: self.primaryKey))
-        let next = result.next()
-        assert(next == true, "Attempt to hydate a model that does not exist in the database")
-        self.hydrateRequired(result)
-        result.close()
+        if let result = db.executeQuery("SELECT * FROM \(self.tableName()) WHERE id = ?", NSNumber(value: self.primaryKey)) {
+            let next = result.next()
+            assert(next == true, "Attempt to hydate a model that does not exist in the database")
+            self.hydrateRequired(result)
+            result.close()            
+        }
       }
       isHydrated = true
     }
     return self
   }
   
-  func hydrateRequired(row: FMResultSet) {
+  func hydrateRequired(_ row: FMResultSet) {
     NSLog("hydrateRequired not implemeneted in \(self)")
     fatalError("hydrateRequired not implemented in PQGModel subclass")
   }
@@ -82,12 +83,12 @@ class PQGModel: NSObject, PQGModelCacheable {
     }
   }
   
-  func saveForNew(db: FMDatabase) {
+  func saveForNew(_ db: FMDatabase) {
     NSLog("saveForNew not implemeneted in \(self)")
     fatalError("saveForNew not implemented in PQGModel subclass")
   }
   
-  func saveForUpdate(db: FMDatabase) {
+  func saveForUpdate(_ db: FMDatabase) {
     NSLog("saveForUpdate not implemeneted in \(self)")
     fatalError("saveForUpdate not implemented in PQGModel subclass")
   }
@@ -104,7 +105,7 @@ class PQGModel: NSObject, PQGModelCacheable {
   func destroy() {
     willDestroy()
     store.withDatabase { db in
-      db.executeUpdate("DELETE FROM \(self.tableName()) WHERE id = ?", NSNumber(longLong: self.primaryKey))
+      db.executeUpdate("DELETE FROM \(self.tableName()) WHERE id = ?", NSNumber(value: self.primaryKey))
       return
     }
     wasDestroyed()
@@ -120,16 +121,16 @@ class PQGModel: NSObject, PQGModelCacheable {
   
   //MARK: - Helpers
   
-  func numberWithInt64(number: Int64?) -> NSNumber? {
+  func numberWithInt64(_ number: Int64?) -> NSNumber? {
     if let realValue = number {
-      return NSNumber(longLong: realValue)
+      return NSNumber(value: realValue)
     }
     return nil
   }
   
-  func numberWithDouble(number: Double?) -> NSNumber? {
+  func numberWithDouble(_ number: Double?) -> NSNumber? {
     if let realValue = number {
-      return NSNumber(double: realValue)
+      return NSNumber(value: realValue)
     }
     return nil
   }

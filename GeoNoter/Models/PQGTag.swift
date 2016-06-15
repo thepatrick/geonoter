@@ -35,21 +35,21 @@ final class PQGTag: PQGModel {
     _name = nil
   }
   
-  override func hydrateRequired(row: FMResultSet) {
-    _name = row.stringForColumn("name")
+  override func hydrateRequired(_ row: FMResultSet) {
+    _name = row.string(forColumn: "name")
   }
   
-  override func saveForNew(db: FMDatabase) {
+  override func saveForNew(_ db: FMDatabase) {
     db.executeUpdate("INSERT INTO \(tableName()) (id, name) VALUES (?, ?)",
-      NSNumber(longLong: self.primaryKey),
+      NSNumber(value: self.primaryKey),
       name ?? NSNull()
     )
   }
   
-  override func saveForUpdate(db: FMDatabase) {
+  override func saveForUpdate(_ db: FMDatabase) {
     db.executeUpdate("UPDATE \(tableName()) SET name = ? WHERE id = ?",
       name ?? NSNull(),
-      NSNumber(longLong: self.primaryKey)
+      NSNumber(value: self.primaryKey)
     )
   }
   
@@ -59,7 +59,7 @@ final class PQGTag: PQGModel {
   
   override func willDestroy() {
     store.withDatabase { db in
-      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", NSNumber(longLong: self.primaryKey))
+      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", NSNumber(value: self.primaryKey))
       return
     }
   }

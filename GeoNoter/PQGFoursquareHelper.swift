@@ -10,23 +10,23 @@
 import UIKit
 import CoreLocation
 
-func PQGFoursquareHelperMakeError(code: Int, description: String) -> NSError {
+func PQGFoursquareHelperMakeError(_ code: Int, description: String) -> NSError {
     return NSError(domain: "PQGFoursquareHelper", code: code, userInfo: [NSLocalizedDescriptionKey: description])
 }
 
 class PQGFoursquareHelper : NSObject {
     
-    var currentSearchOperation : NSOperation?
+    var currentSearchOperation : Operation?
     var venues : [NSDictionary] = []
     var isLoading = false
     
-    func venuesForCoordinates(coordinates: CLLocationCoordinate2D, completion: ([NSDictionary]?, NSError?)->()) {
+    func venuesForCoordinates(_ coordinates: CLLocationCoordinate2D, completion: ([NSDictionary]?, NSError?)->()) {
         if let operation = currentSearchOperation {
             operation.cancel()
             currentSearchOperation = nil
         }
         isLoading = true
-        let operation = Foursquare2.venueSearchNearByLatitude(coordinates.latitude, longitude: coordinates.longitude, query: nil, limit: 10, intent: .intentCheckin, radius: nil, categoryId: nil) { (success, variableResult) -> Void in
+        let operation = Foursquare2.venueSearchNear(byLatitude: coordinates.latitude, longitude: coordinates.longitude, query: nil, limit: 10, intent: FoursquareIntentType(), radius: nil, categoryId: nil) { (success, variableResult) -> Void in
             self.isLoading = false
             if success {
                 //        NSLog("Search worked :) \(variableResult)")

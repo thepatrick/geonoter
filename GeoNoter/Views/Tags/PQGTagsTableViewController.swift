@@ -19,7 +19,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
     self.navigationItem.rightBarButtonItem = self.editButtonItem()
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     reloadData()
   }
   
@@ -35,7 +35,7 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   }
   
   var store : PQGPersistStore {
-    let appDelegate = UIApplication.sharedApplication().delegate as! PQGAppDelegate
+    let appDelegate = UIApplication.shared().delegate as! PQGAppDelegate
     return appDelegate.store
   }
   
@@ -45,51 +45,51 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   // #pragma mark - Table view delegate
   
-  override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-    return .Delete
+  override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    return .delete
   }
   
   // #pragma mark - Table view data source
   
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tags.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell", for: indexPath) as UITableViewCell
     
-    cell.textLabel!.text = tags[indexPath.row].hydrate().name
-    cell.accessoryType = .DisclosureIndicator;
+    cell.textLabel!.text = tags[(indexPath as NSIndexPath).row].hydrate().name
+    cell.accessoryType = .disclosureIndicator;
     
     return cell
   }
   
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
       // Delete the row from the data source
-      let tag = self.tags[indexPath.row]
+      let tag = self.tags[(indexPath as NSIndexPath).row]
       tag.destroy()
       fetchData()
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
   
   
-  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
     return "Tags"
   }
   
   // #pragma mark - Navigation
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+  override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "pushToTagPoints" {
       let vc = segue.destinationViewController as! PQGPointsViewController
-      let tag = self.tags[tableView.indexPathForSelectedRow!.row]
+      let tag = self.tags[(tableView.indexPathForSelectedRow! as NSIndexPath).row]
       vc.datasourceFetchAll = {
         return tag.points
       }
@@ -103,18 +103,18 @@ class PQGTagsTableViewController: UITableViewController, UITextFieldDelegate {
   
   //  #pragma mark - Add Text Field Delegates
   
-  func textFieldDidBeginEditing(textField: UITextField) {
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelAddTagNow:")
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: "cancelAddTagNow:")
   }
   
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     PQGTag(name: newTagName.text!, store: store).save()
     reloadData()
     cancelAddTagNow(textField)
     return true
   }
   
-  func cancelAddTagNow(sender: AnyObject!) {
+  func cancelAddTagNow(_ sender: AnyObject!) {
     self.navigationItem.rightBarButtonItem = self.editButtonItem()
     newTagName.text = ""
     newTagName.resignFirstResponder()

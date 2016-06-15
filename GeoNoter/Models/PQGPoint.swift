@@ -23,7 +23,7 @@ final class PQGPoint: PQGModel {
   private var _friendlyName: String?
   private var _name:         String?
   private var _memo:         String?
-  private var _recordedAt:   NSDate?
+  private var _recordedAt:   Date?
   private var _latitude:     CLLocationDegrees?
   private var _longitude:    CLLocationDegrees?
   private var _foursquareId: String?
@@ -57,7 +57,7 @@ final class PQGPoint: PQGModel {
     }
   }
   
-  var recordedAt : NSDate? {
+  var recordedAt : Date? {
     get {
       return hydrate()._recordedAt
     }
@@ -116,7 +116,7 @@ final class PQGPoint: PQGModel {
   var serializedForWatch: [NSString: AnyObject] {
     get {
       hydrate()
-      let id = NSNumber(longLong: primaryKey)
+      let id = NSNumber(value: primaryKey)
       
       var serialized = [
         "id": id,
@@ -148,25 +148,25 @@ final class PQGPoint: PQGModel {
     _foursquareId = nil
   }
   
-  override func hydrateRequired(row: FMResultSet) {
-    _friendlyName = row.stringForColumn("friendly_name")
-    _name         = row.stringForColumn("name")
-    _memo         = row.stringForColumn("memo")
-    _recordedAt   = row.dateForColumn("recorded_at")
-    _latitude     = row.doubleForColumn("latitude")
-    _longitude    = row.doubleForColumn("longitude")
-    _foursquareId = row.stringForColumn("foursqure_venue_id")
+  override func hydrateRequired(_ row: FMResultSet) {
+    _friendlyName = row.string(forColumn: "friendly_name")
+    _name         = row.string(forColumn: "name")
+    _memo         = row.string(forColumn: "memo")
+    _recordedAt   = row.date(forColumn: "recorded_at")
+    _latitude     = row.double(forColumn: "latitude")
+    _longitude    = row.double(forColumn: "longitude")
+    _foursquareId = row.string(forColumn: "foursqure_venue_id")
   }
   
-  override func saveForNew(db: FMDatabase) {
+  override func saveForNew(_ db: FMDatabase) {
     if recordedAt == nil {
-      recordedAt = NSDate()
+      recordedAt = Date()
     }
     let lat = numberWithDouble(latitude) ?? NSNull()
     let lon = numberWithDouble(longitude) ?? NSNull()    
     NSLog("saveForNew recordedAt \(recordedAt)")
     db.executeUpdate("INSERT INTO \(tableName())  (id, friendly_name, name, memo, recorded_at, latitude, longitude, foursqure_venue_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-      NSNumber(longLong: primaryKey),
+      NSNumber(value: primaryKey),
       friendlyName ?? NSNull(),
       name ?? NSNull(),
       memo ?? NSNull(),
@@ -177,7 +177,7 @@ final class PQGPoint: PQGModel {
     )
   }
   
-  override func saveForUpdate(db: FMDatabase)  {
+  override func saveForUpdate(_ db: FMDatabase)  {
     let lat = numberWithDouble(latitude) ?? NSNull()
     let lon = numberWithDouble(longitude) ?? NSNull()
     db.executeUpdate("UPDATE \(tableName()) SET friendly_name = ?, name = ?, memo = ?, " +
@@ -189,14 +189,14 @@ final class PQGPoint: PQGModel {
       lat,
       lon,
       foursquareId ?? NSNull(),
-      NSNumber(longLong: primaryKey)
+      NSNumber(value: primaryKey)
     )
   }
   
   override func wasDestroyed() {
     store.points.removeCachedObject(primaryKey)
     store.withDatabase { db in
-      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", NSNumber(longLong: self.primaryKey))
+      db.executeUpdate("DELETE FROM point_tag WHERE tag_id = ?", NSNumber(value: self.primaryKey))
 
       return
     }
@@ -221,21 +221,21 @@ final class PQGPoint: PQGModel {
   }
   }
   
-  func addTag(tag: PQGTag) {
+  func addTag(_ tag: PQGTag) {
     store.withDatabase { db in
       db.executeUpdate("INSERT INTO point_tag (point_id, tag_id) VALUES (?, ?)",
-        NSNumber(longLong: self.primaryKey),
-        NSNumber(longLong: tag.primaryKey)
+        NSNumber(value: self.primaryKey),
+        NSNumber(value: tag.primaryKey)
       )
       return
     }
   }
   
-  func removeTag(tag: PQGTag) {
+  func removeTag(_ tag: PQGTag) {
     store.withDatabase { db in
       db.executeUpdate("DELETE FROM point_tag WHERE point_id = ? AND tag_id = ?",
-        NSNumber(longLong: self.primaryKey),
-        NSNumber(longLong: tag.primaryKey)
+        NSNumber(value: self.primaryKey),
+        NSNumber(value: tag.primaryKey)
       )
       return
     }
@@ -244,7 +244,7 @@ final class PQGPoint: PQGModel {
   private func removeAllTags() {
     store.withDatabase { db in
       db.executeUpdate("DELETE FROM point_tag WHERE point_id = ?",
-        NSNumber(longLong: self.primaryKey)
+        NSNumber(value: self.primaryKey)
       )
       return
     }
@@ -256,25 +256,25 @@ final class PQGPoint: PQGModel {
     return store.attachments.find.with("point_id = \(primaryKey)").all
   }
   
-  func addAttachment(data: NSData, withExtension: String) -> PQGAttachment {
-    let fileName : String! = NSString.stringWithUUID().stringByAppendingPathExtension(withExtension)
+  func addAttachment(_ data: Data, withExtension fileExtension: String) -> PQGAttachment {
+    let fileName = UUID().uuidString.appendingFormat(".%@", fileExtension)
     
-    let actualFile = PQGPersistStore.attachmentsDirectory().URLByAppendingPathComponent(fileName)
+    let actualFile = try! PQGPersistStore.attachmentsDirectory().appendingPathComponent(fileName)
     
-    data.writeToURL(actualFile, atomically: true)
+    try? data.write(to: actualFile, options: [.dataWritingAtomic])
     
     let attachment = PQGAttachment(store: store)
     attachment.fileName = fileName
-    attachment.kind = withExtension
+    attachment.kind = fileExtension
     attachment.point = self
     
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.dateStyle = .MediumStyle
-    dateFormatter.timeStyle = .MediumStyle
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .mediumStyle
+    dateFormatter.timeStyle = .mediumStyle
     
-    let today = NSDate()
+    let today = Date()
     
-    attachment.friendlyName = "Picture - \(dateFormatter.stringFromDate(today))"
+    attachment.friendlyName = "Picture - \(dateFormatter.string(from: today))"
     attachment.memo = "No memo"
     attachment.recordedAt = today
     attachment.save()
@@ -284,23 +284,23 @@ final class PQGPoint: PQGModel {
   
   //MARK: - Point Helpers
   
-  func determineDefaultName(locationName: String?) {
-    let defaultName = NSUserDefaults.standardUserDefaults().stringForKey("LocationsDefaultName")
+  func determineDefaultName(_ locationName: String?) {
+    let defaultName = UserDefaults.standard().string(forKey: "LocationsDefaultName")
     if defaultName == "most-specific" && locationName != nil {
       name = locationName
     } else if defaultName == "coords" {
       name = "\(longitude) \(latitude)"
       NSLog("Use lat/long name... \(name)");
     } else {
-      let dateFormatter = NSDateFormatter()
-      dateFormatter.dateStyle = .MediumStyle
-      dateFormatter.timeStyle = .MediumStyle
-      name = dateFormatter.stringFromDate(NSDate())
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateStyle = .mediumStyle
+      dateFormatter.timeStyle = .mediumStyle
+      name = dateFormatter.string(from: Date())
       NSLog("Use date/time name... \(name)");
     }
   }
   
-  func setupFromFoursquareVenue(venue: NSDictionary) {
+  func setupFromFoursquareVenue(_ venue: NSDictionary) {
     
     if let name = venue["name"] as? String {
       self.name = name
@@ -343,7 +343,7 @@ final class PQGPoint: PQGModel {
     self.save()
   }
   
-  func setupAsNewItem(coordinate: CLLocationCoordinate2D, completionHandler: (NSError?)->()) {
+  func setupAsNewItem(_ coordinate: CLLocationCoordinate2D, completionHandler: (NSError?)->()) {
     NSLog("Long! \(coordinate.latitude)")
     NSLog("Lat! \(coordinate.longitude)")
     self.longitude = coordinate.longitude
@@ -352,7 +352,7 @@ final class PQGPoint: PQGModel {
     self.friendlyName = "Untitled"
     self.memo = "No memo"
     
-    if NSUserDefaults.standardUserDefaults().boolForKey("LocationsUseGeocoder") {
+    if UserDefaults.standard().bool(forKey: "LocationsUseGeocoder") {
       NSLog("Geocoder time")
       self.geocode { error in
         self.save()
@@ -368,10 +368,10 @@ final class PQGPoint: PQGModel {
   
   var bgTask : UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
   
-  private func geocode(completionHandler: (NSError?)->()) {
-    bgTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler {
+  private func geocode(_ completionHandler: (NSError?)->()) {
+    bgTask = UIApplication.shared().beginBackgroundTask {
       if self.bgTask != UIBackgroundTaskInvalid {
-        UIApplication.sharedApplication().endBackgroundTask(self.bgTask)
+        UIApplication.shared().endBackgroundTask(self.bgTask)
         self.bgTask = UIBackgroundTaskInvalid
       }
     }
@@ -380,7 +380,7 @@ final class PQGPoint: PQGModel {
     NSLog("Geocoding \(location)")
     
     LocationHelper.sharedHelper().geocode(location) { placemarks, error in
-      UIApplication.sharedApplication().endBackgroundTask(self.bgTask)
+      UIApplication.shared().endBackgroundTask(self.bgTask)
       self.bgTask = UIBackgroundTaskInvalid
       if error != nil || placemarks!.count == 0 {
         self.friendlyName = "Geocoder Unavailable"
@@ -392,10 +392,10 @@ final class PQGPoint: PQGModel {
     
   }
   
-  private func reverseGeocoderDidFindPlacemark(placemark: CLPlacemark) {
+  private func reverseGeocoderDidFindPlacemark(_ placemark: CLPlacemark) {
     var simpleName = ""
    
-     func setIf(x: String?) -> Bool {
+     func setIf(_ x: String?) -> Bool {
       if let unwrapped = x {
         if unwrapped != "" {
           simpleName = unwrapped
@@ -416,13 +416,13 @@ final class PQGPoint: PQGModel {
       }
     }
 
-    if placemark.areasOfInterest != nil && placemark.areasOfInterest.count == 1 {
-      setIf(placemark.areasOfInterest[0])
+    if placemark.areasOfInterest != nil && placemark.areasOfInterest?.count == 1 {
+      setIf(placemark.areasOfInterest?[0])
     }
 
     determineDefaultName(simpleName)
 
-    friendlyName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, true)
+    friendlyName = ABCreateStringWithAddressDictionary(placemark.addressDictionary!, true)
 
   }
   

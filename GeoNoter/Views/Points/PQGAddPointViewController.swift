@@ -17,7 +17,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    mapView.setUserTrackingMode(.Follow, animated: true)
+    mapView.setUserTrackingMode(.follow, animated: true)
   }
 
   override func didReceiveMemoryWarning() {
@@ -26,7 +26,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
   }
 
   // MARK: - Navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+  override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == "embeddable" {
       if let tableViewController = segue.destinationViewController as? PQGAddPointTableViewController {
         self.tableViewController = tableViewController
@@ -37,43 +37,43 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
     }
   }
   
-  @IBAction func addPointFromMap(sender: AnyObject) {
-    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
+  @IBAction func addPointFromMap(_ sender: AnyObject) {
+    let del = UIApplication.shared().delegate as! PQGAppDelegate
   
     let point = PQGPoint(store: del.store)
     
-    let coordinates = mapView.userTrackingMode == .Follow ? mapView.userLocation.coordinate : mapView.centerCoordinate
+    let coordinates = mapView.userTrackingMode == .follow ? mapView.userLocation.coordinate : mapView.centerCoordinate
     
     point.setupAsNewItem(coordinates) { error in
-      self.navigationController?.popViewControllerAnimated(true)
+      self.navigationController?.popViewController(animated: true)
       return
     }
   }
   
-  func addPointFromFoursquare(venue: NSDictionary) {
-    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
+  func addPointFromFoursquare(_ venue: NSDictionary) {
+    let del = UIApplication.shared().delegate as! PQGAppDelegate
     
     let point = PQGPoint(store: del.store)
     
     point.setupFromFoursquareVenue(venue)
     
-    self.navigationController?.popViewControllerAnimated(true)
+    self.navigationController?.popViewController(animated: true)
   }
 
   // MARK: - MapView Delegate
-  func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
+  func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
     switch mode {
-    case .Follow:
+    case .follow:
       NSLog("mapView didChangeUserTrackingMode to Follow")
-    case .FollowWithHeading:
+    case .followWithHeading:
       NSLog("mapView didChangeUserTrackingMode to FollowWithHeading")
-    case .None:
+    case .none:
       NSLog("mapView didChangeUserTrackingMode to None")
     }
   }
   
-  func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-    if mapView.userTrackingMode == .Follow {
+  func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+    if mapView.userTrackingMode == .follow {
       NSLog("mapView:didUpdateUserLocation: lat \(userLocation.coordinate.latitude) long \(mapView.centerCoordinate.longitude)")
       setCoordinates(userLocation.coordinate)
     } else {
@@ -81,8 +81,8 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
     }
   }
   
-  func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-    if mapView.userTrackingMode == .None {
+  func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    if mapView.userTrackingMode == .none {
       NSLog("FourSquare results should show lat \(mapView.centerCoordinate.latitude) long \(mapView.centerCoordinate.longitude)")
       setCoordinates(mapView.centerCoordinate)
     } else {
@@ -90,7 +90,7 @@ class PQGAddPointViewController: UIViewController, MKMapViewDelegate {
     }
   }
   
-  func setCoordinates(location: CLLocationCoordinate2D) {
+  func setCoordinates(_ location: CLLocationCoordinate2D) {
     mapView.removeAnnotations(mapView.annotations)
     mapView.addAnnotation(PQGLocation(coordinate: location, title: "Point to add"))
     tableViewController.setCoordinates(location)

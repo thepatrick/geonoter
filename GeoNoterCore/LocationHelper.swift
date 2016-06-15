@@ -10,18 +10,18 @@ import UIKit
 import CoreLocation
 
 public enum LocationHelperError: Int {
-  case DeviceDisabled = 1
-  case NotDetermined, Restricted, Denied
+  case deviceDisabled = 1
+  case notDetermined, restricted, denied
   
   func description() -> String {
     switch self {
-    case .DeviceDisabled:
+    case .deviceDisabled:
       return "User has disabled location on this device."
-    case .NotDetermined:
+    case .notDetermined:
       return "User has not yet approved us for location sharing on this device."
-    case .Restricted:
+    case .restricted:
       return "Access to location has been restricted on this device."
-    case .Denied:
+    case .denied:
       return "User has denied access to location to this application."
     }
   }
@@ -33,7 +33,7 @@ public enum LocationHelperError: Int {
 }
 
 
-public class LocationHelper: NSObject, CLLocationManagerDelegate {
+@objc public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
   public class func sharedHelper() -> LocationHelper {
     return GlobalLocationHelperSharedInstance
@@ -44,7 +44,7 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
   public func requestIfNotYetDone() -> NSError? {
     if let error = errorIfDisabled() {
-      if error == .NotDetermined {
+      if error == .notDetermined {
         locationManager.requestWhenInUseAuthorization()
       } else {
         return error.error()
@@ -63,23 +63,23 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
   public func errorIfDisabled() -> LocationHelperError? {
     if !deviceEnabled() {
-      return .DeviceDisabled
+      return .deviceDisabled
     }
     switch self.status() {
-    case .NotDetermined:
-      return .NotDetermined
-    case .Restricted:
-      return .Restricted
-    case .Denied:
-      return .Denied
-    case .AuthorizedAlways, .AuthorizedWhenInUse:
+    case .notDetermined:
+      return .notDetermined
+    case .restricted:
+      return .restricted
+    case .denied:
+      return .denied
+    case .authorizedAlways, .authorizedWhenInUse:
       return nil;
     }
   }
   
-  public func location(completionHandler: (location: CLLocation?, error: NSError?) -> ()) {
+  public func location(_ completionHandler: (location: CLLocation?, error: NSError?) -> ()) {
     if let error = errorIfDisabled() {
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         NSLog("We can't get location right now: %@", error.description())
         completionHandler(location: nil, error: error.error())
       }
@@ -103,7 +103,7 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
   
   // mark - CoreLocation Interface
   
-  public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+  public func locationManager(_ manager: CLLocationManager, didUpdate locations: [CLLocation]) {
     let newLocation = locations[0]
     if abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0 {
       NSLog("didUpdateLocations // Received new location info");
@@ -117,7 +117,7 @@ public class LocationHelper: NSObject, CLLocationManagerDelegate {
     }
   }
   
-  public func geocode(location : CLLocation, completionHandler: (([CLPlacemark]?, NSError?)->())!) {
+  public func geocode(_ location : CLLocation, completionHandler: (([CLPlacemark]?, NSError?)->())!) {
     let geo = CLGeocoder()
     geo.reverseGeocodeLocation(location) {
       places, error in

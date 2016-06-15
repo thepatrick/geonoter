@@ -20,7 +20,7 @@ class PQGPointAddTagsTableViewController: UITableViewController {
     point.store.tellCacheToDehydrate()
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     reloadData()
   }
@@ -29,7 +29,7 @@ class PQGPointAddTagsTableViewController: UITableViewController {
     
     self.tags = point.store.tags.all
     
-    chosenTags.removeAll(keepCapacity: false)
+    chosenTags.removeAll(keepingCapacity: false)
     
     for tag in point.tags {
       chosenTags[tag.primaryKey] = tag
@@ -39,38 +39,38 @@ class PQGPointAddTagsTableViewController: UITableViewController {
   
   // #pragma mark - Table view data source
 
-  override func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
+  override func numberOfSections(in tableView: UITableView?) -> Int {
     return 1
   }
 
-  override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
     return tags.count
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as UITableViewCell
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell", for: indexPath) as UITableViewCell
     
-    let tag = tags[indexPath.row].hydrate()
+    let tag = tags[(indexPath as NSIndexPath).row].hydrate()
     
     cell.textLabel!.text = tag.name
     if chosenTags[tag.primaryKey] != nil {
-      cell.accessoryType = .Checkmark
+      cell.accessoryType = .checkmark
     } else {
-      cell.accessoryType = .None
+      cell.accessoryType = .none
     }
     
     return cell
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let tag = tags[indexPath.row].hydrate()
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let tag = tags[(indexPath as NSIndexPath).row].hydrate()
     if chosenTags[tag.primaryKey] != nil {
       point.removeTag(tag)
     } else {
       point.addTag(tag)
     }
     reloadData()
-    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+    tableView.reloadRows(at: [indexPath], with: .none)
   }
 
 }

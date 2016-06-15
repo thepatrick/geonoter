@@ -16,8 +16,8 @@ class AddFoursquareController: WKInterfaceController {
     @IBOutlet weak var loadingGroup: WKInterfaceGroup!
     @IBOutlet weak var loadingText: WKInterfaceLabel!
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
       
       
       loadingGroup.setHidden(false)
@@ -57,8 +57,8 @@ class AddFoursquareController: WKInterfaceController {
                 helper.stopUpdatingLocation()
                 
                 let x = [
-                    "lat": NSNumber(double: loc.coordinate.latitude),
-                    "lng": NSNumber(double: loc.coordinate.longitude)
+                    "lat": NSNumber(value: loc.coordinate.latitude),
+                    "lng": NSNumber(value: loc.coordinate.longitude)
                 ]
                 
                 self.loadingText.setText("Finding places")
@@ -81,11 +81,11 @@ class AddFoursquareController: WKInterfaceController {
         }
     }
     
-    func configureTableWithData(dataObjects: [[String: AnyObject]]) {
+    func configureTableWithData(_ dataObjects: [[String: AnyObject]]) {
         places = dataObjects
         placeTable.setNumberOfRows(dataObjects.count, withRowType: "foursquare-row")
-        for var i = 0; i < placeTable.numberOfRows; i++ {
-            let row = self.placeTable.rowControllerAtIndex(i) as! AddFoursquareRow
+        for i in 0 ..< placeTable.numberOfRows {
+            let row = self.placeTable.rowController(at: i) as! AddFoursquareRow
             if let name = dataObjects[i]["name"] as? String {
                 row.textLabel.setText(name)
             } else {
@@ -94,11 +94,11 @@ class AddFoursquareController: WKInterfaceController {
         }
     }
     
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         let context = AddFoursquareVenueContext(place: places[rowIndex], dismiss: { controller in
             self.popToRootController()
         })
-        self.pushControllerWithName("addFoursquareVenue", context: context)
+        self.pushController(withName: "addFoursquareVenue", context: context)
     }
     
 }

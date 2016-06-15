@@ -18,9 +18,9 @@ class PQGCreditsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
   
-  override func viewWillAppear(animated: Bool) {
-    let credits = NSBundle.mainBundle().URLForResource("Credits", withExtension: "html")
-    webView.loadRequest(NSURLRequest(URL: credits!))
+  override func viewWillAppear(_ animated: Bool) {
+    let credits = Bundle.main().urlForResource("Credits", withExtension: "html")
+    webView.loadRequest(URLRequest(url: credits!))
   }
 
   

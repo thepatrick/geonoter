@@ -21,7 +21,7 @@ final class PQGAttachment: PQGModel {
   private var _kind:         String?
   private var _memo:         String?
   private var _fileName:     String?
-  private var _recordedAt:   NSDate?
+  private var _recordedAt:   Date?
   
   //MARK: - Public properties
   
@@ -70,7 +70,7 @@ final class PQGAttachment: PQGModel {
   }
   }  
   
-  var recordedAt : NSDate? {
+  var recordedAt : Date? {
   get {
     return hydrate()._recordedAt
   }
@@ -88,16 +88,16 @@ final class PQGAttachment: PQGModel {
   }
   }
   
-  var filesystemURL : NSURL? {
+  var filesystemURL : URL? {
   if let fileName = self.fileName {
-    return PQGPersistStore.attachmentsDirectory().URLByAppendingPathComponent(fileName)
+    return try! PQGPersistStore.attachmentsDirectory().appendingPathComponent(fileName)
     }
     return nil
   }
   
-  var data : NSData? {
+  var data : Data? {
   if let fsURL = filesystemURL {
-    return NSData(contentsOfURL: fsURL)
+    return (try? Data(contentsOf: fsURL))
     }
     return nil
   }
@@ -113,19 +113,19 @@ final class PQGAttachment: PQGModel {
     _recordedAt = nil
   }
   
-  override func hydrateRequired(row: FMResultSet) {
-    _pointId      = row.longLongIntForColumn("point_id")
-    _friendlyName = row.stringForColumn("friendly_name")
-    _kind         = row.stringForColumn("kind")
-    _memo         = row.stringForColumn("memo")
-    _fileName     = row.stringForColumn("file_name")
-    _recordedAt   = row.dateForColumn("recorded_at")
+  override func hydrateRequired(_ row: FMResultSet) {
+    _pointId      = row.longLongInt(forColumn: "point_id")
+    _friendlyName = row.string(forColumn: "friendly_name")
+    _kind         = row.string(forColumn: "kind")
+    _memo         = row.string(forColumn: "memo")
+    _fileName     = row.string(forColumn: "file_name")
+    _recordedAt   = row.date(forColumn: "recorded_at")
   }
   
-  override func saveForNew(db: FMDatabase) {
+  override func saveForNew(_ db: FMDatabase) {
     db.executeUpdate("INSERT INTO \(tableName()) (id, point_id, friendly_name, kind, memo, file_name, recorded_at) " +
       "VALUES (?, ?, ?, ?, ?, ?, ?)",
-      NSNumber(longLong: self.primaryKey),
+      NSNumber(value: self.primaryKey),
       numberWithInt64(pointId),
       friendlyName ?? NSNull(),
       kind ?? NSNull(),
@@ -135,7 +135,7 @@ final class PQGAttachment: PQGModel {
     )
   }
   
-  override func saveForUpdate(db: FMDatabase)  {
+  override func saveForUpdate(_ db: FMDatabase)  {
     db.executeUpdate("UPDATE \(tableName()) SET point_id = ?, friendly_name = ?, kind = ?, " +
       "memo = ?, file_name = ?, recorded_at = ? WHERE id = ?",
       numberWithInt64(pointId),
@@ -144,7 +144,7 @@ final class PQGAttachment: PQGModel {
       memo ?? NSNull(),
       fileName ?? NSNull(),
       recordedAt ?? NSNull(),
-      NSNumber(longLong: primaryKey)
+      NSNumber(value: primaryKey)
     )
   }
   
@@ -152,11 +152,11 @@ final class PQGAttachment: PQGModel {
     store.attachments.removeCachedObject(primaryKey)
     if let fsURL = filesystemURL {
       do {
-        try NSFileManager.defaultManager().removeItemAtURL(fsURL)
+        try FileManager.default().removeItem(at: fsURL)
       } catch _ {
       }
       do {
-        try NSFileManager.defaultManager().removeItemAtURL(fsURL.URLByAppendingPathExtension("cached.jpg"))
+        try FileManager.default().removeItem(at: try! fsURL.appendingPathExtension("cached.jpg"))
       } catch _ {
       }
       //TODO: Remove all cached image for size variants
@@ -165,30 +165,30 @@ final class PQGAttachment: PQGModel {
   
   //MARK: - Attachment helpers
   
-  func createCacheDirIfMissing(cacheDirectory: NSURL) {
+  func createCacheDirIfMissing(_ cacheDirectory: URL) {
     let (exists, _) = PQGPersistStore.fileExists(cacheDirectory)
     if !exists {
       do {
-        try NSFileManager.defaultManager().createDirectoryAtPath(cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil)
+        try FileManager.default().createDirectory(atPath: cacheDirectory.path!, withIntermediateDirectories: true, attributes: nil)
       } catch {
         NSLog("Error trying to create directory! \(error)")
       }
     }
   }
   
-  func loadCachedImageForSize(largestSide: Int) -> UIImage? {
-    let cachedItemDirectory = PQGPersistStore.attachmentsCacheDirectory().URLByAppendingPathComponent(fileName!).URLByDeletingPathExtension
+  func loadCachedImageForSize(_ largestSide: Int) -> UIImage? {
+    let cachedItemDirectory = try! (PQGPersistStore.attachmentsCacheDirectory() as NSURL).appendingPathComponent(fileName!)?.deletingPathExtension()
     createCacheDirIfMissing(cachedItemDirectory!)
     
-    let cachedPath = cachedItemDirectory!.URLByAppendingPathComponent("\(largestSide).\(kind!)")
-    if NSFileManager.defaultManager().fileExistsAtPath(cachedPath.path!) {
+    let cachedPath = try! cachedItemDirectory!.appendingPathComponent("\(largestSide).\(kind!)")
+    if FileManager.default().fileExists(atPath: cachedPath.path!) {
       let cachedImage = UIImage(contentsOfFile: cachedPath.path!)
       return cachedImage
     }
     let original = UIImage(contentsOfFile: filesystemURL!.path!)
     let newCachedImage = original!.pqg_scaleAndRotateImage(largestSide)
-    let data = UIImageJPEGRepresentation(newCachedImage, 1.0)
-    let isWritten = data!.writeToURL(cachedPath, atomically: true)
+    let data = UIImageJPEGRepresentation(newCachedImage!, 1.0)
+    let isWritten = (try? data!.write(to: cachedPath, options: [.dataWritingAtomic])) != nil
     if !isWritten {
       NSLog("Could not write %@ to %@", fileName!, cachedPath)
     }

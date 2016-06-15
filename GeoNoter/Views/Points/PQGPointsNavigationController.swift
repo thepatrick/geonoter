@@ -15,7 +15,7 @@ class PQGPointsNavigationController: UINavigationController {
 
     if let homeView = self.topViewController as? PQGPointsViewController {
       homeView.datasourceFetchAll = {
-        let appDelegate = UIApplication.sharedApplication().delegate as! PQGAppDelegate
+        let appDelegate = UIApplication.shared().delegate as! PQGAppDelegate
         return appDelegate.store.points.all
       }
     } else {
@@ -23,7 +23,7 @@ class PQGPointsNavigationController: UINavigationController {
     }
   }
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+  override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
     NSLog("prepareForSegue: %@", segue);
   }
 

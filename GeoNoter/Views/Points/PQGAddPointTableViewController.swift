@@ -36,13 +36,13 @@ class PQGAddPointTableViewController: UITableViewController {
 
   // MARK: - Table view data source
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     // #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 2
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete method implementation.
     // Return the number of rows in the section.
     if section == 0 {
@@ -56,49 +56,49 @@ class PQGAddPointTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if indexPath.section == 0 {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if (indexPath as NSIndexPath).section == 0 {
       if isLoading {
-        let cell = tableView.dequeueReusableCellWithIdentifier("loadingCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath) as UITableViewCell
         return cell
       } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as UITableViewCell
         
-        if let name = venues[indexPath.row]["name"] as? String {
+        if let name = venues[(indexPath as NSIndexPath).row]["name"] as? String {
           cell.textLabel!.text = name
         } else {
-          cell.textLabel!.text = "Venue \(indexPath.row)"
+          cell.textLabel!.text = "Venue \((indexPath as NSIndexPath).row)"
         }
         
         return cell
       }
     } else {
-      let cell = tableView.dequeueReusableCellWithIdentifier("poweredByFoursquare", forIndexPath: indexPath) as UITableViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "poweredByFoursquare", for: indexPath) as UITableViewCell
       return cell
     }
   }
   
   // MARK: - Table view delegate
   
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let x = venues[indexPath.row]
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let x = venues[(indexPath as NSIndexPath).row]
     NSLog("didSelectRowAtIndexPath \(x)")
     didSelectVenue?(x)
   }
   
   // MARK: - FourSquare API
   
-  var currentSearchOperation : NSOperation?
+  var currentSearchOperation : Operation?
   var venues : [NSDictionary] = []
   
   
-  func setCoordinates(coordinates: CLLocationCoordinate2D) {
+  func setCoordinates(_ coordinates: CLLocationCoordinate2D) {
     if let operation = currentSearchOperation {
       operation.cancel()
       currentSearchOperation = nil
     }
     isLoading = true
-    let operation = Foursquare2.venueSearchNearByLatitude(coordinates.latitude, longitude: coordinates.longitude, query: nil, limit: 10, intent: .intentCheckin, radius: nil, categoryId: nil) { (success, variableResult) -> Void in
+    let operation = Foursquare2.venueSearchNear(byLatitude: coordinates.latitude, longitude: coordinates.longitude, query: nil, limit: 10, intent: FoursquareIntentType(), radius: nil, categoryId: nil) { (success, variableResult) -> Void in
       self.isLoading = false
       if success {
 //        NSLog("Search worked :) \(variableResult)")
@@ -124,8 +124,8 @@ class PQGAddPointTableViewController: UITableViewController {
         }
       } else {
         if let error = variableResult as? NSError {
-          let alert = UIAlertController(title: "Unable to search for locations", message: error.localizedDescription, preferredStyle: .Alert)
-          self.presentViewController(alert, animated: true, completion: nil)
+          let alert = UIAlertController(title: "Unable to search for locations", message: error.localizedDescription, preferredStyle: .alert)
+          self.present(alert, animated: true, completion: nil)
         }
       }
     }

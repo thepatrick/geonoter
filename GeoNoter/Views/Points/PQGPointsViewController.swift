@@ -27,12 +27,12 @@ class PQGPointsViewController: UITableViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     reloadData()
     startListening()
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     stopListening()
   }
   
@@ -44,50 +44,50 @@ class PQGPointsViewController: UITableViewController {
   }
     
   func startListening() {
-    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "addedPoint:", name: "addedPoint", object: del);
+    let del = UIApplication.shared().delegate as! PQGAppDelegate
+    NotificationCenter.default().addObserver(self, selector: "addedPoint:", name: "addedPoint", object: del);
   }
   
   func stopListening() {
-    let del = UIApplication.sharedApplication().delegate as! PQGAppDelegate
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: "addedPoint", object: del);
+    let del = UIApplication.shared().delegate as! PQGAppDelegate
+    NotificationCenter.default().removeObserver(self, name: "addedPoint" as NSNotification.Name, object: del);
   }
   
-  func addedPoint(notification: NSNotification) {
+  func addedPoint(_ notification: Notification) {
     reloadData();
   }
 
   //MARK: - Table view data source
 
-  override func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
+  override func numberOfSections(in tableView: UITableView?) -> Int {
     return 1
   }
 
-  override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
     return points.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("pointCell", forIndexPath: indexPath) as UITableViewCell
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "pointCell", for: indexPath) as UITableViewCell
     
-    let point = self.points[indexPath.row]
+    let point = self.points[(indexPath as NSIndexPath).row]
     
     cell.textLabel!.text = point.name
-    cell.accessoryType = .DisclosureIndicator
+    cell.accessoryType = .disclosureIndicator
     
     return cell
   }
 
   //MARK: - Navigation
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+  override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
     NSLog("prepare for segue %@", segue)
     if segue.identifier == "pushToPointDetail" {
       let pointsDetail = segue.destinationViewController as! PQGPointDetailViewController
       let cell = sender as! UITableViewCell
-      if let indexPath = tableView.indexPathForCell(cell) {
-        pointsDetail.point = points[indexPath.row]
-        NSLog("Set point to \(points[indexPath.row])")
+      if let indexPath = tableView.indexPath(for: cell) {
+        pointsDetail.point = points[(indexPath as NSIndexPath).row]
+        NSLog("Set point to \(points[(indexPath as NSIndexPath).row])")
       }
     }
   }
@@ -100,10 +100,10 @@ class PQGPointsViewController: UITableViewController {
     let loading = UIActivityIndicatorView(frame: frame)
     loading.startAnimating()
     loading.sizeToFit()
-    loading.autoresizingMask = ([UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
+    loading.autoresizingMask = ([UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
     )
     let loadingView = UIBarButtonItem(customView: loading)
-    loadingView.style = .Plain
+    loadingView.style = .plain
     loadingView.target = self
     navigationItem.rightBarButtonItem = loadingView
     return previousItem!

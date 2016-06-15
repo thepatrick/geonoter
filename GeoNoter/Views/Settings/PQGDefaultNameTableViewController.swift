@@ -18,34 +18,34 @@ class PQGDefaultNameTableViewController: UITableViewController {
 
   // #pragma mark - Table view data source
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
     }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return pickList.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("defaultNameCell", forIndexPath: indexPath) as UITableViewCell
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "defaultNameCell", for: indexPath) as UITableViewCell
 
-    let item = pickList[indexPath.row]
+    let item = pickList[(indexPath as NSIndexPath).row]
     
     cell.textLabel!.text = item.toString()
     
     if item == pickedDefualt {
-      cell.accessoryType = .Checkmark
+      cell.accessoryType = .checkmark
     } else {
-      cell.accessoryType = .None
+      cell.accessoryType = .none
     }
     
     return cell
   }
   
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)  {
-    let item = pickList[indexPath.row]
-    NSUserDefaults.standardUserDefaults().setValue(item.rawValue, forKey: "LocationsDefaultName")
-    navigationController?.popViewControllerAnimated(true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
+    let item = pickList[(indexPath as NSIndexPath).row]
+    UserDefaults.standard().setValue(item.rawValue, forKey: "LocationsDefaultName")
+    navigationController?.popViewController(animated: true)
   }
 
 }

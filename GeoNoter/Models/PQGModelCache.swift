@@ -32,11 +32,11 @@ class PQGModelCache<T: PQGModelCacheable> {
     self.defaultSort = defaultSort
   }
   
-  func cacheKey(primaryKey: Int64) -> NSNumber {
-    return NSNumber(longLong: primaryKey)
+  func cacheKey(_ primaryKey: Int64) -> NSNumber {
+    return NSNumber(value: primaryKey)
   }
   
-  func get(primaryKey: Int64) -> T {
+  func get(_ primaryKey: Int64) -> T {
     if let thing = cache[cacheKey(primaryKey)] {
       return thing
     }
@@ -45,8 +45,8 @@ class PQGModelCache<T: PQGModelCacheable> {
     return newItem
   }
   
-  func removeCachedObject(primaryKey: Int64) {
-    cache.removeValueForKey(cacheKey(primaryKey))
+  func removeCachedObject(_ primaryKey: Int64) {
+    cache.removeValue(forKey: cacheKey(primaryKey))
   }
   
   func save() {
@@ -93,18 +93,18 @@ class PQGModelQueryBuilder<T: PQGModelCacheable> {
   }
   
   
-  func with(query: String) -> Self {
+  func with(_ query: String) -> Self {
     self.conditions = query
     return self
   }
   
   
-  func orderBy(sort: String) -> Self {
+  func orderBy(_ sort: String) -> Self {
     self.sort = sort
     return self
   }
   
-  func limit(count: Int64) -> Self {
+  func limit(_ count: Int64) -> Self {
     self.limitCount = count
     return self
   }
@@ -115,9 +115,10 @@ class PQGModelQueryBuilder<T: PQGModelCacheable> {
       let whereClause = self.conditions != nil ? "WHERE \(self.conditions!)" : ""
       let limitClause = self.limitCount != nil ? "LIMIT \(self.limitCount!)" : ""
       let query = "SELECT id FROM \(self.cache.tableName) \(whereClause) ORDER BY \(self.sort) \(limitClause)"
-      let res = db.executeQuery(query)
-      while res.next() {
-        items.append(self.cache.get(res.longLongIntForColumn("id")))
+      if let res = db.executeQuery(query) {
+        while res.next() {
+          items.append(self.cache.get(res.longLongInt(forColumn: "id")))
+        }
       }
     }
     return items

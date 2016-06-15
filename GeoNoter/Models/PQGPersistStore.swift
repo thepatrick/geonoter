@@ -14,7 +14,7 @@ public extension FMDatabase {
 //    return executeUpdate(sql, withArgumentsInArray: [])
 //  }
   
-  func executeUpdate(sql:String, _ arguments: AnyObject?...) -> Bool {
+  func executeUpdate(_ sql:String, _ arguments: AnyObject?...) -> Bool {
     var args = [AnyObject]()
     for arg in arguments {
       if arg != nil {
@@ -23,10 +23,10 @@ public extension FMDatabase {
         args.append(NSNull())
       }
     }
-    return executeUpdate(sql, withArgumentsInArray:args)
+    return executeUpdate(sql, withArgumentsIn:args)
   }
   
-  func executeQuery(sql:String, _ arguments: AnyObject?...) -> FMResultSet! {
+  func executeQuery(_ sql:String, _ arguments: AnyObject?...) -> FMResultSet! {
     var args = [AnyObject]()
     for arg in arguments {
       if (arg != nil) {
@@ -35,7 +35,7 @@ public extension FMDatabase {
         args.append(NSNull())
       }
     }
-    return executeQuery(sql, withArgumentsInArray:args)
+    return executeQuery(sql, withArgumentsIn:args)
   }
 }
 
@@ -49,9 +49,9 @@ public extension FMDatabase {
   
   //MARK: - Helpers
   
-  class func fileExists(path: NSURL) -> (Bool, Bool) {
+  class func fileExists(_ path: URL) -> (Bool, Bool) {
     var isDirectory: ObjCBool = ObjCBool(true)
-    if NSFileManager.defaultManager().fileExistsAtPath(path.path!, isDirectory: &isDirectory) {
+    if FileManager.default().fileExists(atPath: path.path!, isDirectory: &isDirectory) {
       return (true, isDirectory.boolValue)
     } else {
       return (false, false)
@@ -59,18 +59,18 @@ public extension FMDatabase {
     
   }
 
-  class func URLForDocument(path: String) -> NSURL {
-    let pathURL = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-    return pathURL.URLByAppendingPathComponent(path)
+  class func URLForDocument(_ path: String) -> URL {
+    let pathURL = try! FileManager.default().urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    return try! pathURL.appendingPathComponent(path)
   }
   
-  class func attachmentsDirectory() -> NSURL {
+  class func attachmentsDirectory() -> URL {
     let dir = URLForDocument("Attachments")
     let (exists, _) = fileExists(dir)
     if !exists {
       let success: Bool
       do {
-        try NSFileManager.defaultManager().createDirectoryAtPath(dir.path!, withIntermediateDirectories: true, attributes: nil)
+        try FileManager.default().createDirectory(atPath: dir.path!, withIntermediateDirectories: true, attributes: nil)
         success = true
       } catch _ {
         success = false
@@ -80,21 +80,21 @@ public extension FMDatabase {
     return dir
   }
   
-  private class func URLForCacheResource(path: String) -> NSURL {
-    let pathURL = try! NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-    return pathURL.URLByAppendingPathComponent(path)
+  private class func URLForCacheResource(_ path: String) -> URL {
+    let pathURL = try! FileManager.default().urlForDirectory(.cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    return try! pathURL.appendingPathComponent(path)
   }
   
-  class func attachmentsCacheDirectory() -> NSURL {
+  class func attachmentsCacheDirectory() -> URL {
     let dir = URLForCacheResource("Attachments")
     let (exists, _) = fileExists(dir)
     if !exists {
-      try! NSFileManager.defaultManager().createDirectoryAtPath(dir.path!, withIntermediateDirectories: true, attributes: nil)
+      try! FileManager.default().createDirectory(atPath: dir.path!, withIntermediateDirectories: true, attributes: nil)
     }
     return dir
   }
   
-  @objc class func withFile(file: NSURL) -> PQGPersistStore {
+  @objc class func withFile(_ file: URL) -> PQGPersistStore {
     return PQGPersistStore(file: file)
   }
   
@@ -107,12 +107,12 @@ public extension FMDatabase {
     points = PQGModelCache<PQGPoint>(store: self, defaultSort: "name ASC")
   }
   
-  convenience init(file: NSURL) {
+  convenience init(file: URL) {
     self.init()
     openDatabase(file)
   }
   
-  func openDatabase(fileName: NSURL) -> Bool {
+  func openDatabase(_ fileName: URL) -> Bool {
     let (exists, _) = self.dynamicType.fileExists(fileName)
     
     self.queue = FMDatabaseQueue(path: fileName.path)
@@ -133,10 +133,10 @@ public extension FMDatabase {
     
     withDatabase { db in
       let res = db.executeQuery("SELECT version FROM sync_status_and_version;")
-      if res.next() {
-        version = res.longForColumn("version")
+      if ((res?.next()) != nil) {
+        version = (res?.long(forColumn: "version"))!
       }
-      res.close()
+      res?.close()
     }
     
     NSLog("The version: \(version)")
@@ -150,14 +150,14 @@ public extension FMDatabase {
     queue = nil
   }
   
-  func withDatabase(block: (FMDatabase!)->()) {
+  func withDatabase(_ block: (FMDatabase!)->()) {
     assert(queue != nil, "withDatabase called with no database available")
-    queue?.inDatabase(block)
+    queue?.inDatabase { block($0!) }
   }
   
   //MARK: - Migrations
   
-  func migrateFrom(version: Int) {
+  func migrateFrom(_ version: Int) {
     
     withDatabase { db in
 
@@ -244,20 +244,20 @@ public extension FMDatabase {
   @objc func allTagsForWatch() -> [[NSObject: AnyObject]] {
     return tags.all.map { tag in
       tag.hydrate()
-      let id = NSNumber(longLong: tag.primaryKey)
+      let id = NSNumber(value: tag.primaryKey)
       return [ "id": id, "name": tag.name ?? "(Tag has no name)" ]
     }
   }
   
-  @objc func allPointsInTagForWatch(tagId: Int64) -> [[NSObject: AnyObject]] {
+  @objc func allPointsInTagForWatch(_ tagId: Int64) -> [[NSObject: AnyObject]] {
     return self.tags.get(tagId).points.map { $0.serializedForWatch }
   }
   
-  @objc func recentPointsForWatch(limit: Int64) -> [[NSObject: AnyObject]] {
+  @objc func recentPointsForWatch(_ limit: Int64) -> [[NSObject: AnyObject]] {
     return points.find.orderBy("recorded_at DESC").limit(limit).all.map { $0.serializedForWatch }
   }
   
-  @objc func setMemoForWatch(primaryKey: Int64, memo: String) {
+  @objc func setMemoForWatch(_ primaryKey: Int64, memo: String) {
     let point = points.get(primaryKey)
     point.hydrate()
     point.memo = memo

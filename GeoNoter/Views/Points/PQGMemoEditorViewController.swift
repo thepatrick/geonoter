@@ -22,7 +22,7 @@ class PQGMemoEditorViewController: UIViewController, UITextViewDelegate {
     // Do any additional setup after loading the view.
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
 //    let center = NSNotificationCenter.defaultCenter()
@@ -34,7 +34,7 @@ class PQGMemoEditorViewController: UIViewController, UITextViewDelegate {
   
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
   }
 
@@ -43,16 +43,16 @@ class PQGMemoEditorViewController: UIViewController, UITextViewDelegate {
     // Dispose of any resources that can be recreated.
   }
   
-  func textViewDidBeginEditing(textView: UITextView) {
+  func textViewDidBeginEditing(_ textView: UITextView) {
     NSLog("textField did begin editing, boo!")
   }
   
-  func textViewDidChange(textView: UITextView) {
+  func textViewDidChange(_ textView: UITextView) {
     NSLog("textField did change")
     point.memo = textView.text
   }
   
-  func textViewDidEndEditing(textView: UITextView) {
+  func textViewDidEndEditing(_ textView: UITextView) {
     NSLog("textViewDidEndEditing")
     point.save()
   }

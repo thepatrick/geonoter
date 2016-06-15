@@ -25,8 +25,8 @@ class RecentPointsController: WKInterfaceController {
   @IBOutlet weak var loadingGroup: WKInterfaceGroup!
   @IBOutlet weak var loadingText: WKInterfaceLabel!
   
-  override func awakeWithContext(context: AnyObject?) {
-    super.awakeWithContext(context)
+  override func awake(withContext context: AnyObject?) {
+    super.awake(withContext: context)
     
     loadingGroup.setHidden(false)
     loadingText.setText("Finding places")
@@ -69,11 +69,11 @@ class RecentPointsController: WKInterfaceController {
     
   }
   
-  func configureTableWithData(dataObjects: [[String: AnyObject]]) {
+  func configureTableWithData(_ dataObjects: [[String: AnyObject]]) {
     points = dataObjects
     pointTable.setNumberOfRows(dataObjects.count, withRowType: "tagRow")
-    for var i = 0; i < pointTable.numberOfRows; i++ {
-      let row = pointTable.rowControllerAtIndex(i) as! AddFoursquareRow
+    for i in 0 ..< pointTable.numberOfRows {
+      let row = pointTable.rowController(at: i) as! AddFoursquareRow
       
       if let name = dataObjects[i]["name"] as? String {
         row.textLabel.setText(name)
@@ -83,9 +83,9 @@ class RecentPointsController: WKInterfaceController {
     }
   }
   
-  override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+  override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
     let context = WatchPoint(point: points[rowIndex])
-    self.pushControllerWithName("viewPoint", context: context)
+    self.pushController(withName: "viewPoint", context: context)
   }
   
 }
