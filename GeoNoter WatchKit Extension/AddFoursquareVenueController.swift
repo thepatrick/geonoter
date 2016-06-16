@@ -74,13 +74,13 @@ class AddFoursquareVenueController: WKInterfaceController {
       
       NSLog("openDictionary %@", openDictionary)
       
-      WKInterfaceController.openParentApplication(openDictionary as [NSObject : AnyObject]) { (response, error) -> Void in
-            if let err = error {
-                NSLog("watchWants error %@", err)
-            } else {
-                self.context.dismiss(controller: self)
-            }
-        }
+//      WKInterfaceController.openParentApplication(openDictionary as [NSObject : AnyObject]) { (response, error) -> Void in
+//            if let err = error {
+//                NSLog("watchWants error %@", err)
+//            } else {
+//                self.context.dismiss(controller: self)
+//            }
+//        }
     }
     
     func coordinateFromLocation(_ location: [NSString: AnyObject]?) -> CLLocationCoordinate2D? {

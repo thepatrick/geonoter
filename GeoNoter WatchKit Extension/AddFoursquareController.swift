@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-import GeoNoterCore
+import GeoNoterCoreWatchOS
 
 class AddFoursquareController: WKInterfaceController {
 
@@ -63,20 +63,20 @@ class AddFoursquareController: WKInterfaceController {
                 
                 self.loadingText.setText("Finding places")
               
-                WKInterfaceController.openParentApplication([ "watchWants": "nearbyPlaces", "location": x ]) { (result, error) in
-                    if let err = error {
-                        self.loadingText.setText("Oh oh!")
-                        NSLog("watchWants error %@", err)
-                    } else if let places = result["nearbyPlaces"] as? [[String: AnyObject]] {
-                        self.loadingGroup.setHidden(true)
-                        self.placeTable.setHidden(false)
-                        self.configureTableWithData(places)
-                    } else {
-                        self.loadingText.setText("Oh oh!")
-                        NSLog("Something went wrong :( %@", result)
-                    }
-                }
-                
+//                WKInterfaceController.openParentApplication([ "watchWants": "nearbyPlaces", "location": x ]) { (result, error) in
+//                    if let err = error {
+//                        self.loadingText.setText("Oh oh!")
+//                        NSLog("watchWants error %@", err)
+//                    } else if let places = result["nearbyPlaces"] as? [[String: AnyObject]] {
+//                        self.loadingGroup.setHidden(true)
+//                        self.placeTable.setHidden(false)
+//                        self.configureTableWithData(places)
+//                    } else {
+//                        self.loadingText.setText("Oh oh!")
+//                        NSLog("Something went wrong :( %@", result)
+//                    }
+//                }
+              
             }
         }
     }

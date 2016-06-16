@@ -61,23 +61,23 @@ class TagPointsController: WKInterfaceController {
   var points : [[String: AnyObject]] = []
   
   func getPoints() {
-    let tagId = NSNumber(value: self.context.tagId)
-    WKInterfaceController.openParentApplication([ "watchWants": "tagPoints", "tagId": tagId ]) { (result, error) in
-      if let err = error {
-        self.loadingText.setText("Oh oh!")
-        NSLog("watchWants error %@", err)
-      } else if let points = result["points"] as? [[String: AnyObject]] {
-        self.loadingGroup.setHidden(true)
-        self.pointTable.setHidden(false)
-        self.configureTableWithData(points)
-      } else {
-        if let error = result["error"] as? String {
-          self.loadingText.setText(error)
-        } else {
-          self.loadingText.setText("Oh oh!")
-        }
-      }
-    }
+//    let tagId = NSNumber(value: self.context.tagId)
+//    WKInterfaceController.openParentApplication([ "watchWants": "tagPoints", "tagId": tagId ]) { (result, error) in
+//      if let err = error {
+//        self.loadingText.setText("Oh oh!")
+//        NSLog("watchWants error %@", err)
+//      } else if let points = result["points"] as? [[String: AnyObject]] {
+//        self.loadingGroup.setHidden(true)
+//        self.pointTable.setHidden(false)
+//        self.configureTableWithData(points)
+//      } else {
+//        if let error = result["error"] as? String {
+//          self.loadingText.setText(error)
+//        } else {
+//          self.loadingText.setText("Oh oh!")
+//        }
+//      }
+//    }
   }
   
   func configureTableWithData(_ dataObjects: [[String: AnyObject]]) {

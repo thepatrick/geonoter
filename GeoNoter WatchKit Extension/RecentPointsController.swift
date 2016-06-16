@@ -51,21 +51,21 @@ class RecentPointsController: WKInterfaceController {
   var points : [[String: AnyObject]] = []
   
   func getPoints() {
-    WKInterfaceController.openParentApplication([ "watchWants": "recent" ]) { (result, error) in
-      if let _ = error {
-        self.loadingText.setText("Oh oh!")
-      } else if let points = result["points"] as? [[String: AnyObject]] {
-        self.loadingGroup.setHidden(true)
-        self.pointTable.setHidden(false)
-        self.configureTableWithData(points)
-      } else {
-        if let error = result["error"] as? String {
-          self.loadingText.setText(error)
-        } else {
-          self.loadingText.setText("Oh oh!")
-        }
-      }
-    }
+//    WKInterfaceController.openParentApplication([ "watchWants": "recent" ]) { (result, error) in
+//      if let _ = error {
+//        self.loadingText.setText("Oh oh!")
+//      } else if let points = result["points"] as? [[String: AnyObject]] {
+//        self.loadingGroup.setHidden(true)
+//        self.pointTable.setHidden(false)
+//        self.configureTableWithData(points)
+//      } else {
+//        if let error = result["error"] as? String {
+//          self.loadingText.setText(error)
+//        } else {
+//          self.loadingText.setText("Oh oh!")
+//        }
+//      }
+//    }
     
   }
   

@@ -92,7 +92,8 @@ public enum LocationHelperError: Int {
       self.awaitingLocation = [completionHandler]
       locationManager.delegate = self
       locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      locationManager.startUpdatingLocation()
+//      locationManager.startUpdatingLocation()
+      // @TODO: startUpdatingLocation not available in watchOS
     }
   }
   
@@ -103,7 +104,7 @@ public enum LocationHelperError: Int {
   
   // mark - CoreLocation Interface
   
-  public func locationManager(_ manager: CLLocationManager, didUpdate locations: [CLLocation]) {
+  @objc(locationManager:didUpdateLocations:) public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     let newLocation = locations[0]
     if abs(newLocation.timestamp.timeIntervalSinceNow) < 5.0 {
       NSLog("didUpdateLocations // Received new location info");

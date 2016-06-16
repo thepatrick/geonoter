@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>GeoNoterCore-watchos.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>GeoNoterCore.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -38,6 +43,11 @@
 			<true/>
 		</dict>
 		<key>CD84A5011769F25400266526</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD8C37581D135CFB0088B355</key>
 		<dict>
 			<key>primary</key>
 			<true/>
