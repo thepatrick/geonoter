@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		46B37C6D3E4F4AB6B2F1DEF1 /* libPods-GeoNoter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */; };
 		94E98E8188294872A93EDB8B /* libPods-GeoNoterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */; };
+		CD1B8AE01D1351BE00476BB6 /* GeoNoter WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD9FFD311AC41DF500D916BA /* GeoNoter WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD1B8AE31D1351BE00476BB6 /* GeoNoter WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CD9FFD3B1AC41DF500D916BA /* GeoNoter WatchKit App.app */; };
 		CD3F275C19755536000091ED /* PQGImageSizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275B19755536000091ED /* PQGImageSizerTests.swift */; };
 		CD3F275E19755570000091ED /* PQGDateJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3F275D19755570000091ED /* PQGDateJSONTests.swift */; };
 		CD4353E1198B7CC0009DBCAE /* PQGAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */; };
@@ -65,10 +67,8 @@
 		CD9974631AC8D7C700547178 /* WatchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9974621AC8D7C700547178 /* WatchPoint.swift */; };
 		CD9FFD361AC41DF500D916BA /* InitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9FFD351AC41DF500D916BA /* InitialController.swift */; };
 		CD9FFD381AC41DF500D916BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD9FFD371AC41DF500D916BA /* Images.xcassets */; };
-		CD9FFD3C1AC41DF500D916BA /* GeoNoter WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = CD9FFD3B1AC41DF500D916BA /* GeoNoter WatchKit App.app */; };
 		CD9FFD441AC41DF500D916BA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9FFD421AC41DF500D916BA /* Interface.storyboard */; };
 		CD9FFD461AC41DF500D916BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD9FFD451AC41DF500D916BA /* Images.xcassets */; };
-		CD9FFD491AC41DF500D916BA /* GeoNoter WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD9FFD311AC41DF500D916BA /* GeoNoter WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CD9FFD541AC42ABF00D916BA /* AddFoursquareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9FFD531AC42ABF00D916BA /* AddFoursquareController.swift */; };
 		CD9FFD561AC42FD600D916BA /* AddFoursquareRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9FFD551AC42FD600D916BA /* AddFoursquareRow.swift */; };
 		CDA79559196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA79558196092ED00D0D34B /* PQGPointAddTagsTableViewController.swift */; };
@@ -92,6 +92,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CD1B8ADE1D1351BE00476BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD84A4D61769F25400266526 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD9FFD301AC41DF500D916BA;
+			remoteInfo = "GeoNoter WatchKit Extension";
+		};
+		CD1B8AE11D1351BE00476BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD84A4D61769F25400266526 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD9FFD3A1AC41DF500D916BA;
+			remoteInfo = "GeoNoter WatchKit App";
+		};
 		CD515B571AC7B0FD00632062 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD84A4D61769F25400266526 /* Project object */;
@@ -120,20 +134,6 @@
 			remoteGlobalIDString = CD84A4DD1769F25400266526;
 			remoteInfo = GeoNoter;
 		};
-		CD9FFD3D1AC41DF500D916BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CD84A4D61769F25400266526 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CD9FFD3A1AC41DF500D916BA;
-			remoteInfo = "GeoNoter WatchKit App";
-		};
-		CD9FFD471AC41DF500D916BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CD84A4D61769F25400266526 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CD9FFD301AC41DF500D916BA;
-			remoteInfo = "GeoNoter WatchKit Extension";
-		};
 		CDD3FD62198FA52500C8E537 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD84A4D61769F25400266526 /* Project object */;
@@ -151,6 +151,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CD1B8AE41D1351BE00476BB6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CD1B8AE01D1351BE00476BB6 /* GeoNoter WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD1B8AE51D1351BE00476BB6 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CD1B8AE31D1351BE00476BB6 /* GeoNoter WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD515B691AC7B0FE00632062 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -160,17 +182,6 @@
 				CD515B631AC7B0FD00632062 /* GeoNoterCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD9FFD501AC41DF500D916BA /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				CD9FFD491AC41DF500D916BA /* GeoNoter WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -729,14 +740,14 @@
 				CD84A4DB1769F25400266526 /* Frameworks */,
 				CD84A4DC1769F25400266526 /* Resources */,
 				6DED8ADF426D4323B1F47B6A /* Copy Pods Resources */,
-				CD9FFD501AC41DF500D916BA /* Embed App Extensions */,
 				CD515B691AC7B0FE00632062 /* Embed Frameworks */,
+				CD1B8AE51D1351BE00476BB6 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CD9FFD481AC41DF500D916BA /* PBXTargetDependency */,
 				CD515B611AC7B0FD00632062 /* PBXTargetDependency */,
+				CD1B8AE21D1351BE00476BB6 /* PBXTargetDependency */,
 			);
 			name = GeoNoter;
 			productName = GeoNoter;
@@ -776,27 +787,28 @@
 			buildRules = (
 			);
 			dependencies = (
-				CD9FFD3E1AC41DF500D916BA /* PBXTargetDependency */,
 			);
 			name = "GeoNoter WatchKit Extension";
 			productName = "GeoNoter WatchKit Extension";
 			productReference = CD9FFD311AC41DF500D916BA /* GeoNoter WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		CD9FFD3A1AC41DF500D916BA /* GeoNoter WatchKit App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD9FFD4E1AC41DF500D916BA /* Build configuration list for PBXNativeTarget "GeoNoter WatchKit App" */;
 			buildPhases = (
 				CD9FFD391AC41DF500D916BA /* Resources */,
+				CD1B8AE41D1351BE00476BB6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CD1B8ADF1D1351BE00476BB6 /* PBXTargetDependency */,
 			);
 			name = "GeoNoter WatchKit App";
 			productName = "GeoNoter WatchKit App";
 			productReference = CD9FFD3B1AC41DF500D916BA /* GeoNoter WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
+			productType = "com.apple.product-type.application.watchapp2";
 		};
 /* End PBXNativeTarget section */
 
@@ -806,7 +818,7 @@
 			attributes = {
 				CLASSPREFIX = PQG;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Patrick Quinn-Graham";
 				TargetAttributes = {
 					CD515B4A1AC7B0FD00632062 = {
@@ -914,7 +926,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9FFD381AC41DF500D916BA /* Images.xcassets in Resources */,
-				CD9FFD3C1AC41DF500D916BA /* GeoNoter WatchKit App.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1093,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CD1B8ADF1D1351BE00476BB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD9FFD301AC41DF500D916BA /* GeoNoter WatchKit Extension */;
+			targetProxy = CD1B8ADE1D1351BE00476BB6 /* PBXContainerItemProxy */;
+		};
+		CD1B8AE21D1351BE00476BB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD9FFD3A1AC41DF500D916BA /* GeoNoter WatchKit App */;
+			targetProxy = CD1B8AE11D1351BE00476BB6 /* PBXContainerItemProxy */;
+		};
 		CD515B581AC7B0FD00632062 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CD515B4A1AC7B0FD00632062 /* GeoNoterCore */;
@@ -1101,16 +1122,6 @@
 			isa = PBXTargetDependency;
 			target = CD84A4DD1769F25400266526 /* GeoNoter */;
 			targetProxy = CD84A5071769F25400266526 /* PBXContainerItemProxy */;
-		};
-		CD9FFD3E1AC41DF500D916BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CD9FFD3A1AC41DF500D916BA /* GeoNoter WatchKit App */;
-			targetProxy = CD9FFD3D1AC41DF500D916BA /* PBXContainerItemProxy */;
-		};
-		CD9FFD481AC41DF500D916BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CD9FFD301AC41DF500D916BA /* GeoNoter WatchKit Extension */;
-			targetProxy = CD9FFD471AC41DF500D916BA /* PBXContainerItemProxy */;
 		};
 		CDD3FD63198FA52500C8E537 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1229,6 +1240,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.thepatrick.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1280,6 +1292,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.thepatrick.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNoter.app/GeoNoter";
 			};
@@ -1300,24 +1313,28 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -1338,17 +1355,21 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1358,6 +1379,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58C6827265EE4DE0891CB7F1 /* Pods-GeoNoter.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1365,7 +1387,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoNoter/GeoNoter-Prefix.pch";
 				INFOPLIST_FILE = "GeoNoter/GeoNoter-Info.plist";
@@ -1386,6 +1407,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58C6827265EE4DE0891CB7F1 /* Pods-GeoNoter.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1393,7 +1415,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoNoter/GeoNoter-Prefix.pch";
 				INFOPLIST_FILE = "GeoNoter/GeoNoter-Info.plist";
@@ -1404,6 +1425,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoNoter/GeoNoter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1466,6 +1488,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pftqg.iphone.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GeoNoterTests/GeoNoterTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1490,12 +1513,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -1514,17 +1540,22 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
 		CD9FFD4C1AC41DF500D916BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1538,20 +1569,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IBSC_MODULE = GeoNoter_WatchKit_Extension;
 				INFOPLIST_FILE = "GeoNoter WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
 		CD9FFD4D1AC41DF500D916BA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1562,14 +1594,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IBSC_MODULE = GeoNoter_WatchKit_Extension;
 				INFOPLIST_FILE = "GeoNoter WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
