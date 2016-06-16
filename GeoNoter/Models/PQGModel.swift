@@ -40,7 +40,7 @@ class PQGModel: NSObject, PQGModelCacheable {
   }
   
   //MARK: - Lifecycle
-  
+  @discardableResult
   func hydrate() -> Self {
     if !isHydrated {
       store.withDatabase { db in
