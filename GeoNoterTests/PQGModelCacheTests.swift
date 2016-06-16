@@ -19,8 +19,7 @@ class PQGModelCacheTests: XCTestCase {
     }
     
     override func withDatabase(_ block: (FMDatabase!) -> ()) {
-      let g = TestSQLDatabase()
-      
+      //let g = TestSQLDatabase()
     }
     
     

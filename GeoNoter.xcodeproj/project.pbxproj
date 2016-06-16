@@ -180,7 +180,6 @@
 		695E73CC422F4B3F83FAE6A8 /* libPods-GeoNoterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoNoterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC1445210864F9E8443C435 /* libPods-GeoNoter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoNoter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF29F216D06A4AA1AE579C36 /* Pods-GeoNoterTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoNoterTests.xcconfig"; path = "Pods/Pods-GeoNoterTests.xcconfig"; sourceTree = "<group>"; };
-		CD19AF8E1B28F49200B1E115 /* ProtocolOrientedProgramming.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProtocolOrientedProgramming.playground; sourceTree = "<group>"; };
 		CD3F275B19755536000091ED /* PQGImageSizerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGImageSizerTests.swift; sourceTree = "<group>"; };
 		CD3F275D19755570000091ED /* PQGDateJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PQGDateJSONTests.swift; sourceTree = "<group>"; };
 		CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PQGAttachment.swift; path = Models/PQGAttachment.swift; sourceTree = "<group>"; };
@@ -432,7 +431,6 @@
 			children = (
 				CD4353E9198BB1DB009DBCAE /* PQGPersistStore.swift */,
 				CDB5DA70198A5D3400A205B1 /* PQGModel.swift */,
-				CD19AF8E1B28F49200B1E115 /* ProtocolOrientedProgramming.playground */,
 				CDB5DA72198A748E00A205B1 /* PQGTag.swift */,
 				CD4353E0198B7CC0009DBCAE /* PQGAttachment.swift */,
 				CD4353E2198B904F009DBCAE /* PQGPoint.swift */,
@@ -1192,7 +1190,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = GeoNoterCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.thepatrick.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1225,7 +1223,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = GeoNoterCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.thepatrick.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1371,7 +1369,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoNoter/GeoNoter-Prefix.pch";
 				INFOPLIST_FILE = "GeoNoter/GeoNoter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2;
 				PRODUCT_MODULE_NAME = GeoNoter;
@@ -1399,7 +1397,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoNoter/GeoNoter-Prefix.pch";
 				INFOPLIST_FILE = "GeoNoter/GeoNoter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.thepatrick.GeoNoter2;
 				PRODUCT_MODULE_NAME = GeoNoter;

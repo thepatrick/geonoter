@@ -115,7 +115,7 @@ final class PQGPoint: PQGModel {
   
   var serializedForWatch: [NSString: AnyObject] {
     get {
-      hydrate()
+      _ = hydrate()
       let id = NSNumber(value: primaryKey)
       
       var serialized = [

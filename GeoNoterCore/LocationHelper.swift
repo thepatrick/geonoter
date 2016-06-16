@@ -99,7 +99,7 @@ public enum LocationHelperError: Int {
   public func stopUpdatingLocation() {
     locationManager.stopUpdatingLocation()
     self.awaitingLocation = nil
-  }
+  } 
   
   // mark - CoreLocation Interface
   
