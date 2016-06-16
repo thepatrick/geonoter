@@ -6,7 +6,7 @@
 
 #import "UIImageSizer.h"
 
-#import "PQGAppDelegate.h"
+//#import "PQGAppDelegate.h"
 
 #import "PQGCell.h"
 #import "PQGPointDetailHeader.h"
