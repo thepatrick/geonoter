@@ -186,7 +186,7 @@ final class PQGAttachment: PQGModel {
       return cachedImage
     }
     let original = UIImage(contentsOfFile: filesystemURL!.path!)
-    let newCachedImage = original!.pqg_scaleAndRotateImage(largestSide)
+    let newCachedImage = original!.pqg_scaleAndRotateImage(maxSize: largestSide)
     let data = UIImageJPEGRepresentation(newCachedImage!, 1.0)
     let isWritten = (try? data!.write(to: cachedPath, options: [.dataWritingAtomic])) != nil
     if !isWritten {
